@@ -1,3 +1,6 @@
+//TODO move this into the proper package
+//package com.example.cycondlife;
+
 import com.example.cycondlife.Character;
 
 import java.util.Random;

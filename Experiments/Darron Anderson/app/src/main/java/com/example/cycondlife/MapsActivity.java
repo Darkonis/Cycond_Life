@@ -58,14 +58,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
-        LinearLayout lView = new LinearLayout(this);
+       // LinearLayout lView = new LinearLayout(this);
 
-        myText = new TextView(this);
-        myText.setText("My Text");
+      //  myText = new TextView(this);
+       // myText.setText("My Text");
 
-        lView.addView(myText);
+        //lView.addView(myText);
 
-        setContentView(lView);
+       // setContentView(lView);
     }
 
 
@@ -73,8 +73,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        // googleMapOptions.mapType(googleMap.MAP_TYPE_HYBRID)
-        //    .compassEnabled(true);
+        //googleMapOptions.mapType(googleMap.MAP_TYPE_HYBRID).compassEnabled(true);
 
         // Add a marker in Sydney and move the camera
         LatLng india = new LatLng(-34, 151);
@@ -82,6 +81,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(india));
         mMap.setOnMarkerDragListener(this);
         mMap.setOnMapLongClickListener(this);
+
     }
 
     //Getting current location
@@ -104,9 +104,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     public void onSuccess(Location location) {
                         if (location != null) {
                             lastLocation = location;
-                            myText.setText("Your location is Lat:" + lastLocation.getLatitude()+"Long"+lastLocation.getLongitude());
+                         //   myText.setText("Your location is Lat:" + lastLocation.getLatitude()+"Long"+lastLocation.getLongitude());
                         } else {
-                            myText.setText("Error no location");
+                           // myText.setText("Error no location");
                         }
                         if (location != null) {
                             //Getting longitude and latitude
@@ -121,7 +121,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
                     private void moveMap() {
-                        /**
+                        /*
                          * Creating the latlng object to store lat, long coordinates
                          * adding marker to map
                          * move the camera with animation
