@@ -7,6 +7,7 @@ public class Character {
     private boolean isPlayer;
     private double lat;
     private double lng;
+    private String name;
     //potentially move to an enum array
     private int atk;
     private int def;
@@ -28,6 +29,23 @@ public class Character {
         spd =10;
         inte =10;
         chr =10;
+    }
+    /*
+    creates a generic monster for testing
+     */
+    public Character(double lat,double lng)
+    {
+        isPlayer=false;
+        atk =10;
+        def =10;
+        hp =10;
+        spd =10;
+        inte =10;
+        chr =10;
+        this.lat=lat;
+        this.lng=lng;
+
+
     }
     Character(boolean isPlayer,double lat,double longitude,int attack,int defense,int hp,int spd,int inte,int chr)
     {
