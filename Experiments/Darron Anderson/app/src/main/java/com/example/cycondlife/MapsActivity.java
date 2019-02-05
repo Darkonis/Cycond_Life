@@ -1,5 +1,6 @@
 package com.example.cycondlife;
 
+import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
@@ -76,7 +77,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //googleMapOptions.mapType(googleMap.MAP_TYPE_HYBRID).compassEnabled(true);
 
         // Add a marker in Sydney and move the camera
-        LatLng india = new LatLng(-34, 151);
+        LatLng india = new LatLng(42.03, -92.03);
         mMap.addMarker(new MarkerOptions().position(india).title("Marker in India"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(india));
         mMap.setOnMarkerDragListener(this);
@@ -87,7 +88,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //Getting current location
     private void getCurrentLocation() {
         mMap.clear();
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    1);
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -130,7 +134,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         mMap.addMarker(new MarkerOptions()
                                 .position(latLng)
                                 .draggable(true)
-                                .title("Marker in India"));
+                                .title("You are here!!!!"));
 
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
@@ -148,7 +152,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onConnected(@Nullable Bundle bundle) {
         getCurrentLocation();
     }
-
     @Override
     public void onConnectionSuspended(int i) {
 

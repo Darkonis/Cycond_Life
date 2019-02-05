@@ -1,6 +1,8 @@
 //TODO move this into the proper package
 //package com.example.cycondlife;
 
+import android.os.Bundle;
+
 import com.example.cycondlife.Character;
 
 import java.util.Random;
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 
 public class Game {
     //TODO make all the rest control from here
-    ArrayList<Character> monster_map=new ArrayList<Character>();
+    ArrayList<Character> monster_map=new ArrayList<>();
     //how large the generated area should be
     double world_bounds = .2;
     int num_monsters=0;
