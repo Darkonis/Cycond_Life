@@ -9,6 +9,11 @@ class WelcomeController {
 
     @GetMapping("/")
     public String welcome() {
-        return "welcome";
+        return "welcome to a boring home screen created by DALLAS EVERS";
+    }
+    
+    @GetMapping("/home")
+    public String home() {
+        return "There is no place like home. Made BY D@!!@5";
     }
 }
