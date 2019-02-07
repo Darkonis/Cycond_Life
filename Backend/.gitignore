@@ -9,6 +9,7 @@
 .settings
 .springBeans
 .sts4-cache
+.attach_*
 
 ### IntelliJ IDEA ###
 .idea
@@ -23,3 +24,4 @@
 /nbdist/
 /.nb-gradle/
 /build/
+/pom.xml

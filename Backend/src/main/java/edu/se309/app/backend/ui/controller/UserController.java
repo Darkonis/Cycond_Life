@@ -15,27 +15,27 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 	
 	@GetMapping
-	public void getUser()
+	public String getUser()
 	{
-		//Get Request
+		return "get user request";
 	}
 	
 	@PostMapping
-	public void createUser()
+	public String createUser()
 	{
-		//Post Request
+		return "post user request";
 	}
 	
 	@PutMapping
-	public void UpdateUser()
+	public String UpdateUser()
 	{
-		//Put Request
+		return "put user request";
 	}
 	
 	@DeleteMapping
-	public void DeleteUser()
+	public String DeleteUser()
 	{
-		//Delete Request
+		return "delete user request";
 	}
 
 }
