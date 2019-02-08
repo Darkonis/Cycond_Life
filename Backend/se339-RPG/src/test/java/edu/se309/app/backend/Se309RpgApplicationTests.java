@@ -1,4 +1,4 @@
-package edu.se339.app.backend;
+package edu.se309.app.backend;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Se339RpgApplicationTests {
+public class Se309RpgApplicationTests {
 
 	@Test
 	public void contextLoads() {
