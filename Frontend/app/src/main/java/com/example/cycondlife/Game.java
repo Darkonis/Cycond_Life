@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import com.example.cycondlife.Character;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Random;
 import java.util.ArrayList;
@@ -51,6 +53,13 @@ public class Game {
                     valid=true;
                 }
             }
+        }
+    }
+    void display_monsters() {
+        for (int i = 0; i < monster_map.size(); i++)
+        {
+            LatLng t = new LatLng(monster_map.get(i).get_latitude(),monster_map.get(i).get_longitude());
+            mMap.addMarker(new MarkerOptions().position(t).title("Monster num" + i));
         }
     }
 }
