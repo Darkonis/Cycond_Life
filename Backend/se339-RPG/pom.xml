@@ -8,10 +8,10 @@
 		<version>2.1.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>edu.se339.app.backend</groupId>
-	<artifactId>se339-RPG</artifactId>
+	<groupId>edu.se309.app.backend</groupId>
+	<artifactId>se309-RPG</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>se339-RPG</name>
+	<name>se309-RPG</name>
 	<description>The backend for an AR RPG for SE309</description>
 
 	<properties>
@@ -29,6 +29,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>	
+
+		
 	</dependencies>
 
 	<build>
