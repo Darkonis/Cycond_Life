@@ -68,7 +68,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //lView.addView(myText);
 
        // setContentView(lView);
-        g =new Game(mMap);
+
 
     }
 
@@ -76,7 +76,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        g =new Game(mMap);
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         //googleMapOptions.mapType(googleMap.MAP_TYPE_HYBRID).compassEnabled(true);
 
         // Add a marker in Sydney and move the camera
@@ -85,7 +86,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(india));
         mMap.setOnMarkerDragListener(this);
         mMap.setOnMapLongClickListener(this);
-
+        g.generate_mMap();
+        //g.display_monsters();
     }
 
     //Getting current location
@@ -123,6 +125,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             //moving the map to location
                             moveMap();
                         }
+
                     }
                 });
     }
@@ -138,7 +141,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 .position(latLng)
                                 .draggable(true)
                                 .title("You are here!!!!"));
-
+                        for(int i=0;i<g.num_monsters;i++)
+                        {
+                            mMap.addMarker(new MarkerOptions().position(new LatLng(g.monster_map.get(i).get_latitude(),g.monster_map.get(i).get_longitude())).draggable(false).title("Monster: "+ i));
+                        }
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
                         mMap.getUiSettings().setZoomControlsEnabled(true);

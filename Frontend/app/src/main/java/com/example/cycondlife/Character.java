@@ -27,7 +27,7 @@ public class Character {
      */
     private int sci_and_math;
     /*
-    primary Stat of dmg as they create well worded arguements
+    primary Stat of dmg as they create well worded arguements to cut through bs
      */
     private int liberal_arts;
 
