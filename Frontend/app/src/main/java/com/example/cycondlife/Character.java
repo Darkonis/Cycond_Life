@@ -9,12 +9,28 @@ public class Character {
     private double lng;
     private String name;
     //potentially move to an enum array
-    private int atk;
-    private int def;
-    private int hp;
-    private int spd;
-    private int inte;
-    private int chr;
+    /*
+    the ability to quickly and rapidly confuse your opponent (attack)
+     */
+    private int BS;
+    /*
+        ones determination in combat basically hp
+     */
+    private int resolve;
+    /*
+    The stat of Tinkers Enginneers use their abilitys to create and design objects for both innovation and support (basically casters)
+    The difficulty of their field makes them very succeptible to BS
+     */
+    private int engineering;
+    /*
+    the stat of the tanks science and math majors use their skills to unravel the secerts of the universe and thus are unconcerned with bs
+     */
+    private int sci_and_math;
+    /*
+    primary Stat of dmg as they create well worded arguements to cut through bs
+     */
+    private int liberal_arts;
+
     //the distance monsters will appear
     private double visual_range=.5;
     Character()
@@ -23,12 +39,8 @@ public class Character {
         isPlayer=false;
         lat =42.03;
         lng =93.63;
-        atk =10;
-        def =10;
-        hp =10;
-        spd =10;
-        inte =10;
-        chr =10;
+        BS =10;
+
     }
     /*
     creates a generic monster for testing
@@ -36,28 +48,18 @@ public class Character {
     public Character(double lat,double lng)
     {
         isPlayer=false;
-        atk =10;
-        def =10;
-        hp =10;
-        spd =10;
-        inte =10;
-        chr =10;
+        BS =10;
         this.lat=lat;
         this.lng=lng;
 
 
     }
-    Character(boolean isPlayer,double lat,double longitude,int attack,int defense,int hp,int spd,int inte,int chr)
+    Character(boolean isPlayer,double lat,double longitude,int attack)
     {
         this.isPlayer=isPlayer;
         this.lat = lat;
         lng =longitude;
-        atk =attack;
-        def =defense;
-        this.hp =hp;
-        this.spd =spd;
-        this.inte =inte;
-        this.chr =chr;
+        BS =attack;
     }
     public double get_latitude()
     {
