@@ -4,18 +4,20 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 
-import edu.se309.app.backend.monsterspawn.monsters;
+
+import edu.se309.app.backend.monsterspawn.Monsters;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MonstersRepository extends JpaRepository<monsters, Integer> {
+public interface MonstersRepository extends JpaRepository<Monsters, Integer> {
 		
-		List<monsters> findAll();
+		List<Monsters> findAll();
 		
-		monsters save(monsters monster);
+		Monsters save(Monsters monster);
+		
+		Optional<Monsters> findById(int id);
 		
 		void deleteAll();
 		

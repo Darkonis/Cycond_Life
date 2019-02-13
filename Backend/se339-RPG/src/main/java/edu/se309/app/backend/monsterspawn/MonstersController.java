@@ -3,7 +3,7 @@ package edu.se309.app.backend.monsterspawn;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import edu.se309.app.backend.monsterspawn.*;
+import edu.se309.app.backend.monsterspawn.Monsters;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
-import java.util.ArrayList;
 
 
 @RestController
@@ -43,7 +42,7 @@ public class MonstersController
 	public String findAll()
 	{
 		logger.info("Entered into Controller Layer");
-		List<monsters>result = monstersRepository.findAll();
+		List<Monsters>result = monstersRepository.findAll();
 		logger.info("Number of Records Fetched:" + result.size());
 		String s = "";
 		for(int i = 0; i < result.size(); i++)
@@ -73,7 +72,7 @@ public class MonstersController
             {
                 double lat = (rand.nextInt() % 100) / 1000.0 + 42.03 - .05;
                 double lon = (rand.nextInt() % 100) / 1000.0 + 93.63 - .05;
-                monsters newMon = new monsters();
+                Monsters newMon = new Monsters();
                 newMon.setType("mon");//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
                 newMon.setLon(lon);//sets the longitude for the monster
@@ -81,5 +80,27 @@ public class MonstersController
                 monstersRepository.save(newMon);//saves the monster to the sql list
             }
 	return "Finished<br><br><a href=\"http://localhost:8080/monster\">return</a><br><a href=\"http://localhost:8080/monster/list\">List of Current Monsters</a>";
+	}
+	/**
+	 * View a specific monster's data
+	 * @param id 
+	 * 			A monster's id
+	 * @return
+	 * 			The monster's data
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/monster/list/{monsterId}")
+	public  String findById(@PathVariable("monsterId") int id)
+	{
+		 logger.info("Entered into Controller Layer");
+		 Optional<Monsters> results = monstersRepository.findById(id); 
+		 String s = "Monster Id: " + results.get().getId() + "<br>Monster Type: " + results.get().getType() + "<br>Monster Longitude: " +
+		 results.get().getLon() + "<br>Monster Latitude: " + results.get().getLat();
+		return s;
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, path = "/monster/generate/set")
+	public String setMonster(double lon, double lat, String type)
+	{
+		return "";
 	}
 }
