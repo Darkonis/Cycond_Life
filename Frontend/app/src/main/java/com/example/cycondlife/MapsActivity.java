@@ -26,6 +26,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.*;
+import android.content.Intent;
+import android.content.Context;
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
@@ -213,6 +215,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public boolean onMarkerClick(Marker marker) {
         Toast.makeText(MapsActivity.this, "onMarkerClick", Toast.LENGTH_SHORT).show();
+        final Context context = this;
+        Intent intent = new Intent(context, Combat.class);
+        startActivity(intent);
         return true;
     }
 
