@@ -28,8 +28,8 @@ public class AccountServiceImplementation implements AccountService {
 
 	@Override
 	@Transactional
-	public Account findById(int account_id) {		
-		return accountDAO.findById(account_id);
+	public Account findById(int accountId) {		
+		return accountDAO.findById(accountId);
 	}
 
 	@Override
@@ -52,8 +52,8 @@ public class AccountServiceImplementation implements AccountService {
 
 	@Override
 	@Transactional
-	public void deleteById(int account_id) {
-		accountDAO.deleteById(account_id);
+	public void deleteById(int accountId) {
+		accountDAO.deleteById(accountId);
 	}
 
 }

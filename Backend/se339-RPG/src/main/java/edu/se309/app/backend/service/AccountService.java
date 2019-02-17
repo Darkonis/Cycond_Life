@@ -8,7 +8,7 @@ public interface AccountService {
 	
 public List<Account> findAll();
 	
-	public Account findById(int account_id);
+	public Account findById(int accountId);
 	
 	public Account findByUsername(String username);
 	
@@ -16,6 +16,6 @@ public List<Account> findAll();
 	
 	public void save(Account newAccount);
 	
-	public void deleteById(int account_id);
+	public void deleteById(int accountId);
 
 }
