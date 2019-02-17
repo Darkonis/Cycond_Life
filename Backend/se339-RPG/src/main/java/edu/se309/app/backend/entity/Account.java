@@ -103,6 +103,10 @@ public class Account {
 		return accountType;
 	}
 
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
