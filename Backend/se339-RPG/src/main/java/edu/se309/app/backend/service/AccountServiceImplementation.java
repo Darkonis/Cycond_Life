@@ -21,8 +21,7 @@ public class AccountServiceImplementation implements AccountService {
 	
 	@Override
 	@Transactional
-	public List<Account> findAll() {
-		
+	public List<Account> findAll() {		
 		return accountDAO.findAll();
 	}
 
