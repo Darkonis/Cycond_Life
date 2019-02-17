@@ -1,0 +1,47 @@
+package edu.se309.app.db.building;
+
+import java.util.ArrayList;
+
+public class Way {
+	
+	private ArrayList<Node> nodes;
+	private long id;
+	private String name;
+	
+	public Way(long id, ArrayList<Node> nodes, String name) {		
+		this.nodes = nodes;
+		this.id = id;
+		this.name = name;
+	}
+
+	public ArrayList<Node> getNodes() {
+		return nodes;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public String toString() {
+		return "INSERT INTO 'building_spatial_locations' (`building_name`,'geo') VALUES ('" +name +"'," 
+				+ ""
+				+ "Way [nodes=" + nodes + ", id=" + id + ", name=" + name + "]";
+	}
+	
+	private nodeStringBuilder() {
+		StringBuilder sb = new StringBuilder();
+		for(Node n: nodes) {
+			sb.append(n.toString())
+		}
+	}
+	
+	
+	
+	
+	
+}
