@@ -34,7 +34,18 @@ public class Relation {
 
 	@Override
 	public String toString() {
-		return "Relation [id=" + id + ", outer=" + outer + ", inner=" + inner + ", name=" + name + "]";
+		String innerNodes = innerStringBuilder();
+		return "INSERT INTO building_spatial_locations (building_name,geo)"
+				+ " VALUES (" + name + ",ST_GeomFromText('POLYGON((" + outer.nodeStringBuilder() +")" + innerNodes + ")',4326));";				
+	}
+	
+	private String innerStringBuilder() {
+		StringBuilder sb = new StringBuilder();
+		
+		for(int i = 0; i < inner.size(); i++) {
+			sb.append(",\n(" + inner.get(i).nodeStringBuilder() + ")");			
+		}		
+		return sb.substring(0, sb.length());
 	}
 	
 	
