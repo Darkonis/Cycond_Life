@@ -7,23 +7,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.se309.app.backend.dao.AccountDAO;
 import edu.se309.app.backend.entity.Account;
+import edu.se309.app.backend.service.AccountService;
 
 @RestController
 @RequestMapping("/api")
 public class AccountRestController {
 	
-	private AccountDAO accountDAO;
+	private AccountService accountService;
 	
 	@Autowired
-	public AccountRestController(AccountDAO accountDAO) {
-		this.accountDAO = accountDAO;
+	public AccountRestController(AccountService accountService) {
+		this.accountService = accountService;
 	}
 	
 	@GetMapping("/accounts")
 	public List<Account> findAll(){
-		return accountDAO.findAll();
+		return accountService.findAll();
 	}
 	
 
