@@ -35,7 +35,7 @@ public class Relation {
 	@Override
 	public String toString() {
 		String innerNodes = innerStringBuilder();
-		return "INSERT INTO building_spatial_locations (building_name,geo)"
+		return "INSERT INTO building_locations (building_name,geo)"
 				+ " VALUES (" + name + ",ST_GeomFromText('POLYGON((" + outer.nodeStringBuilder() +")" + innerNodes + ")',4326));";				
 	}
 	
