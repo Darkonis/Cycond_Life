@@ -96,6 +96,7 @@ public class BuildingParserJsonToMySQL {
 			relations.add(new Relation(id, outer, inner, name));
 		}
 		
+		//Writes an SQL file
 		FileWriter f = new FileWriter("buiding_database_resources/edu/se309/app/db/building/building_name_gen.sql");		
 		for(Way w: ways) {
 			f.write(w.toString()+"\n\n");			

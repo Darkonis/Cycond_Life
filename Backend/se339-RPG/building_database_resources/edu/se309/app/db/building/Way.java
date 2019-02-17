@@ -29,7 +29,7 @@ public class Way {
 	@Override
 	public String toString() {
 		String outputNodes = nodeStringBuilder();
-		return "INSERT INTO building_spatial_locations (building_name,geo)"
+		return "INSERT INTO building_locations (building_name,geo)"
 				+ " VALUES (" + name + ",ST_GeomFromText('POLYGON((" + outputNodes + "))',4326));";				
 	}
 	
