@@ -34,7 +34,7 @@ public class Node {
 	
 	@Override
 	public String toString() {
-		return String.valueOf(lon) + " " + String.valueOf(lat);
+		return String.valueOf(lat) + " " + String.valueOf(lon);
 	}
 	
 	

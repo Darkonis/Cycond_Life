@@ -2,6 +2,7 @@ package edu.se309.app.db.building;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
@@ -31,11 +32,11 @@ public class BuildingParserJsonToMySQL {
 		for (int i = 0; i < ja.size(); i++) {
 			JsonObject jo = (JsonObject) ja.get(i);
 			Node n = gson.fromJson(jo, Node.class);
-			nodes.put(n.getId(), n);
-			System.out.println(n);
+			nodes.put(n.getId(), n);			
 		}
 
 		// Read Way JSON file to java object
+		reader.close();
 		reader = new FileReader("buiding_database_resources/edu/se309/app/db/building/way.json");
 		je = jp.parse(reader);
 
@@ -44,9 +45,9 @@ public class BuildingParserJsonToMySQL {
 			JsonObject jo = (JsonObject) ja.get(i);
 			long id = jo.get("id").getAsLong();
 			JsonArray arr = jo.get("nodes").getAsJsonArray();
-			String name = null;
+			String name = "null";
 			if (!jo.get("name").isJsonNull()) {
-				name = jo.get("name").getAsString();
+				name = "'"+jo.get("name").getAsString() +"'";
 			} 
 			ArrayList<Node> tempNodes = new ArrayList<>();
 
@@ -58,6 +59,7 @@ public class BuildingParserJsonToMySQL {
 		}
 
 		// Read Relation JSON file to java object
+		reader.close();
 		reader = new FileReader("buiding_database_resources/edu/se309/app/db/building/relation.json");
 		je = jp.parse(reader);
 
@@ -66,9 +68,9 @@ public class BuildingParserJsonToMySQL {
 			JsonObject jo = (JsonObject) ja.get(i);
 			long id = jo.get("id").getAsLong();
 			JsonArray arr = jo.get("members").getAsJsonArray();
-			String name = null;
+			String name = "null";
 			if (!jo.get("name").isJsonNull()) {
-				name = jo.get("name").getAsString();
+				name = "'"+jo.get("name").getAsString() +"'";
 			} 
 			Way outer = null;
 			ArrayList<Way> inner = new ArrayList<>();
@@ -94,19 +96,17 @@ public class BuildingParserJsonToMySQL {
 			relations.add(new Relation(id, outer, inner, name));
 		}
 		
-		int i = 1;
-		System.out.println("\n\nStart of Ways:\n");
+		FileWriter f = new FileWriter("buiding_database_resources/edu/se309/app/db/building/building_name_gen.sql");		
 		for(Way w: ways) {
-			System.out.println(String.valueOf(i) + w);
-			i++;
+			f.write(w.toString()+"\n\n");			
 		}
-		
-		i = 1;
-		System.out.println("\n\nStart of Relations:\n");
 		for(Relation r: relations) {
-			System.out.println(String.valueOf(i) + ": " + r);
-			i++;
+			f.write(r.toString()+"\n\n");			
 		}
+		f.close();
+		System.out.println("DONE!");
+		reader.close();
+		
 
 	}
 

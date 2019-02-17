@@ -28,17 +28,21 @@ public class Way {
 
 	@Override
 	public String toString() {
-		return "INSERT INTO 'building_spatial_locations' (`building_name`,'geo') VALUES ('" +name +"'," 
-				+ ""
-				+ "Way [nodes=" + nodes + ", id=" + id + ", name=" + name + "]";
+		String outputNodes = nodeStringBuilder();
+		return "INSERT INTO building_spatial_locations (building_name,geo)"
+				+ " VALUES (" + name + ",ST_GeomFromText('POLYGON((" + outputNodes + "))',4326));";				
 	}
 	
-	private nodeStringBuilder() {
+	public String nodeStringBuilder() {
 		StringBuilder sb = new StringBuilder();
-		for(Node n: nodes) {
-			sb.append(n.toString())
+		for(int i = 0; i < nodes.size(); i++) {
+			sb.append(nodes.get(i).toString()+",\n");
 		}
+		sb.append(nodes.get(0).toString());
+		return sb.substring(0, sb.length());
 	}
+	
+	
 	
 	
 	
