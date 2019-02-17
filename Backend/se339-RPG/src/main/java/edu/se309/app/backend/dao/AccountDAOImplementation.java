@@ -35,11 +35,11 @@ public class AccountDAOImplementation implements AccountDAO {
 	}
 
 	@Override
-	public Account findById(int account_id) {
+	public Account findById(int accountId) {
 		
 		Session currentSession = entityManager.unwrap(Session.class);
 		
-		Account account = currentSession.get(Account.class, account_id);
+		Account account = currentSession.get(Account.class, accountId);
 		
 		return account;
 	}
@@ -76,11 +76,11 @@ public class AccountDAOImplementation implements AccountDAO {
 	}
 
 	@Override
-	public void deleteById(int account_id) {
+	public void deleteById(int accountId) {
 		Session currentSession = entityManager.unwrap(Session.class);
 		Query query = 
-				currentSession.createQuery("DELETE FROM Account where id=:account_id")
-				.setParameter("account_id", account_id);
+				currentSession.createQuery("DELETE FROM Account where id=:accountId")
+				.setParameter("accountId", accountId);
 		query.executeUpdate();
 		
 	}

@@ -103,6 +103,18 @@ public class Account {
 		return accountType;
 	}
 
+	public int getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(int accountId) {
+		this.accountId = accountId;
+	}
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
 	public Date getCreatedOn() {
 		return createdOn;
 	}
