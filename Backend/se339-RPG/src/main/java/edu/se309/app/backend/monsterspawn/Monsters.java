@@ -29,7 +29,7 @@ public class Monsters
 	 */
 	@Column(name = "type")
 	@NotFound(action = NotFoundAction.IGNORE)
-	private String type;
+	private Integer type;
 	
 	/**
 	 * The Longitude of the given monster
@@ -66,7 +66,7 @@ public class Monsters
 	 * @return
 	 * 		The type of monster the current monster is.
 	 */
-	public String getType()
+	public Integer getType()
 	{
 		return type;
 	}
@@ -75,7 +75,7 @@ public class Monsters
 	 * @param newType
 	 * 		The new type for the given monster
 	 */
-	public void setType(String newType)
+	public void setType(Integer newType)
 	{
 		type = newType;
 	}

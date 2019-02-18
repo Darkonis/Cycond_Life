@@ -57,20 +57,69 @@ public class MonstersController
 	{
 		monstersRepository.deleteAll();//deletes the current list
         int num_monsters = 50;
+        int j = 0;
         Random rand = new Random(0);
             //add ames base
-
-            for (int i=0;i<num_monsters;i++)
-            {
-                double lat = (rand.nextInt() % 100) / 1000.0 + 42.03 - .05;
-                double lon = (rand.nextInt() % 100) / 1000.0 + 93.63 - .05;
-                Monsters newMon = new Monsters();
-                newMon.setType("mon");//sets the type for the monster
+        	for(int i = 0; i < num_monsters;i++)
+        	{
+        		double lat = (rand.nextInt()%6)/1000.0 + 42.0254 -.003;
+        		double lon = (rand.nextInt()%6)/1000.0 + 93.6461;
+        		Monsters newMon = new Monsters();
+                newMon.setType(0);//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
                 newMon.setLon(lon);//sets the longitude for the monster
-                newMon.setId(50-i);//sets the id for the monster
+                newMon.setId(j);//sets the id for the monster
+                j++;
                 monstersRepository.save(newMon);//saves the monster to the sql list
-            }
+        	}
+        	for(int i = 0; i < num_monsters;i++)
+        	{
+        		double lat = (rand.nextInt()%6)/1000.0 + 42.0267 - .003;
+        		double lon = (rand.nextInt()%6)/1000.0 + 93.6512 - .003;
+        		Monsters newMon = new Monsters();
+                newMon.setType(0);//sets the type for the monster
+                newMon.setLat(lat);//sets the latitude for the monster
+                newMon.setLon(lon);//sets the longitude for the monster
+                newMon.setId(j);//sets the id for the monster
+                j++;
+                monstersRepository.save(newMon);//saves the monster to the sql list
+        	}
+        	for(int i = 0; i < num_monsters;i++)
+        	{
+        		double lat = (rand.nextInt()%6)/1000.0 + 42.0295- .003;
+        		double lon = (rand.nextInt()%6)/1000.0 + 93.6473 - .003;
+        		Monsters newMon = new Monsters();
+                newMon.setType(0);//sets the type for the monster
+                newMon.setLat(lat);//sets the latitude for the monster
+                newMon.setLon(lon);//sets the longitude for the monster
+                newMon.setId(j);//sets the id for the monster
+                j++;
+                monstersRepository.save(newMon);//saves the monster to the sql list
+        	}
+        	for(int i = 0; i < num_monsters;i++)
+        	{
+        		double lat = (rand.nextInt()%6)/1000.0 + 42.0308- .003;
+        		double lon = (rand.nextInt()%6)/1000.0 + 93.6536 - .003;
+        		Monsters newMon = new Monsters();
+                newMon.setType(0);//sets the type for the monster
+                newMon.setLat(lat);//sets the latitude for the monster
+                newMon.setLon(lon);//sets the longitude for the monster
+                newMon.setId(j);//sets the id for the monster
+                j++;
+                monstersRepository.save(newMon);//saves the monster to the sql list
+        	}
+        	for(int i = 0; i < num_monsters;i++)
+        	{
+        		double lat = (rand.nextInt()%6)/1000.0 + 42.0278- .003;
+        		double lon = (rand.nextInt()%6)/1000.0 + 93.6440 - .003;
+        		Monsters newMon = new Monsters();
+                newMon.setType(0);//sets the type for the monster
+                newMon.setLat(lat);//sets the latitude for the monster
+                newMon.setLon(lon);//sets the longitude for the monster
+                newMon.setId(j);//sets the id for the monster
+                j++;
+                monstersRepository.save(newMon);//saves the monster to the sql list
+        	}
 	return "Finished<br><br><a href=\"http://localhost:8080/monster\">return</a><br><a href=\"http://localhost:8080/monster/list\">List of Current Monsters</a>";
 	}
 	/**
