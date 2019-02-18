@@ -39,20 +39,12 @@ public class MonstersController
 	 * 		The html for the list of all monsters.
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/monster/list")
-	public String findAll()
+	public List<Monsters> findAll()
 	{
 		logger.info("Entered into Controller Layer");
 		List<Monsters>result = monstersRepository.findAll();
 		logger.info("Number of Records Fetched:" + result.size());
-		String s = "";
-		for(int i = 0; i < result.size(); i++)
-		{
-			s += "Monster Id: " + result.get(i).getId() + "<br>Monster Type: " + result.get(i).getType() + 
-					"<br>Monster Longitude: " + result.get(i).getLon() + "<br>Monster Latitude: " 
-					+ result.get(i).getLat() + "<br><br>";
-		}
-		s += "<a href=\"http://localhost:8080/monster\">return</a>";
-		return s;
+		return result;
 	}
 	
 	/**

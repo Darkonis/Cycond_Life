@@ -8,6 +8,8 @@ import com.google.android.gms.maps.GoogleMap;
 
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.List;
+import edu.se309.app.backend.monsterspawn.*;
 
 public class Game {
     //TODO make all the rest control from here
@@ -25,11 +27,12 @@ public class Game {
     }
     void generate_mMap()
     {
-
-        while(num_monsters<50);
-        {
-            generate_monster();
-        }
+    	MonstersController mController = new MonstersController();
+    	List<Monsters> monList = mController.findAll();
+    	for(int i = 0; i <= monList.size(); i++)
+    	{
+    		monster_map.add(new Character(monList.get(i).getLat(), monList.get(i).getLon()));
+    	}
     }
     void generate_monster()
     {
