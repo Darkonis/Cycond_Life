@@ -21,8 +21,20 @@ public class AccountServiceImplementation implements AccountService {
 	
 	@Override
 	@Transactional
+	public void deleteById(int accountId) {
+		accountDAO.deleteById(accountId);
+	}
+
+	@Override
+	@Transactional
 	public List<Account> findAll() {		
 		return accountDAO.findAll();
+	}
+
+	@Override
+	@Transactional
+	public Account findByEmail(String email) {
+		return accountDAO.findByEmail(email);
 	}
 
 	@Override
@@ -39,20 +51,8 @@ public class AccountServiceImplementation implements AccountService {
 
 	@Override
 	@Transactional
-	public Account findByEmail(String email) {
-		return accountDAO.findByEmail(email);
-	}
-
-	@Override
-	@Transactional
 	public void save(Account newAccount) {
 		accountDAO.save(newAccount);
-	}
-
-	@Override
-	@Transactional
-	public void deleteById(int accountId) {
-		accountDAO.deleteById(accountId);
 	}
 
 }
