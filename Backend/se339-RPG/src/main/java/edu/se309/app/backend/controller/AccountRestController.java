@@ -29,9 +29,39 @@ public class AccountRestController {
 		this.accountService = accountService;
 	}
 	
+	@PostMapping("/accounts")
+	public Account addAccount (@RequestBody Account account) {
+		account.setAccountId(0);
+		Date currentDate = new Date();
+		account.setCreatedOn(currentDate);
+		accountService.save(account);
+		return account;		
+	}
+	
+	@DeleteMapping("/accounts/{accountID}")
+	public String deleteAccount(@PathVariable int accountID) {
+		Account toBeDeletedAccount = accountService.findById(accountID);
+		if (toBeDeletedAccount == null) {
+			throw new RuntimeException("Invalid request: accountId not found: " + accountID);
+		} else {	
+			accountService.deleteById(accountID);
+			return "Deleted Account with Id: " + accountID;
+		}		
+	}
+	
 	@GetMapping("/accounts")
 	public List<Account> findAll(){
 		return accountService.findAll();
+	}
+	
+	@GetMapping("/accounts/getByEmail/{email}")
+	public Account getAccountByEmail(@PathVariable String email) {
+		Account account = accountService.findByEmail(email);
+		if (account == null) {
+			throw new RuntimeException("Invalid request: email not found: " + email);
+		} else {			
+			return account;
+		}	
 	}
 	
 	@GetMapping("/accounts/{accountID}")
@@ -54,40 +84,10 @@ public class AccountRestController {
 		}	
 	}
 	
-	@GetMapping("/accounts/getByEmail/{email}")
-	public Account getAccountByEmail(@PathVariable String email) {
-		Account account = accountService.findByEmail(email);
-		if (account == null) {
-			throw new RuntimeException("Invalid request: email not found: " + email);
-		} else {			
-			return account;
-		}	
-	}
-	
-	@PostMapping("/accounts")
-	public Account addAccount (@RequestBody Account account) {
-		account.setAccountId(0);
-		Date currentDate = new Date();
-		account.setCreatedOn(currentDate);
-		accountService.save(account);
-		return account;		
-	}
-	
 	@PutMapping("/accounts")
 	public Account updateAccount(@RequestBody Account account) {
 		accountService.save(account);
 		return account;
-	}
-	
-	@DeleteMapping("/accounts/{accountID}")
-	public String deleteAccount(@PathVariable int accountID) {
-		Account toBeDeletedAccount = accountService.findById(accountID);
-		if (toBeDeletedAccount == null) {
-			throw new RuntimeException("Invalid request: accountId not found: " + accountID);
-		} else {	
-			accountService.deleteById(accountID);
-			return "Deleted Account with Id: " + accountID;
-		}		
 	}	
 
 }

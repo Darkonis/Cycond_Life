@@ -14,10 +14,6 @@ public class Way {
 		this.name = name;
 	}
 
-	public ArrayList<Node> getNodes() {
-		return nodes;
-	}
-
 	public long getId() {
 		return id;
 	}
@@ -26,13 +22,10 @@ public class Way {
 		return name;
 	}
 
-	@Override
-	public String toString() {
-		String outputNodes = nodeStringBuilder();
-		return "INSERT INTO building_locations (building_name,geo)"
-				+ " VALUES (" + name + ",ST_GeomFromText('POLYGON((" + outputNodes + "))',4326));";				
+	public ArrayList<Node> getNodes() {
+		return nodes;
 	}
-	
+
 	public String nodeStringBuilder() {
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0; i < nodes.size(); i++) {
@@ -40,6 +33,13 @@ public class Way {
 		}
 		sb.append(nodes.get(0).toString());
 		return sb.substring(0, sb.length());
+	}
+	
+	@Override
+	public String toString() {
+		String outputNodes = nodeStringBuilder();
+		return "INSERT INTO building_locations (building_name,geo)"
+				+ " VALUES (" + name + ",ST_GeomFromText('POLYGON((" + outputNodes + "))',4326));";				
 	}
 	
 	

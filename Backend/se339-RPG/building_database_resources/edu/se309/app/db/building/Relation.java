@@ -32,13 +32,6 @@ public class Relation {
 		return outer;
 	}
 
-	@Override
-	public String toString() {
-		String innerNodes = innerStringBuilder();
-		return "INSERT INTO building_locations (building_name,geo)"
-				+ " VALUES (" + name + ",ST_GeomFromText('POLYGON((" + outer.nodeStringBuilder() +")" + innerNodes + ")',4326));";				
-	}
-	
 	private String innerStringBuilder() {
 		StringBuilder sb = new StringBuilder();
 		
@@ -46,6 +39,13 @@ public class Relation {
 			sb.append(",\n(" + inner.get(i).nodeStringBuilder() + ")");			
 		}		
 		return sb.substring(0, sb.length());
+	}
+	
+	@Override
+	public String toString() {
+		String innerNodes = innerStringBuilder();
+		return "INSERT INTO building_locations (building_name,geo)"
+				+ " VALUES (" + name + ",ST_GeomFromText('POLYGON((" + outer.nodeStringBuilder() +")" + innerNodes + ")',4326));";				
 	}
 	
 	
