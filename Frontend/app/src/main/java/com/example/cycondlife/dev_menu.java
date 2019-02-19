@@ -60,12 +60,9 @@ public class dev_menu extends AppCompatActivity {
 
                     // Initialize a new RequestQueue instance
                     RequestQueue requestQueue = Volley.newRequestQueue(mContext);
-
                     // Initialize a new JsonArrayRequest instance
                     JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                            Request.Method.GET,
                             mJSONURLString,
-                            null,
                             new Response.Listener<JSONArray>() {
                                 @Override
                                 public void onResponse(JSONArray response) {
@@ -91,6 +88,7 @@ public class dev_menu extends AppCompatActivity {
                                 public void onErrorResponse(VolleyError error) {
                                     // Do something when error occurred
                                     Log.i("Cycond Life", "request error");
+                                    Log.i("Cycond Life",error.getLocalizedMessage());
                                 }
                             }
                     );
