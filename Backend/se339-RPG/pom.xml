@@ -53,7 +53,12 @@
 			<version>0.1.53</version>
 		</dependency>
 
-		<!-- Gson dependency -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-spatial</artifactId>
+			</dependency>
+
+		<!-- Gson dependency CAN BE REMOVED at a later date -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>

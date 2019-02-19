@@ -6,7 +6,7 @@ import edu.se309.app.backend.entity.Account;
 
 public interface AccountService {
 	
-public void deleteById(int accountId);
+	public void deleteById(int accountId);
 	
 	public List<Account> findAll();
 	

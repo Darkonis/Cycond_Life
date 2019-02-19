@@ -22,7 +22,7 @@ public class Account {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="account_id")
+	@Column(name="id")
 	private int accountId;
 	
 	@Column(name="username", nullable = false)
