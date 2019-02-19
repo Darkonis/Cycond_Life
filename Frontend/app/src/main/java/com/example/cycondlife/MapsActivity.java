@@ -179,7 +179,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         final Context context = this;
         Intent intent = new Intent(context, Combat.class);
         startActivity(intent);
-        mMap.addMarker(new MarkerOptions().position(latLng).draggable(true));
     }
 
     @Override
