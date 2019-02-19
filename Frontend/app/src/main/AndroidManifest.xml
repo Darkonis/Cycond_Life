@@ -46,6 +46,10 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps">
         </activity>
+        <activity android:name=".dev_menu"
+            android:label="@string/title_dev_menu"
+            />
+
     </application>
 
 </manifest>

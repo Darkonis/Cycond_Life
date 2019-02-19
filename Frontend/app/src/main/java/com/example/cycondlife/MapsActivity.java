@@ -176,6 +176,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapLongClick(LatLng latLng) {
         // mMap.clear();
+        final Context context = this;
+        Intent intent = new Intent(context, Combat.class);
+        startActivity(intent);
         mMap.addMarker(new MarkerOptions().position(latLng).draggable(true));
     }
 
@@ -215,9 +218,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public boolean onMarkerClick(Marker marker) {
         Toast.makeText(MapsActivity.this, "onMarkerClick", Toast.LENGTH_SHORT).show();
-        final Context context = this;
-        Intent intent = new Intent(context, Combat.class);
-        startActivity(intent);
         return true;
     }
 

@@ -32,7 +32,15 @@ public class menu extends AppCompatActivity {
                 startActivity(openMap);
             }
         });
-
+        dev_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("Cycond Life", "Attempt to open dev_menu from main menu");
+                //Toast.makeText(getApplicationContext(), "Opening map...", Toast.LENGTH_SHORT);
+                Intent openDev = new Intent(menu.this, dev_menu.class);
+                startActivity(openDev);
+            }
+        });
 
 
 
