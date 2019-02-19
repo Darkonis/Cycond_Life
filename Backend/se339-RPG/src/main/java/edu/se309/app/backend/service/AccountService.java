@@ -1,12 +1,12 @@
-package edu.se309.app.backend.dao;
+package edu.se309.app.backend.service;
 
 import java.util.List;
 
 import edu.se309.app.backend.entity.Account;
 
-public interface AccountDAO {
-
-	public void deleteById(int accountId);
+public interface AccountService {
+	
+public void deleteById(int accountId);
 	
 	public List<Account> findAll();
 	
@@ -17,5 +17,5 @@ public interface AccountDAO {
 	public Account findByUsername(String username);
 	
 	public void save(Account newAccount);
-	
+
 }
