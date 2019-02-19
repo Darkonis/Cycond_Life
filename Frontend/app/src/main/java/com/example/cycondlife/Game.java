@@ -27,7 +27,7 @@ public class Game {
     void generate_mMap()
     {
 
-        while(num_monsters<50)
+        while(num_monsters<200)
         {
             generate_monster();
         }
@@ -36,7 +36,7 @@ public class Game {
     {
         boolean valid=false;
         while(!valid) {
-            //add ames base
+
             double lat = (rand.nextInt() % 100) / 1000.0 + 42.03 - .05;
             double lon = (rand.nextInt() % 100) / 1000.0 - 93.63 - .05;
             if(num_monsters==0)
