@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>edu.se309.app.backend</groupId>
 	<artifactId>se309-RPG</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>se309-RPG</name>
 	<description>The backend for an AR RPG for SE309</description>
 
@@ -53,12 +53,7 @@
 			<version>0.1.53</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-spatial</artifactId>
-			</dependency>
-
-		<!-- Gson dependency CAN BE REMOVED at a later date -->
+		<!-- Gson dependency -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>

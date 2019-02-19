@@ -25,7 +25,7 @@ public class AccountDAOImplementation implements AccountDAO {
 	public void deleteById(int accountId) {
 		Session currentSession = entityManager.unwrap(Session.class);
 		Query query = 
-				currentSession.createQuery("DELETE FROM Account WHERE id=:accountId")
+				currentSession.createQuery("DELETE FROM Account where id=:accountId")
 				.setParameter("accountId", accountId);
 		query.executeUpdate();
 		
