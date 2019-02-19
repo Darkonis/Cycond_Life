@@ -52,6 +52,8 @@
         <activity android:name=".dev_menu"
             android:label="@string/title_dev_menu"
             />
+        <activity android:name=".Combat"
+            android:label="@string/title_combat"/>
 
     </application>
 
