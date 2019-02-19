@@ -59,7 +59,7 @@ public class MonstersController
         int num_monsters = 50;
         int j = 0;
         Random rand = new Random(0);
-            //add ames base
+            //add Campinile base
         	for(int i = 0; i < num_monsters;i++)
         	{
         		double lat = (rand.nextInt()%6)/1000.0 + 42.0254 -.003;
@@ -72,6 +72,7 @@ public class MonstersController
                 j++;
                 monstersRepository.save(newMon);//saves the monster to the sql list
         	}
+        	//add Hoover base
         	for(int i = 0; i < num_monsters;i++)
         	{
         		double lat = (rand.nextInt()%6)/1000.0 + 42.0267 - .003;
@@ -84,6 +85,7 @@ public class MonstersController
                 j++;
                 monstersRepository.save(newMon);//saves the monster to the sql list
         	}
+        	//add Physics base
         	for(int i = 0; i < num_monsters;i++)
         	{
         		double lat = (rand.nextInt()%6)/1000.0 + 42.0295- .003;
@@ -96,6 +98,7 @@ public class MonstersController
                 j++;
                 monstersRepository.save(newMon);//saves the monster to the sql list
         	}
+        	//add Gerdin base
         	for(int i = 0; i < num_monsters;i++)
         	{
         		double lat = (rand.nextInt()%6)/1000.0 + 42.0308- .003;
@@ -108,6 +111,7 @@ public class MonstersController
                 j++;
                 monstersRepository.save(newMon);//saves the monster to the sql list
         	}
+        	//isu cemetary base
         	for(int i = 0; i < num_monsters;i++)
         	{
         		double lat = (rand.nextInt()%6)/1000.0 + 42.0278- .003;

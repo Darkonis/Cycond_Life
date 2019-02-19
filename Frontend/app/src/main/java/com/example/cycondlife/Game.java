@@ -5,6 +5,19 @@ import android.os.Bundle;
 
 import com.example.cycondlife.Character;
 import com.google.android.gms.maps.GoogleMap;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 import java.util.Random;
 import java.util.ArrayList;
@@ -27,12 +40,10 @@ public class Game {
     }
     void generate_mMap()
     {
-    	MonstersController mController = new MonstersController();
-    	List<Monsters> monList = mController.findAll();
-    	for(int i = 0; i <= monList.size(); i++)
-    	{
-    		monster_map.add(new Character(monList.get(i).getLat(), monList.get(i).getLon()));
-    	}
+        while(num_monsters<200)
+        {
+            generate_monster();
+        }
     }
     void generate_monster()
     {
