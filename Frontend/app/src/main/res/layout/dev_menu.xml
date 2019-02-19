@@ -8,4 +8,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Call Names" />
+
+    <Button
+        android:id="@+id/call_person"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Call People" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <Button
+        android:id="@+id/submit1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="submit" />
 </LinearLayout>
