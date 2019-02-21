@@ -90,7 +90,7 @@ public class Json_handler {
         );
         requestQueue.add(jsonObjectRequest);
         int i=0;
-        while(o==null&&i<10000000)
+        while(o==null)
         {
             i++;
         }
@@ -129,7 +129,7 @@ public class Json_handler {
 
         // Add JsonArrayRequest to the RequestQueue
         requestQueue.add(jsonArrayRequest);
-        while(a==null&&i<100000)
+        while(a==null)
         {
             i++; // simple loop counter TODO make better
         }
