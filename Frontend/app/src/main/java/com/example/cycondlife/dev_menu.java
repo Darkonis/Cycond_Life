@@ -128,17 +128,18 @@ public class dev_menu extends AppCompatActivity {
 //                mTextView.setText("");
                 JSONArray t;
                 t=j.get_users(mContext);
-                for(int i=0;i<t.length();i++)
-                {
-                    try {
+                try {
+                    for (int i = 0; i < t.length(); i++) {
+
                         Log.i("Cycond Life", t.get(i).toString());
-                    }
-                    catch (Exception e)
-                    {
-                        Log.i("Cycond Life", "Request for users failed");
+
+
                     }
                 }
-
+                catch(Exception e)
+                {
+                    Log.i("Cycond Life", "Request for users failed");
+                }
 
             }
         });

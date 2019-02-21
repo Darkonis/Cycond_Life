@@ -44,7 +44,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
 import android.os.AsyncTask;
-
+import java.util.concurrent.atomic.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,8 +57,10 @@ public class Json_handler {
     private Context mContext;
     private JSONArray a;
     private JSONObject o;
+    boolean done=false;
     public JSONObject get_user( String s)
     {
+
         o=null;
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         // Initialize a new JsonArrayRequest instance
@@ -99,7 +101,7 @@ public class Json_handler {
     public JSONArray get_users(Context c)
     {
         a = null;
-
+        done = false;
         RequestQueue requestQueue = Volley.newRequestQueue(c);
         // Initialize a new JsonArrayRequest instance
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
@@ -111,9 +113,9 @@ public class Json_handler {
                         //mTextView.setText(response.toString());
 
                         // Process the JSON
-
+                            Log.i("Cycond test","request succsessful");
                             a=response;
-
+                            done = true;
                     }
                 },
                 new Response.ErrorListener() {
@@ -129,7 +131,7 @@ public class Json_handler {
 
         // Add JsonArrayRequest to the RequestQueue
         requestQueue.add(jsonArrayRequest);
-        while(a==null)
+        while()
         {
             i++; // simple loop counter TODO make better
         }
