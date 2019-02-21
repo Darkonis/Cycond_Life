@@ -51,7 +51,7 @@ public class dev_menu extends AppCompatActivity {
     private TextView last;
     private TextView email;
     private TextView type;
-
+    private Json_handler j;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +79,7 @@ public class dev_menu extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},
                     1);
         }
+        j= new Json_handler();
         add_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,9 +96,9 @@ public class dev_menu extends AppCompatActivity {
         submit2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HTTPAsyncTask asyncT = new HTTPAsyncTask();
-                asyncT.execute();
-
+                j.send_new_user(user.getText().toString(),pass.getText().toString(),
+                        first.getText().toString(),last.getText().toString(),
+                        email.getText().toString(),type.getText().toString());
             }
         });
         call_name.setOnClickListener(new View.OnClickListener() {
@@ -112,35 +113,7 @@ public class dev_menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!mTextView.getText().toString().equals("")) {
-                    RequestQueue requestQueue = Volley.newRequestQueue(mContext);
-                    // Initialize a new JsonArrayRequest instance
-                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                            mJSONURLString + "/" + mTextView.getText().toString(),
-                            null,
-                            new Response.Listener<JSONObject>() {
-                                @Override
-                                public void onResponse(JSONObject response) {
-                                    // Do something with response
-                                    //mTextView.setText(response.toString());
-
-                                    // Process the JS
-                                    // Loop through the array elements
-
-                                    Log.i("Cycond Life", response.toString());
-
-
-                                }
-                            },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    // Do something when error occurred
-                                    Log.i("Cycond Life", "Name request error");
-                                    Log.i("Cycond Life", error.getLocalizedMessage());
-                                }
-                            }
-                    );
-                    requestQueue.add(jsonObjectRequest);
+                    j.get_user(mTextView.getText().toString());
                 }
 
 
@@ -153,44 +126,20 @@ public class dev_menu extends AppCompatActivity {
             public void onClick(View view) {
                 // Empty the TextView
 //                mTextView.setText("");
+                JSONArray t;
+                t=j.get_users(mContext);
+                for(int i=0;i<t.length();i++)
+                {
+                    try {
+                        Log.i("Cycond Life", t.get(i).toString());
+                    }
+                    catch (Exception e)
+                    {
+                        Log.i("Cycond Life", "Request for users failed");
+                    }
+                }
 
-                // Initialize a new RequestQueue instance
-                RequestQueue requestQueue = Volley.newRequestQueue(mContext);
-                // Initialize a new JsonArrayRequest instance
-                JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                        mJSONURLString,
-                        new Response.Listener<JSONArray>() {
-                            @Override
-                            public void onResponse(JSONArray response) {
-                                // Do something with response
-                                //mTextView.setText(response.toString());
 
-                                // Process the JSON
-                                try {
-                                    // Loop through the array elements
-                                    for (int i = 0; i < response.length(); i++) {
-                                        // Get current json object
-                                        JSONObject info = response.getJSONObject(i);
-                                        Log.i("Cycond Life", info.toString());
-
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                // Do something when error occurred
-                                Log.i("Cycond Life", "request error");
-                                Log.i("Cycond Life", error.getLocalizedMessage());
-                            }
-                        }
-                );
-
-                // Add JsonArrayRequest to the RequestQueue
-                requestQueue.add(jsonArrayRequest);
             }
         });
 
@@ -209,51 +158,7 @@ public class dev_menu extends AppCompatActivity {
         type.setVisibility(View.GONE);
     }
 
-    public JSONObject buidJsonObject() throws JSONException {
 
-        JSONObject jsonParam = new JSONObject();
-        jsonParam.put("username", " " + user.getText().toString());
-        jsonParam.put("password", " " + pass.getText().toString());
-        jsonParam.put("firstName", " " + first.getText().toString());
-        jsonParam.put("lastName", " " + last.getText().toString());
-        jsonParam.put("email", " " + email.getText().toString());
-        jsonParam.put("accountType", " " + "ACCOUNT TYPE from " + type.getText().toString());
 
-        return jsonParam;
-    }
-
-    private class HTTPAsyncTask extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... urls) {
-            try {
-                URL url = new URL("http://cs309-sd-6.misc.iastate.edu:8080/api/accounts");
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("POST");
-                conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-                conn.setRequestProperty("Accept","application/json");
-                conn.setDoOutput(true);
-                conn.setDoInput(true);
-                JSONObject jsonParam = buidJsonObject();
-
-                Log.i("Cycond Life", jsonParam.toString());
-                DataOutputStream os = new DataOutputStream(conn.getOutputStream());
-                //os.writeBytes(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
-                os.writeBytes(jsonParam.toString());
-
-                os.flush();
-                os.close();
-
-                Log.i("Cycond Life", String.valueOf(conn.getResponseCode()));
-                Log.i("Cycond Life", conn.getResponseMessage());
-
-                conn.disconnect();
-            } catch (Exception e) {
-                e.printStackTrace();
-                Log.i("Cycond Life", "Error on push");
-            }
-            return "cool";
-        }
-    }
 }
 
