@@ -8,7 +8,7 @@
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -18,10 +18,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Login"></activity>
         <activity
             android:name=".dev_menu"
             android:label="dev_menu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".menu"
             android:label="@string/title_activity_menu"
@@ -44,16 +45,16 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
-        <activity android:name=".Combat"
-            android:label="@string/title_combat"/>
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".Combat"
+            android:label="@string/title_combat" />
     </application>
 
 </manifest>
