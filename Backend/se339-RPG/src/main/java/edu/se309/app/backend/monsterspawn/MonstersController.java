@@ -63,7 +63,7 @@ public class MonstersController
         	for(int i = 0; i < num_monsters;i++)
         	{
         		double lat = (rand.nextInt()%6)/1000.0 + 42.0254;
-        		double lon = (rand.nextInt()%6)/1000.0 + 93.6461;
+        		double lon = (rand.nextInt()%6)/1000.0 - 93.6461;
         		Monsters newMon = new Monsters();
                 newMon.setType(Math.abs(rand.nextInt()%3));//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
@@ -76,7 +76,7 @@ public class MonstersController
         	for(int i = 0; i < num_monsters;i++)
         	{
         		double lat = (rand.nextInt()%3)/1000.0 + 42.0267;
-        		double lon = (rand.nextInt()%3)/1000.0 + 93.6512;
+        		double lon = (rand.nextInt()%3)/1000.0 - 93.6512;
         		Monsters newMon = new Monsters();
                 newMon.setType(Math.abs(rand.nextInt()%3)+3);//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
@@ -89,7 +89,7 @@ public class MonstersController
         	for(int i = 0; i < num_monsters;i++)
         	{
         		double lat = (rand.nextInt()%3)/1000.0 + 42.0295;
-        		double lon = (rand.nextInt()%3)/1000.0 + 93.6473;
+        		double lon = (rand.nextInt()%3)/1000.0 - 93.6473;
         		Monsters newMon = new Monsters();
                 newMon.setType(Math.abs(rand.nextInt()%3)+6);//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
@@ -98,11 +98,11 @@ public class MonstersController
                 j++;
                 monstersRepository.save(newMon);//saves the monster to the sql list
         	}
-        	//add Gerdin base
+        	//add troxell base
         	for(int i = 0; i < num_monsters;i++)
         	{
         		double lat = (rand.nextInt()%6)/1000.0 + 42.0308;
-        		double lon = (rand.nextInt()%6)/1000.0 + 93.6536;
+        		double lon = (rand.nextInt()%6)/1000.0 - 93.6536;
         		Monsters newMon = new Monsters();
                 newMon.setType(Math.abs(rand.nextInt()%3)+9);//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
@@ -115,7 +115,7 @@ public class MonstersController
         	for(int i = 0; i < num_monsters;i++)
         	{
         		double lat = (rand.nextInt()%3)/1000.0 + 42.0278;
-        		double lon = (rand.nextInt()%3)/1000.0 + 93.6440;
+        		double lon = (rand.nextInt()%3)/1000.0 - 93.6440;
         		Monsters newMon = new Monsters();
                 newMon.setType(Math.abs(rand.nextInt()%3)+12);//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
