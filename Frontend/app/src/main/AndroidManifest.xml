@@ -20,7 +20,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".dev_menu"
-            android:label="@string/title_activity_dev_menu"
+            android:label="dev_menu"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".menu"
