@@ -2,7 +2,6 @@ package com.example.cycondlife;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -10,7 +9,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -20,34 +18,12 @@ import org.json.JSONObject;
 import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import android.Manifest;
-import android.app.Activity;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import java.util.ArrayList;
 
-import com.android.volley.NetworkResponse;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
+import android.content.Context;
+import android.webkit.JsResult;
+
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.Volley;
-import android.os.AsyncTask;
-import java.util.concurrent.atomic.*;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 
 public class Json_handler {
@@ -55,9 +31,14 @@ public class Json_handler {
     private String user,pass,first,last,email,type;
     private String mJSONURLString = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts";
     private Context mContext;
-    private JSONArray a;
+    JSONArray a;
     private JSONObject o;
-    boolean done=false;
+    volatile boolean done;
+   volatile ArrayList<String[]> t;
+    Json_handler(Context c)
+    {
+        mContext =c;
+    }
     public JSONObject get_user( String s)
     {
 
@@ -98,12 +79,13 @@ public class Json_handler {
         }
         return o;
     }
-    public JSONArray get_users(Context c)
+    public ArrayList get_users(Context c)
     {
         a = null;
         done = false;
-        RequestQueue requestQueue = Volley.newRequestQueue(c);
+        final RequestQueue requestQueue = Volley.newRequestQueue(c);
         // Initialize a new JsonArrayRequest instance
+         t = new ArrayList<>();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 mJSONURLString,
                 new Response.Listener<JSONArray>() {
@@ -114,9 +96,22 @@ public class Json_handler {
 
                         // Process the JSON
                             Log.i("Cycond test","request succsessful");
-                            a=response;
-                            done = true;
-                    }
+                            for(int i=0;i<response.length();i++) {
+                                try {
+                                    String[] out= new String[response.length()];
+                                    for(int k=0;k<response.length();k++)
+                                    {
+                                        out[k]=response.get(k).toString();
+                                    }
+                                    t.add(out);
+                                }
+                                catch (Exception e)
+                                {
+                                    e.printStackTrace();
+                                }
+
+                                }
+                            }
                 },
                 new Response.ErrorListener() {
                     @Override
@@ -124,18 +119,22 @@ public class Json_handler {
                         // Do something when error occurred
                         Log.i("Cycond Life", "request error");
                         Log.i("Cycond Life", error.getLocalizedMessage());
+                        done= true;
                     }
                 }
         );
-        int i=0;
+
 
         // Add JsonArrayRequest to the RequestQueue
         requestQueue.add(jsonArrayRequest);
-        while()
+        
+
+        while(t.isEmpty())
         {
-            i++; // simple loop counter TODO make better
+            Log.i("Cycond Life", "waiting");
         }
-        return a;
+        Log.i("Cycond Life", ""+jsonArrayRequest.hasHadResponseDelivered());
+        return t;
     }
     public boolean send_new_user(String user, String pass,String first,String last,String email,String type)
     {
@@ -146,7 +145,7 @@ public class Json_handler {
         this.email=email;
         if(!(type.equals("admin")||type.equals("user"))) return false;
         this.type=type;
-        HTTPAsyncTask asyncT = new HTTPAsyncTask();
+        Add_user asyncT = new Add_user();
         asyncT.execute();
         return true; //TODO add check for succsessful completion
     }
@@ -163,12 +162,12 @@ public class Json_handler {
         return jsonParam;
     }
 
-    private class HTTPAsyncTask extends AsyncTask<String, Void, String> {
+    private class Add_user extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... urls) {
             try {
-                URL url = new URL("http://cs309-sd-6.misc.iastate.edu:8080/api/accounts");
+                URL url = new URL("http://cs309-sd-6.misc.iastate.edu:8080/api/accountshttp://cs309-sd-6.misc.iastate.edu:8080/api/accounts");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");

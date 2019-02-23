@@ -32,6 +32,7 @@ import org.json.JSONObject;
 import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class dev_menu extends AppCompatActivity {
     private Context mContext;
@@ -79,7 +80,7 @@ public class dev_menu extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},
                     1);
         }
-        j= new Json_handler();
+        j= new Json_handler(mContext);
         add_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,10 +127,10 @@ public class dev_menu extends AppCompatActivity {
             public void onClick(View view) {
                 // Empty the TextView
 //                mTextView.setText("");
-                JSONArray t;
+                ArrayList t;
                 t=j.get_users(mContext);
                 try {
-                    for (int i = 0; i < t.length(); i++) {
+                    for (int i = 0; i < t.size(); i++) {
 
                         Log.i("Cycond Life", t.get(i).toString());
 

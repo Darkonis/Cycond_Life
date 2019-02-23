@@ -14,14 +14,30 @@ import android.os.Bundle;
 
 public class Combat extends AppCompatActivity {
 
-    Button button;
-
+    Button button_flee;
+    static Character player;
+    static Character monster;
+    static Game g;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.combat);
-        button = findViewById(R.id.run);
+        button_flee = findViewById(R.id.run);
     }
-
+    public static void set_combatants(Character pyr,Character mnstr,Game tmp)
+    {
+        monster=mnstr;
+        player=pyr;
+        g=tmp;
+    }
+    private void setup_buttons()
+    {
+        button_flee.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finishActivity(2);//flee combat
+            }
+        });
+    }
 
 }

@@ -45,7 +45,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleApiClient googleApiClient;
     private Location lastLocation ;
     private TextView myText = null;
-    Game g;
+    static Game g;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +55,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
+        if(g==null) {
+            g = new Game(mMap);
+            g.generate_mMap();
+        }
         //Initializing googleApiClient
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -78,7 +81,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        g =new Game(mMap);
+
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         //googleMapOptions.mapType(googleMap.MAP_TYPE_HYBRID).compassEnabled(true);
 
@@ -88,7 +91,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(india));
         mMap.setOnMarkerDragListener(this);
         mMap.setOnMapLongClickListener(this);
-        g.generate_mMap();
+
         //g.display_monsters();
     }
 
@@ -178,6 +181,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // mMap.clear();
         final Context context = this;
         Intent intent = new Intent(context, Combat.class);
+        for(int i=0;i<g.num_monsters;i++)
+        {
+            if(Math.abs(g.monster_map.get(i).get_longitude()-latLng.longitude)<=.00001&&Math.abs(g.monster_map.get(i).get_latitude()-latLng.latitude)<=.00001)
+            {
+                Combat.set_combatants(g.player,g.monster_map.get(i),g);
+            }
+        }
         startActivity(intent);
     }
 

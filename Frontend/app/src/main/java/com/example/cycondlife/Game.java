@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Game {
     //TODO make all the rest control from here
     public ArrayList<Character> monster_map=new ArrayList<>();
+    public Character player=new Character();// replace this later
     //how large the generated area should be
     double world_bounds = .2;
     GoogleMap mMap;
