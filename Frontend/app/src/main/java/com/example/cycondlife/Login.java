@@ -37,6 +37,7 @@ public class Login extends AppCompatActivity {
     private TextView name;
     private TextView pass;
     private TextView fail;
+    private Button adLogin;
 
     private String JSONURL = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts";
     private Context thisContext;
@@ -51,6 +52,7 @@ public class Login extends AppCompatActivity {
         name = findViewById(R.id.username);
         pass = findViewById(R.id.password);
         fail = findViewById(R.id.loginFail);
+        adLogin = findViewById(R.id.adminLogin);
 
         thisContext = getApplicationContext();
 
@@ -90,7 +92,7 @@ public class Login extends AppCompatActivity {
                                     for (int i = 0; i < response.length(); i++) {
                                         // Get current json object
                                         JSONObject info = response.getJSONObject(i);
-                                        String nameToCheck = info.get("username").toString();       //may not need toString, needs testing
+                                        String nameToCheck = info.get("username").toString();
                                         String passToCheck = info.get("password").toString();
 
                                         if(nameToCheck.equals(userName) && passToCheck.equals(userPass))    {
@@ -101,7 +103,7 @@ public class Login extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
 
-                                fail.setVisibility(View.VISIBLE);
+                                fail.setVisibility(View.VISIBLE);   //Should only display on codition of fail, will be changed
                             }
                         },
                         new Response.ErrorListener() {
@@ -116,6 +118,16 @@ public class Login extends AppCompatActivity {
 
                 // Add JsonArrayRequest to the RequestQueue
                 requestQueue.add(jsonArrayRequest);
+            }
+        });
+
+        adLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Will save a temp account that can be accessed by the rest of the app in later iterations
+
+                final Intent openMenu = new Intent(Login.this, menu.class);
+                startActivity(openMenu);
             }
         });
     }
