@@ -36,6 +36,7 @@ public class Login extends AppCompatActivity {
     private Button submit;
     private TextView name;
     private TextView pass;
+    private TextView fail;
 
     private String JSONURL = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts";
     private Context thisContext;
@@ -49,6 +50,7 @@ public class Login extends AppCompatActivity {
         submit = findViewById(R.id.loginBut);
         name = findViewById(R.id.username);
         pass = findViewById(R.id.password);
+        fail = findViewById(R.id.loginFail);
 
         thisContext = getApplicationContext();
 
@@ -56,6 +58,8 @@ public class Login extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},
                     1);
         }
+
+        fail.setVisibility(View.INVISIBLE);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +101,7 @@ public class Login extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
 
-                                //Will add text that displays in case of failure to login here
+                                fail.setVisibility(View.VISIBLE);
                             }
                         },
                         new Response.ErrorListener() {

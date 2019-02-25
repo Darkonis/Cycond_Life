@@ -60,4 +60,14 @@
         android:text="Login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <TextView
+        android:id="@+id/loginFail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username or Password was incorrect: \nplease try again"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginBut" />
 </android.support.constraint.ConstraintLayout>
