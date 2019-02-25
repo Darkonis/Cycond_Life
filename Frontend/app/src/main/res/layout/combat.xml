@@ -1,12 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <Button
         android:id="@+id/run"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="flee" />
-</LinearLayout>
+        android:layout_marginTop="680dp"
+        android:text="flee"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/item"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:text="item"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="632dp" />
+
+    <Button
+        android:id="@+id/tech"
+        android:layout_width="429dp"
+        android:layout_height="wrap_content"
+        android:text="tech"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="583dp" />
+
+    <Button
+        android:id="@+id/attack"
+        android:layout_width="409dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:text="attack"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="534dp" />
+
+    <TextView
+        android:id="@+id/health"
+        android:layout_width="175dp"
+        android:layout_height="93dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="3dp" />
+
+    <TextView
+        android:id="@+id/eHealth"
+        android:layout_width="249dp"
+        android:layout_height="91dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="175dp"
+        tools:layout_editor_absoluteY="3dp" />
+
+</android.support.constraint.ConstraintLayout>

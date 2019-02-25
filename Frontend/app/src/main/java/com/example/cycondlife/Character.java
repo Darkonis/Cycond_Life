@@ -81,4 +81,20 @@ public class Character {
     {
         return isPlayer;
     }
+    public void take_dmg(int dmg)
+    {
+        this.resolve=this.resolve-dmg;
+    }
+    /*
+    maybe move this into combat class
+     */
+    public static int do_combat(Character play, Character mon)
+    {
+        mon.take_dmg(play.BS);
+        if(mon.resolve <=0) return 1;
+        play.take_dmg(mon.BS);
+        if(play.resolve<=0) return 2;
+        return 0;
+    }
+    public int getResolve() {return resolve;}
 }
