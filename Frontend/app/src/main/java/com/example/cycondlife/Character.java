@@ -17,20 +17,10 @@ public class Character {
         ones determination in combat basically hp
      */
     private int resolve;
-    /*
-    The stat of Tinkers Enginneers use their abilitys to create and design objects for both innovation and support (basically casters)
-    The difficulty of their field makes them very succeptible to BS
-     */
-    private int engineering;
-    /*
-    the stat of the tanks science and math majors use their skills to unravel the secerts of the universe and thus are unconcerned with bs
-     */
-    private int sci_and_math;
-    /*
-    primary Stat of dmg as they create well worded arguements to cut through bs
-     */
-    private int liberal_arts;
-
+    private int tinkering;
+    private int critical_thinking;
+    private int presentation;
+    private String major ="Student";
     //the distance monsters will appear
     private double visual_range=.5;
     Character()

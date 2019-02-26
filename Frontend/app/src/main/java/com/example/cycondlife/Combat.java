@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class Combat extends AppCompatActivity {
 
@@ -19,9 +20,12 @@ public class Combat extends AppCompatActivity {
     Button attack;
     Button tech;
     Button item;
-    final static Character player = Game.player;
+    TextView player_stuff;
+    TextView monster_stuff;
+    final static Player player = Player.get_instance();
     static Character monster;
     static Game g;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +44,8 @@ public class Combat extends AppCompatActivity {
     {
         button_flee = findViewById(R.id.run);
         attack = findViewById(R.id.attack);
-
+        player_stuff=findViewById(R.id.health);
+        monster_stuff=findViewById(R.id.eHealth);
     }
     private void setup_buttons()
     {
