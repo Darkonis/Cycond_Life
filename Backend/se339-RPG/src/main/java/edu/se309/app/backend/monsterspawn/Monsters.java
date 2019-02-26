@@ -34,15 +34,16 @@ public class Monsters
 	/**
 	 * The Longitude of the given monster
 	 */
-	@Column(name = "lon")
+	@Column(name = "longitude")
 	@NotFound(action = NotFoundAction.IGNORE)
-	private double lon;
+	private double longitude;
 	/**
 	 * The Latitude of the given monster
+	 *
 	 */
-	@Column(name = "lat")
+	@Column(name = "latitude")
 	@NotFound(action = NotFoundAction.IGNORE)
-	private double lat;
+	private double latitude;
 	/**
 	 * Returns the monster's id
 	 * @return 
@@ -86,7 +87,7 @@ public class Monsters
 	 */
 	public double getLon()
 	{
-		return lon;
+		return longitude;
 	}
 	/**
 	 * Sets the monster's longitude to a new longitude
@@ -95,7 +96,7 @@ public class Monsters
 	 */
 	public void setLon(Double newLon)
 	{
-		lon = newLon;
+		longitude = newLon;
 	}
 	/**
 	 * Returns the monster's latitude.
@@ -104,7 +105,7 @@ public class Monsters
 	 */
 	public double getLat()
 	{
-		return lat;
+		return latitude;
 	}
 	/**
 	 * Sets the monster's latitude to a new latitude
@@ -113,7 +114,7 @@ public class Monsters
 	 */
 	public void setLat(Double newLat)
 	{
-		lat = newLat;
+		latitude = newLat;
 	}
 	
 }
