@@ -180,6 +180,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         boolean found=false;
         Log.i("Cycond Life","LAT lang ="+latLng.latitude+" "+latLng.longitude);
         Character opponent;
+        if(player.getResolve()<=0) return;
         for(int i=0;i<g.num_monsters;i++)
         {
             if(Math.abs(Math.abs(g.monster_map.get(i).get_longitude())-Math.abs(latLng.longitude))<=.001&&Math.abs(Math.abs(g.monster_map.get(i).get_latitude())-Math.abs(latLng.latitude))<=.001)
