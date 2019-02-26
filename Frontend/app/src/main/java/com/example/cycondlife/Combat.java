@@ -32,6 +32,7 @@ public class Combat extends AppCompatActivity {
         setContentView(R.layout.combat);
         define_elements();
         setup_buttons();
+        update_status();
     }
     public static void set_combatants(
             Character mnstr,Game tmp)
@@ -53,12 +54,14 @@ public class Combat extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finishActivity(3);//flee combat
+                finish();
             }
         });
         attack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                int ret= Character.do_combat(player,monster);
+               update_status();
                if(ret ==1)
                {
                    Log.i("Cycond Life","Player has won combat");
@@ -80,7 +83,8 @@ public class Combat extends AppCompatActivity {
     }
     private void update_status()
     {
-
+        player_stuff.setText("Player Resolve:"+player.getResolve());
+        monster_stuff.setText("Enemy Resolve" + monster.getResolve());
     }
 
 }
