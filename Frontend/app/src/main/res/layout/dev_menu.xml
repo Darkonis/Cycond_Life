@@ -110,11 +110,19 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="id" />
+        android:text="id"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/submit_delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="submit" />
+        android:text="submit"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/res"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Restore current hp" />
 </LinearLayout>

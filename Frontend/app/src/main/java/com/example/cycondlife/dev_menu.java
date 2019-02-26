@@ -48,6 +48,8 @@ public class dev_menu extends AppCompatActivity {
     private Button add_user;
     private Button submit2;
     private Button delete;
+    private Button res_hp;
+
     private TextView user;
     private TextView pass;
     private TextView first;
@@ -143,6 +145,12 @@ public class dev_menu extends AppCompatActivity {
                 get_users(mContext);
             }
         });
+        res_hp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Game.change_player_hp(100);
+            }
+        });
     }
 
     void hide_entries() {
@@ -181,6 +189,7 @@ public class dev_menu extends AppCompatActivity {
         id= findViewById(R.id.id);
         delete = findViewById(R.id.delete);
         submit_delete = findViewById(R.id.submit_delete);
+        res_hp=findViewById(R.id.res);
     }
     public void get_users(Context c) {
         final RequestQueue requestQueue = Volley.newRequestQueue(c);

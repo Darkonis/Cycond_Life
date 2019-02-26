@@ -19,7 +19,7 @@ public class Combat extends AppCompatActivity {
     Button attack;
     Button tech;
     Button item;
-    static Character player;
+    final static Character player = Game.player;
     static Character monster;
     static Game g;
     @Override
@@ -29,10 +29,11 @@ public class Combat extends AppCompatActivity {
         define_elements();
         setup_buttons();
     }
-    public static void set_combatants(Character pyr,Character mnstr,Game tmp)
+    public static void set_combatants(
+            Character mnstr,Game tmp)
     {
         monster=mnstr;
-        player=pyr;
+        //player=pyr;
         g=tmp;
     }
     private void define_elements()
@@ -63,6 +64,7 @@ public class Combat extends AppCompatActivity {
                {
                    Log.i("Cycond Life","Player has died");
                    finishActivity(2);
+                   finish();
                }
                else
                {

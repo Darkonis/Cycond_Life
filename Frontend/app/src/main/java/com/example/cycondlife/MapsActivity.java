@@ -46,6 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Location lastLocation ;
     private TextView myText = null;
     static Game g;
+    final static Character player = Game.player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -147,7 +148,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         }
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-                        mMap.getUiSettings().setZoomControlsEnabled(true);
+                        mMap.getUiSettings().setZoomControlsEnabled(false);
 
 
                     }
@@ -184,7 +185,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if(Math.abs(Math.abs(g.monster_map.get(i).get_longitude())-Math.abs(latLng.longitude))<=.001&&Math.abs(Math.abs(g.monster_map.get(i).get_latitude())-Math.abs(latLng.latitude))<=.001)
             {
                 opponent=g.monster_map.get(i);
-                Combat.set_combatants(g.player,opponent,g);
+                Combat.set_combatants(opponent,g);
                 found=true;
                 break;
             }

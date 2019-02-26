@@ -98,4 +98,5 @@ public class Character {
         return 0;
     }
     public int getResolve() {return resolve;}
+    public void setResolve (int i) {resolve=i;}
 }
