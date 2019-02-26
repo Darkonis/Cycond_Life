@@ -26,6 +26,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.*;
+import android.content.Intent;
+import android.content.Context;
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
@@ -43,7 +45,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleApiClient googleApiClient;
     private Location lastLocation ;
     private TextView myText = null;
-    Game g;
+    static Game g;
+    final static Character player = Game.player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,22 +56,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
+        if(g==null) {
+            g = new Game(mMap);
+            g.generate_mMap();
+        }
         //Initializing googleApiClient
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
-       // LinearLayout lView = new LinearLayout(this);
-
-      //  myText = new TextView(this);
-       // myText.setText("My Text");
-
-        //lView.addView(myText);
-
-       // setContentView(lView);
-        g =new Game(mMap);
 
     }
 
@@ -76,7 +73,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         //googleMapOptions.mapType(googleMap.MAP_TYPE_HYBRID).compassEnabled(true);
 
         // Add a marker in Sydney and move the camera
@@ -86,6 +84,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMarkerDragListener(this);
         mMap.setOnMapLongClickListener(this);
 
+        //g.display_monsters();
     }
 
     //Getting current location
@@ -123,6 +122,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             //moving the map to location
                             moveMap();
                         }
+
                     }
                 });
     }
@@ -138,10 +138,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 .position(latLng)
                                 .draggable(true)
                                 .title("You are here!!!!"));
-
+                        for(int i=0;i<g.num_monsters;i++)
+                        {
+                            if(g.monster_map.get(i).getResolve()<=0)
+                            {
+                                continue;
+                            }
+                            mMap.addMarker(new MarkerOptions().position(new LatLng(g.monster_map.get(i).get_latitude(),g.monster_map.get(i).get_longitude())).draggable(false).title("Monster: "+ i));
+                        }
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-                        mMap.getUiSettings().setZoomControlsEnabled(true);
+                        mMap.getUiSettings().setZoomControlsEnabled(false);
 
 
                     }
@@ -168,7 +175,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapLongClick(LatLng latLng) {
         // mMap.clear();
-        mMap.addMarker(new MarkerOptions().position(latLng).draggable(true));
+        final Context context = this;
+        Intent intent = new Intent(context, Combat.class);
+        boolean found=false;
+        Log.i("Cycond Life","LAT lang ="+latLng.latitude+" "+latLng.longitude);
+        Character opponent;
+        for(int i=0;i<g.num_monsters;i++)
+        {
+            if(Math.abs(Math.abs(g.monster_map.get(i).get_longitude())-Math.abs(latLng.longitude))<=.001&&Math.abs(Math.abs(g.monster_map.get(i).get_latitude())-Math.abs(latLng.latitude))<=.001)
+            {
+                opponent=g.monster_map.get(i);
+                Combat.set_combatants(opponent,g);
+                found=true;
+                break;
+            }
+
+        }
+        if(found) {
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -183,12 +208,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMarkerDragEnd(Marker marker) {
-        // getting the Co-ordinates
-        latitude = marker.getPosition().latitude;
-        longitude = marker.getPosition().longitude;
 
-        //move to current position
-        moveMap();
     }
 
     @Override

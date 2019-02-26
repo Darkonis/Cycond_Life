@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Cycond Life</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_main_menu">main_menu</string>
+    <string name="title_activity_menu">menu</string>
+    <string name="title_activity_dev_menu">dev_menu</string>
+    <string name="title_combat">combat</string>
+
 </resources>
