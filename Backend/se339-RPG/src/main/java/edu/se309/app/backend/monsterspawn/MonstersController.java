@@ -62,10 +62,10 @@ public class MonstersController
             //add Campinile base
         	for(int i = 0; i < num_monsters;i++)
         	{
-        		double lat = (rand.nextInt()%6)/1000.0 + 42.0254;
-        		double lon = (rand.nextInt()%6)/1000.0 - 93.6461;
+        		double lat = (rand.nextInt()%3)/1000.0 + 42.0254;
+        		double lon = (rand.nextInt()%3)/1000.0 - 93.6461;
         		Monsters newMon = new Monsters();
-                newMon.setType(Math.abs(rand.nextInt()%3));//sets the type for the monster
+                newMon.setType(Math.abs(1));//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
                 newMon.setLon(lon);//sets the longitude for the monster
                 newMon.setId(j);//sets the id for the monster
@@ -78,7 +78,7 @@ public class MonstersController
         		double lat = (rand.nextInt()%3)/1000.0 + 42.0267;
         		double lon = (rand.nextInt()%3)/1000.0 - 93.6512;
         		Monsters newMon = new Monsters();
-                newMon.setType(Math.abs(rand.nextInt()%3)+3);//sets the type for the monster
+                newMon.setType(2);//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
                 newMon.setLon(lon);//sets the longitude for the monster
                 newMon.setId(j);//sets the id for the monster
@@ -91,7 +91,7 @@ public class MonstersController
         		double lat = (rand.nextInt()%3)/1000.0 + 42.0295;
         		double lon = (rand.nextInt()%3)/1000.0 - 93.6473;
         		Monsters newMon = new Monsters();
-                newMon.setType(Math.abs(rand.nextInt()%3)+6);//sets the type for the monster
+                newMon.setType(3);//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
                 newMon.setLon(lon);//sets the longitude for the monster
                 newMon.setId(j);//sets the id for the monster
@@ -104,7 +104,7 @@ public class MonstersController
         		double lat = (rand.nextInt()%6)/1000.0 + 42.0308;
         		double lon = (rand.nextInt()%6)/1000.0 - 93.6536;
         		Monsters newMon = new Monsters();
-                newMon.setType(Math.abs(rand.nextInt()%3)+9);//sets the type for the monster
+                newMon.setType(4);//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
                 newMon.setLon(lon);//sets the longitude for the monster
                 newMon.setId(j);//sets the id for the monster
@@ -117,7 +117,7 @@ public class MonstersController
         		double lat = (rand.nextInt()%3)/1000.0 + 42.0278;
         		double lon = (rand.nextInt()%3)/1000.0 - 93.6440;
         		Monsters newMon = new Monsters();
-                newMon.setType(Math.abs(rand.nextInt()%3)+12);//sets the type for the monster
+                newMon.setType(5);//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
                 newMon.setLon(lon);//sets the longitude for the monster
                 newMon.setId(j);//sets the id for the monster
