@@ -25,7 +25,7 @@ import android.webkit.JsResult;
 
 import com.android.volley.toolbox.JsonObjectRequest;
 
-
+//TODO look into making this a super class to other activitys
 public class Json_handler {
 
     private String user,pass,first,last,email,type;
@@ -34,12 +34,18 @@ public class Json_handler {
     JSONArray a;
     private JSONObject o;
     volatile boolean done;
+    private int user_id;
    volatile ArrayList<String[]> t;
     Json_handler(Context c)
     {
         mContext =c;
     }
-
+    public void delete_user(int user_id)
+    {
+        this.user_id=user_id;
+        delete_user d=new delete_user();
+        d.execute();
+    }
     public boolean send_new_user(String user, String pass,String first,String last,String email,String type)
     {
         this.user=user;
@@ -56,16 +62,44 @@ public class Json_handler {
     private JSONObject buidJsonObject() throws JSONException {
 
         JSONObject jsonParam = new JSONObject();
-        jsonParam.put("username", " " + user);
-        jsonParam.put("password", " " + pass);
-        jsonParam.put("firstName", " " + first);
-        jsonParam.put("lastName", " " + last);
-        jsonParam.put("email", " " + email);
-        jsonParam.put("accountType", " " +type);
+        jsonParam.put("username",   user);
+        jsonParam.put("password",   pass);
+        jsonParam.put("firstName",   first);
+        jsonParam.put("lastName",   last);
+        jsonParam.put("email",  email);
+        jsonParam.put("accountType",  type);
 
         return jsonParam;
     }
+    private class delete_user extends  AsyncTask<String, Void,String> {
+        @Override
+        protected String doInBackground(String... urls) {
+            try {
+                URL url = new URL("http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/" +user_id);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("DELETE");
+                conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                conn.setRequestProperty("Accept", "application/json");
+                // conn.setDoOutput(true);
+                conn.setDoInput(true);
 
+                DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+
+
+                os.flush();
+                os.close();
+
+                Log.i("Cycond Life", String.valueOf(conn.getResponseCode()));
+                Log.i("Cycond Life", conn.getResponseMessage());
+
+                conn.disconnect();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.i("Cycond Life", "Error on delete");
+            }
+            return "deleted";
+        }
+    }
     private class Add_user extends AsyncTask<String, Void, String> {
 
         @Override

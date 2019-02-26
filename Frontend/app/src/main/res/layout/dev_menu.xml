@@ -43,7 +43,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="user name" />
+        android:text="user name"
+        android:visibility="gone" />
 
     <EditText
         android:id="@+id/password"
@@ -51,7 +52,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="password" />
+        android:text="password"
+        android:visibility="gone" />
 
     <EditText
         android:id="@+id/first_name"
@@ -59,7 +61,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="first name" />
+        android:text="first name"
+        android:visibility="gone" />
 
     <EditText
         android:id="@+id/last_name"
@@ -67,7 +70,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="last name" />
+        android:text="last name"
+        android:visibility="gone" />
 
     <EditText
         android:id="@+id/email"
@@ -75,7 +79,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="email" />
+        android:text="email"
+        android:visibility="gone" />
 
     <EditText
         android:id="@+id/account_type"
@@ -83,10 +88,32 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="admin" />
+        android:text="admin"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/submit2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="submit"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="delete user" />
+
+    <EditText
+        android:id="@+id/id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="id" />
+
+    <Button
+        android:id="@+id/submit_delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="submit" />

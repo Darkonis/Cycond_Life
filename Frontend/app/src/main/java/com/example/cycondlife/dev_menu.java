@@ -44,44 +44,32 @@ public class dev_menu extends AppCompatActivity {
     private String mJSONURLString = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts";
     private Button call_name;
     private Button submit_button;
+    private Button submit_delete;
     private Button add_user;
     private Button submit2;
+    private Button delete;
     private TextView user;
     private TextView pass;
     private TextView first;
     private TextView last;
     private TextView email;
     private TextView type;
+    private TextView id;
     private Json_handler j;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dev_menu);
-        mTextView = findViewById(R.id.name);
-        mTextView.setVisibility(View.GONE);
-        // Get the application context
-        mContext = getApplicationContext();
-        mActivity = dev_menu.this;
-        call_name = findViewById(R.id.call_person);
-        submit_button = findViewById(R.id.submit1);
-        submit_button.setVisibility(View.GONE);
-        // Get the widget reference from XML layout
-        mButtonDo = findViewById(R.id.call_names);
-        add_user = findViewById(R.id.Add_User);
-        submit2 = findViewById(R.id.submit2);
-        user = findViewById(R.id.user_name);
-        pass = findViewById(R.id.password);
-        first = findViewById(R.id.first_name);
-        last = findViewById(R.id.last_name);
-        email = findViewById(R.id.email);
-        type = findViewById(R.id.account_type);
+        set_elements();
         hide_entries();
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},
                     1);
         }
+
         j = new Json_handler(mContext);
+
         add_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,6 +110,29 @@ public class dev_menu extends AppCompatActivity {
             }
 
         });
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submit_delete.setVisibility(View.VISIBLE);
+                id.setVisibility(View.VISIBLE);
+            }
+        });
+        submit_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String s =id.getText().toString();
+
+                int i =0;
+                try {
+                    i = s.charAt(0)-48;
+                }
+                catch(Exception e)
+                {
+                    Log.i("Cycond life","int error");
+                }
+            j.delete_user(i);
+            }
+        });
         // Set a click listener for button widget
         mButtonDo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,23 +141,8 @@ public class dev_menu extends AppCompatActivity {
 //                mTextView.setText("");
                 ArrayList t;
                 get_users(mContext);
-               /* try {
-                    for (int i = 0; i < t.size(); i++) {
-
-                        Log.i("Cycond Life", t.get(i).toString());
-
-
-                    }
-                }
-                catch(Exception e)
-                {
-                    Log.i("Cycond Life", "Request for users failed");
-                }
-                */
             }
         });
-
-
     }
 
     void hide_entries() {
@@ -159,8 +155,33 @@ public class dev_menu extends AppCompatActivity {
         last.setVisibility(View.GONE);
         email.setVisibility(View.GONE);
         type.setVisibility(View.GONE);
+        submit_delete.setVisibility(View.GONE);
+        id.setVisibility(View.GONE);
     }
-
+    private void set_elements()
+    {
+        mTextView = findViewById(R.id.name);
+        mTextView.setVisibility(View.GONE);
+        // Get the application context
+        mContext = getApplicationContext();
+        mActivity = dev_menu.this;
+        call_name = findViewById(R.id.call_person);
+        submit_button = findViewById(R.id.submit1);
+        submit_button.setVisibility(View.GONE);
+        // Get the widget reference from XML layout
+        mButtonDo = findViewById(R.id.call_names);
+        add_user = findViewById(R.id.Add_User);
+        submit2 = findViewById(R.id.submit2);
+        user = findViewById(R.id.user_name);
+        pass = findViewById(R.id.password);
+        first = findViewById(R.id.first_name);
+        last = findViewById(R.id.last_name);
+        email = findViewById(R.id.email);
+        type = findViewById(R.id.account_type);
+        id= findViewById(R.id.id);
+        delete = findViewById(R.id.delete);
+        submit_delete = findViewById(R.id.submit_delete);
+    }
     public void get_users(Context c) {
         final RequestQueue requestQueue = Volley.newRequestQueue(c);
         // Initialize a new JsonArrayRequest instance
