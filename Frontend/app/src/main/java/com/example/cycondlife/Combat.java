@@ -26,7 +26,7 @@ public class Combat extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.combat);
-        button_flee = findViewById(R.id.run);
+        define_elements();
         setup_buttons();
     }
     public static void set_combatants(Character pyr,Character mnstr,Game tmp)
@@ -66,10 +66,13 @@ public class Combat extends AppCompatActivity {
                else
                {
                    Log.i("Cycond Life","Player Health is :" +player.getResolve() + " Enemy hp is: " + monster.getResolve());
-
                }
             }
         });
+    }
+    private void update_status()
+    {
+
     }
 
 }

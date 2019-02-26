@@ -65,15 +65,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
-       // LinearLayout lView = new LinearLayout(this);
-
-      //  myText = new TextView(this);
-       // myText.setText("My Text");
-
-        //lView.addView(myText);
-
-       // setContentView(lView);
-
 
     }
 

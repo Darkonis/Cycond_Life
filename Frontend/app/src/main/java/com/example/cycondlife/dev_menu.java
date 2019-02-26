@@ -53,6 +53,7 @@ public class dev_menu extends AppCompatActivity {
     private TextView email;
     private TextView type;
     private Json_handler j;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +81,7 @@ public class dev_menu extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},
                     1);
         }
-        j= new Json_handler(mContext);
+        j = new Json_handler(mContext);
         add_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,9 +98,9 @@ public class dev_menu extends AppCompatActivity {
         submit2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                j.send_new_user(user.getText().toString(),pass.getText().toString(),
-                        first.getText().toString(),last.getText().toString(),
-                        email.getText().toString(),type.getText().toString());
+                j.send_new_user(user.getText().toString(), pass.getText().toString(),
+                        first.getText().toString(), last.getText().toString(),
+                        email.getText().toString(), type.getText().toString());
             }
         });
         call_name.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +115,7 @@ public class dev_menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!mTextView.getText().toString().equals("")) {
-                    j.get_user(mTextView.getText().toString());
+                    get_user(mTextView.getText().toString());
                 }
 
 
@@ -128,8 +129,8 @@ public class dev_menu extends AppCompatActivity {
                 // Empty the TextView
 //                mTextView.setText("");
                 ArrayList t;
-                t=j.get_users(mContext);
-                try {
+                get_users(mContext);
+               /* try {
                     for (int i = 0; i < t.size(); i++) {
 
                         Log.i("Cycond Life", t.get(i).toString());
@@ -141,7 +142,7 @@ public class dev_menu extends AppCompatActivity {
                 {
                     Log.i("Cycond Life", "Request for users failed");
                 }
-
+                */
             }
         });
 
@@ -160,7 +161,83 @@ public class dev_menu extends AppCompatActivity {
         type.setVisibility(View.GONE);
     }
 
+    public void get_users(Context c) {
+        final RequestQueue requestQueue = Volley.newRequestQueue(c);
+        // Initialize a new JsonArrayRequest instance
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                mJSONURLString,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        // Do something with response
+                        //mTextView.setText(response.toString());
+
+                        // Process the JSON
+                        Log.i("Cycond test", "request succsessful");
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+                                String[] out = new String[response.length()];
+                                for (int k = 0; k < response.length(); k++) {
+                                    out[k] = response.get(k).toString();
+
+                                    Log.i("Cycond life", "onResponse: " + out[k]);
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Do something when error occurred
+                        Log.i("Cycond Life", "request error");
+                        Log.i("Cycond Life", error.getLocalizedMessage());
+                    }
+                }
+        );
 
 
+        // Add JsonArrayRequest to the RequestQueue
+        requestQueue.add(jsonArrayRequest);
+    }
+
+
+    public void get_user(String s) {
+
+
+        RequestQueue requestQueue = Volley.newRequestQueue(mContext);
+        // Initialize a new JsonArrayRequest instance
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                mJSONURLString + "/" + s,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Do something with response
+                        //mTextView.setText(response.toString());
+
+                        // Process the JS
+                        // Loop through the array elements
+
+                        Log.i("Cycond Life", response.toString());
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Do something when error occurred
+                        Log.i("Cycond Life", "Name request error");
+                        Log.i("Cycond Life", error.getLocalizedMessage());
+                    }
+                }
+        );
+        requestQueue.add(jsonObjectRequest);
+
+    }
 }
-
