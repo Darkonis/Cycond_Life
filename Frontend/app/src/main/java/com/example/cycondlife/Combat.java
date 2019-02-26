@@ -57,6 +57,7 @@ public class Combat extends AppCompatActivity {
                {
                    Log.i("Cycond Life","Player has won combat");
                    finishActivity(1);
+                   finish();
                }
                if(ret ==2 )
                {

@@ -139,7 +139,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 .title("You are here!!!!"));
                         for(int i=0;i<g.num_monsters;i++)
                         {
-
+                            if(g.monster_map.get(i).getResolve()<=0)
+                            {
+                                continue;
+                            }
                             mMap.addMarker(new MarkerOptions().position(new LatLng(g.monster_map.get(i).get_latitude(),g.monster_map.get(i).get_longitude())).draggable(false).title("Monster: "+ i));
                         }
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -175,11 +178,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent intent = new Intent(context, Combat.class);
         boolean found=false;
         Log.i("Cycond Life","LAT lang ="+latLng.latitude+" "+latLng.longitude);
+        Character opponent;
         for(int i=0;i<g.num_monsters;i++)
         {
             if(Math.abs(Math.abs(g.monster_map.get(i).get_longitude())-Math.abs(latLng.longitude))<=.001&&Math.abs(Math.abs(g.monster_map.get(i).get_latitude())-Math.abs(latLng.latitude))<=.001)
             {
-                Combat.set_combatants(g.player,g.monster_map.get(i),g);
+                opponent=g.monster_map.get(i);
+                Combat.set_combatants(g.player,opponent,g);
                 found=true;
                 break;
             }
