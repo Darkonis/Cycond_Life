@@ -46,7 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Location lastLocation ;
     private TextView myText = null;
     static Game g;
-    final static Character player = Game.player;
+    final static Player player = Player.get_instance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Game {
     //TODO make all the rest control from here
     public ArrayList<Character> monster_map = new ArrayList<>();
-    public static final Character player = new Character();// replace this later //TODO make the player a singleton
+    public static final Player player = Player.get_instance();// replace this later //TODO make the player a singleton
     //how large the generated area should be
     double world_bounds = .2;
     GoogleMap mMap;
