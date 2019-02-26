@@ -43,13 +43,13 @@ public class Combat extends AppCompatActivity {
     }
     private void setup_buttons()
     {
-        button_flee.setOnClickListener(new OnClickListener() {
+        button_flee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finishActivity(3);//flee combat
             }
         });
-        attack.setOnClickListener(new OnClickListener() {
+        attack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                int ret= Character.do_combat(player,monster);

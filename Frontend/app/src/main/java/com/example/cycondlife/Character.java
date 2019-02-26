@@ -40,7 +40,7 @@ public class Character {
         lat =42.03;
         lng =93.63;
         BS =10;
-
+        resolve =100;
     }
     /*
     creates a generic monster for testing
@@ -49,6 +49,7 @@ public class Character {
     {
         isPlayer=false;
         BS =10;
+        resolve=100;
         this.lat=lat;
         this.lng=lng;
 

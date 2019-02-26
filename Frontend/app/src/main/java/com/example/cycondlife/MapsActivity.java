@@ -139,6 +139,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 .title("You are here!!!!"));
                         for(int i=0;i<g.num_monsters;i++)
                         {
+
                             mMap.addMarker(new MarkerOptions().position(new LatLng(g.monster_map.get(i).get_latitude(),g.monster_map.get(i).get_longitude())).draggable(false).title("Monster: "+ i));
                         }
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -172,14 +173,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // mMap.clear();
         final Context context = this;
         Intent intent = new Intent(context, Combat.class);
+        boolean found=false;
+        Log.i("Cycond Life","LAT lang ="+latLng.latitude+" "+latLng.longitude);
         for(int i=0;i<g.num_monsters;i++)
         {
-            if(Math.abs(g.monster_map.get(i).get_longitude()-latLng.longitude)<=.00001&&Math.abs(g.monster_map.get(i).get_latitude()-latLng.latitude)<=.00001)
+            if(Math.abs(Math.abs(g.monster_map.get(i).get_longitude())-Math.abs(latLng.longitude))<=.001&&Math.abs(Math.abs(g.monster_map.get(i).get_latitude())-Math.abs(latLng.latitude))<=.001)
             {
                 Combat.set_combatants(g.player,g.monster_map.get(i),g);
+                found=true;
+                break;
             }
+
         }
-        startActivity(intent);
+        if(found) {
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -194,12 +202,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMarkerDragEnd(Marker marker) {
-        // getting the Co-ordinates
-        latitude = marker.getPosition().latitude;
-        longitude = marker.getPosition().longitude;
 
-        //move to current position
-        moveMap();
     }
 
     @Override
