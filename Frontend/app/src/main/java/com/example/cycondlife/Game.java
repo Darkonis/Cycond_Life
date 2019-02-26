@@ -33,7 +33,6 @@ public class Game {
             generate_monster();
         }
     }
-
     void generate_monster() {
         boolean valid = false;
         while (!valid) {
