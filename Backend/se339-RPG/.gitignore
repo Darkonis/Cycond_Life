@@ -9,6 +9,8 @@
 .settings
 .springBeans
 .sts4-cache
+.metadata
+application.log*
 
 ### IntelliJ IDEA ###
 .idea
@@ -39,3 +41,4 @@
 # Maven
 log/
 target/
+
