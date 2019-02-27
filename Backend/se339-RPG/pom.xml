@@ -14,7 +14,7 @@
 	<version>0.0.2-SNAPSHOT</version>
 	<name>se309-RPG</name>
 	<description>The backend for an AR RPG for SE309</description>
-
+	
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -71,5 +71,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
