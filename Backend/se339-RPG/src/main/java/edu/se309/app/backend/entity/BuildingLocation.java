@@ -10,15 +10,9 @@ import javax.persistence.Table;
 import org.springframework.data.geo.Polygon;
 
 @Entity
-@Table(name="stats")
+@Table(name="building_locations")
 public class BuildingLocation {
 
-	public enum Stats 
-    { 
-        BS, RESOLVE, CRITICALTHINKING,
-        INGENUITY, PRESENTATION, NONE; 
-    } 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="building_id")
@@ -27,14 +21,15 @@ public class BuildingLocation {
 	@Column(name="geo", columnDefinition = "geometry")
 	private Polygon geo;
 	
+	
 	@Column(name="earned_stat")
-	private Stats earnedStat;
+	private String earnedStat;
 
 	public BuildingLocation() {
 		
 	}
 	
-	public BuildingLocation(Polygon geo, Stats earnedStat) {
+	public BuildingLocation(Polygon geo, String earnedStat) {
 		this.geo = geo;
 		this.earnedStat = earnedStat;
 	}
@@ -54,12 +49,14 @@ public class BuildingLocation {
 	public void setGeo(Polygon geo) {
 		this.geo = geo;
 	}
-
-	public Stats getEarnedStat() {
+	
+	
+	public String getEarnedStat() {
 		return earnedStat;
 	}
-
-	public void setEarnedStat(Stats earnedStat) {
+	
+	
+	public void setEarnedStat(String earnedStat) {
 		this.earnedStat = earnedStat;
 	}
 	

@@ -22,7 +22,8 @@ public class BuildingParserJsonToMySQL {
 		ArrayList<Relation> relations = new ArrayList<>();
 
 		// Read Node JSON file to java object
-		Reader reader = new FileReader("buiding_database_resources/edu/se309/app/db/building/node.json");
+		String directory = System.getProperty("user.dir") + "/building_database_resources/edu/se309/app/db/building/";
+		Reader reader = new FileReader(directory + "node.json");
 		Gson gson = new Gson();
 
 		JsonParser jp = new JsonParser();
@@ -37,7 +38,7 @@ public class BuildingParserJsonToMySQL {
 
 		// Read Way JSON file to java object
 		reader.close();
-		reader = new FileReader("buiding_database_resources/edu/se309/app/db/building/way.json");
+		reader = new FileReader(directory + "way.json");
 		je = jp.parse(reader);
 
 		ja = je.getAsJsonArray();
@@ -60,7 +61,7 @@ public class BuildingParserJsonToMySQL {
 
 		// Read Relation JSON file to java object
 		reader.close();
-		reader = new FileReader("buiding_database_resources/edu/se309/app/db/building/relation.json");
+		reader = new FileReader(directory + "relation.json");
 		je = jp.parse(reader);
 
 		ja = je.getAsJsonArray();
@@ -97,7 +98,7 @@ public class BuildingParserJsonToMySQL {
 		}
 		
 		//Writes an SQL file
-		FileWriter f = new FileWriter("buiding_database_resources/edu/se309/app/db/building/building_name_gen.sql");		
+		FileWriter f = new FileWriter(directory + "building_name_gen.sql");		
 		for(Way w: ways) {
 			f.write(w.toString()+"\n\n");			
 		}

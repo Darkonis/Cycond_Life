@@ -1,4 +1,4 @@
-INSERT INTO building_locations (building_name,geo) VALUES ('Carver Hall',ST_GeomFromText('POLYGON((42.025461 -93.6486197,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Carver Hall',ST_GeomFromText('POLYGON((42.025461 -93.6486197,
 42.0250368 -93.6486207,
 42.0250367 -93.64853,
 42.0250362 -93.6481679,
@@ -7,9 +7,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Carver Hall',ST_Geom
 42.0254604 -93.6481577,
 42.0254608 -93.6484527,
 42.025461 -93.6486197,
-42.025461 -93.6486197))',4326));
+42.025461 -93.6486197))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Beardshear Hall',ST_GeomFromText('POLYGON((42.0264732 -93.6485815,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Beardshear Hall',ST_GeomFromText('POLYGON((42.0264732 -93.6485815,
 42.0263747 -93.6485816,
 42.0263746 -93.648561,
 42.0262691 -93.6485611,
@@ -38,18 +38,18 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Beardshear Hall',ST_
 42.0264728 -93.6482025,
 42.026473 -93.6484483,
 42.0264732 -93.6485815,
-42.0264732 -93.6485815))',4326));
+42.0264732 -93.6485815))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Lab of Mechanics',ST_GeomFromText('POLYGON((42.0256813 -93.6507526,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Lab of Mechanics',ST_GeomFromText('POLYGON((42.0256813 -93.6507526,
 42.025619 -93.6507519,
 42.0256194 -93.6506956,
 42.0255263 -93.6506946,
 42.0255284 -93.6503617,
 42.0256837 -93.6503634,
 42.0256813 -93.6507526,
-42.0256813 -93.6507526))',4326));
+42.0256813 -93.6507526))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Parks Library',ST_GeomFromText('POLYGON((42.0285939 -93.6491239,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Parks Library',ST_GeomFromText('POLYGON((42.0285939 -93.6491239,
 42.0280068 -93.649128,
 42.0280058 -93.6490825,
 42.0278899 -93.6490825,
@@ -74,9 +74,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Parks Library',ST_Ge
 42.0286774 -93.6490137,
 42.0285945 -93.6490137,
 42.0285939 -93.6491239,
-42.0285939 -93.6491239))',4326));
+42.0285939 -93.6491239))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Lied Recreation Center',ST_GeomFromText('POLYGON((42.0271416 -93.6380185,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Lied Recreation Center',ST_GeomFromText('POLYGON((42.0271416 -93.6380185,
 42.0264268 -93.6380187,
 42.0264267 -93.6378135,
 42.0262915 -93.6378136,
@@ -115,9 +115,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Lied Recreation Cent
 42.0271681 -93.6377022,
 42.0271415 -93.6377022,
 42.0271416 -93.6380185,
-42.0271416 -93.6380185))',4326));
+42.0271416 -93.6380185))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Thielen Student Health Center',ST_GeomFromText('POLYGON((42.0255387 -93.6540496,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Thielen Student Health Center',ST_GeomFromText('POLYGON((42.0255387 -93.6540496,
 42.0255715 -93.6540485,
 42.025659 -93.6540701,
 42.0256499 -93.6541204,
@@ -145,9 +145,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Thielen Student Heal
 42.0255379 -93.6539594,
 42.0255381 -93.6539861,
 42.0255387 -93.6540496,
-42.0255387 -93.6540496))',4326));
+42.0255387 -93.6540496))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Curtiss Hall',ST_GeomFromText('POLYGON((42.0264249 -93.6449806,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Curtiss Hall',ST_GeomFromText('POLYGON((42.0264249 -93.6449806,
 42.0264247 -93.6449924,
 42.0264971 -93.6449943,
 42.0264993 -93.6448413,
@@ -197,17 +197,17 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Curtiss Hall',ST_Geo
 42.0262347 -93.6450567,
 42.0262363 -93.6449749,
 42.0264249 -93.6449806,
-42.0264249 -93.6449806))',4326));
+42.0264249 -93.6449806))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Atanasoff Hall',ST_GeomFromText('POLYGON((42.0282773 -93.6499941,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Atanasoff Hall',ST_GeomFromText('POLYGON((42.0282773 -93.6499941,
 42.0282757 -93.6494287,
 42.0280609 -93.6494299,
 42.0280625 -93.6499952,
 42.0281187 -93.6499949,
 42.0282773 -93.6499941,
-42.0282773 -93.6499941))',4326));
+42.0282773 -93.6499941))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Beyer Hall',ST_GeomFromText('POLYGON((42.0262053 -93.6534852,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Beyer Hall',ST_GeomFromText('POLYGON((42.0262053 -93.6534852,
 42.0262073 -93.6523622,
 42.0259768 -93.6523614,
 42.0259765 -93.652549,
@@ -217,9 +217,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Beyer Hall',ST_GeomF
 42.0259816 -93.653317,
 42.0259813 -93.6534844,
 42.0262053 -93.6534852,
-42.0262053 -93.6534852))',4326));
+42.0262053 -93.6534852))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Biorenewables Research Laboratory',ST_GeomFromText('POLYGON((42.0277398 -93.6530422,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Biorenewables Research Laboratory',ST_GeomFromText('POLYGON((42.0277398 -93.6530422,
 42.0277873 -93.65285,
 42.0278158 -93.6528622,
 42.0278045 -93.65291,
@@ -237,18 +237,18 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Biorenewables Resear
 42.0275517 -93.6529722,
 42.0276492 -93.6530085,
 42.0277398 -93.6530422,
-42.0277398 -93.6530422))',4326));
+42.0277398 -93.6530422))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Catt Hall',ST_GeomFromText('POLYGON((42.0279868 -93.6458674,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Catt Hall',ST_GeomFromText('POLYGON((42.0279868 -93.6458674,
 42.0279869 -93.6456516,
 42.027987 -93.6454667,
 42.0278054 -93.6454665,
 42.0278053 -93.6456658,
 42.0278052 -93.6458673,
 42.0279868 -93.6458674,
-42.0279868 -93.6458674))',4326));
+42.0279868 -93.6458674))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Coover Hall',ST_GeomFromText('POLYGON((42.0287014 -93.6504339,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Coover Hall',ST_GeomFromText('POLYGON((42.0287014 -93.6504339,
 42.0283657 -93.6504328,
 42.02829 -93.6504301,
 42.0281349 -93.6505015,
@@ -270,9 +270,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Coover Hall',ST_Geom
 42.0287014 -93.6512399,
 42.0287014 -93.6510414,
 42.0287014 -93.6504339,
-42.0287014 -93.6504339))',4326));
+42.0287014 -93.6504339))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Durham Center',ST_GeomFromText('POLYGON((42.0272207 -93.6496579,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Durham Center',ST_GeomFromText('POLYGON((42.0272207 -93.6496579,
 42.0272186 -93.6499864,
 42.0272183 -93.6500308,
 42.0272552 -93.6500312,
@@ -298,9 +298,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Durham Center',ST_Ge
 42.0275937 -93.649604,
 42.0275933 -93.6496622,
 42.0272207 -93.6496579,
-42.0272207 -93.6496579))',4326));
+42.0272207 -93.6496579))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Farm House Museum',ST_GeomFromText('POLYGON((42.0272607 -93.6440212,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Farm House Museum',ST_GeomFromText('POLYGON((42.0272607 -93.6440212,
 42.0272615 -93.6438782,
 42.027232 -93.6438779,
 42.0272322 -93.6438476,
@@ -315,9 +315,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Farm House Museum',S
 42.027184 -93.6440736,
 42.0271843 -93.6440205,
 42.0272607 -93.6440212,
-42.0272607 -93.6440212))',4326));
+42.0272607 -93.6440212))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Friley Residence Hall',ST_GeomFromText('POLYGON((42.0248606 -93.6507549,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Friley Residence Hall',ST_GeomFromText('POLYGON((42.0248606 -93.6507549,
 42.0248624 -93.6505543,
 42.0246221 -93.6505519,
 42.0246241 -93.6501888,
@@ -365,9 +365,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Friley Residence Hal
 42.0247872 -93.650682,
 42.0247862 -93.6507542,
 42.0248606 -93.6507549,
-42.0248606 -93.6507549))',4326));
+42.0248606 -93.6507549))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Gerdin Business Building',ST_GeomFromText('POLYGON((42.0255201 -93.6442238,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Gerdin Business Building',ST_GeomFromText('POLYGON((42.0255201 -93.6442238,
 42.0255236 -93.643812,
 42.0256622 -93.643821,
 42.0256567 -93.6445733,
@@ -401,9 +401,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Gerdin Business Buil
 42.0254821 -93.6442174,
 42.0254821 -93.6442244,
 42.0255201 -93.6442238,
-42.0255201 -93.6442238))',4326));
+42.0255201 -93.6442238))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Hoover Hall',ST_GeomFromText('POLYGON((42.0265349 -93.6508314,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Hoover Hall',ST_GeomFromText('POLYGON((42.0265349 -93.6508314,
 42.0265697 -93.6508301,
 42.0265706 -93.650743,
 42.0265548 -93.6507285,
@@ -431,9 +431,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Hoover Hall',ST_Geom
 42.0266559 -93.651673,
 42.0265262 -93.6516705,
 42.0265349 -93.6508314,
-42.0265349 -93.6508314))',4326));
+42.0265349 -93.6508314))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Jischke Honors Building',ST_GeomFromText('POLYGON((42.0269764 -93.6444254,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Jischke Honors Building',ST_GeomFromText('POLYGON((42.0269764 -93.6444254,
 42.0271607 -93.6444255,
 42.0271909 -93.6443849,
 42.0272552 -93.6444715,
@@ -448,9 +448,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Jischke Honors Build
 42.0270966 -93.6446211,
 42.0269763 -93.644621,
 42.0269764 -93.6444254,
-42.0269764 -93.6444254))',4326));
+42.0269764 -93.6444254))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('LeBaron Hall',ST_GeomFromText('POLYGON((42.028403 -93.6476034,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('LeBaron Hall',ST_GeomFromText('POLYGON((42.028403 -93.6476034,
 42.028432 -93.6476038,
 42.0284318 -93.6476408,
 42.0284519 -93.6476641,
@@ -489,9 +489,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('LeBaron Hall',ST_Geo
 42.0282791 -93.6471882,
 42.0284072 -93.6471906,
 42.028403 -93.6476034,
-42.028403 -93.6476034))',4326));
+42.028403 -93.6476034))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('MacKay Hall',ST_GeomFromText('POLYGON((42.0285186 -93.6457572,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('MacKay Hall',ST_GeomFromText('POLYGON((42.0285186 -93.6457572,
 42.0285309 -93.6463174,
 42.0284254 -93.6463153,
 42.0284249 -93.646519,
@@ -512,9 +512,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('MacKay Hall',ST_Geom
 42.0286156 -93.6457559,
 42.0285874 -93.6457562,
 42.0285186 -93.6457572,
-42.0285186 -93.6457572))',4326));
+42.0285186 -93.6457572))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Morrill Hall',ST_GeomFromText('POLYGON((42.0274218 -93.6478944,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Morrill Hall',ST_GeomFromText('POLYGON((42.0274218 -93.6478944,
 42.0272866 -93.6478905,
 42.0272855 -93.6478558,
 42.0272445 -93.6478548,
@@ -541,9 +541,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Morrill Hall',ST_Geo
 42.02741 -93.6480335,
 42.0274219 -93.6480335,
 42.0274218 -93.6478944,
-42.0274218 -93.6478944))',4326));
+42.0274218 -93.6478944))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Palmer Building',ST_GeomFromText('POLYGON((42.0286763 -93.6456436,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Palmer Building',ST_GeomFromText('POLYGON((42.0286763 -93.6456436,
 42.0286762 -93.6453914,
 42.0285406 -93.6453914,
 42.0285406 -93.6454165,
@@ -569,9 +569,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Palmer Building',ST_
 42.0285875 -93.6456436,
 42.0286259 -93.6456436,
 42.0286763 -93.6456436,
-42.0286763 -93.6456436))',4326));
+42.0286763 -93.6456436))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Ross Hall',ST_GeomFromText('POLYGON((42.0264792 -93.6444368,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Ross Hall',ST_GeomFromText('POLYGON((42.0264792 -93.6444368,
 42.0264678 -93.6444215,
 42.0264671 -93.6441089,
 42.026481 -93.6440901,
@@ -601,9 +601,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Ross Hall',ST_GeomFr
 42.02651 -93.6444122,
 42.02651 -93.6444367,
 42.0264792 -93.6444368,
-42.0264792 -93.6444368))',4326));
+42.0264792 -93.6444368))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Snedecor Hall',ST_GeomFromText('POLYGON((42.028694 -93.6499498,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Snedecor Hall',ST_GeomFromText('POLYGON((42.028694 -93.6499498,
 42.0286948 -93.6497182,
 42.0286959 -93.6494163,
 42.0285689 -93.6494155,
@@ -613,9 +613,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Snedecor Hall',ST_Ge
 42.0285699 -93.6498037,
 42.0285694 -93.649949,
 42.028694 -93.6499498,
-42.028694 -93.6499498))',4326));
+42.028694 -93.6499498))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Sweeney Hall',ST_GeomFromText('POLYGON((42.0277394 -93.6505329,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Sweeney Hall',ST_GeomFromText('POLYGON((42.0277394 -93.6505329,
 42.0277379 -93.6504525,
 42.0277375 -93.6503414,
 42.0278775 -93.6503404,
@@ -634,9 +634,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Sweeney Hall',ST_Geo
 42.0277459 -93.6512972,
 42.0277431 -93.6506144,
 42.0277394 -93.6505329,
-42.0277394 -93.6505329))',4326));
+42.0277394 -93.6505329))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Town Engineering Building',ST_GeomFromText('POLYGON((42.0299436 -93.6530508,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Town Engineering Building',ST_GeomFromText('POLYGON((42.0299436 -93.6530508,
 42.029943 -93.6527584,
 42.0298155 -93.6527588,
 42.0298149 -93.6524582,
@@ -661,9 +661,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Town Engineering Bui
 42.0298149 -93.6530512,
 42.0298786 -93.653051,
 42.0299436 -93.6530508,
-42.0299436 -93.6530508))',4326));
+42.0299436 -93.6530508))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Union Drive Community Center',ST_GeomFromText('POLYGON((42.0251622 -93.6518807,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Union Drive Community Center',ST_GeomFromText('POLYGON((42.0251622 -93.6518807,
 42.0251639 -93.6515631,
 42.0251922 -93.6515634,
 42.0251935 -93.6513155,
@@ -673,17 +673,17 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Union Drive Communit
 42.0247461 -93.6511044,
 42.024742 -93.6518766,
 42.0251622 -93.6518807,
-42.0251622 -93.6518807))',4326));
+42.0251622 -93.6518807))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Office and Lab Building',ST_GeomFromText('POLYGON((42.0294877 -93.6481366,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Office and Lab Building',ST_GeomFromText('POLYGON((42.0294877 -93.6481366,
 42.0293292 -93.6481363,
 42.0293297 -93.6479141,
 42.0293301 -93.647693,
 42.0294886 -93.6476937,
 42.0294877 -93.6481366,
-42.0294877 -93.6481366))',4326));
+42.0294877 -93.6481366))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Armory',ST_GeomFromText('POLYGON((42.0299756 -93.6512271,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Armory',ST_GeomFromText('POLYGON((42.0299756 -93.6512271,
 42.0299216 -93.6512271,
 42.0299197 -93.6513073,
 42.0293324 -93.6513039,
@@ -692,9 +692,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Armory',ST_GeomFromT
 42.0299166 -93.6505966,
 42.0299713 -93.6505966,
 42.0299756 -93.6512271,
-42.0299756 -93.6512271))',4326));
+42.0299756 -93.6512271))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Willow Residence Hall',ST_GeomFromText('POLYGON((42.0242349 -93.6378089,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Willow Residence Hall',ST_GeomFromText('POLYGON((42.0242349 -93.6378089,
 42.0242065 -93.6378085,
 42.0239767 -93.637805,
 42.0239492 -93.6378046,
@@ -706,9 +706,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Willow Residence Hal
 42.0242366 -93.6376145,
 42.0242355 -93.6377351,
 42.0242349 -93.6378089,
-42.0242349 -93.6378089))',4326));
+42.0242349 -93.6378089))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Larch Residence Hall',ST_GeomFromText('POLYGON((42.0233318 -93.6384543,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Larch Residence Hall',ST_GeomFromText('POLYGON((42.0233318 -93.6384543,
 42.0233372 -93.6380366,
 42.0233377 -93.6379962,
 42.0233438 -93.6376537,
@@ -719,9 +719,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Larch Residence Hall
 42.0231956 -93.6384511,
 42.0232338 -93.638452,
 42.0233318 -93.6384543,
-42.0233318 -93.6384543))',4326));
+42.0233318 -93.6384543))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Maple Residence Hall',ST_GeomFromText('POLYGON((42.0239574 -93.6388134,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Maple Residence Hall',ST_GeomFromText('POLYGON((42.0239574 -93.6388134,
 42.0235993 -93.6388061,
 42.0233363 -93.6388007,
 42.0233374 -93.6387052,
@@ -731,9 +731,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Maple Residence Hall
 42.0239596 -93.6386189,
 42.0239582 -93.6387452,
 42.0239574 -93.6388134,
-42.0239574 -93.6388134))',4326));
+42.0239574 -93.6388134))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Maple-Willow-Larch Commons',ST_GeomFromText('POLYGON((42.0235818 -93.6380372,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Maple-Willow-Larch Commons',ST_GeomFromText('POLYGON((42.0235818 -93.6380372,
 42.0235808 -93.6380528,
 42.0234584 -93.6380491,
 42.0234583 -93.6384057,
@@ -764,9 +764,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Maple-Willow-Larch C
 42.0233377 -93.6379962,
 42.0233372 -93.6380366,
 42.0235818 -93.6380372,
-42.0235818 -93.6380372))',4326));
+42.0235818 -93.6380372))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Forker Building',ST_GeomFromText('POLYGON((42.0271207 -93.6394739,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Forker Building',ST_GeomFromText('POLYGON((42.0271207 -93.6394739,
 42.0267655 -93.6394729,
 42.0267649 -93.6398753,
 42.026692 -93.6398751,
@@ -778,9 +778,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Forker Building',ST_
 42.0267368 -93.6410798,
 42.0271183 -93.6410809,
 42.0271207 -93.6394739,
-42.0271207 -93.6394739))',4326));
+42.0271207 -93.6394739))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Enrollment Services Center',ST_GeomFromText('POLYGON((42.0250561 -93.6492647,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Enrollment Services Center',ST_GeomFromText('POLYGON((42.0250561 -93.6492647,
 42.0250269 -93.6492647,
 42.0250274 -93.6491549,
 42.0249787 -93.6491549,
@@ -815,9 +815,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Enrollment Services 
 42.0250729 -93.6493207,
 42.0250598 -93.649298,
 42.0250561 -93.6492647,
-42.0250561 -93.6492647))',4326));
+42.0250561 -93.6492647))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Scheman Building',ST_GeomFromText('POLYGON((42.021718 -93.6374514,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Scheman Building',ST_GeomFromText('POLYGON((42.021718 -93.6374514,
 42.0212747 -93.6374464,
 42.0212751 -93.637379,
 42.0212756 -93.6373069,
@@ -825,9 +825,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Scheman Building',ST
 42.0212842 -93.6359248,
 42.0217275 -93.6359298,
 42.021718 -93.6374514,
-42.021718 -93.6374514))',4326));
+42.021718 -93.6374514))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Hilton Coliseum',ST_GeomFromText('POLYGON((42.0212627 -93.6355683,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Hilton Coliseum',ST_GeomFromText('POLYGON((42.0212627 -93.6355683,
 42.0213551 -93.6356064,
 42.0214646 -93.6354691,
 42.0214429 -93.6353423,
@@ -860,9 +860,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Hilton Coliseum',ST_
 42.0210097 -93.6356123,
 42.0212283 -93.6356174,
 42.0212627 -93.6355683,
-42.0212627 -93.6355683))',4326));
+42.0212627 -93.6355683))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Fisher Theater',ST_GeomFromText('POLYGON((42.0217628 -93.6381012,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Fisher Theater',ST_GeomFromText('POLYGON((42.0217628 -93.6381012,
 42.0216425 -93.6381688,
 42.0216363 -93.6381548,
 42.0216183 -93.6381141,
@@ -883,9 +883,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Fisher Theater',ST_G
 42.021753 -93.6379279,
 42.0217645 -93.6379358,
 42.0217628 -93.6381012,
-42.0217628 -93.6381012))',4326));
+42.0217628 -93.6381012))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Stephens Auditorium',ST_GeomFromText('POLYGON((42.0201024 -93.6383014,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Stephens Auditorium',ST_GeomFromText('POLYGON((42.0201024 -93.6383014,
 42.0200646 -93.6383874,
 42.0197681 -93.638151,
 42.0197711 -93.6377802,
@@ -897,18 +897,18 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Stephens Auditorium'
 42.0206285 -93.6381636,
 42.0201693 -93.6383529,
 42.0201024 -93.6383014,
-42.0201024 -93.6383014))',4326));
+42.0201024 -93.6383014))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Campanile',ST_GeomFromText('POLYGON((42.0254605 -93.6460781,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Campanile',ST_GeomFromText('POLYGON((42.0254605 -93.6460781,
 42.0254205 -93.6460779,
 42.0254007 -93.6460778,
 42.0254008 -93.6460563,
 42.025401 -93.6459954,
 42.0254608 -93.6459957,
 42.0254605 -93.6460781,
-42.0254605 -93.6460781))',4326));
+42.0254605 -93.6460781))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Sloss House',ST_GeomFromText('POLYGON((42.0257291 -93.6449389,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Sloss House',ST_GeomFromText('POLYGON((42.0257291 -93.6449389,
 42.0257104 -93.644939,
 42.0257106 -93.64501,
 42.025682 -93.6450101,
@@ -926,9 +926,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Sloss House',ST_Geom
 42.0257453 -93.6448755,
 42.0257289 -93.6448756,
 42.0257291 -93.6449389,
-42.0257291 -93.6449389))',4326));
+42.0257291 -93.6449389))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Heady Hall',ST_GeomFromText('POLYGON((42.0262624 -93.6433621,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Heady Hall',ST_GeomFromText('POLYGON((42.0262624 -93.6433621,
 42.0262621 -93.6434169,
 42.0263373 -93.6434179,
 42.0263368 -93.6434733,
@@ -941,9 +941,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Heady Hall',ST_GeomF
 42.0262595 -93.6428941,
 42.0262663 -93.6428942,
 42.0262624 -93.6433621,
-42.0262624 -93.6433621))',4326));
+42.0262624 -93.6433621))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('East Hall',ST_GeomFromText('POLYGON((42.0260768 -93.6435044,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('East Hall',ST_GeomFromText('POLYGON((42.0260768 -93.6435044,
 42.0260768 -93.6435171,
 42.026026 -93.6435167,
 42.0259858 -93.6435164,
@@ -957,25 +957,25 @@ INSERT INTO building_locations (building_name,geo) VALUES ('East Hall',ST_GeomFr
 42.0261918 -93.6434164,
 42.0261915 -93.6435053,
 42.0260768 -93.6435044,
-42.0260768 -93.6435044))',4326));
+42.0260768 -93.6435044))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Bessey Hall',ST_GeomFromText('POLYGON((42.0287218 -93.644966,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Bessey Hall',ST_GeomFromText('POLYGON((42.0287218 -93.644966,
 42.0282445 -93.6449648,
 42.0282455 -93.6442921,
 42.0283653 -93.6442924,
 42.0285883 -93.644293,
 42.0287228 -93.6442933,
 42.0287218 -93.644966,
-42.0287218 -93.644966))',4326));
+42.0287218 -93.644966))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Landscape Architecture Building',ST_GeomFromText('POLYGON((42.0276077 -93.6427464,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Landscape Architecture Building',ST_GeomFromText('POLYGON((42.0276077 -93.6427464,
 42.0274908 -93.642742,
 42.0274827 -93.6431321,
 42.0275996 -93.6431365,
 42.0276077 -93.6427464,
-42.0276077 -93.6427464))',4326));
+42.0276077 -93.6427464))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Hamilton Hall',ST_GeomFromText('POLYGON((42.0276383 -93.6418291,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Hamilton Hall',ST_GeomFromText('POLYGON((42.0276383 -93.6418291,
 42.0276384 -93.6419104,
 42.0276739 -93.6419103,
 42.0276741 -93.6420358,
@@ -1002,9 +1002,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Hamilton Hall',ST_Ge
 42.0277584 -93.6418086,
 42.0277584 -93.6418289,
 42.0276383 -93.6418291,
-42.0276383 -93.6418291))',4326));
+42.0276383 -93.6418291))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Agronomy Hall',ST_GeomFromText('POLYGON((42.0285516 -93.6426689,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Agronomy Hall',ST_GeomFromText('POLYGON((42.0285516 -93.6426689,
 42.0281604 -93.6426625,
 42.028116 -93.6426618,
 42.0281114 -93.6426617,
@@ -1071,9 +1071,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Agronomy Hall',ST_Ge
 42.0284849 -93.6428003,
 42.0285501 -93.6428017,
 42.0285516 -93.6426689,
-42.0285516 -93.6426689))',4326));
+42.0285516 -93.6426689))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Forestry Greenhouse',ST_GeomFromText('POLYGON((42.030093 -93.6413591,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Forestry Greenhouse',ST_GeomFromText('POLYGON((42.030093 -93.6413591,
 42.029966 -93.6413585,
 42.0299667 -93.641097,
 42.0299163 -93.6410967,
@@ -1086,9 +1086,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Forestry Greenhouse'
 42.0299699 -93.6407527,
 42.0300946 -93.6407533,
 42.030093 -93.6413591,
-42.030093 -93.6413591))',4326));
+42.030093 -93.6413591))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Plant Pathology Greenhouse',ST_GeomFromText('POLYGON((42.0297769 -93.6413629,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Plant Pathology Greenhouse',ST_GeomFromText('POLYGON((42.0297769 -93.6413629,
 42.0296471 -93.6413632,
 42.0296468 -93.6410968,
 42.0295928 -93.6410969,
@@ -1101,17 +1101,17 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Plant Pathology Gree
 42.0296483 -93.6407418,
 42.0297761 -93.6407415,
 42.0297769 -93.6413629,
-42.0297769 -93.6413629))',4326));
+42.0297769 -93.6413629))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('United States Department of Agriculture Greenhouse',ST_GeomFromText('POLYGON((42.029392 -93.6413532,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('United States Department of Agriculture Greenhouse',ST_GeomFromText('POLYGON((42.029392 -93.6413532,
 42.0291838 -93.641353,
 42.0291838 -93.6413421,
 42.029184 -93.6408828,
 42.0293922 -93.640883,
 42.029392 -93.6413532,
-42.029392 -93.6413532))',4326));
+42.029392 -93.6413532))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Agronomy Greenhouse',ST_GeomFromText('POLYGON((42.0300964 -93.6405301,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Agronomy Greenhouse',ST_GeomFromText('POLYGON((42.0300964 -93.6405301,
 42.0299778 -93.6405293,
 42.0299792 -93.6401734,
 42.0299102 -93.6401729,
@@ -1137,9 +1137,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Agronomy Greenhouse'
 42.0300984 -93.6400131,
 42.0300968 -93.6404251,
 42.0300964 -93.6405301,
-42.0300964 -93.6405301))',4326));
+42.0300964 -93.6405301))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('General Services Building',ST_GeomFromText('POLYGON((42.0285466 -93.6411933,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('General Services Building',ST_GeomFromText('POLYGON((42.0285466 -93.6411933,
 42.0283409 -93.641194,
 42.028341 -93.6412686,
 42.0277997 -93.6412703,
@@ -1153,9 +1153,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('General Services Bui
 42.028233 -93.6402101,
 42.0285449 -93.6402091,
 42.0285466 -93.6411933,
-42.0285466 -93.6411933))',4326));
+42.0285466 -93.6411933))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0285756 -93.6398378,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0285756 -93.6398378,
 42.0283705 -93.6399639,
 42.0282297 -93.6395491,
 42.0282769 -93.6395201,
@@ -1164,9 +1164,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.028476 -93.6393137,
 42.0284113 -93.6393535,
 42.0285756 -93.6398378,
-42.0285756 -93.6398378))',4326));
+42.0285756 -93.6398378))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Power Plant',ST_GeomFromText('POLYGON((42.0280829 -93.6401348,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Power Plant',ST_GeomFromText('POLYGON((42.0280829 -93.6401348,
 42.0274531 -93.6401296,
 42.0274535 -93.6400428,
 42.0273507 -93.6400419,
@@ -1193,9 +1193,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Power Plant',ST_Geom
 42.0282365 -93.640043,
 42.0280834 -93.6400417,
 42.0280829 -93.6401348,
-42.0280829 -93.6401348))',4326));
+42.0280829 -93.6401348))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 23',ST_GeomFromText('POLYGON((42.0334369 -93.6432326,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 23',ST_GeomFromText('POLYGON((42.0334369 -93.6432326,
 42.0334365 -93.643267,
 42.0334504 -93.6432673,
 42.0334492 -93.6433758,
@@ -1218,9 +1218,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 23
 42.0333603 -93.6432047,
 42.03336 -93.6432311,
 42.0334369 -93.6432326,
-42.0334369 -93.6432326))',4326));
+42.0334369 -93.6432326))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 22',ST_GeomFromText('POLYGON((42.0336674 -93.6442281,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 22',ST_GeomFromText('POLYGON((42.0336674 -93.6442281,
 42.0336422 -93.6442275,
 42.033642 -93.6442475,
 42.0335612 -93.6442457,
@@ -1243,9 +1243,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 22
 42.033689 -93.6441264,
 42.0336686 -93.644126,
 42.0336674 -93.6442281,
-42.0336674 -93.6442281))',4326));
+42.0336674 -93.6442281))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 21',ST_GeomFromText('POLYGON((42.0333868 -93.6441449,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 21',ST_GeomFromText('POLYGON((42.0333868 -93.6441449,
 42.0333864 -93.6441792,
 42.0334003 -93.6441795,
 42.0333991 -93.644288,
@@ -1268,9 +1268,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 21
 42.0333099 -93.6441433,
 42.0333237 -93.6441436,
 42.0333868 -93.6441449,
-42.0333868 -93.6441449))',4326));
+42.0333868 -93.6441449))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 42',ST_GeomFromText('POLYGON((42.0333621 -93.6425193,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 42',ST_GeomFromText('POLYGON((42.0333621 -93.6425193,
 42.0333295 -93.6425186,
 42.0333288 -93.642582,
 42.0332291 -93.6425801,
@@ -1303,9 +1303,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 42
 42.0333327 -93.642388,
 42.0333635 -93.6423886,
 42.0333621 -93.6425193,
-42.0333621 -93.6425193))',4326));
+42.0333621 -93.6425193))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 74',ST_GeomFromText('POLYGON((42.0326198 -93.6389983,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 74',ST_GeomFromText('POLYGON((42.0326198 -93.6389983,
 42.0326508 -93.6389986,
 42.0326512 -93.6389343,
 42.0327512 -93.6389355,
@@ -1338,9 +1338,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 74
 42.03265 -93.6391302,
 42.032619 -93.6391298,
 42.0326198 -93.6389983,
-42.0326198 -93.6389983))',4326));
+42.0326198 -93.6389983))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 63',ST_GeomFromText('POLYGON((42.0326921 -93.6405004,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 63',ST_GeomFromText('POLYGON((42.0326921 -93.6405004,
 42.0327231 -93.6405007,
 42.0327235 -93.6404364,
 42.0328235 -93.6404376,
@@ -1374,9 +1374,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 63
 42.0327223 -93.6406323,
 42.0326913 -93.6406319,
 42.0326921 -93.6405004,
-42.0326921 -93.6405004))',4326));
+42.0326921 -93.6405004))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 41',ST_GeomFromText('POLYGON((42.0325601 -93.6426256,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 41',ST_GeomFromText('POLYGON((42.0325601 -93.6426256,
 42.0325606 -93.6425822,
 42.0325132 -93.6425812,
 42.0325146 -93.6424465,
@@ -1409,9 +1409,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 41
 42.0326571 -93.642586,
 42.0326566 -93.6426275,
 42.0325601 -93.6426256,
-42.0325601 -93.6426256))',4326));
+42.0325601 -93.6426256))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 72',ST_GeomFromText('POLYGON((42.0333207 -93.6394679,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 72',ST_GeomFromText('POLYGON((42.0333207 -93.6394679,
 42.0332881 -93.6394672,
 42.0332874 -93.6395306,
 42.0331877 -93.6395287,
@@ -1444,9 +1444,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 72
 42.0332913 -93.6393366,
 42.0333221 -93.6393372,
 42.0333207 -93.6394679,
-42.0333207 -93.6394679))',4326));
+42.0333207 -93.6394679))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 71',ST_GeomFromText('POLYGON((42.0328882 -93.6399144,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 71',ST_GeomFromText('POLYGON((42.0328882 -93.6399144,
 42.0328887 -93.639871,
 42.0328412 -93.63987,
 42.0328427 -93.6397353,
@@ -1479,9 +1479,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 71
 42.0329851 -93.6398748,
 42.0329847 -93.6399163,
 42.0328882 -93.6399144,
-42.0328882 -93.6399144))',4326));
+42.0328882 -93.6399144))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 73',ST_GeomFromText('POLYGON((42.0332002 -93.6384648,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 73',ST_GeomFromText('POLYGON((42.0332002 -93.6384648,
 42.0331998 -93.6385093,
 42.033247 -93.6385101,
 42.0332457 -93.6386451,
@@ -1514,9 +1514,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 73
 42.0331028 -93.6385049,
 42.0331032 -93.6384631,
 42.0332002 -93.6384648,
-42.0332002 -93.6384648))',4326));
+42.0332002 -93.6384648))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 61',ST_GeomFromText('POLYGON((42.0330598 -93.6412461,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 61',ST_GeomFromText('POLYGON((42.0330598 -93.6412461,
 42.0330603 -93.6412027,
 42.0330129 -93.6412017,
 42.0330144 -93.641067,
@@ -1549,9 +1549,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 61
 42.0331568 -93.6412065,
 42.0331563 -93.6412481,
 42.0330598 -93.6412461,
-42.0330598 -93.6412461))',4326));
+42.0330598 -93.6412461))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 43',ST_GeomFromText('POLYGON((42.0329837 -93.6418229,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 43',ST_GeomFromText('POLYGON((42.0329837 -93.6418229,
 42.0329833 -93.6418674,
 42.0330305 -93.6418682,
 42.0330292 -93.6420032,
@@ -1584,9 +1584,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 43
 42.0328863 -93.641863,
 42.0328867 -93.6418212,
 42.0329837 -93.6418229,
-42.0329837 -93.6418229))',4326));
+42.0329837 -93.6418229))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 62',ST_GeomFromText('POLYGON((42.0334779 -93.6403479,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 62',ST_GeomFromText('POLYGON((42.0334779 -93.6403479,
 42.0334775 -93.6403924,
 42.0335247 -93.6403932,
 42.0335234 -93.6405282,
@@ -1619,9 +1619,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 62
 42.0333805 -93.640388,
 42.0333809 -93.6403462,
 42.0334779 -93.6403479,
-42.0334779 -93.6403479))',4326));
+42.0334779 -93.6403479))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Horse Barn',ST_GeomFromText('POLYGON((42.0307235 -93.6439154,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Horse Barn',ST_GeomFromText('POLYGON((42.0307235 -93.6439154,
 42.0309245 -93.6439154,
 42.0309244 -93.6434719,
 42.0307279 -93.643472,
@@ -1630,9 +1630,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Horse Barn',ST_GeomF
 42.0310227 -93.6440864,
 42.0307235 -93.6440865,
 42.0307235 -93.6439154,
-42.0307235 -93.6439154))',4326));
+42.0307235 -93.6439154))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Transportation Services',ST_GeomFromText('POLYGON((42.0308999 -93.6391634,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Transportation Services',ST_GeomFromText('POLYGON((42.0308999 -93.6391634,
 42.0308049 -93.6392211,
 42.0307447 -93.6390414,
 42.0307152 -93.6390593,
@@ -1643,9 +1643,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Transportation Servi
 42.030682 -93.6389412,
 42.0308012 -93.6388688,
 42.0308999 -93.6391634,
-42.0308999 -93.6391634))',4326));
+42.0308999 -93.6391634))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Firemanship Training',ST_GeomFromText('POLYGON((42.0315239 -93.6390634,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Firemanship Training',ST_GeomFromText('POLYGON((42.0315239 -93.6390634,
 42.0314016 -93.639137,
 42.0314469 -93.6392735,
 42.0313636 -93.6393236,
@@ -1660,16 +1660,16 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Firemanship Training
 42.0314655 -93.6389245,
 42.0314757 -93.6389183,
 42.0315239 -93.6390634,
-42.0315239 -93.6390634))',4326));
+42.0315239 -93.6390634))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Ruminant Nutrition Laboratory',ST_GeomFromText('POLYGON((42.0310258 -93.642783,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Ruminant Nutrition Laboratory',ST_GeomFromText('POLYGON((42.0310258 -93.642783,
 42.0307279 -93.6427782,
 42.0307291 -93.642649,
 42.0310269 -93.6426538,
 42.0310258 -93.642783,
-42.0310258 -93.642783))',4326));
+42.0310258 -93.642783))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('National Swine Research and Information Center',ST_GeomFromText('POLYGON((42.0302485 -93.6424512,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('National Swine Research and Information Center',ST_GeomFromText('POLYGON((42.0302485 -93.6424512,
 42.0302481 -93.6425849,
 42.0303061 -93.6425852,
 42.0303047 -93.6430619,
@@ -1690,9 +1690,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('National Swine Resea
 42.0301935 -93.6424896,
 42.0301936 -93.6424509,
 42.0302485 -93.6424512,
-42.0302485 -93.6424512))',4326));
+42.0302485 -93.6424512))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('National Laboratory for Agriculture and the Environment',ST_GeomFromText('POLYGON((42.0302485 -93.6424512,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('National Laboratory for Agriculture and the Environment',ST_GeomFromText('POLYGON((42.0302485 -93.6424512,
 42.0302671 -93.6424513,
 42.0302673 -93.6423841,
 42.0303096 -93.6423843,
@@ -1737,16 +1737,16 @@ INSERT INTO building_locations (building_name,geo) VALUES ('National Laboratory 
 42.0301935 -93.6424896,
 42.0301936 -93.6424509,
 42.0302485 -93.6424512,
-42.0302485 -93.6424512))',4326));
+42.0302485 -93.6424512))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Crop Genome Informatics Laboratory',ST_GeomFromText('POLYGON((42.0298103 -93.6422095,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Crop Genome Informatics Laboratory',ST_GeomFromText('POLYGON((42.0298103 -93.6422095,
 42.0296927 -93.64221,
 42.0296918 -93.6418294,
 42.0298094 -93.6418289,
 42.0298103 -93.6422095,
-42.0298103 -93.6422095))',4326));
+42.0298103 -93.6422095))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Seed Science Building',ST_GeomFromText('POLYGON((42.0295565 -93.6426079,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Seed Science Building',ST_GeomFromText('POLYGON((42.0295565 -93.6426079,
 42.0294586 -93.6426059,
 42.0294582 -93.6426465,
 42.0292824 -93.6426427,
@@ -1765,9 +1765,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Seed Science Buildin
 42.029551 -93.6420355,
 42.0295632 -93.6420358,
 42.0295565 -93.6426079,
-42.0295565 -93.6426079))',4326));
+42.0295565 -93.6426079))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Meats Laboratory',ST_GeomFromText('POLYGON((42.0303121 -93.644356,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Meats Laboratory',ST_GeomFromText('POLYGON((42.0303121 -93.644356,
 42.0301047 -93.6443529,
 42.0301045 -93.6443759,
 42.0298517 -93.6443722,
@@ -1790,9 +1790,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Meats Laboratory',ST
 42.0302063 -93.6436972,
 42.0303175 -93.6436988,
 42.0303121 -93.644356,
-42.0303121 -93.644356))',4326));
+42.0303121 -93.644356))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Kildee Hall',ST_GeomFromText('POLYGON((42.0300816 -93.6434064,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Kildee Hall',ST_GeomFromText('POLYGON((42.0300816 -93.6434064,
 42.0298746 -93.6434034,
 42.029876 -93.6432289,
 42.0296878 -93.6432261,
@@ -1837,9 +1837,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Kildee Hall',ST_Geom
 42.0299849 -93.643715,
 42.0300791 -93.6437164,
 42.0300816 -93.6434064,
-42.0300816 -93.6434064))',4326));
+42.0300816 -93.6434064))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Iowa Farm Bureau Pavilion',ST_GeomFromText('POLYGON((42.0293474 -93.6434369,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Iowa Farm Bureau Pavilion',ST_GeomFromText('POLYGON((42.0293474 -93.6434369,
 42.0291335 -93.6434352,
 42.0290484 -93.6434345,
 42.0290497 -93.6431597,
@@ -1848,9 +1848,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Iowa Farm Bureau Pav
 42.0293587 -93.6433516,
 42.0293583 -93.643437,
 42.0293474 -93.6434369,
-42.0293474 -93.6434369))',4326));
+42.0293474 -93.6434369))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('North Chilled Water Plant',ST_GeomFromText('POLYGON((42.0323821 -93.6465003,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('North Chilled Water Plant',ST_GeomFromText('POLYGON((42.0323821 -93.6465003,
 42.032296 -93.6465008,
 42.032296 -93.6464908,
 42.032169 -93.6464914,
@@ -1871,18 +1871,18 @@ INSERT INTO building_locations (building_name,geo) VALUES ('North Chilled Water 
 42.0323741 -93.6464488,
 42.032382 -93.6464488,
 42.0323821 -93.6465003,
-42.0323821 -93.6465003))',4326));
+42.0323821 -93.6465003))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Library Storage Facility',ST_GeomFromText('POLYGON((42.0335128 -93.6470091,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Library Storage Facility',ST_GeomFromText('POLYGON((42.0335128 -93.6470091,
 42.0332393 -93.6470038,
 42.0332456 -93.6464149,
 42.0333024 -93.646416,
 42.0335192 -93.6464202,
 42.0335182 -93.6465155,
 42.0335128 -93.6470091,
-42.0335128 -93.6470091))',4326));
+42.0335128 -93.6470091))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Warehouse',ST_GeomFromText('POLYGON((42.0334995 -93.6495455,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Ames Lab - Warehouse',ST_GeomFromText('POLYGON((42.0334995 -93.6495455,
 42.0331924 -93.6497264,
 42.033044 -93.6492699,
 42.033059 -93.6492611,
@@ -1891,16 +1891,16 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Warehouse
 42.0330958 -93.6491611,
 42.0333298 -93.6490232,
 42.0334995 -93.6495455,
-42.0334995 -93.6495455))',4326));
+42.0334995 -93.6495455))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Mechanical Maintenance',ST_GeomFromText('POLYGON((42.033212 -93.6486496,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Ames Lab - Mechanical Maintenance',ST_GeomFromText('POLYGON((42.033212 -93.6486496,
 42.032902 -93.6488255,
 42.0328261 -93.6485829,
 42.0331361 -93.6484071,
 42.033212 -93.6486496,
-42.033212 -93.6486496))',4326));
+42.033212 -93.6486496))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Maintenance Shops',ST_GeomFromText('POLYGON((42.0329532 -93.6484083,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Ames Lab - Maintenance Shops',ST_GeomFromText('POLYGON((42.0329532 -93.6484083,
 42.0327925 -93.6484994,
 42.0326605 -93.6480776,
 42.0328193 -93.6479875,
@@ -1909,25 +1909,25 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Maintenan
 42.032882 -93.648118,
 42.0328653 -93.6481275,
 42.0329532 -93.6484083,
-42.0329532 -93.6484083))',4326));
+42.0329532 -93.6484083))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Maintenance Shops',ST_GeomFromText('POLYGON((42.0330864 -93.6479167,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Ames Lab - Maintenance Shops',ST_GeomFromText('POLYGON((42.0330864 -93.6479167,
 42.0329884 -93.6479723,
 42.0328582 -93.6475564,
 42.0329563 -93.6475008,
 42.0330864 -93.6479167,
-42.0330864 -93.6479167))',4326));
+42.0330864 -93.6479167))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Paint and Air Conditioning',ST_GeomFromText('POLYGON((42.0328559 -93.6477776,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Ames Lab - Paint and Air Conditioning',ST_GeomFromText('POLYGON((42.0328559 -93.6477776,
 42.0327172 -93.6478546,
 42.0327118 -93.647837,
 42.0325938 -93.6479025,
 42.0325404 -93.6477281,
 42.032797 -93.6475856,
 42.0328559 -93.6477776,
-42.0328559 -93.6477776))',4326));
+42.0328559 -93.6477776))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Printing and Publications Building',ST_GeomFromText('POLYGON((42.0329093 -93.6474379,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Ames Lab - Printing and Publications Building',ST_GeomFromText('POLYGON((42.0329093 -93.6474379,
 42.0325189 -93.6476716,
 42.0322936 -93.6469894,
 42.0325597 -93.6468301,
@@ -1935,16 +1935,16 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Printing 
 42.0326232 -93.646845,
 42.0326986 -93.6467999,
 42.0329093 -93.6474379,
-42.0329093 -93.6474379))',4326));
+42.0329093 -93.6474379))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Advanced Machinery Systems Laboratory',ST_GeomFromText('POLYGON((42.0310827 -93.6471143,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Advanced Machinery Systems Laboratory',ST_GeomFromText('POLYGON((42.0310827 -93.6471143,
 42.0308166 -93.6471143,
 42.0308166 -93.6468931,
 42.0310827 -93.6468931,
 42.0310827 -93.6471143,
-42.0310827 -93.6471143))',4326));
+42.0310827 -93.6471143))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Communications Building',ST_GeomFromText('POLYGON((42.0312956 -93.6511351,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Communications Building',ST_GeomFromText('POLYGON((42.0312956 -93.6511351,
 42.0311632 -93.6511357,
 42.0311634 -93.6511845,
 42.030786 -93.6511863,
@@ -1969,9 +1969,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Communications Build
 42.0313305 -93.6510593,
 42.0312954 -93.6510594,
 42.0312956 -93.6511351,
-42.0312956 -93.6511351))',4326));
+42.0312956 -93.6511351))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Roy J. Carver Co-Lab',ST_GeomFromText('POLYGON((42.0325571 -93.6506552,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Roy J. Carver Co-Lab',ST_GeomFromText('POLYGON((42.0325571 -93.6506552,
 42.0325419 -93.6506552,
 42.0325406 -93.6509261,
 42.0325256 -93.6509729,
@@ -1999,9 +1999,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Roy J. Carver Co-Lab
 42.0322934 -93.650524,
 42.032557 -93.6505236,
 42.0325571 -93.6506552,
-42.0325571 -93.6506552))',4326));
+42.0325571 -93.6506552))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Metals Development Building',ST_GeomFromText('POLYGON((42.0312168 -93.6487157,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Ames Lab - Metals Development Building',ST_GeomFromText('POLYGON((42.0312168 -93.6487157,
 42.0312563 -93.6487157,
 42.0312563 -93.6486494,
 42.0312563 -93.6486006,
@@ -2024,9 +2024,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Metals De
 42.0311082 -93.6490204,
 42.0312168 -93.6490204,
 42.0312168 -93.6487157,
-42.0312168 -93.6487157))',4326));
+42.0312168 -93.6487157))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Molecular Biology Building',ST_GeomFromText('POLYGON((42.0311538 -93.649142,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Molecular Biology Building',ST_GeomFromText('POLYGON((42.0311538 -93.649142,
 42.0311539 -93.6491958,
 42.031154 -93.6492485,
 42.031391 -93.6492477,
@@ -2060,9 +2060,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Molecular Biology Bu
 42.0310273 -93.6492334,
 42.0310271 -93.6491424,
 42.0311538 -93.649142,
-42.0311538 -93.649142))',4326));
+42.0311538 -93.649142))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Insectary',ST_GeomFromText('POLYGON((42.0310728 -93.6467457,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Insectary',ST_GeomFromText('POLYGON((42.0310728 -93.6467457,
 42.0308775 -93.6467447,
 42.0308774 -93.6467694,
 42.0307303 -93.6467686,
@@ -2078,16 +2078,16 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Insectary',ST_GeomFr
 42.0309814 -93.646511,
 42.0310735 -93.6465115,
 42.0310728 -93.6467457,
-42.0310728 -93.6467457))',4326));
+42.0310728 -93.6467457))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Genetics Chick Isolation',ST_GeomFromText('POLYGON((42.0311892 -93.6474916,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Genetics Chick Isolation',ST_GeomFromText('POLYGON((42.0311892 -93.6474916,
 42.0311047 -93.6474924,
 42.0311032 -93.6472151,
 42.0311877 -93.6472142,
 42.0311892 -93.6474916,
-42.0311892 -93.6474916))',4326));
+42.0311892 -93.6474916))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Genetics Laboratory',ST_GeomFromText('POLYGON((42.0310656 -93.6474388,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Genetics Laboratory',ST_GeomFromText('POLYGON((42.0310656 -93.6474388,
 42.0310654 -93.6475056,
 42.0311316 -93.647506,
 42.0311314 -93.64757,
@@ -2103,9 +2103,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Genetics Laboratory'
 42.0309535 -93.6473853,
 42.0309534 -93.6474382,
 42.0310656 -93.6474388,
-42.0310656 -93.6474388))',4326));
+42.0310656 -93.6474388))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Hach Hall',ST_GeomFromText('POLYGON((42.0299721 -93.650117,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Hach Hall',ST_GeomFromText('POLYGON((42.0299721 -93.650117,
 42.0301587 -93.6501432,
 42.0302375 -93.6501543,
 42.0302809 -93.6501437,
@@ -2121,9 +2121,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Hach Hall',ST_GeomFr
 42.0299766 -93.64932,
 42.0299729 -93.6499772,
 42.0299721 -93.650117,
-42.0299721 -93.650117))',4326));
+42.0299721 -93.650117))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Zaffarano Physics Addition',ST_GeomFromText('POLYGON((42.0299524 -93.6472801,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Zaffarano Physics Addition',ST_GeomFromText('POLYGON((42.0299524 -93.6472801,
 42.0300532 -93.6472805,
 42.0300538 -93.6470054,
 42.0299528 -93.647005,
@@ -2138,9 +2138,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Zaffarano Physics Ad
 42.0299521 -93.6474054,
 42.0299523 -93.6473098,
 42.0299524 -93.6472801,
-42.0299524 -93.6472801))',4326));
+42.0299524 -93.6472801))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Wilhelm Hall',ST_GeomFromText('POLYGON((42.0303267 -93.6477009,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Ames Lab - Wilhelm Hall',ST_GeomFromText('POLYGON((42.0303267 -93.6477009,
 42.030274 -93.6477007,
 42.030274 -93.6477227,
 42.0302129 -93.6477224,
@@ -2164,16 +2164,16 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Wilhelm H
 42.0303355 -93.6474336,
 42.0303275 -93.6474336,
 42.0303267 -93.6477009,
-42.0303267 -93.6477009))',4326));
+42.0303267 -93.6477009))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0301268 -93.6473107,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0301268 -93.6473107,
 42.0299523 -93.6473098,
 42.0299521 -93.6474054,
 42.0301265 -93.6474063,
 42.0301268 -93.6473107,
-42.0301268 -93.6473107))',4326));
+42.0301268 -93.6473107))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Physics Hall',ST_GeomFromText('POLYGON((42.0298106 -93.6476951,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Physics Hall',ST_GeomFromText('POLYGON((42.0298106 -93.6476951,
 42.0294886 -93.6476937,
 42.0293301 -93.647693,
 42.0290409 -93.6476918,
@@ -2197,9 +2197,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Physics Hall',ST_Geo
 42.0297761 -93.6475673,
 42.0298109 -93.6475674,
 42.0298106 -93.6476951,
-42.0298106 -93.6476951))',4326));
+42.0298106 -93.6476951))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Gilman Hall',ST_GeomFromText('POLYGON((42.0298268 -93.648341,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Gilman Hall',ST_GeomFromText('POLYGON((42.0298268 -93.648341,
 42.0298264 -93.6486712,
 42.0298262 -93.6488347,
 42.0297817 -93.6488346,
@@ -2254,9 +2254,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Gilman Hall',ST_Geom
 42.0297748 -93.6481418,
 42.0297745 -93.6483408,
 42.0298268 -93.648341,
-42.0298268 -93.648341))',4326));
+42.0298268 -93.648341))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Marston Hall',ST_GeomFromText('POLYGON((42.0268687 -93.6496803,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Marston Hall',ST_GeomFromText('POLYGON((42.0268687 -93.6496803,
 42.0268687 -93.6496688,
 42.0268081 -93.6496684,
 42.0267482 -93.649668,
@@ -2284,9 +2284,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Marston Hall',ST_Geo
 42.0269783 -93.649658,
 42.0269777 -93.6496806,
 42.0268687 -93.6496803,
-42.0268687 -93.6496803))',4326));
+42.0268687 -93.6496803))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Pearson Hall',ST_GeomFromText('POLYGON((42.0260128 -93.6500292,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Pearson Hall',ST_GeomFromText('POLYGON((42.0260128 -93.6500292,
 42.0260312 -93.6500294,
 42.0260317 -93.6499634,
 42.0260127 -93.6499632,
@@ -2302,9 +2302,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Pearson Hall',ST_Geo
 42.0256578 -93.650024,
 42.0256685 -93.6500241,
 42.0260128 -93.6500292,
-42.0260128 -93.6500292))',4326));
+42.0260128 -93.6500292))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Student Services Building',ST_GeomFromText('POLYGON((42.0253432 -93.6503115,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Student Services Building',ST_GeomFromText('POLYGON((42.0253432 -93.6503115,
 42.0253433 -93.6503911,
 42.0252663 -93.6503914,
 42.0252661 -93.6503118,
@@ -2321,9 +2321,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Student Services Bui
 42.0253797 -93.6499585,
 42.0253804 -93.6503114,
 42.0253432 -93.6503115,
-42.0253432 -93.6503115))',4326));
+42.0253432 -93.6503115))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Black Engineering',ST_GeomFromText('POLYGON((42.0262254 -93.6505598,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Black Engineering',ST_GeomFromText('POLYGON((42.0262254 -93.6505598,
 42.02617 -93.6505603,
 42.0261693 -93.6504981,
 42.0261801 -93.650484,
@@ -2364,9 +2364,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Black Engineering',S
 42.0262082 -93.6510471,
 42.0262229 -93.6510471,
 42.0262254 -93.6505598,
-42.0262254 -93.6505598))',4326));
+42.0262254 -93.6505598))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Howe Hall',ST_GeomFromText('POLYGON((42.0267449 -93.6524254,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Howe Hall',ST_GeomFromText('POLYGON((42.0267449 -93.6524254,
 42.0267432 -93.6522804,
 42.0266072 -93.6523656,
 42.0265702 -93.6523966,
@@ -2432,9 +2432,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Howe Hall',ST_GeomFr
 42.0267674 -93.6523909,
 42.0267684 -93.6524153,
 42.0267449 -93.6524254,
-42.0267449 -93.6524254))',4326));
+42.0267449 -93.6524254))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('College of Design',ST_GeomFromText('POLYGON((42.0285642 -93.6534078,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('College of Design',ST_GeomFromText('POLYGON((42.0285642 -93.6534078,
 42.028467 -93.6535322,
 42.0283308 -93.6535284,
 42.0283453 -93.6535098,
@@ -2474,9 +2474,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('College of Design',S
 42.0290329 -93.6527767,
 42.0289446 -93.6528895,
 42.0285642 -93.6534078,
-42.0285642 -93.6534078))',4326));
+42.0285642 -93.6534078))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('King Pavilion',ST_GeomFromText('POLYGON((42.0289446 -93.6528895,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('King Pavilion',ST_GeomFromText('POLYGON((42.0289446 -93.6528895,
 42.0285642 -93.6534078,
 42.028638 -93.6535059,
 42.0286348 -93.6535103,
@@ -2487,9 +2487,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('King Pavilion',ST_Ge
 42.0288574 -93.6531879,
 42.0290113 -93.6529783,
 42.0289446 -93.6528895,
-42.0289446 -93.6528895))',4326));
+42.0289446 -93.6528895))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Human Nutritional Sciences Building',ST_GeomFromText('POLYGON((42.0278588 -93.6474411,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Human Nutritional Sciences Building',ST_GeomFromText('POLYGON((42.0278588 -93.6474411,
 42.0278579 -93.6475365,
 42.027904 -93.6475374,
 42.0279032 -93.6476106,
@@ -2511,18 +2511,18 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Human Nutritional Sc
 42.0279022 -93.647467,
 42.0279024 -93.6474419,
 42.0278588 -93.6474411,
-42.0278588 -93.6474411))',4326));
+42.0278588 -93.6474411))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0286259 -93.6456436,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0286259 -93.6456436,
 42.0286259 -93.645696,
 42.0286144 -93.6456968,
 42.0286156 -93.6457559,
 42.0285874 -93.6457562,
 42.0285875 -93.6456436,
 42.0286259 -93.6456436,
-42.0286259 -93.6456436))',4326));
+42.0286259 -93.6456436))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Science Hall II',ST_GeomFromText('POLYGON((42.0303401 -93.6464768,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Science Hall II',ST_GeomFromText('POLYGON((42.0303401 -93.6464768,
 42.0301411 -93.6464756,
 42.0301405 -93.6466459,
 42.0299709 -93.6466449,
@@ -2536,9 +2536,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Science Hall II',ST_
 42.0303405 -93.6463421,
 42.0303403 -93.6463985,
 42.0303401 -93.6464768,
-42.0303401 -93.6464768))',4326));
+42.0303401 -93.6464768))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Memorial Union Parking Ramp',ST_GeomFromText('POLYGON((42.023363 -93.6450996,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Memorial Union Parking Ramp',ST_GeomFromText('POLYGON((42.023363 -93.6450996,
 42.0230352 -93.645096,
 42.0230379 -93.644661,
 42.0237962 -93.6446695,
@@ -2556,9 +2556,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Memorial Union Parki
 42.023754 -93.6451041,
 42.023658 -93.6451031,
 42.023363 -93.6450996,
-42.023363 -93.6450996))',4326));
+42.023363 -93.6450996))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Memorial Union',ST_GeomFromText('POLYGON((42.0233584 -93.6461309,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Memorial Union',ST_GeomFromText('POLYGON((42.0233584 -93.6461309,
 42.0231746 -93.6461288,
 42.0231797 -93.6453425,
 42.0233614 -93.6453446,
@@ -2582,9 +2582,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Memorial Union',ST_G
 42.0233575 -93.6462785,
 42.0233579 -93.6462122,
 42.0233584 -93.6461309,
-42.0233584 -93.6461309))',4326));
+42.0233584 -93.6461309))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('State Gym',ST_GeomFromText('POLYGON((42.0249574 -93.6525337,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('State Gym',ST_GeomFromText('POLYGON((42.0249574 -93.6525337,
 42.024932 -93.6525334,
 42.0249317 -93.6525915,
 42.0249474 -93.6525917,
@@ -2631,9 +2631,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('State Gym',ST_GeomFr
 42.0251597 -93.6523997,
 42.0249583 -93.6523973,
 42.0249574 -93.6525337,
-42.0249574 -93.6525337))',4326));
+42.0249574 -93.6525337))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Music Hall',ST_GeomFromText('POLYGON((42.0245789 -93.6486451,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Music Hall',ST_GeomFromText('POLYGON((42.0245789 -93.6486451,
 42.024579 -93.6486707,
 42.0245546 -93.6486708,
 42.0245397 -93.6486709,
@@ -2643,9 +2643,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Music Hall',ST_GeomF
 42.0247965 -93.6477344,
 42.0247994 -93.6486438,
 42.0245789 -93.6486451,
-42.0245789 -93.6486451))',4326));
+42.0245789 -93.6486451))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Oak-Elm Residence Hall',ST_GeomFromText('POLYGON((42.0252194 -93.6399845,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Oak-Elm Residence Hall',ST_GeomFromText('POLYGON((42.0252194 -93.6399845,
 42.0252192 -93.640169,
 42.0252324 -93.640169,
 42.0252323 -93.6403243,
@@ -2692,9 +2692,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Oak-Elm Residence Ha
 42.0253143 -93.639812,
 42.0253141 -93.6399847,
 42.0252194 -93.6399845,
-42.0252194 -93.6399845))',4326));
+42.0252194 -93.6399845))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Hixson-Lied Student Success Center',ST_GeomFromText('POLYGON((42.0242054 -93.6398854,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Hixson-Lied Student Success Center',ST_GeomFromText('POLYGON((42.0242054 -93.6398854,
 42.0240902 -93.6398824,
 42.0240898 -93.6399118,
 42.0240038 -93.6399096,
@@ -2718,9 +2718,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Hixson-Lied Student 
 42.0242461 -93.6397445,
 42.0242074 -93.6397435,
 42.0242054 -93.6398854,
-42.0242054 -93.6398854))',4326));
+42.0242054 -93.6398854))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Linden Residence Hall',ST_GeomFromText('POLYGON((42.0229635 -93.6404401,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Linden Residence Hall',ST_GeomFromText('POLYGON((42.0229635 -93.6404401,
 42.0229542 -93.6404409,
 42.022946 -93.6404082,
 42.0229411 -93.6403712,
@@ -2752,9 +2752,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Linden Residence Hal
 42.0231954 -93.640702,
 42.0229642 -93.6407031,
 42.0229635 -93.6404401,
-42.0229635 -93.6404401))',4326));
+42.0229635 -93.6404401))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Barton Residence Hall',ST_GeomFromText('POLYGON((42.024023 -93.6415203,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Barton Residence Hall',ST_GeomFromText('POLYGON((42.024023 -93.6415203,
 42.0240232 -93.6415741,
 42.0240235 -93.6416359,
 42.0241731 -93.6416348,
@@ -2770,9 +2770,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Barton Residence Hal
 42.0241669 -93.6414809,
 42.0241671 -93.6415193,
 42.024023 -93.6415203,
-42.024023 -93.6415203))',4326));
+42.024023 -93.6415203))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('East Parking Deck',ST_GeomFromText('POLYGON((42.0252875 -93.643304,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('East Parking Deck',ST_GeomFromText('POLYGON((42.0252875 -93.643304,
 42.0252167 -93.643361,
 42.0252362 -93.6433916,
 42.0252522 -93.6434167,
@@ -2786,9 +2786,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('East Parking Deck',S
 42.0256162 -93.6420832,
 42.0249813 -93.6428345,
 42.0252875 -93.643304,
-42.0252875 -93.643304))',4326));
+42.0252875 -93.643304))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Helser Residence Hall',ST_GeomFromText('POLYGON((42.0238885 -93.6517346,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Helser Residence Hall',ST_GeomFromText('POLYGON((42.0238885 -93.6517346,
 42.0236783 -93.6517343,
 42.0236783 -93.6517174,
 42.0235808 -93.6517173,
@@ -2831,9 +2831,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Helser Residence Hal
 42.0239476 -93.6512806,
 42.0238888 -93.6512805,
 42.0238885 -93.6517346,
-42.0238885 -93.6517346))',4326));
+42.0238885 -93.6517346))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Buchanan Residence Hall',ST_GeomFromText('POLYGON((42.0224778 -93.6440872,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Buchanan Residence Hall',ST_GeomFromText('POLYGON((42.0224778 -93.6440872,
 42.02203 -93.6440841,
 42.0220306 -93.643923,
 42.0219641 -93.6439523,
@@ -2859,9 +2859,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Buchanan Residence H
 42.0221431 -93.6439233,
 42.0224784 -93.643926,
 42.0224778 -93.6440872,
-42.0224778 -93.6440872))',4326));
+42.0224778 -93.6440872))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Knoll',ST_GeomFromText('POLYGON((42.0238168 -93.6436773,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Knoll',ST_GeomFromText('POLYGON((42.0238168 -93.6436773,
 42.0236659 -93.6436718,
 42.0236653 -93.6437018,
 42.0234979 -93.6436957,
@@ -2877,9 +2877,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Knoll',ST_GeomFromTe
 42.0236757 -93.6435566,
 42.0238191 -93.6435618,
 42.0238168 -93.6436773,
-42.0238168 -93.6436773))',4326));
+42.0238168 -93.6436773))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('CyRide',ST_GeomFromText('POLYGON((42.0282549 -93.6358701,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('CyRide',ST_GeomFromText('POLYGON((42.0282549 -93.6358701,
 42.027906 -93.6358714,
 42.027906 -93.6358389,
 42.0278574 -93.6358391,
@@ -2899,9 +2899,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('CyRide',ST_GeomFromT
 42.0280718 -93.635765,
 42.0282547 -93.6357644,
 42.0282549 -93.6358701,
-42.0282549 -93.6358701))',4326));
+42.0282549 -93.6358701))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Freeman Residence Hall',ST_GeomFromText('POLYGON((42.0245546 -93.6415194,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Freeman Residence Hall',ST_GeomFromText('POLYGON((42.0245546 -93.6415194,
 42.0248413 -93.6415209,
 42.0248413 -93.641502,
 42.0248952 -93.6415023,
@@ -2913,9 +2913,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Freeman Residence Ha
 42.0245541 -93.6416902,
 42.0245545 -93.6415542,
 42.0245546 -93.6415194,
-42.0245546 -93.6415194))',4326));
+42.0245546 -93.6415194))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Lyon Residence Hall',ST_GeomFromText('POLYGON((42.0242851 -93.6423379,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Lyon Residence Hall',ST_GeomFromText('POLYGON((42.0242851 -93.6423379,
 42.0245601 -93.6423386,
 42.0245602 -93.6422739,
 42.0245603 -93.6422214,
@@ -2926,9 +2926,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Lyon Residence Hall'
 42.024561 -93.6424967,
 42.0242849 -93.642496,
 42.0242851 -93.6423379,
-42.0242851 -93.6423379))',4326));
+42.0242851 -93.6423379))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Roberts Residence Hall',ST_GeomFromText('POLYGON((42.0238392 -93.6424281,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Roberts Residence Hall',ST_GeomFromText('POLYGON((42.0238392 -93.6424281,
 42.0239319 -93.6424283,
 42.0240329 -93.6424285,
 42.0240331 -93.6422813,
@@ -2946,9 +2946,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Roberts Residence Ha
 42.0237241 -93.6422951,
 42.0238393 -93.6422953,
 42.0238392 -93.6424281,
-42.0238392 -93.6424281))',4326));
+42.0238392 -93.6424281))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Welch Residence Hall',ST_GeomFromText('POLYGON((42.0236758 -93.6417357,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Welch Residence Hall',ST_GeomFromText('POLYGON((42.0236758 -93.6417357,
 42.023627 -93.6417356,
 42.0235985 -93.6417356,
 42.0235455 -93.6417355,
@@ -2962,9 +2962,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Welch Residence Hall
 42.0236752 -93.6423237,
 42.0236755 -93.6420074,
 42.0236758 -93.6417357,
-42.0236758 -93.6417357))',4326));
+42.0236758 -93.6417357))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Birch Residence Hall',ST_GeomFromText('POLYGON((42.023627 -93.6417356,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Birch Residence Hall',ST_GeomFromText('POLYGON((42.023627 -93.6417356,
 42.023627 -93.6417038,
 42.0238716 -93.6417043,
 42.0238717 -93.641584,
@@ -2984,9 +2984,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Birch Residence Hall
 42.0235985 -93.6417012,
 42.0235985 -93.6417356,
 42.023627 -93.6417356,
-42.023627 -93.6417356))',4326));
+42.023627 -93.6417356))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Technical and Administrative Services Facility (TASF)',ST_GeomFromText('POLYGON((42.0298264 -93.6486712,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Ames Lab - Technical and Administrative Services Facility (TASF)',ST_GeomFromText('POLYGON((42.0298264 -93.6486712,
 42.0298268 -93.648341,
 42.0298317 -93.6482557,
 42.0298521 -93.6482049,
@@ -2996,9 +2996,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Technical
 42.030038 -93.6481385,
 42.0300389 -93.6486712,
 42.0298264 -93.6486712,
-42.0298264 -93.6486712))',4326));
+42.0298264 -93.6486712))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Spedding Hall',ST_GeomFromText('POLYGON((42.030038 -93.6481385,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Ames Lab - Spedding Hall',ST_GeomFromText('POLYGON((42.030038 -93.6481385,
 42.0303312 -93.648136,
 42.0303307 -93.648506,
 42.0303408 -93.648506,
@@ -3017,9 +3017,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Ames Lab - Spedding 
 42.0298264 -93.6486712,
 42.0300389 -93.6486712,
 42.030038 -93.6481385,
-42.030038 -93.6481385))',4326));
+42.030038 -93.6481385))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Ames Intermodal Facility',ST_GeomFromText('POLYGON((42.0206965 -93.6525509,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Ames Intermodal Facility',ST_GeomFromText('POLYGON((42.0206965 -93.6525509,
 42.0206982 -93.6520635,
 42.0207993 -93.6520641,
 42.0212064 -93.6520666,
@@ -3036,9 +3036,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Ames Intermodal Faci
 42.0208466 -93.6526058,
 42.0208467 -93.6525519,
 42.0206965 -93.6525509,
-42.0206965 -93.6525509))',4326));
+42.0206965 -93.6525509))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Hub',ST_GeomFromText('POLYGON((42.0274376 -93.6485492,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Hub',ST_GeomFromText('POLYGON((42.0274376 -93.6485492,
 42.027375 -93.6485483,
 42.0273748 -93.6485728,
 42.0273485 -93.6485724,
@@ -3057,9 +3057,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Hub',ST_GeomFromText
 42.027314 -93.648401,
 42.0274388 -93.6484028,
 42.0274376 -93.6485492,
-42.0274376 -93.6485492))',4326));
+42.0274376 -93.6485492))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Horticulture Hall',ST_GeomFromText('POLYGON((42.0280632 -93.6452843,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Horticulture Hall',ST_GeomFromText('POLYGON((42.0280632 -93.6452843,
 42.0277517 -93.6452811,
 42.0277522 -93.6451846,
 42.0277856 -93.6451849,
@@ -3090,16 +3090,16 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Horticulture Hall',S
 42.0280389 -93.6450302,
 42.0280646 -93.6450305,
 42.0280632 -93.6452843,
-42.0280632 -93.6452843))',4326));
+42.0280632 -93.6452843))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Troxel Hall',ST_GeomFromText('POLYGON((42.0275954 -93.6442872,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Troxel Hall',ST_GeomFromText('POLYGON((42.0275954 -93.6442872,
 42.0275942 -93.6439184,
 42.0280228 -93.6439157,
 42.0280241 -93.6442846,
 42.0275954 -93.6442872,
-42.0275954 -93.6442872))',4326));
+42.0275954 -93.6442872))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Sukup Hall',ST_GeomFromText('POLYGON((42.0273058 -93.6529226,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Sukup Hall',ST_GeomFromText('POLYGON((42.0273058 -93.6529226,
 42.0273025 -93.65325,
 42.0273765 -93.6532806,
 42.0273678 -93.6533191,
@@ -3110,9 +3110,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Sukup Hall',ST_GeomF
 42.0276364 -93.6530628,
 42.0275084 -93.6530085,
 42.0273058 -93.6529226,
-42.0273058 -93.6529226))',4326));
+42.0273058 -93.6529226))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 24',ST_GeomFromText('POLYGON((42.0327121 -93.6440544,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 24',ST_GeomFromText('POLYGON((42.0327121 -93.6440544,
 42.0326667 -93.6440541,
 42.0326673 -93.643918,
 42.0327032 -93.6439183,
@@ -3161,9 +3161,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 24
 42.0327994 -93.6441076,
 42.0327119 -93.6441069,
 42.0327121 -93.6440544,
-42.0327121 -93.6440544))',4326));
+42.0327121 -93.6440544))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 81',ST_GeomFromText('POLYGON((42.0323618 -93.6411227,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 81',ST_GeomFromText('POLYGON((42.0323618 -93.6411227,
 42.0323164 -93.6411224,
 42.032317 -93.6409863,
 42.0323529 -93.6409866,
@@ -3212,9 +3212,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 81
 42.0324491 -93.6411759,
 42.0323616 -93.6411752,
 42.0323618 -93.6411227,
-42.0323618 -93.6411227))',4326));
+42.0323618 -93.6411227))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 82',ST_GeomFromText('POLYGON((42.0318181 -93.6406796,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 82',ST_GeomFromText('POLYGON((42.0318181 -93.6406796,
 42.0318636 -93.6406798,
 42.0318633 -93.6408159,
 42.0318274 -93.6408158,
@@ -3263,9 +3263,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 82
 42.0317307 -93.6406268,
 42.0318183 -93.6406272,
 42.0318181 -93.6406796,
-42.0318181 -93.6406796))',4326));
+42.0318181 -93.6406796))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 83',ST_GeomFromText('POLYGON((42.0318036 -93.6392508,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Frederiksen Court 83',ST_GeomFromText('POLYGON((42.0318036 -93.6392508,
 42.031849 -93.639251,
 42.0318487 -93.6393871,
 42.0318128 -93.639387,
@@ -3314,23 +3314,23 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Frederiksen Court 83
 42.0317161 -93.6391981,
 42.0318037 -93.6391984,
 42.0318036 -93.6392508,
-42.0318036 -93.6392508))',4326));
+42.0318036 -93.6392508))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0314339 -93.6381697,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0314339 -93.6381697,
 42.0313619 -93.6382113,
 42.0313359 -93.6381299,
 42.0314079 -93.6380882,
 42.0314339 -93.6381697,
-42.0314339 -93.6381697))',4326));
+42.0314339 -93.6381697))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0310897 -93.6400656,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0310897 -93.6400656,
 42.0309735 -93.6397244,
 42.0308194 -93.6398196,
 42.0309356 -93.6401608,
 42.0310897 -93.6400656,
-42.0310897 -93.6400656))',4326));
+42.0310897 -93.6400656))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0321883 -93.6385402,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0321883 -93.6385402,
 42.0321795 -93.6384375,
 42.0320074 -93.6384644,
 42.0320001 -93.6383797,
@@ -3339,9 +3339,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0320162 -93.6385835,
 42.0320148 -93.6385673,
 42.0321883 -93.6385402,
-42.0321883 -93.6385402))',4326));
+42.0321883 -93.6385402))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Eaton Residence Hall',ST_GeomFromText('POLYGON((42.0245086 -93.6526318,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Eaton Residence Hall',ST_GeomFromText('POLYGON((42.0245086 -93.6526318,
 42.0245057 -93.6529194,
 42.0242821 -93.652924,
 42.0243276 -93.6531519,
@@ -3353,99 +3353,99 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Eaton Residence Hall
 42.0242312 -93.6525827,
 42.024258 -93.6527056,
 42.0245086 -93.6526318,
-42.0245086 -93.6526318))',4326));
+42.0245086 -93.6526318))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0223278 -93.6505657,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0223278 -93.6505657,
 42.0223278 -93.6502647,
 42.0221539 -93.6502647,
 42.0221539 -93.6505657,
 42.0223278 -93.6505657,
-42.0223278 -93.6505657))',4326));
+42.0223278 -93.6505657))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0220189 -93.6504559,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0220189 -93.6504559,
 42.0220925 -93.6504553,
 42.0220916 -93.6502686,
 42.022018 -93.6502692,
 42.0220189 -93.6504559,
-42.0220189 -93.6504559))',4326));
+42.0220189 -93.6504559))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0226391 -93.6539449,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0226391 -93.6539449,
 42.0226396 -93.6537647,
 42.0224456 -93.6537637,
 42.0224451 -93.653944,
 42.0226391 -93.6539449,
-42.0226391 -93.6539449))',4326));
+42.0226391 -93.6539449))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0218449 -93.6500185,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0218449 -93.6500185,
 42.0218447 -93.6497198,
 42.0219088 -93.6497197,
 42.021909 -93.6500185,
 42.0218449 -93.6500185,
-42.0218449 -93.6500185))',4326));
+42.0218449 -93.6500185))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0225491 -93.650371,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0225491 -93.650371,
 42.0226449 -93.650371,
 42.0226449 -93.6504875,
 42.0225491 -93.6504875,
 42.0225491 -93.650371,
-42.0225491 -93.650371))',4326));
+42.0225491 -93.650371))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0213539 -93.6503394,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0213539 -93.6503394,
 42.0213525 -93.6502581,
 42.021198 -93.6502631,
 42.0211995 -93.6503443,
 42.0213539 -93.6503394,
-42.0213539 -93.6503394))',4326));
+42.0213539 -93.6503394))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0225491 -93.6505283,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0225491 -93.6505283,
 42.0225491 -93.6504875,
 42.0226449 -93.6504875,
 42.0226449 -93.6505283,
 42.0225491 -93.6505283,
-42.0225491 -93.6505283))',4326));
+42.0225491 -93.6505283))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0222937 -93.6515895,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0222937 -93.6515895,
 42.0222933 -93.6514018,
 42.0222434 -93.6514019,
 42.0222437 -93.6515897,
 42.0222937 -93.6515895,
-42.0222937 -93.6515895))',4326));
+42.0222937 -93.6515895))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0223822 -93.6515934,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0223822 -93.6515934,
 42.0223803 -93.6513522,
 42.0223238 -93.6513531,
 42.0222933 -93.6514018,
 42.0222937 -93.6515895,
 42.0223822 -93.6515934,
-42.0223822 -93.6515934))',4326));
+42.0223822 -93.6515934))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0223957 -93.6505283,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0223957 -93.6505283,
 42.0223957 -93.6502647,
 42.0225491 -93.6502647,
 42.0225491 -93.650371,
 42.0225491 -93.6504875,
 42.0225491 -93.6505283,
 42.0223957 -93.6505283,
-42.0223957 -93.6505283))',4326));
+42.0223957 -93.6505283))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0217719 -93.6500186,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0217719 -93.6500186,
 42.0217717 -93.6496329,
 42.0217716 -93.6495199,
 42.0218446 -93.6495198,
 42.0218447 -93.6497198,
 42.0218449 -93.6500185,
 42.0217719 -93.6500186,
-42.0217719 -93.6500186))',4326));
+42.0217719 -93.6500186))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0225491 -93.6502647,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0225491 -93.6502647,
 42.0225491 -93.650371,
 42.0226449 -93.650371,
 42.0226449 -93.6502736,
 42.0226382 -93.6502647,
 42.0225491 -93.6502647,
-42.0225491 -93.6502647))',4326));
+42.0225491 -93.6502647))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0223278 -93.6502647,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0223278 -93.6502647,
 42.0223278 -93.6505657,
 42.0223278 -93.6506309,
 42.0223639 -93.6506309,
@@ -3453,9 +3453,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0223957 -93.6505283,
 42.0223957 -93.6502647,
 42.0223278 -93.6502647,
-42.0223278 -93.6502647))',4326));
+42.0223278 -93.6502647))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0216974 -93.6498693,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0216974 -93.6498693,
 42.0216972 -93.6495865,
 42.0216971 -93.6494874,
 42.0217467 -93.6494873,
@@ -3464,9 +3464,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0217719 -93.6500186,
 42.0216975 -93.6500187,
 42.0216974 -93.6498693,
-42.0216974 -93.6498693))',4326));
+42.0216974 -93.6498693))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0213579 -93.6506043,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0213579 -93.6506043,
 42.0213572 -93.6504921,
 42.0213016 -93.6504927,
 42.0213015 -93.6504742,
@@ -3475,9 +3475,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0211244 -93.6504946,
 42.0211251 -93.650607,
 42.0213579 -93.6506043,
-42.0213579 -93.6506043))',4326));
+42.0213579 -93.6506043))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0216974 -93.6498693,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0216974 -93.6498693,
 42.0216972 -93.6495865,
 42.0216233 -93.6495865,
 42.0216232 -93.6494637,
@@ -3486,9 +3486,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0215745 -93.6498209,
 42.0215745 -93.6498694,
 42.0216974 -93.6498693,
-42.0216974 -93.6498693))',4326));
+42.0216974 -93.6498693))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0217149 -93.6505727,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0217149 -93.6505727,
 42.0217133 -93.650265,
 42.0216598 -93.6502655,
 42.0216599 -93.650288,
@@ -3497,18 +3497,18 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0215502 -93.6503046,
 42.0215515 -93.6505742,
 42.0217149 -93.6505727,
-42.0217149 -93.6505727))',4326));
+42.0217149 -93.6505727))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0204901 -93.6506014,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0204901 -93.6506014,
 42.0204922 -93.6502945,
 42.0204649 -93.6502942,
 42.0204648 -93.6503092,
 42.0203906 -93.6503083,
 42.0203885 -93.6506001,
 42.0204901 -93.6506014,
-42.0204901 -93.6506014))',4326));
+42.0204901 -93.6506014))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Legacy Tower',ST_GeomFromText('POLYGON((42.022116 -93.6493216,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Legacy Tower',ST_GeomFromText('POLYGON((42.022116 -93.6493216,
 42.0221156 -93.6486369,
 42.0217745 -93.6486373,
 42.0217748 -93.6492677,
@@ -3518,23 +3518,23 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Legacy Tower',ST_Geo
 42.0219978 -93.6493635,
 42.0219978 -93.6493217,
 42.022116 -93.6493216,
-42.022116 -93.6493216))',4326));
+42.022116 -93.6493216))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0226426 -93.6490604,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0226426 -93.6490604,
 42.0226434 -93.6486468,
 42.0225119 -93.6486461,
 42.0225107 -93.6490601,
 42.0226426 -93.6490604,
-42.0226426 -93.6490604))',4326));
+42.0226426 -93.6490604))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.022552 -93.6520703,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.022552 -93.6520703,
 42.0224749 -93.6520705,
 42.0224748 -93.6520166,
 42.0225519 -93.6520163,
 42.022552 -93.6520703,
-42.022552 -93.6520703))',4326));
+42.022552 -93.6520703))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('ACACIA',ST_GeomFromText('POLYGON((42.0217075 -93.6416582,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('ACACIA',ST_GeomFromText('POLYGON((42.0217075 -93.6416582,
 42.0216849 -93.6416374,
 42.0216658 -93.6416748,
 42.0215434 -93.641562,
@@ -3549,9 +3549,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('ACACIA',ST_GeomFromT
 42.02174 -93.6415442,
 42.0217573 -93.6415602,
 42.0217075 -93.6416582,
-42.0217075 -93.6416582))',4326));
+42.0217075 -93.6416582))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Alpha Tau Omega',ST_GeomFromText('POLYGON((42.0225032 -93.6414132,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Alpha Tau Omega',ST_GeomFromText('POLYGON((42.0225032 -93.6414132,
 42.0225055 -93.6411844,
 42.0222213 -93.6411791,
 42.0222205 -93.6412603,
@@ -3562,9 +3562,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Alpha Tau Omega',ST_
 42.022448 -93.6413453,
 42.0224473 -93.6414121,
 42.0225032 -93.6414132,
-42.0225032 -93.6414132))',4326));
+42.0225032 -93.6414132))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Beta Theta Pi',ST_GeomFromText('POLYGON((42.0221338 -93.6408098,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Beta Theta Pi',ST_GeomFromText('POLYGON((42.0221338 -93.6408098,
 42.0221566 -93.6408093,
 42.0221564 -93.6407928,
 42.0222867 -93.6407899,
@@ -3589,18 +3589,18 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Beta Theta Pi',ST_Ge
 42.0221564 -93.6409413,
 42.0221354 -93.6409418,
 42.0221338 -93.6408098,
-42.0221338 -93.6408098))',4326));
+42.0221338 -93.6408098))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Phi Delta Theta',ST_GeomFromText('POLYGON((42.0216164 -93.6412714,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Phi Delta Theta',ST_GeomFromText('POLYGON((42.0216164 -93.6412714,
 42.0216164 -93.6411908,
 42.0217676 -93.6411908,
 42.0217676 -93.6409777,
 42.0215401 -93.6409777,
 42.0215401 -93.6412713,
 42.0216164 -93.6412714,
-42.0216164 -93.6412714))',4326));
+42.0216164 -93.6412714))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Phi Kappa Theta',ST_GeomFromText('POLYGON((42.02247 -93.6399294,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Phi Kappa Theta',ST_GeomFromText('POLYGON((42.02247 -93.6399294,
 42.0224484 -93.6399293,
 42.0224484 -93.6399869,
 42.02233 -93.6399866,
@@ -3612,9 +3612,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Phi Kappa Theta',ST_
 42.0224464 -93.6398846,
 42.02247 -93.6398847,
 42.02247 -93.6399294,
-42.02247 -93.6399294))',4326));
+42.02247 -93.6399294))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Pi Kappa Alpha',ST_GeomFromText('POLYGON((42.0224451 -93.6400943,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Pi Kappa Alpha',ST_GeomFromText('POLYGON((42.0224451 -93.6400943,
 42.0224414 -93.6405425,
 42.0223555 -93.6405412,
 42.0223568 -93.6403855,
@@ -3623,9 +3623,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Pi Kappa Alpha',ST_G
 42.0223573 -93.6401491,
 42.0223577 -93.640093,
 42.0224451 -93.6400943,
-42.0224451 -93.6400943))',4326));
+42.0224451 -93.6400943))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0212427 -93.6508359,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0212427 -93.6508359,
 42.0212427 -93.6506539,
 42.0212221 -93.6506539,
 42.0212221 -93.6506422,
@@ -3636,16 +3636,16 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0212221 -93.6508538,
 42.0212221 -93.6508359,
 42.0212427 -93.6508359,
-42.0212427 -93.6508359))',4326));
+42.0212427 -93.6508359))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0211148 -93.6507302,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0211148 -93.6507302,
 42.0211155 -93.6502581,
 42.021037 -93.6502579,
 42.0210363 -93.65073,
 42.0211148 -93.6507302,
-42.0211148 -93.6507302))',4326));
+42.0211148 -93.6507302))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0217067 -93.6509127,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0217067 -93.6509127,
 42.021706 -93.6508209,
 42.0215927 -93.6508223,
 42.0215928 -93.6508347,
@@ -3654,60 +3654,60 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0215492 -93.6508503,
 42.0215497 -93.6509147,
 42.0217067 -93.6509127,
-42.0217067 -93.6509127))',4326));
+42.0217067 -93.6509127))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0218614 -93.6506578,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0218614 -93.6506578,
 42.0218084 -93.6506583,
 42.0217584 -93.6506587,
 42.0217574 -93.6504455,
 42.0218603 -93.6504446,
 42.0218614 -93.6506578,
-42.0218614 -93.6506578))',4326));
+42.0218614 -93.6506578))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0220025 -93.6500455,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0220025 -93.6500455,
 42.0220024 -93.6498395,
 42.0220024 -93.6498057,
 42.0219287 -93.6498058,
 42.0219289 -93.6500456,
 42.0220025 -93.6500455,
-42.0220025 -93.6500455))',4326));
+42.0220025 -93.6500455))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0218096 -93.6509128,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0218096 -93.6509128,
 42.0217136 -93.6509131,
 42.021713 -93.6506579,
 42.0217584 -93.6506587,
 42.0218084 -93.6506583,
 42.0218096 -93.6509128,
-42.0218096 -93.6509128))',4326));
+42.0218096 -93.6509128))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0218786 -93.6504445,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0218786 -93.6504445,
 42.0218603 -93.6504446,
 42.0217574 -93.6504455,
 42.0217301 -93.6504457,
 42.0217293 -93.6502646,
 42.0218778 -93.6502633,
 42.0218786 -93.6504445,
-42.0218786 -93.6504445))',4326));
+42.0218786 -93.6504445))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0212281 -93.6498562,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0212281 -93.6498562,
 42.0211335 -93.6498563,
 42.0211332 -93.6494715,
 42.0212576 -93.6494714,
 42.0212579 -93.6497893,
 42.0212281 -93.6497893,
 42.0212281 -93.6498562,
-42.0212281 -93.6498562))',4326));
+42.0212281 -93.6498562))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0207827 -93.6478761,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0207827 -93.6478761,
 42.0207851 -93.6474764,
 42.0199597 -93.6474677,
 42.019957 -93.6479343,
 42.020527 -93.6479404,
 42.0205274 -93.6478733,
 42.0207827 -93.6478761,
-42.0207827 -93.6478761))',4326));
+42.0207827 -93.6478761))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0210576 -93.6498592,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0210576 -93.6498592,
 42.0209303 -93.6498597,
 42.0209297 -93.6495741,
 42.0209515 -93.649574,
@@ -3716,9 +3716,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.02104 -93.6495746,
 42.021057 -93.6495746,
 42.0210576 -93.6498592,
-42.0210576 -93.6498592))',4326));
+42.0210576 -93.6498592))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.02089 -93.6498888,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.02089 -93.6498888,
 42.0208913 -93.6495328,
 42.0209027 -93.6495329,
 42.0209031 -93.6494322,
@@ -3727,9 +3727,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.020749 -93.649564,
 42.0207478 -93.6498904,
 42.02089 -93.6498888,
-42.02089 -93.6498888))',4326));
+42.02089 -93.6498888))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0220018 -93.6502563,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0220018 -93.6502563,
 42.0219263 -93.6502576,
 42.021927 -93.6503216,
 42.0218935 -93.6503222,
@@ -3738,9 +3738,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0219314 -93.6506575,
 42.0220056 -93.6506563,
 42.0220018 -93.6502563,
-42.0220018 -93.6502563))',4326));
+42.0220018 -93.6502563))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0221467 -93.6500454,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0221467 -93.6500454,
 42.0220025 -93.6500455,
 42.0220024 -93.6498395,
 42.0220392 -93.6498395,
@@ -3751,9 +3751,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0221202 -93.6498514,
 42.0221466 -93.6498514,
 42.0221467 -93.6500454,
-42.0221467 -93.6500454))',4326));
+42.0221467 -93.6500454))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Alpha Delta Pi',ST_GeomFromText('POLYGON((42.0199741 -93.6417956,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Alpha Delta Pi',ST_GeomFromText('POLYGON((42.0199741 -93.6417956,
 42.0199935 -93.6417083,
 42.0199355 -93.6416849,
 42.0199735 -93.6415139,
@@ -3764,9 +3764,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Alpha Delta Pi',ST_G
 42.0198773 -93.6418113,
 42.0198884 -93.6417612,
 42.0199741 -93.6417956,
-42.0199741 -93.6417956))',4326));
+42.0199741 -93.6417956))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Alpha Gamma Delta',ST_GeomFromText('POLYGON((42.0204756 -93.6417927,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Alpha Gamma Delta',ST_GeomFromText('POLYGON((42.0204756 -93.6417927,
 42.0205208 -93.6416181,
 42.0205809 -93.6416462,
 42.0205786 -93.641655,
@@ -3781,9 +3781,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Alpha Gamma Delta',S
 42.0204007 -93.6417013,
 42.0203877 -93.6417515,
 42.0204756 -93.6417927,
-42.0204756 -93.6417927))',4326));
+42.0204756 -93.6417927))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Alpha Gamma Rho',ST_GeomFromText('POLYGON((42.0213569 -93.6423902,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Alpha Gamma Rho',ST_GeomFromText('POLYGON((42.0213569 -93.6423902,
 42.0211776 -93.6423893,
 42.0210733 -93.6425076,
 42.0210367 -93.6424491,
@@ -3794,9 +3794,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Alpha Gamma Rho',ST_
 42.0212065 -93.6422103,
 42.0213573 -93.642211,
 42.0213569 -93.6423902,
-42.0213569 -93.6423902))',4326));
+42.0213569 -93.6423902))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Alpha Omicron Pi',ST_GeomFromText('POLYGON((42.0202248 -93.640206,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Alpha Omicron Pi',ST_GeomFromText('POLYGON((42.0202248 -93.640206,
 42.0200954 -93.640203,
 42.0200968 -93.640097,
 42.0200824 -93.6400966,
@@ -3809,18 +3809,18 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Alpha Omicron Pi',ST
 42.0202576 -93.6400943,
 42.0202262 -93.6400936,
 42.0202248 -93.640206,
-42.0202248 -93.640206))',4326));
+42.0202248 -93.640206))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Beta Sigma Psi',ST_GeomFromText('POLYGON((42.0204047 -93.642217,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Beta Sigma Psi',ST_GeomFromText('POLYGON((42.0204047 -93.642217,
 42.0204199 -93.6421157,
 42.0203377 -93.6420935,
 42.0203577 -93.6419592,
 42.0202478 -93.6419294,
 42.0202126 -93.6421649,
 42.0204047 -93.642217,
-42.0204047 -93.642217))',4326));
+42.0204047 -93.642217))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Chi Omega',ST_GeomFromText('POLYGON((42.0203799 -93.6411574,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Chi Omega',ST_GeomFromText('POLYGON((42.0203799 -93.6411574,
 42.0203633 -93.6411577,
 42.0203623 -93.641062,
 42.0202724 -93.6410637,
@@ -3847,9 +3847,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Chi Omega',ST_GeomFr
 42.0203836 -93.6411434,
 42.0203804 -93.6411532,
 42.0203799 -93.6411574,
-42.0203799 -93.6411574))',4326));
+42.0203799 -93.6411574))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Delta Delta Delta',ST_GeomFromText('POLYGON((42.0199087 -93.6440612,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Delta Delta Delta',ST_GeomFromText('POLYGON((42.0199087 -93.6440612,
 42.0198427 -93.6440616,
 42.0198428 -93.6441015,
 42.0197386 -93.6441021,
@@ -3864,9 +3864,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Delta Delta Delta',S
 42.0199342 -93.6440005,
 42.0199085 -93.6440007,
 42.0199087 -93.6440612,
-42.0199087 -93.6440612))',4326));
+42.0199087 -93.6440612))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Delta Zeta',ST_GeomFromText('POLYGON((42.0203098 -93.6425267,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Delta Zeta',ST_GeomFromText('POLYGON((42.0203098 -93.6425267,
 42.0203284 -93.6423857,
 42.020198 -93.6423545,
 42.0202017 -93.642326,
@@ -3881,9 +3881,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Delta Zeta',ST_GeomF
 42.020205 -93.6425303,
 42.0202086 -93.6425026,
 42.0203098 -93.6425267,
-42.0203098 -93.6425267))',4326));
+42.0203098 -93.6425267))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Gamma Phi Beta',ST_GeomFromText('POLYGON((42.0199203 -93.642229,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Gamma Phi Beta',ST_GeomFromText('POLYGON((42.0199203 -93.642229,
 42.0198757 -93.6420431,
 42.0199051 -93.6420303,
 42.01989 -93.6419674,
@@ -3896,9 +3896,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Gamma Phi Beta',ST_G
 42.0197811 -93.6421585,
 42.0198096 -93.6422771,
 42.0199203 -93.642229,
-42.0199203 -93.642229))',4326));
+42.0199203 -93.642229))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Kappa Delta',ST_GeomFromText('POLYGON((42.0209959 -93.6413763,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Kappa Delta',ST_GeomFromText('POLYGON((42.0209959 -93.6413763,
 42.0209285 -93.6413469,
 42.0209333 -93.6413269,
 42.0209034 -93.6413138,
@@ -3919,9 +3919,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Kappa Delta',ST_Geom
 42.0210453 -93.6412567,
 42.0210266 -93.6412485,
 42.0209959 -93.6413763,
-42.0209959 -93.6413763))',4326));
+42.0209959 -93.6413763))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Pi Beta Phi',ST_GeomFromText('POLYGON((42.0213836 -93.6436629,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Pi Beta Phi',ST_GeomFromText('POLYGON((42.0213836 -93.6436629,
 42.0211946 -93.6436622,
 42.0211944 -93.6437614,
 42.021239 -93.6437615,
@@ -3938,9 +3938,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Pi Beta Phi',ST_Geom
 42.0213303 -93.6437619,
 42.0213834 -93.6437621,
 42.0213836 -93.6436629,
-42.0213836 -93.6436629))',4326));
+42.0213836 -93.6436629))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Sigma Kappa',ST_GeomFromText('POLYGON((42.0200757 -93.6412641,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Sigma Kappa',ST_GeomFromText('POLYGON((42.0200757 -93.6412641,
 42.0198346 -93.6412652,
 42.0198343 -93.6411291,
 42.0198513 -93.6411291,
@@ -3955,9 +3955,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Sigma Kappa',ST_Geom
 42.0201313 -93.641044,
 42.0201851 -93.6411158,
 42.0200757 -93.6412641,
-42.0200757 -93.6412641))',4326));
+42.0200757 -93.6412641))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Sigma Phi Epsilon',ST_GeomFromText('POLYGON((42.0204898 -93.6403299,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Sigma Phi Epsilon',ST_GeomFromText('POLYGON((42.0204898 -93.6403299,
 42.0204181 -93.6402384,
 42.0203618 -93.6403183,
 42.0204271 -93.6404016,
@@ -3972,9 +3972,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Sigma Phi Epsilon',S
 42.0205644 -93.6402428,
 42.0204881 -93.6402455,
 42.0204898 -93.6403299,
-42.0204898 -93.6403299))',4326));
+42.0204898 -93.6403299))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Sigma Pi',ST_GeomFromText('POLYGON((42.0210626 -93.643857,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Sigma Pi',ST_GeomFromText('POLYGON((42.0210626 -93.643857,
 42.0209564 -93.6438543,
 42.0209561 -93.6438714,
 42.0207786 -93.643867,
@@ -3985,17 +3985,17 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Sigma Pi',ST_GeomFro
 42.0209543 -93.6439994,
 42.0210605 -93.6440021,
 42.0210626 -93.643857,
-42.0210626 -93.643857))',4326));
+42.0210626 -93.643857))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Tau Kappa Epsilon',ST_GeomFromText('POLYGON((42.0205237 -93.643728,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Tau Kappa Epsilon',ST_GeomFromText('POLYGON((42.0205237 -93.643728,
 42.0207385 -93.6437324,
 42.020735 -93.6440508,
 42.0204822 -93.6440457,
 42.0204861 -93.6436881,
 42.0205237 -93.643728,
-42.0205237 -93.643728))',4326));
+42.0205237 -93.643728))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('University Lutheran Congregational Church',ST_GeomFromText('POLYGON((42.0208967 -93.6434198,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('University Lutheran Congregational Church',ST_GeomFromText('POLYGON((42.0208967 -93.6434198,
 42.0209174 -93.6432795,
 42.0210502 -93.6430868,
 42.0211173 -93.6431704,
@@ -4011,23 +4011,23 @@ INSERT INTO building_locations (building_name,geo) VALUES ('University Lutheran 
 42.0210368 -93.6433459,
 42.0210093 -93.6434664,
 42.0208967 -93.6434198,
-42.0208967 -93.6434198))',4326));
+42.0208967 -93.6434198))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0206385 -93.643707,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0206385 -93.643707,
 42.0205614 -93.6436987,
 42.0207218 -93.6433857,
 42.0207769 -93.6434368,
 42.0206385 -93.643707,
-42.0206385 -93.643707))',4326));
+42.0206385 -93.643707))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.019501 -93.6499097,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.019501 -93.6499097,
 42.0195023 -93.6494368,
 42.019373 -93.6494362,
 42.0193716 -93.649909,
 42.019501 -93.6499097,
-42.019501 -93.6499097))',4326));
+42.019501 -93.6499097))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0226437 -93.6505818,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0226437 -93.6505818,
 42.0225852 -93.6505821,
 42.0225852 -93.6505616,
 42.0225357 -93.6505618,
@@ -4039,96 +4039,96 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0224995 -93.6506688,
 42.0226439 -93.6506683,
 42.0226437 -93.6505818,
-42.0226437 -93.6505818))',4326));
+42.0226437 -93.6505818))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0217082 -93.654008,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0217082 -93.654008,
 42.0213737 -93.654009,
 42.0213733 -93.6537175,
 42.0217077 -93.6537166,
 42.0217082 -93.654008,
-42.0217082 -93.654008))',4326));
+42.0217082 -93.654008))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0226454 -93.6514104,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0226454 -93.6514104,
 42.0224257 -93.6514113,
 42.0224261 -93.6515907,
 42.0226458 -93.6515898,
 42.0226454 -93.6514104,
-42.0226454 -93.6514104))',4326));
+42.0226454 -93.6514104))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0226454 -93.6514104,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0226454 -93.6514104,
 42.0226453 -93.6513314,
 42.0224256 -93.6513323,
 42.0224257 -93.6514113,
 42.0226454 -93.6514104,
-42.0226454 -93.6514104))',4326));
+42.0226454 -93.6514104))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0224252 -93.6511466,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0224252 -93.6511466,
 42.0226449 -93.6511457,
 42.0226447 -93.6510867,
 42.022425 -93.6510876,
 42.0224252 -93.6511466,
-42.0224252 -93.6511466))',4326));
+42.0224252 -93.6511466))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0226451 -93.6512569,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0226451 -93.6512569,
 42.0226449 -93.6511457,
 42.0224252 -93.6511466,
 42.0224254 -93.6512577,
 42.0226451 -93.6512569,
-42.0226451 -93.6512569))',4326));
+42.0226451 -93.6512569))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.022644 -93.650746,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.022644 -93.650746,
 42.0224996 -93.6507466,
 42.0224995 -93.6506688,
 42.0226439 -93.6506683,
 42.022644 -93.650746,
-42.022644 -93.650746))',4326));
+42.022644 -93.650746))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('The Resort',ST_GeomFromText('POLYGON((42.0217745 -93.6486373,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('The Resort',ST_GeomFromText('POLYGON((42.0217745 -93.6486373,
 42.021624 -93.6486375,
 42.0216242 -93.6489041,
 42.0217746 -93.6489039,
 42.0217745 -93.6486373,
-42.0217745 -93.6486373))',4326));
+42.0217745 -93.6486373))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0226442 -93.6508465,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0226442 -93.6508465,
 42.0226443 -93.6508821,
 42.0225765 -93.6508824,
 42.0225764 -93.6508467,
 42.0226442 -93.6508465,
-42.0226442 -93.6508465))',4326));
+42.0226442 -93.6508465))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0223398 -93.654129,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0223398 -93.654129,
 42.0223401 -93.6536802,
 42.0220719 -93.6536799,
 42.0220716 -93.6541287,
 42.0223398 -93.654129,
-42.0223398 -93.654129))',4326));
+42.0223398 -93.654129))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0226453 -93.6513314,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0226453 -93.6513314,
 42.0226451 -93.6512569,
 42.0224254 -93.6512577,
 42.0224256 -93.6513323,
 42.0226453 -93.6513314,
-42.0226453 -93.6513314))',4326));
+42.0226453 -93.6513314))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.022425 -93.6510876,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.022425 -93.6510876,
 42.0224249 -93.6510055,
 42.0225359 -93.651005,
 42.0226446 -93.6510046,
 42.0226447 -93.6510867,
 42.022425 -93.6510876,
-42.022425 -93.6510876))',4326));
+42.022425 -93.6510876))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.022644 -93.650746,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.022644 -93.650746,
 42.0226442 -93.6508465,
 42.0225764 -93.6508467,
 42.0224242 -93.6508473,
 42.0224238 -93.6507468,
 42.0224996 -93.6507466,
 42.022644 -93.650746,
-42.022644 -93.650746))',4326));
+42.022644 -93.650746))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0226443 -93.6508821,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0226443 -93.6508821,
 42.0225765 -93.6508824,
 42.0225548 -93.6508824,
 42.022555 -93.6509444,
@@ -4136,9 +4136,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0225359 -93.651005,
 42.0226446 -93.6510046,
 42.0226443 -93.6508821,
-42.0226443 -93.6508821))',4326));
+42.0226443 -93.6508821))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0216159 -93.64862,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0216159 -93.64862,
 42.0216162 -93.6491105,
 42.0215222 -93.6491106,
 42.0215221 -93.649058,
@@ -4148,9 +4148,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0215093 -93.6489431,
 42.0215092 -93.6486201,
 42.0216159 -93.64862,
-42.0216159 -93.64862))',4326));
+42.0216159 -93.64862))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Delta Upsilon',ST_GeomFromText('POLYGON((42.0221395 -93.6449436,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Delta Upsilon',ST_GeomFromText('POLYGON((42.0221395 -93.6449436,
 42.021946 -93.6449436,
 42.021946 -93.6449292,
 42.0218901 -93.6449292,
@@ -4163,9 +4163,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Delta Upsilon',ST_Ge
 42.0221691 -93.644869,
 42.0221395 -93.644869,
 42.0221395 -93.6449436,
-42.0221395 -93.6449436))',4326));
+42.0221395 -93.6449436))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Farm House',ST_GeomFromText('POLYGON((42.0196823 -93.6449968,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Farm House',ST_GeomFromText('POLYGON((42.0196823 -93.6449968,
 42.0196806 -93.6446469,
 42.0198119 -93.6446457,
 42.019812 -93.6446748,
@@ -4178,9 +4178,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Farm House',ST_GeomF
 42.0198128 -93.6448242,
 42.0198136 -93.6449956,
 42.0196823 -93.6449968,
-42.0196823 -93.6449968))',4326));
+42.0196823 -93.6449968))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Kappa Sigma',ST_GeomFromText('POLYGON((42.0205895 -93.6451745,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Kappa Sigma',ST_GeomFromText('POLYGON((42.0205895 -93.6451745,
 42.0204096 -93.6451758,
 42.0204092 -93.6450789,
 42.0204699 -93.6450785,
@@ -4199,9 +4199,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Kappa Sigma',ST_Geom
 42.0205698 -93.6450724,
 42.0205891 -93.6450722,
 42.0205895 -93.6451745,
-42.0205895 -93.6451745))',4326));
+42.0205895 -93.6451745))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Lambda Chi Alpha',ST_GeomFromText('POLYGON((42.0214535 -93.6450995,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Lambda Chi Alpha',ST_GeomFromText('POLYGON((42.0214535 -93.6450995,
 42.0213208 -93.6450982,
 42.0213219 -93.6449031,
 42.02128 -93.6449027,
@@ -4218,9 +4218,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Lambda Chi Alpha',ST
 42.0214472 -93.6447519,
 42.0214554 -93.644752,
 42.0214535 -93.6450995,
-42.0214535 -93.6450995))',4326));
+42.0214535 -93.6450995))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Phi Gamma Delta (FIJI)',ST_GeomFromText('POLYGON((42.0194706 -93.6447388,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Phi Gamma Delta (FIJI)',ST_GeomFromText('POLYGON((42.0194706 -93.6447388,
 42.0194103 -93.6447388,
 42.0194103 -93.6447136,
 42.019384 -93.6447136,
@@ -4241,9 +4241,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Phi Gamma Delta (FIJ
 42.0195075 -93.6448108,
 42.0194706 -93.6448108,
 42.0194706 -93.6447388,
-42.0194706 -93.6447388))',4326));
+42.0194706 -93.6447388))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Theta Chi',ST_GeomFromText('POLYGON((42.0209096 -93.6447784,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Theta Chi',ST_GeomFromText('POLYGON((42.0209096 -93.6447784,
 42.0208352 -93.6447784,
 42.0208352 -93.6447607,
 42.0207783 -93.6447607,
@@ -4260,9 +4260,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Theta Chi',ST_GeomFr
 42.0209193 -93.6448425,
 42.0209096 -93.6448425,
 42.0209096 -93.6447784,
-42.0209096 -93.6447784))',4326));
+42.0209096 -93.6447784))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Theta Delta Chi',ST_GeomFromText('POLYGON((42.0211334 -93.6450218,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Theta Delta Chi',ST_GeomFromText('POLYGON((42.0211334 -93.6450218,
 42.0211354 -93.6448098,
 42.0210965 -93.6448091,
 42.0210967 -93.6447797,
@@ -4271,9 +4271,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Theta Delta Chi',ST_
 42.0209841 -93.6448073,
 42.0209822 -93.6450193,
 42.0211334 -93.6450218,
-42.0211334 -93.6450218))',4326));
+42.0211334 -93.6450218))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0216936 -93.6462712,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0216936 -93.6462712,
 42.0216943 -93.6455641,
 42.0218119 -93.6455643,
 42.0218122 -93.6452966,
@@ -4284,9 +4284,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0215217 -93.6446031,
 42.0215201 -93.6462709,
 42.0216936 -93.6462712,
-42.0216936 -93.6462712))',4326));
+42.0216936 -93.6462712))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0211929 -93.6486147,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0211929 -93.6486147,
 42.0210797 -93.648615,
 42.0210797 -93.6486644,
 42.0211003 -93.6486643,
@@ -4305,23 +4305,23 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0211664 -93.6486642,
 42.021193 -93.6486641,
 42.0211929 -93.6486147,
-42.0211929 -93.6486147))',4326));
+42.0211929 -93.6486147))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0212319 -93.6528205,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0212319 -93.6528205,
 42.0213074 -93.6526456,
 42.0212362 -93.6525899,
 42.0211607 -93.6527647,
 42.0212319 -93.6528205,
-42.0212319 -93.6528205))',4326));
+42.0212319 -93.6528205))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0213042 -93.6490622,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0213042 -93.6490622,
 42.0211348 -93.6490627,
 42.0211351 -93.6493219,
 42.0213046 -93.6493214,
 42.0213042 -93.6490622,
-42.0213042 -93.6490622))',4326));
+42.0213042 -93.6490622))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0213061 -93.6486187,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0213061 -93.6486187,
 42.0213236 -93.6486459,
 42.0212047 -93.6488046,
 42.0211911 -93.6487853,
@@ -4329,9 +4329,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0212047 -93.6486783,
 42.0212047 -93.6486187,
 42.0213061 -93.6486187,
-42.0213061 -93.6486187))',4326));
+42.0213061 -93.6486187))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Kappa Alpha Theta',ST_GeomFromText('POLYGON((42.0195265 -93.6461607,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Kappa Alpha Theta',ST_GeomFromText('POLYGON((42.0195265 -93.6461607,
 42.0193898 -93.6461584,
 42.0193888 -93.6462656,
 42.0193151 -93.6462643,
@@ -4342,9 +4342,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Kappa Alpha Theta',S
 42.0195425 -93.6460988,
 42.0195271 -93.6460985,
 42.0195265 -93.6461607,
-42.0195265 -93.6461607))',4326));
+42.0195265 -93.6461607))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Kappa Kappa Gamma',ST_GeomFromText('POLYGON((42.022028 -93.6457614,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Kappa Kappa Gamma',ST_GeomFromText('POLYGON((42.022028 -93.6457614,
 42.0218182 -93.645754,
 42.0218143 -93.6459563,
 42.0218482 -93.6459575,
@@ -4357,9 +4357,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Kappa Kappa Gamma',S
 42.022037 -93.6459495,
 42.0220244 -93.6459491,
 42.022028 -93.6457614,
-42.022028 -93.6457614))',4326));
+42.022028 -93.6457614))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Phi Kappa Psi',ST_GeomFromText('POLYGON((42.0199848 -93.6457586,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Phi Kappa Psi',ST_GeomFromText('POLYGON((42.0199848 -93.6457586,
 42.0198572 -93.6457595,
 42.019857 -93.6456987,
 42.0198229 -93.6456989,
@@ -4380,9 +4380,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Phi Kappa Psi',ST_Ge
 42.0200329 -93.6457707,
 42.0199848 -93.645771,
 42.0199848 -93.6457586,
-42.0199848 -93.6457586))',4326));
+42.0199848 -93.6457586))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Sigma Alpha Epsilon',ST_GeomFromText('POLYGON((42.0211932 -93.6459549,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Sigma Alpha Epsilon',ST_GeomFromText('POLYGON((42.0211932 -93.6459549,
 42.0211947 -93.645731,
 42.0212628 -93.6457319,
 42.0212639 -93.645572,
@@ -4399,9 +4399,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Sigma Alpha Epsilon'
 42.0212463 -93.6458797,
 42.0212458 -93.6459555,
 42.0211932 -93.6459549,
-42.0211932 -93.6459549))',4326));
+42.0211932 -93.6459549))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0209478 -93.6457034,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0209478 -93.6457034,
 42.0209457 -93.6461186,
 42.0209325 -93.6461184,
 42.0209323 -93.6461534,
@@ -4420,9 +4420,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0208384 -93.6457524,
 42.0208386 -93.6457024,
 42.0209478 -93.6457034,
-42.0209478 -93.6457034))',4326));
+42.0209478 -93.6457034))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0193186 -93.6458206,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0193186 -93.6458206,
 42.0194177 -93.6458185,
 42.0194162 -93.6456804,
 42.019317 -93.6456824,
@@ -4431,18 +4431,18 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0192961 -93.6457734,
 42.019318 -93.6457729,
 42.0193186 -93.6458206,
-42.0193186 -93.6458206))',4326));
+42.0193186 -93.6458206))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Alpha Sigma Phi',ST_GeomFromText('POLYGON((42.020809 -93.6469784,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Alpha Sigma Phi',ST_GeomFromText('POLYGON((42.020809 -93.6469784,
 42.0208169 -93.6466222,
 42.0206804 -93.6466167,
 42.0206764 -93.6468012,
 42.0206862 -93.6468016,
 42.0206825 -93.6469734,
 42.020809 -93.6469784,
-42.020809 -93.6469784))',4326));
+42.020809 -93.6469784))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Spruce Pointe',ST_GeomFromText('POLYGON((42.0194228 -93.6471623,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Spruce Pointe',ST_GeomFromText('POLYGON((42.0194228 -93.6471623,
 42.0194253 -93.6467395,
 42.0194569 -93.6467398,
 42.0194576 -93.6466152,
@@ -4455,9 +4455,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Spruce Pointe',ST_Ge
 42.0192703 -93.6470206,
 42.0192695 -93.6471607,
 42.0194228 -93.6471623,
-42.0194228 -93.6471623))',4326));
+42.0194228 -93.6471623))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Delta Gamma - Eta Psi',ST_GeomFromText('POLYGON((42.0199631 -93.6466783,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Delta Gamma - Eta Psi',ST_GeomFromText('POLYGON((42.0199631 -93.6466783,
 42.0198997 -93.6466776,
 42.0198999 -93.6466418,
 42.0198727 -93.6466415,
@@ -4472,9 +4472,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Delta Gamma - Eta Ps
 42.0198983 -93.6469179,
 42.0199617 -93.6469186,
 42.0199631 -93.6466783,
-42.0199631 -93.6466783))',4326));
+42.0199631 -93.6466783))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0212698 -93.6466341,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0212698 -93.6466341,
 42.0212689 -93.6467684,
 42.0212804 -93.6467685,
 42.0212794 -93.6469034,
@@ -4497,17 +4497,17 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0211938 -93.646621,
 42.0211937 -93.6466332,
 42.0212698 -93.6466341,
-42.0212698 -93.6466341))',4326));
+42.0212698 -93.6466341))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0194875 -93.6465865,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0194875 -93.6465865,
 42.0195783 -93.6465873,
 42.019665 -93.646588,
 42.0196621 -93.6472435,
 42.0194846 -93.6472421,
 42.0194875 -93.6465865,
-42.0194875 -93.6465865))',4326));
+42.0194875 -93.6465865))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Delta Sigma Phi',ST_GeomFromText('POLYGON((42.0203022 -93.6465939,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Delta Sigma Phi',ST_GeomFromText('POLYGON((42.0203022 -93.6465939,
 42.0203016 -93.6466485,
 42.0203108 -93.6466487,
 42.0203074 -93.6469368,
@@ -4516,27 +4516,27 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Delta Sigma Phi',ST_
 42.0201962 -93.6466674,
 42.0201971 -93.6465917,
 42.0203022 -93.6465939,
-42.0203022 -93.6465939))',4326));
+42.0203022 -93.6465939))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0200845 -93.6469397,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0200845 -93.6469397,
 42.020086 -93.6467537,
 42.0201294 -93.6467543,
 42.0201303 -93.6466415,
 42.0200098 -93.6466397,
 42.0200073 -93.6469386,
 42.0200845 -93.6469397,
-42.0200845 -93.6469397))',4326));
+42.0200845 -93.6469397))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0214728 -93.6469129,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0214728 -93.6469129,
 42.0214738 -93.6467582,
 42.02145 -93.6467579,
 42.0214515 -93.6465471,
 42.0213232 -93.6465455,
 42.0213207 -93.646911,
 42.0214728 -93.6469129,
-42.0214728 -93.6469129))',4326));
+42.0214728 -93.6469129))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Alpha Chi Omega',ST_GeomFromText('POLYGON((42.0205513 -93.6469509,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Alpha Chi Omega',ST_GeomFromText('POLYGON((42.0205513 -93.6469509,
 42.0204571 -93.6469491,
 42.0204564 -93.6470141,
 42.0203431 -93.6470119,
@@ -4545,9 +4545,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Alpha Chi Omega',ST_
 42.0204394 -93.6466808,
 42.0205542 -93.646683,
 42.0205513 -93.6469509,
-42.0205513 -93.6469509))',4326));
+42.0205513 -93.6469509))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0256769 -93.6552591,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0256769 -93.6552591,
 42.0256801 -93.6550591,
 42.0255079 -93.6550541,
 42.0255077 -93.6550686,
@@ -4556,39 +4556,39 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0255049 -93.6552411,
 42.0255047 -93.6552541,
 42.0256769 -93.6552591,
-42.0256769 -93.6552591))',4326));
+42.0256769 -93.6552591))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0208521 -93.6508715,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0208521 -93.6508715,
 42.0208567 -93.6502672,
 42.0205024 -93.6502623,
 42.0205007 -93.6504764,
 42.0206653 -93.6504787,
 42.0206623 -93.6508688,
 42.0208521 -93.6508715,
-42.0208521 -93.6508715))',4326));
+42.0208521 -93.6508715))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0278375 -93.6371465,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0278375 -93.6371465,
 42.0277423 -93.637147,
 42.0277419 -93.6369767,
 42.0278371 -93.6369763,
 42.0278375 -93.6371465,
-42.0278375 -93.6371465))',4326));
+42.0278375 -93.6371465))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.02522 -93.6364773,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.02522 -93.6364773,
 42.0252223 -93.6363194,
 42.0251746 -93.6363182,
 42.0251723 -93.636476,
 42.02522 -93.6364773,
-42.02522 -93.6364773))',4326));
+42.02522 -93.6364773))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0278277 -93.6369314,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0278277 -93.6369314,
 42.0276556 -93.6369304,
 42.0276587 -93.6359785,
 42.0278308 -93.6359795,
 42.0278277 -93.6369314,
-42.0278277 -93.6369314))',4326));
+42.0278277 -93.6369314))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0278164 -93.6392356,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0278164 -93.6392356,
 42.0278165 -93.6392115,
 42.0278184 -93.638751,
 42.0274158 -93.638748,
@@ -4596,9 +4596,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0275222 -93.6393613,
 42.0275228 -93.6392331,
 42.0278164 -93.6392356,
-42.0278164 -93.6392356))',4326));
+42.0278164 -93.6392356))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Adelante',ST_GeomFromText('POLYGON((42.0198606 -93.6494847,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Adelante',ST_GeomFromText('POLYGON((42.0198606 -93.6494847,
 42.0198582 -93.6498773,
 42.0196638 -93.6498752,
 42.0196641 -93.6498231,
@@ -4612,39 +4612,39 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Adelante',ST_GeomFro
 42.0197664 -93.6495762,
 42.019767 -93.6494837,
 42.0198606 -93.6494847,
-42.0198606 -93.6494847))',4326));
+42.0198606 -93.6494847))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0203003 -93.6494531,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0203003 -93.6494531,
 42.0201874 -93.6494523,
 42.0201855 -93.6499123,
 42.0202984 -93.6499132,
 42.0203003 -93.6494531,
-42.0203003 -93.6494531))',4326));
+42.0203003 -93.6494531))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0204891 -93.6498761,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0204891 -93.6498761,
 42.0203804 -93.6498749,
 42.0203815 -93.6496748,
 42.0204902 -93.6496759,
 42.0204891 -93.6498761,
-42.0204891 -93.6498761))',4326));
+42.0204891 -93.6498761))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.021102 -93.6513195,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.021102 -93.6513195,
 42.0212163 -93.6513195,
 42.0212163 -93.6516448,
 42.021102 -93.6516448,
 42.021102 -93.6513195,
-42.021102 -93.6513195))',4326));
+42.021102 -93.6513195))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0210876 -93.6511845,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0210876 -93.6511845,
 42.0210467 -93.6511842,
 42.0209784 -93.6511839,
 42.0209791 -93.6509767,
 42.0210883 -93.6509773,
 42.0210877 -93.651163,
 42.0210876 -93.6511845,
-42.0210876 -93.6511845))',4326));
+42.0210876 -93.6511845))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0213548 -93.6512901,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0213548 -93.6512901,
 42.0213552 -93.6511645,
 42.0211489 -93.6511634,
 42.0211487 -93.6512174,
@@ -4653,75 +4653,75 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0211482 -93.6512658,
 42.0211481 -93.651289,
 42.0213548 -93.6512901,
-42.0213548 -93.6512901))',4326));
+42.0213548 -93.6512901))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0210514 -93.6481645,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0210514 -93.6481645,
 42.0207074 -93.6481631,
 42.020707 -93.6483701,
 42.021051 -93.6483715,
 42.0210514 -93.6481645,
-42.0210514 -93.6481645))',4326));
+42.0210514 -93.6481645))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0198347 -93.6480916,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0198347 -93.6480916,
 42.0196899 -93.6480903,
 42.0196919 -93.647705,
 42.0198366 -93.6477063,
 42.0198347 -93.6480916,
-42.0198347 -93.6480916))',4326));
+42.0198347 -93.6480916))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0323331 -93.6459887,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0323331 -93.6459887,
 42.0322643 -93.6459887,
 42.0322643 -93.6456479,
 42.0323331 -93.6456479,
 42.0323331 -93.6459887,
-42.0323331 -93.6459887))',4326));
+42.0323331 -93.6459887))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0194582 -93.6476839,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0194582 -93.6476839,
 42.0194586 -93.6475358,
 42.0193841 -93.6475355,
 42.0193838 -93.6476836,
 42.0194582 -93.6476839,
-42.0194582 -93.6476839))',4326));
+42.0194582 -93.6476839))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0195504 -93.6473947,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0195504 -93.6473947,
 42.0194107 -93.6473973,
 42.0194098 -93.6473052,
 42.0195495 -93.6473026,
 42.0195504 -93.6473947,
-42.0195504 -93.6473947))',4326));
+42.0195504 -93.6473947))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0201501 -93.6507696,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0201501 -93.6507696,
 42.0201527 -93.6503129,
 42.0199745 -93.650311,
 42.0199718 -93.6507677,
 42.0201501 -93.6507696,
-42.0201501 -93.6507696))',4326));
+42.0201501 -93.6507696))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Elings Hall',ST_GeomFromText('POLYGON((42.0273058 -93.6529226,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Elings Hall',ST_GeomFromText('POLYGON((42.0273058 -93.6529226,
 42.0275084 -93.6530085,
 42.027518 -93.6525538,
 42.0275236 -93.6522916,
 42.0273038 -93.6522009,
 42.0273058 -93.6529226,
-42.0273058 -93.6529226))',4326));
+42.0273058 -93.6529226))',4326),'ingenuity');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Sukup Atrium',ST_GeomFromText('POLYGON((42.0275084 -93.6530085,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Sukup Atrium',ST_GeomFromText('POLYGON((42.0275084 -93.6530085,
 42.0276364 -93.6530628,
 42.0276492 -93.6530085,
 42.0275517 -93.6529722,
 42.0276561 -93.6525552,
 42.027518 -93.6525538,
 42.0275084 -93.6530085,
-42.0275084 -93.6530085))',4326));
+42.0275084 -93.6530085))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0229902 -93.6553442,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0229902 -93.6553442,
 42.0229898 -93.6551071,
 42.0230866 -93.6551068,
 42.023087 -93.6553439,
 42.0229902 -93.6553442,
-42.0229902 -93.6553442))',4326));
+42.0229902 -93.6553442))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0194578 -93.6504574,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0194578 -93.6504574,
 42.0194581 -93.6503376,
 42.0192294 -93.6503365,
 42.0192291 -93.6504527,
@@ -4732,25 +4732,25 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0194353 -93.6505019,
 42.0194354 -93.6504573,
 42.0194578 -93.6504574,
-42.0194578 -93.6504574))',4326));
+42.0194578 -93.6504574))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0226426 -93.6490604,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0226426 -93.6490604,
 42.0225107 -93.6490601,
 42.0223574 -93.6490598,
 42.0223562 -93.6500206,
 42.0226414 -93.6500213,
 42.0226426 -93.6490604,
-42.0226426 -93.6490604))',4326));
+42.0226426 -93.6490604))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Geoffroy Hall',ST_GeomFromText('POLYGON((42.022188 -93.6432031,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Geoffroy Hall',ST_GeomFromText('POLYGON((42.022188 -93.6432031,
 42.0219031 -93.6431865,
 42.0219093 -93.6420362,
 42.0225975 -93.6420776,
 42.0226114 -93.6432301,
 42.022188 -93.6432031,
-42.022188 -93.6432031))',4326));
+42.022188 -93.6432031))',4326),'bs');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('The Edge',ST_GeomFromText('POLYGON((42.021809 -93.6469585,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('The Edge',ST_GeomFromText('POLYGON((42.021809 -93.6469585,
 42.021808 -93.6467217,
 42.0216354 -93.646702,
 42.0216384 -93.6468804,
@@ -4759,24 +4759,24 @@ INSERT INTO building_locations (building_name,geo) VALUES ('The Edge',ST_GeomFro
 42.0219467 -93.6476915,
 42.0222512 -93.6469667,
 42.021809 -93.6469585,
-42.021809 -93.6469585))',4326));
+42.021809 -93.6469585))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Advanced Teaching and Research Building',ST_GeomFromText('POLYGON((42.0306733 -93.6458632,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Advanced Teaching and Research Building',ST_GeomFromText('POLYGON((42.0306733 -93.6458632,
 42.0306733 -93.6449593,
 42.0310479 -93.64497,
 42.0310499 -93.6458632,
 42.0306733 -93.6458632,
-42.0306733 -93.6458632))',4326));
+42.0306733 -93.6458632))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Bessey Hall Addition',ST_GeomFromText('POLYGON((42.0287069 -93.6441868,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Bessey Hall Addition',ST_GeomFromText('POLYGON((42.0287069 -93.6441868,
 42.0287089 -93.6438489,
 42.0282188 -93.6438596,
 42.0282205 -93.6441956,
 42.0284798 -93.6441922,
 42.0287069 -93.6441868,
-42.0287069 -93.6441868))',4326));
+42.0287069 -93.6441868))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Student Innovation Center',ST_GeomFromText('POLYGON((42.0276159 -93.651699,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Student Innovation Center',ST_GeomFromText('POLYGON((42.0276159 -93.651699,
 42.0276146 -93.6513231,
 42.0276114 -93.6504019,
 42.0272591 -93.6503957,
@@ -4787,18 +4787,18 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Student Innovation C
 42.0273001 -93.6516959,
 42.0274168 -93.6516928,
 42.0276159 -93.651699,
-42.0276159 -93.651699))',4326));
+42.0276159 -93.651699))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('2700 Lincoln Way',ST_GeomFromText('POLYGON((42.0226365 -93.6554731,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('2700 Lincoln Way',ST_GeomFromText('POLYGON((42.0226365 -93.6554731,
 42.0226359 -93.6551084,
 42.0226346 -93.6543654,
 42.0219511 -93.6543439,
 42.0219471 -93.6554624,
 42.0224791 -93.6554758,
 42.0226365 -93.6554731,
-42.0226365 -93.6554731))',4326));
+42.0226365 -93.6554731))',4326),'presentation');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0249985 -93.6545758,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0249985 -93.6545758,
 42.0248014 -93.6545737,
 42.0248017 -93.6545206,
 42.0245863 -93.6545182,
@@ -4829,9 +4829,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0250244 -93.6545866,
 42.0249984 -93.6545863,
 42.0249985 -93.6545758,
-42.0249985 -93.6545758))',4326));
+42.0249985 -93.6545758))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0239682 -93.6526134,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0239682 -93.6526134,
 42.0241059 -93.6525793,
 42.0241968 -93.6531394,
 42.0235353 -93.6531225,
@@ -4842,9 +4842,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0239015 -93.6526088,
 42.0239022 -93.6526196,
 42.0239682 -93.6526134,
-42.0239682 -93.6526134))',4326));
+42.0239682 -93.6526134))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0239696 -93.6526668,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0239696 -93.6526668,
 42.023903 -93.6526726,
 42.023903 -93.6526804,
 42.023857 -93.6526795,
@@ -4853,9 +4853,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0237496 -93.6529028,
 42.0239757 -93.6529006,
 42.0239696 -93.6526668,
-42.0239696 -93.6526668))',4326));
+42.0239696 -93.6526668))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.022384 -93.6526104,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.022384 -93.6526104,
 42.0223837 -93.6526915,
 42.0222769 -93.6526906,
 42.0222774 -93.6525704,
@@ -4866,9 +4866,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0224634 -93.6524652,
 42.0224336 -93.6526213,
 42.022384 -93.6526104,
-42.022384 -93.6526104))',4326));
+42.022384 -93.6526104))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0225336 -93.6529791,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0225336 -93.6529791,
 42.0221252 -93.6529846,
 42.0221213 -93.6524633,
 42.0221549 -93.6524629,
@@ -4891,9 +4891,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0224868 -93.652901,
 42.022533 -93.6529004,
 42.0225336 -93.6529791,
-42.0225336 -93.6529791))',4326));
+42.0225336 -93.6529791))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0294692 -93.6460575,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0294692 -93.6460575,
 42.0295312 -93.6460577,
 42.0295305 -93.6464744,
 42.0294881 -93.6464743,
@@ -4911,9 +4911,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0294364 -93.6459615,
 42.0294693 -93.6459616,
 42.0294692 -93.6460575,
-42.0294692 -93.6460575))',4326));
+42.0294692 -93.6460575))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0296186 -93.645113,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0296186 -93.645113,
 42.0295053 -93.6451121,
 42.0295041 -93.645392,
 42.0295036 -93.6455051,
@@ -4937,16 +4937,16 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0296704 -93.6451438,
 42.0296184 -93.6451433,
 42.0296186 -93.645113,
-42.0296186 -93.645113))',4326));
+42.0296186 -93.645113))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0293878 -93.6461842,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0293878 -93.6461842,
 42.0293008 -93.6461841,
 42.0293012 -93.6464492,
 42.0293879 -93.6464492,
 42.0293878 -93.6461842,
-42.0293878 -93.6461842))',4326));
+42.0293878 -93.6461842))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0296188 -93.6450704,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0296188 -93.6450704,
 42.0296192 -93.6449779,
 42.0298426 -93.6449797,
 42.0298422 -93.6450644,
@@ -4992,9 +4992,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.029478 -93.6450692,
 42.0295016 -93.6450694,
 42.0296188 -93.6450704,
-42.0296188 -93.6450704))',4326));
+42.0296188 -93.6450704))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0299854 -93.6455491,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0299854 -93.6455491,
 42.0300861 -93.6455499,
 42.030086 -93.6455538,
 42.0301976 -93.6455547,
@@ -5003,9 +5003,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.030086 -93.6451959,
 42.029987 -93.6451951,
 42.0299854 -93.6455491,
-42.0299854 -93.6455491))',4326));
+42.0299854 -93.6455491))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0266201 -93.6428336,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0266201 -93.6428336,
 42.02662 -93.642884,
 42.0266193 -93.6431534,
 42.0266975 -93.6431539,
@@ -5032,9 +5032,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0265003 -93.6425151,
 42.0264966 -93.6428309,
 42.0266201 -93.6428336,
-42.0266201 -93.6428336))',4326));
+42.0266201 -93.6428336))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0267471 -93.6427462,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0267471 -93.6427462,
 42.0270168 -93.642752,
 42.0270122 -93.6431348,
 42.0269816 -93.6431341,
@@ -5047,9 +5047,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0267605 -93.6431296,
 42.0267456 -93.6431295,
 42.0267471 -93.6427462,
-42.0267471 -93.6427462))',4326));
+42.0267471 -93.6427462))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Food Sciences Building',ST_GeomFromText('POLYGON((42.0266201 -93.6428336,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Food Sciences Building',ST_GeomFromText('POLYGON((42.0266201 -93.6428336,
 42.02662 -93.642884,
 42.0266193 -93.6431534,
 42.0266975 -93.6431539,
@@ -5090,9 +5090,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Food Sciences Buildi
 42.0267605 -93.6431296,
 42.0267456 -93.6431295,
 42.0267471 -93.6427462,
-42.0267471 -93.6427462))',4326));
+42.0267471 -93.6427462))',4326),'resolve');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Lagomarcino Hall',ST_GeomFromText('POLYGON((42.0296188 -93.6450704,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Lagomarcino Hall',ST_GeomFromText('POLYGON((42.0296188 -93.6450704,
 42.0296192 -93.6449779,
 42.0298426 -93.6449797,
 42.0298422 -93.6450644,
@@ -5173,9 +5173,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Lagomarcino Hall',ST
 42.0296704 -93.6451438,
 42.0296184 -93.6451433,
 42.0296186 -93.645113,
-42.0296186 -93.645113))',4326));
+42.0296186 -93.645113))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Martin Residence Hall',ST_GeomFromText('POLYGON((42.0239682 -93.6526134,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Martin Residence Hall',ST_GeomFromText('POLYGON((42.0239682 -93.6526134,
 42.0241059 -93.6525793,
 42.0241968 -93.6531394,
 42.0235353 -93.6531225,
@@ -5196,9 +5196,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Martin Residence Hal
 42.0237496 -93.6529028,
 42.0239757 -93.6529006,
 42.0239696 -93.6526668,
-42.0239696 -93.6526668))',4326));
+42.0239696 -93.6526668))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Science Hall',ST_GeomFromText('POLYGON((42.0294692 -93.6460575,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Science Hall',ST_GeomFromText('POLYGON((42.0294692 -93.6460575,
 42.0295312 -93.6460577,
 42.0295305 -93.6464744,
 42.0294881 -93.6464743,
@@ -5222,9 +5222,9 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Science Hall',ST_Geo
 42.0293012 -93.6464492,
 42.0293879 -93.6464492,
 42.0293878 -93.6461842,
-42.0293878 -93.6461842))',4326));
+42.0293878 -93.6461842))',4326),'critical_thinking');
 
-INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText('POLYGON((42.0225336 -93.6529791,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES (null,ST_GeomFromText('POLYGON((42.0225336 -93.6529791,
 42.0221252 -93.6529846,
 42.0221213 -93.6524633,
 42.0221549 -93.6524629,
@@ -5259,9 +5259,9 @@ INSERT INTO building_locations (building_name,geo) VALUES (null,ST_GeomFromText(
 42.0224634 -93.6524652,
 42.0224336 -93.6526213,
 42.022384 -93.6526104,
-42.022384 -93.6526104))',4326));
+42.022384 -93.6526104))',4326),'none');
 
-INSERT INTO building_locations (building_name,geo) VALUES ('Collegiate Presbyterian Church',ST_GeomFromText('POLYGON((42.0249985 -93.6545758,
+INSERT INTO building_locations (building_name,geo,earned_stat) VALUES ('Collegiate Presbyterian Church',ST_GeomFromText('POLYGON((42.0249985 -93.6545758,
 42.0248014 -93.6545737,
 42.0248017 -93.6545206,
 42.0245863 -93.6545182,
@@ -5292,5 +5292,5 @@ INSERT INTO building_locations (building_name,geo) VALUES ('Collegiate Presbyter
 42.0250244 -93.6545866,
 42.0249984 -93.6545863,
 42.0249985 -93.6545758,
-42.0249985 -93.6545758))',4326));
+42.0249985 -93.6545758))',4326),'resolve');
 

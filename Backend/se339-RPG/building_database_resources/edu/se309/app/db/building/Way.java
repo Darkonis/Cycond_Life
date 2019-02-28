@@ -1,6 +1,7 @@
 package edu.se309.app.db.building;
 
 import java.util.ArrayList;
+import edu.se309.app.db.building.Relation;;
 
 public class Way {
 	
@@ -38,8 +39,8 @@ public class Way {
 	@Override
 	public String toString() {
 		String outputNodes = nodeStringBuilder();
-		return "INSERT INTO building_locations (building_name,geo)"
-				+ " VALUES (" + name + ",ST_GeomFromText('POLYGON((" + outputNodes + "))',4326));";				
+		return "INSERT INTO building_locations (building_name,geo,earned_stat)"
+				+ " VALUES (" + name + ",ST_GeomFromText('POLYGON((" + outputNodes + "))',4326)," + Relation.getRandomStat(name) + ");";				
 	}
 	
 	

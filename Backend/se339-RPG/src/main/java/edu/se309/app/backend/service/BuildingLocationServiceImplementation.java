@@ -19,7 +19,7 @@ private BuildingLocationDAO buildingLocationDAO;
 	@Override
 	@Transactional
 	public String findBuildingStat(Point point) {
-		return buildingLocationDAO.findBuildingStat(point).getEarnedStat().name().toLowerCase();		
+		return buildingLocationDAO.findBuildingStat(point).getEarnedStat().toLowerCase();		
 	}
 
 }

@@ -1,6 +1,7 @@
 package edu.se309.app.db.building;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Relation {
 
@@ -42,10 +43,40 @@ public class Relation {
 	}
 	
 	@Override
-	public String toString() {
+	public String toString() {		
 		String innerNodes = innerStringBuilder();
-		return "INSERT INTO building_locations (building_name,geo)"
-				+ " VALUES (" + name + ",ST_GeomFromText('POLYGON((" + outer.nodeStringBuilder() +")" + innerNodes + ")',4326));";				
+		return "INSERT INTO building_locations (building_name,geo,earned_stat)"
+				+ " VALUES (" + name + ",ST_GeomFromText('POLYGON((" + outer.nodeStringBuilder() +")" + innerNodes + ")',4326)," + getRandomStat(name) + ");";				
+	}
+	
+	public static String getRandomStat(String name) {
+		if (name == "null" || name == null) {
+			return "'none'";
+		}
+		Random ran = new Random();
+		int statSelector = ran.nextInt(5);
+		String statName = "none";
+		switch (statSelector) {
+			case 0:
+				statName = "bs";
+				break;
+			case 1:
+				statName = "resolve";
+				break;
+			case 2:
+				statName = "critical_thinking";
+				break;
+			case 3:
+				statName = "ingenuity";
+				break;
+			case 4:
+				statName = "presentation";
+				break;			
+			default:
+				statName = "none";
+				break;
+		}
+		return "'" + statName + "'";
 	}
 	
 	
