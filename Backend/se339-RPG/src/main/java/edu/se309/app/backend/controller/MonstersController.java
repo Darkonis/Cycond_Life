@@ -1,9 +1,12 @@
-package edu.se309.app.backend.monsterspawn;
+package edu.se309.app.backend.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import edu.se309.app.backend.monsterspawn.Monsters;
+
+import edu.se309.app.backend.entity.Monster;
+import edu.se309.app.backend.repository.MonstersRepository;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,10 +42,10 @@ public class MonstersController
 	 * 		The html for the list of all monsters.
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/monster/list")
-	public List<Monsters> findAll()
+	public List<Monster> findAll()
 	{
 		logger.info("Entered into Controller Layer");
-		List<Monsters>result = monstersRepository.findAll();
+		List<Monster>result = monstersRepository.findAll();
 		logger.info("Number of Records Fetched:" + result.size());
 		return result;
 	}
@@ -64,7 +67,7 @@ public class MonstersController
         	{
         		double lat = (rand.nextInt()%3)/1000.0 + 42.0254;
         		double lon = (rand.nextInt()%3)/1000.0 - 93.6461;
-        		Monsters newMon = new Monsters();
+        		Monster newMon = new Monster();
                 newMon.setType(Math.abs(1));//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
                 newMon.setLon(lon);//sets the longitude for the monster
@@ -77,7 +80,7 @@ public class MonstersController
         	{
         		double lat = (rand.nextInt()%3)/1000.0 + 42.0267;
         		double lon = (rand.nextInt()%3)/1000.0 - 93.6512;
-        		Monsters newMon = new Monsters();
+        		Monster newMon = new Monster();
                 newMon.setType(2);//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
                 newMon.setLon(lon);//sets the longitude for the monster
@@ -90,7 +93,7 @@ public class MonstersController
         	{
         		double lat = (rand.nextInt()%3)/1000.0 + 42.0295;
         		double lon = (rand.nextInt()%3)/1000.0 - 93.6473;
-        		Monsters newMon = new Monsters();
+        		Monster newMon = new Monster();
                 newMon.setType(3);//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
                 newMon.setLon(lon);//sets the longitude for the monster
@@ -103,7 +106,7 @@ public class MonstersController
         	{
         		double lat = (rand.nextInt()%6)/1000.0 + 42.0308;
         		double lon = (rand.nextInt()%6)/1000.0 - 93.6536;
-        		Monsters newMon = new Monsters();
+        		Monster newMon = new Monster();
                 newMon.setType(4);//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
                 newMon.setLon(lon);//sets the longitude for the monster
@@ -116,7 +119,7 @@ public class MonstersController
         	{
         		double lat = (rand.nextInt()%3)/1000.0 + 42.0278;
         		double lon = (rand.nextInt()%3)/1000.0 - 93.6440;
-        		Monsters newMon = new Monsters();
+        		Monster newMon = new Monster();
                 newMon.setType(5);//sets the type for the monster
                 newMon.setLat(lat);//sets the latitude for the monster
                 newMon.setLon(lon);//sets the longitude for the monster
@@ -137,7 +140,7 @@ public class MonstersController
 	public  String findById(@PathVariable("monsterId") int id)
 	{
 		 logger.info("Entered into Controller Layer");
-		 Optional<Monsters> results = monstersRepository.findById(id); 
+		 Optional<Monster> results = monstersRepository.findById(id); 
 		 String s = "Monster Id: " + results.get().getId() + "<br>Monster Type: " + results.get().getType() + "<br>Monster Longitude: " +
 		 results.get().getLon() + "<br>Monster Latitude: " + results.get().getLat();
 		return s;

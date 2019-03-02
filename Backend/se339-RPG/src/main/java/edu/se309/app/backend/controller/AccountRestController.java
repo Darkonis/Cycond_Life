@@ -2,6 +2,7 @@ package edu.se309.app.backend.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -40,7 +41,7 @@ public class AccountRestController {
 	
 	@DeleteMapping("/accounts/{accountID}")
 	public String deleteAccount(@PathVariable int accountID) {
-		Account toBeDeletedAccount = accountService.findById(accountID);
+		Optional<Account> toBeDeletedAccount = accountService.findById(accountID);
 		if (toBeDeletedAccount == null) {
 			throw new RuntimeException("Invalid request: accountId not found: " + accountID);
 		} else {	
@@ -65,8 +66,8 @@ public class AccountRestController {
 	}
 	
 	@GetMapping("/accounts/{accountID}")
-	public Account getAccountByUsername(@PathVariable int accountID) {
-		Account account = accountService.findById(accountID);
+	public Optional<Account> getAccountByUsername(@PathVariable int accountID) {
+		Optional<Account> account = accountService.findById(accountID);
 		if (account == null) {
 			throw new RuntimeException("Invalid request: accountID not found: " + accountID);
 		} else {			

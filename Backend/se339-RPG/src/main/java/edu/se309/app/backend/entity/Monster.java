@@ -1,4 +1,4 @@
-package edu.se309.app.backend.monsterspawn;
+package edu.se309.app.backend.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +14,7 @@ import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name = "monsters")
-public class Monsters 
+public class Monster 
 {
 	/**
 	 * Monster Id primary way of identifying what monster is what.

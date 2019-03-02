@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Point;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.se309.app.backend.dao.BuildingLocationDAO;
+import edu.se309.app.backend.repository.BuildingLocationDAO;
 
 public class BuildingLocationServiceImplementation implements BuildingLocationService {	
 

@@ -1,58 +1,62 @@
 package edu.se309.app.backend.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.se309.app.backend.dao.AccountDAO;
 import edu.se309.app.backend.entity.Account;
+import edu.se309.app.backend.repository.AccountRepository;
+import edu.se309.app.backend.repository.AccountRepositoryCustom;
 
 @Service
 public class AccountServiceImplementation implements AccountService {
 
-	private AccountDAO accountDAO;
+	private AccountRepository accountRepository;
+	private AccountRepositoryCustom accountRepositoryCustom;
 	
 	@Autowired
-	public AccountServiceImplementation(AccountDAO accountDAO) {
-		this.accountDAO = accountDAO;
+	public AccountServiceImplementation(AccountRepository accountRepository, AccountRepositoryCustom accountRepositoryCustom) {
+		this.accountRepository = accountRepository;
+		this.accountRepositoryCustom = accountRepositoryCustom;		
 	}
 	
 	@Override
 	@Transactional
 	public void deleteById(int accountId) {
-		accountDAO.deleteById(accountId);
+		accountRepository.deleteById(accountId);
 	}
 
 	@Override
 	@Transactional
 	public List<Account> findAll() {		
-		return accountDAO.findAll();
+		return accountRepository.findAll();
 	}
 
 	@Override
 	@Transactional
 	public Account findByEmail(String email) {
-		return accountDAO.findByEmail(email);
+		return accountRepositoryCustom.findByEmail(email);
 	}
 
 	@Override
 	@Transactional
-	public Account findById(int accountId) {		
-		return accountDAO.findById(accountId);
+	public Optional<Account> findById(int accountId) {		
+		return accountRepository.findById(accountId);
 	}
 
 	@Override
 	@Transactional
 	public Account findByUsername(String username) {
-		return accountDAO.findByUsername(username);
+		return accountRepositoryCustom.findByUsername(username);
 	}
 
 	@Override
 	@Transactional
 	public void save(Account newAccount) {
-		accountDAO.save(newAccount);
+		accountRepository.save(newAccount);
 	}
 
 }
