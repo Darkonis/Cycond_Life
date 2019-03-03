@@ -1,6 +1,4 @@
-package edu.se309.app.backend.repository;
-
-import java.util.List;
+package edu.se309.app.backend.repository.Interfaces;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

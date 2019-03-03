@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.se309.app.backend.entity.Account;
+import edu.se309.app.backend.repository.Interfaces.AccountRepositoryCustom;
 
 @Repository
 public class AccountRepositoryImplementation implements AccountRepositoryCustom {

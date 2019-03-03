@@ -1,8 +1,8 @@
-package edu.se309.app.backend.service;
+package edu.se309.app.backend.service.interfaces;
 
 import org.springframework.data.geo.Point;
 
 public interface BuildingLocationService {
 	
-	public String findBuildingStat(Point point);
+	String findBuildingStat(Point point);
 }
