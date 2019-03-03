@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.se309.app.backend.entity.Account;
-import edu.se309.app.backend.repository.AccountRepository;
-import edu.se309.app.backend.repository.AccountRepositoryCustom;
+import edu.se309.app.backend.repository.Interfaces.AccountRepository;
+import edu.se309.app.backend.repository.Interfaces.AccountRepositoryCustom;
+import edu.se309.app.backend.service.interfaces.AccountService;
 
 @Service
 public class AccountServiceImplementation implements AccountService {

@@ -1,4 +1,4 @@
-package edu.se309.app.backend.repository;
+package edu.se309.app.backend.repository.Interfaces;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,12 +11,15 @@ import edu.se309.app.backend.entity.Monster;
 @Repository
 public interface MonstersRepository extends JpaRepository<Monster, Integer> {
 		
-		List<Monster> findAll();
+		@Override
+		void deleteAll();
 		
-		Monster save(Monster monster);
+		@Override
+		List<Monster> findAll();
 		
 		Optional<Monster> findById(int id);
 		
-		void deleteAll();
+		@Override
+		Monster save(Monster monster);
 		
 }
