@@ -5,5 +5,5 @@ import edu.se309.app.backend.entity.UserStat;
 
 public interface UserStatRepositoryCustom {
 
-	UserStat findByAccount(Account account);
+	UserStat findByAccount(Integer account);
 }

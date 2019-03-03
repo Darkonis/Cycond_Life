@@ -9,8 +9,9 @@ import edu.se309.app.backend.entity.UserStat;
 public interface UserStatService {
 	
 	List<UserStat> findAll();	
-	void save(UserStat newUserStat);
+	void save(UserStat newUserStat);	
 	Optional<UserStat> findById(int userStatId);
+	UserStat findByAccountId(Integer accountId);
 	
 
 }

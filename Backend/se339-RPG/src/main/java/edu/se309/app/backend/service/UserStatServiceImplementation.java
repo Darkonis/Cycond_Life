@@ -32,6 +32,12 @@ public class UserStatServiceImplementation implements UserStatService {
 		return userStatRepository.findAll();
 	}
 	
+	@Override
+	@Transactional
+	public UserStat findByAccountId(Integer accountId) {
+		
+		return userStatRepository.findByAccount(accountId);
+	}
 	
 
 	@Override

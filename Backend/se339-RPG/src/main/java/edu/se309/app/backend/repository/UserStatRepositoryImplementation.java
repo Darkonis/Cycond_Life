@@ -22,7 +22,7 @@ private EntityManager entityManager;
 	}
 
 	@Override
-	public UserStat findByAccount(Account account) {
+	public UserStat findByAccount(Integer account) {
 		Session currentSession = entityManager.unwrap(Session.class);
 		
 		Query<UserStat> query = 
