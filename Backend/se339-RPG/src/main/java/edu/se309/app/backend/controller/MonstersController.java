@@ -51,7 +51,7 @@ public class MonstersController
 	 * @return
 	 * 			The monster's data
 	 */
-	@GetMapping("list/{monsterId}")
+	@GetMapping("/list/{monsterId}")
 	public Optional<Monster> findById(@PathVariable("monsterId") int id)
 	{
 		 logger.info("Entered into Controller Layer");
