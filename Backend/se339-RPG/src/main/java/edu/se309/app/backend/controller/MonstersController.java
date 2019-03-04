@@ -37,7 +37,7 @@ public class MonstersController
 	 * 		The html for the list of all monsters.
 	 */
 	@GetMapping("/list")
-	public List<Monsters> findAll()
+	public List<Monster> findAll()
 	{
 		logger.info("Entered into Controller Layer");
 		List<Monster>result = monstersRepository.findAll();
