@@ -20,6 +20,9 @@ public class MonsterStat
 	@Column(name = "name")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private String name;
+	@Column(name = "hp")
+	@NotFound(action = NotFoundAction.IGNORE)
+	private Integer hp;
 	
 	@Column(name = "attackOne")
 	@NotFound(action = NotFoundAction.IGNORE)
@@ -36,4 +39,21 @@ public class MonsterStat
 	@Column(name = "attackFour")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private Integer attackFour;
+	
+	public Integer getId()
+	{
+		return id;
+	}
+	public void setId(Integer id)
+	{
+		this.id = id;
+	}
+	public String getName()
+	{
+		return name;
+	}
+	public void setName(String name)
+	{
+		this.name = name;
+	}
 }
