@@ -3,17 +3,14 @@ package edu.se309.app.backend.controller;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import edu.se309.app.backend.entity.Monster;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-<<<<<<< HEAD:Backend/se339-RPG/src/main/java/edu/se309/app/backend/monsterspawn/MonstersController.java
-import edu.se309.app.backend.monsterspawn.Monsters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-=======
 import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> 5e7889c08f3e8b96835339a9c7195caff3528b13:Backend/se339-RPG/src/main/java/edu/se309/app/backend/controller/MonstersController.java
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -35,31 +32,12 @@ public class MonstersController
 	private final Logger logger = LoggerFactory.getLogger(MonstersController.class);
 	
 	/**
-<<<<<<< HEAD:Backend/se339-RPG/src/main/java/edu/se309/app/backend/monsterspawn/MonstersController.java
-	 * The base page, used for navigation
-	 * @return
-	 * 		The html for the sub-menu
-	 */
-	@GetMapping("/welcome")
-	public String welcome()
-	{
-		return "Welcome to the monster controller<br><br><a href=\"http://localhost:8080/monster/list\">List of Current Monsters</a>"
-				+ "<br><a href=\"http://localhost:8080/monster/generate\">Generate new list</a>";
-	}
-	/**
-=======
->>>>>>> 5e7889c08f3e8b96835339a9c7195caff3528b13:Backend/se339-RPG/src/main/java/edu/se309/app/backend/controller/MonstersController.java
 	 * Lists the current monsters in a html form for testing.
 	 * @return
 	 * 		The html for the list of all monsters.
 	 */
-<<<<<<< HEAD:Backend/se339-RPG/src/main/java/edu/se309/app/backend/monsterspawn/MonstersController.java
 	@GetMapping("/list")
 	public List<Monsters> findAll()
-=======
-	@RequestMapping(method = RequestMethod.GET, path = "/monster/list")
-	public List<Monster> findAll()
->>>>>>> 5e7889c08f3e8b96835339a9c7195caff3528b13:Backend/se339-RPG/src/main/java/edu/se309/app/backend/controller/MonstersController.java
 	{
 		logger.info("Entered into Controller Layer");
 		List<Monster>result = monstersRepository.findAll();
@@ -73,14 +51,12 @@ public class MonstersController
 	 * @return
 	 * 			The monster's data
 	 */
-	@RequestMapping(method = RequestMethod.GET, path = "/monster/list/{monsterId}")
-	public  String findById(@PathVariable("monsterId") int id)
+	@GetMapping("list/{monsterId}")
+	public Optional<Monster> findById(@PathVariable("monsterId") int id)
 	{
 		 logger.info("Entered into Controller Layer");
 		 Optional<Monster> results = monstersRepository.findById(id); 
-		 String s = "Monster Id: " + results.get().getId() + "<br>Monster Type: " + results.get().getType() + "<br>Monster Longitude: " +
-		 results.get().getLon() + "<br>Monster Latitude: " + results.get().getLat();
-		return s;
+		 return results;
 	}
 	
 	/**
@@ -161,43 +137,5 @@ public class MonstersController
                 monstersRepository.save(newMon);//saves the monster to the sql list
         	}
 	return "Finished<br><br><a href=\"http://localhost:8080/monster\">return</a><br><a href=\"http://localhost:8080/monster/list\">List of Current Monsters</a>";
-	}
-<<<<<<< HEAD:Backend/se339-RPG/src/main/java/edu/se309/app/backend/monsterspawn/MonstersController.java
-	/**
-	 * View a specific monster's data
-	 * @param id 
-	 * 			A monster's id
-	 * @return
-	 * 			The monster's data
-	 */
-	@GetMapping("/list/{monsterId}")
-	public  String findById(@PathVariable("monsterId") int id)
-	{
-		 logger.info("Entered into Controller Layer");
-		 Optional<Monsters> results = monstersRepository.findById(id); 
-		 String s = "Monster Id: " + results.get().getId() + "<br>Monster Type: " + results.get().getType() + "<br>Monster Longitude: " +
-		 results.get().getLon() + "<br>Monster Latitude: " + results.get().getLat();
-		return s;
-	}
-	
-	@PostMapping("/generate/set")
-=======
-	@RequestMapping(method = RequestMethod.POST, path = "/monster/generate/set")
->>>>>>> 5e7889c08f3e8b96835339a9c7195caff3528b13:Backend/se339-RPG/src/main/java/edu/se309/app/backend/controller/MonstersController.java
-	public String setMonster(double lon, double lat, String type)
-	{
-		return "";
-	}
-	
-	/**
-	 * The base page, used for navigation
-	 * @return
-	 * 		The html for the sub-menu
-	 */
-	@RequestMapping(method = RequestMethod.GET, path = "/monster")
-	public String welcome()
-	{
-		return "Welcome to the monster controller<br><br><a href=\"http://localhost:8080/monster/list\">List of Current Monsters</a>"
-				+ "<br><a href=\"http://localhost:8080/monster/generate\">Generate new list</a>";
 	}
 }
