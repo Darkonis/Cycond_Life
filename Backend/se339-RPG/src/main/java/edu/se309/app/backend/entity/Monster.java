@@ -1,10 +1,8 @@
-package edu.se309.app.backend.monsterspawn;
+package edu.se309.app.backend.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
 import javax.persistence.Id;
-
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
@@ -14,7 +12,7 @@ import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name = "monsters")
-public class Monsters 
+public class Monster 
 {
 	/**
 	 * Monster Id primary way of identifying what monster is what.
@@ -54,31 +52,13 @@ public class Monsters
 		return id;
 	}
 	/**
-	 * Sets a monster's id to a new id.
-	 * @param newId
-	 * 		The new id for the given monster.
-	 */
-	public void setId(Integer newId)
-	{
-		id = newId;
-	}
-	/**
-	 * Returns the type of monster the current monster is.
+	 * Returns the monster's latitude.
 	 * @return
-	 * 		The type of monster the current monster is.
+	 * 		The monster's latitude.
 	 */
-	public Integer getType()
+	public double getLat()
 	{
-		return type;
-	}
-	/**
-	 * Sets a monster's type to a new type
-	 * @param newType
-	 * 		The new type for the given monster
-	 */
-	public void setType(Integer newType)
-	{
-		type = newType;
+		return latitude;
 	}
 	/**
 	 * Returns the longitude for the monster
@@ -90,22 +70,22 @@ public class Monsters
 		return longitude;
 	}
 	/**
-	 * Sets the monster's longitude to a new longitude
-	 * @param newLon
-	 * 		The new longitude for the given monster
+	 * Returns the type of monster the current monster is.
+	 * @return
+	 * 		The type of monster the current monster is.
 	 */
-	public void setLon(Double newLon)
+	public Integer getType()
 	{
-		longitude = newLon;
+		return type;
 	}
 	/**
-	 * Returns the monster's latitude.
-	 * @return
-	 * 		The monster's latitude.
+	 * Sets a monster's id to a new id.
+	 * @param newId
+	 * 		The new id for the given monster.
 	 */
-	public double getLat()
+	public void setId(Integer newId)
 	{
-		return latitude;
+		id = newId;
 	}
 	/**
 	 * Sets the monster's latitude to a new latitude
@@ -115,6 +95,24 @@ public class Monsters
 	public void setLat(Double newLat)
 	{
 		latitude = newLat;
+	}
+	/**
+	 * Sets the monster's longitude to a new longitude
+	 * @param newLon
+	 * 		The new longitude for the given monster
+	 */
+	public void setLon(Double newLon)
+	{
+		longitude = newLon;
+	}
+	/**
+	 * Sets a monster's type to a new type
+	 * @param newType
+	 * 		The new type for the given monster
+	 */
+	public void setType(Integer newType)
+	{
+		type = newType;
 	}
 	
 }

@@ -1,7 +1,6 @@
 package edu.se309.app.db.building;
 
-import java.util.ArrayList;
-import edu.se309.app.db.building.Relation;;
+import java.util.ArrayList;;
 
 public class Way {
 	

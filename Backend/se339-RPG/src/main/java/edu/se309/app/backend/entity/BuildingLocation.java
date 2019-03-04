@@ -38,26 +38,26 @@ public class BuildingLocation {
 		return buildingId;
 	}
 
-	public void setBuildingId(int buildingId) {
-		this.buildingId = buildingId;
+	public String getEarnedStat() {
+		return earnedStat;
 	}
 
 	public Polygon getGeo() {
 		return geo;
 	}
 
-	public void setGeo(Polygon geo) {
-		this.geo = geo;
-	}
-	
-	
-	public String getEarnedStat() {
-		return earnedStat;
+	public void setBuildingId(int buildingId) {
+		this.buildingId = buildingId;
 	}
 	
 	
 	public void setEarnedStat(String earnedStat) {
 		this.earnedStat = earnedStat;
+	}
+	
+	
+	public void setGeo(Polygon geo) {
+		this.geo = geo;
 	}
 	
 	

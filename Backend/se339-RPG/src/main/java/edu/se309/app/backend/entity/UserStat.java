@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="stats")
 public class UserStat {
@@ -34,6 +36,7 @@ public class UserStat {
 	@Column(name="presentation",columnDefinition = "UNSIGNED INT(11)")
 	private int presentation;
 	
+	@JsonIgnore
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "account_id")
 	private Account account;

@@ -1,4 +1,4 @@
-package edu.se309.app.backend.dao;
+package edu.se309.app.backend.repository.Interfaces;
 
 import org.springframework.data.geo.Point;
 
