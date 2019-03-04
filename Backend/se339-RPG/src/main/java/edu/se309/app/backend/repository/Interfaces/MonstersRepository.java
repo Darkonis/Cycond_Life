@@ -17,6 +17,7 @@ public interface MonstersRepository extends JpaRepository<Monster, Integer> {
 		@Override
 		List<Monster> findAll();
 		
+		
 		Optional<Monster> findById(int id);
 		
 		@Override
