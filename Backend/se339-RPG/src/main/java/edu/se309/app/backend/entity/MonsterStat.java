@@ -1,5 +1,7 @@
 package edu.se309.app.backend.entity;
 
+import java.util.Random;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,6 +22,7 @@ public class MonsterStat
 	@Column(name = "name")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private String name;
+	
 	@Column(name = "hp")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private Integer hp;
@@ -55,5 +58,51 @@ public class MonsterStat
 	public void setName(String name)
 	{
 		this.name = name;
+	}
+	public Integer getHp()
+	{
+		return hp;
+	}
+	public void setHp(Integer hp)
+	{
+		this.hp = hp;
+	}
+	public Integer getAttackOne()
+	{
+		return attackOne;
+	}
+	public void setAttackOne(Integer attackOne)
+	{
+		this.attackOne = attackOne;
+	}
+	public Integer getAttackTwo()
+	{
+		return attackTwo;
+	}
+	public void setAttackTwo(Integer attackTwo)
+	{
+		this.attackTwo = attackTwo;
+	}
+	public Integer getAttackThree()
+	{
+		return attackThree;
+	}
+	public void setAttackThree(Integer attackThree)
+	{
+		this.attackThree = attackThree;
+	}
+	public Integer getAttackFour()
+	{
+		return attackFour;
+	}
+	public void setAttackFour(Integer attackFour)
+	{
+		this.attackFour = attackFour;
+	}
+	public Integer getRandomAttack()
+	{
+		Random rand = new Random(0);
+		int attack = Math.abs(rand.nextInt()%4+1);
+		return attack;
 	}
 }
