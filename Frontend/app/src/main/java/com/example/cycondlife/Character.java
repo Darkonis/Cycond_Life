@@ -7,7 +7,7 @@ public class Character {
     private boolean isPlayer;
     private double lat;
     private double lng;
-    private String name;
+    private String name = "tmp";
     //potentially move to an enum array
     /*
     the ability to quickly and rapidly confuse your opponent (attack)
@@ -17,10 +17,12 @@ public class Character {
         ones determination in combat basically hp
      */
     private int resolve;
+    private int max_resolve;
     private int tinkering;
     private int critical_thinking;
     private int presentation;
     private String major ="Student";
+    private int tinkering_points;
     //the distance monsters will appear
     private double visual_range=.5;
     Character()
@@ -42,7 +44,7 @@ public class Character {
         resolve=100;
         this.lat=lat;
         this.lng=lng;
-
+        name="tmp";
 
     }
     Character(boolean isPlayer,double lat,double longitude,int attack)
@@ -89,4 +91,21 @@ public class Character {
     }
     public int getResolve() {return resolve;}
     public void setResolve (int i) {resolve=i;}
+    /*
+     private int BS
+    private int resolve;
+    private int max_resolve;
+    private int tinkering;
+    private int critical_thinking;
+    private int presentation;
+    private String major ="Student";
+     */
+    public String getName(){return name;}
+    public int getBS(){return BS;}
+    public String getMajor(){return major;}
+    public int getMax_resolve(){return max_resolve;}
+    public int getTinkering(){return tinkering;}
+    public int getCritical_thinking(){return critical_thinking;}
+    public int getPresentation(){return presentation;}
+
 }

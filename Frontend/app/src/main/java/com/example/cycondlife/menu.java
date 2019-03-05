@@ -23,7 +23,7 @@ public class menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        pull_monster_map();
+        //pull_monster_map();
         //button object creations
         Button stats = findViewById(R.id.stats);
         Button inventory = findViewById(R.id.inventory);
@@ -31,7 +31,13 @@ public class menu extends AppCompatActivity {
         Button friends = findViewById(R.id.friends);
         Button map = findViewById(R.id.map);
         Button dev_menu = findViewById(R.id.dev_menu);
-
+        stats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openStats= new Intent(menu.this,stats_menu.class);
+                startActivity(openStats);
+            }
+        });
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
