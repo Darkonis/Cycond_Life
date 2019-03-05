@@ -108,7 +108,7 @@ public class Login extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
 
-                                fail.setVisibility(View.VISIBLE);   //Should only display on codition of fail, will be changed
+                                fail.setVisibility(View.VISIBLE);   //Should only display on condition of fail, will be changed
                             }
                         },
                         new Response.ErrorListener() {
