@@ -47,10 +47,10 @@ public class MonstersController
 	 * 			The monster's data
 	 */
 	@GetMapping("/list/{monsterId}")
-	public Monster findById(@PathVariable("monsterId") int id)
+	public Monster findById(@PathVariable("monsterId")Integer id)
 	{
-		 logger.info("Entered into Controller Layer");
-		 Monster results = monstersRepository.getOne(id); 
+		logger.info("Entered into Controller Layer");
+		Monster results = monstersRepository.getOne(id); 
 		return results;
 	}
 	

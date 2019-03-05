@@ -27,19 +27,19 @@ public class MonsterStat
 	@NotFound(action = NotFoundAction.IGNORE)
 	private Integer hp;
 	
-	@Column(name = "attackOne")
+	@Column(name = "attack_one")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private Integer attackOne;
 	
-	@Column(name = "attackTwo")
+	@Column(name = "attack_two")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private Integer attackTwo;
 	
-	@Column(name = "attackThree")
+	@Column(name = "attack_three")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private Integer attackThree;
 	
-	@Column(name = "attackFour")
+	@Column(name = "attack_four")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private Integer attackFour;
 	
@@ -99,6 +99,7 @@ public class MonsterStat
 	{
 		this.attackFour = attackFour;
 	}
+	
 	public Integer getRandomAttack()
 	{
 		Random rand = new Random(0);

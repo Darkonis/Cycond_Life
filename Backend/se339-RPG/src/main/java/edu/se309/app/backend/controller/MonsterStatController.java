@@ -35,7 +35,7 @@ public class MonsterStatController
 	}
 	
 	@GetMapping("/list/{monsterStatId}")
-	public MonsterStat findById(@PathVariable("monsterStatId")int id)
+	public MonsterStat findById(@PathVariable("monsterStatId")Integer id)
 	{
 		 logger.info("Entered into Controller Layer");
 		 MonsterStat results = monsterStatRepository.getOne(id); 
