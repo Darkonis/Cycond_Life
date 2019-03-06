@@ -4,10 +4,10 @@ public class Character {
     /*
     basic stats and info
      */
-    private boolean isPlayer;
-    private double lat;
-    private double lng;
-    private String name = "tmp";
+    protected boolean isPlayer;
+    protected double lat;
+    protected double lng;
+    protected String name = "tmp";
     //potentially move to an enum array
     /*
     the ability to quickly and rapidly confuse your opponent (attack)
