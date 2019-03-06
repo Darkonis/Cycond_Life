@@ -105,7 +105,7 @@ public class Json_handler {
         @Override
         protected String doInBackground(String... urls) {
             try {
-                URL url = new URL("http://cs309-sd-6.misc.iastate.edu:8080/api/accountshttp://cs309-sd-6.misc.iastate.edu:8080/api/accounts");
+                URL url = new URL("http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");

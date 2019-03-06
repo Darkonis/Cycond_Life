@@ -58,7 +58,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         if(g==null) {
             g = new Game(mMap);
-            g.generate_mMap();
+   //         g.generate_mMap();
         }
         //Initializing googleApiClient
         googleApiClient = new GoogleApiClient.Builder(this)
@@ -138,9 +138,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 .position(latLng)
                                 .draggable(true)
                                 .title("You are here!!!!"));
-                        for(int i=0;i<g.num_monsters;i++)
+                        for(int i=0;i<Game.num_monsters;i++)
                         {
-                            if(g.monster_map.get(i).getResolve()<=0)
+                            if(Game.monster_map.get(i).getResolve()<=0)
                             {
                                 continue;
                             }
@@ -181,11 +181,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Log.i("Cycond Life","LAT lang ="+latLng.latitude+" "+latLng.longitude);
         Character opponent;
         if(player.getResolve()<=0) return;
-        for(int i=0;i<g.num_monsters;i++)
+        for(int i=0;i<Game.num_monsters;i++)
         {
-            if(Math.abs(Math.abs(g.monster_map.get(i).get_longitude())-Math.abs(latLng.longitude))<=.001&&Math.abs(Math.abs(g.monster_map.get(i).get_latitude())-Math.abs(latLng.latitude))<=.001)
+            if(Math.abs(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(latLng.longitude))<=.001&&Math.abs(Math.abs(g.monster_map.get(i).get_latitude())-Math.abs(latLng.latitude))<=.001)
             {
-                opponent=g.monster_map.get(i);
+                opponent=Game.monster_map.get(i);
                 Combat.set_combatants(opponent,g);
                 found=true;
                 break;

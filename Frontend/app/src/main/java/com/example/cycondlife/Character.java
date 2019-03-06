@@ -37,6 +37,15 @@ public class Character {
     /*
     creates a generic monster for testing
      */
+    public Character(int id, int type, double lat,double lng)
+    {
+        isPlayer=false;
+        BS=10;
+        resolve=100;
+        this.lat=lat;
+        this.lng=lng;
+        name = "Monster:"+id;
+    }
     public Character(double lat,double lng)
     {
         isPlayer=false;
