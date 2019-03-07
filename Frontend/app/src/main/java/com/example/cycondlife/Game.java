@@ -25,28 +25,34 @@ import org.json.JSONObject;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
-import edu.se309.app.backend.monsterspawn.*;
+//import edu.se309.app.backend.monsterspawn.*;
 
 public class Game {
     //TODO make all the rest control from here
-    public ArrayList<Character> monster_map = new ArrayList<>();
+    public static ArrayList<Character> monster_map = new ArrayList<>();
     public static final Player player = Player.get_instance();
     //how large the generated area should be
     double world_bounds = .2;
     GoogleMap mMap;
-    int num_monsters = 0;
+   static int num_monsters = 0;
     //TODO make this based of time
     Random rand = new Random(0);
 
     Game(GoogleMap mMap) {
         this.mMap = mMap;
     }
+    @Deprecated
     void generate_mMap() {
 
         while (num_monsters < 200) {
             generate_monster();
         }
     }
+    static void add_monster(Character c)
+    {
+        monster_map.add(c);
+    }
+    @Deprecated
     void generate_monster() {
         boolean valid = false;
         while (!valid) {
