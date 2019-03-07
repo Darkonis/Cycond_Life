@@ -3,12 +3,17 @@ package edu.se309.app.backend.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.Column;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.se309.app.backend.entity.Account;
 import edu.se309.app.backend.entity.UserStat;
 import edu.se309.app.backend.service.interfaces.UserStatService;
 
@@ -47,6 +52,13 @@ public class UserStatsRestController {
 			return userStat;
 		}	
 	}
+	
+	@PutMapping("/change")
+	public UserStat updateAccount(@RequestBody UserStat userStat) {
+		userStatService.save(userStat);
+		return userStat;
+	}
+	
 	
 
 }

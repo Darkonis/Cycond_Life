@@ -45,7 +45,7 @@ public class MonstersController
 	 * 			The monster's data
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/monster/list/{monsterId}")
-	public  String findById(@PathVariable("monsterId") int id)
+	public String findById(@PathVariable("monsterId") int id)
 	{
 		 logger.info("Entered into Controller Layer");
 		 Optional<Monster> results = monstersRepository.findById(id); 

@@ -52,6 +52,8 @@ public class UserStatServiceImplementation implements UserStatService {
 	public void save(UserStat newUserStat) {
 		userStatRepository.save(newUserStat);
 	}
+
+	
 	
 	
 
