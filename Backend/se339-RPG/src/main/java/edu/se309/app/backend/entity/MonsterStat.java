@@ -43,6 +43,22 @@ public class MonsterStat
 	@NotFound(action = NotFoundAction.IGNORE)
 	private Integer attackFour;
 	
+	@Column(name = "attack_percent_one")
+	@NotFound(action = NotFoundAction.IGNORE)
+	private Integer attackPercentOne;
+	
+	@Column(name = "attack_percent_two")
+	@NotFound(action = NotFoundAction.IGNORE)
+	private Integer attackPercentTwo;
+	
+	@Column(name = "attack_percent_three")
+	@NotFound(action = NotFoundAction.IGNORE)
+	private Integer attackPercentThree;
+	
+	@Column(name = "attack_percent_four")
+	@NotFound(action = NotFoundAction.IGNORE)
+	private Integer attackPercentFour;
+	
 	public Integer getId()
 	{
 		return id;
@@ -99,11 +115,62 @@ public class MonsterStat
 	{
 		this.attackFour = attackFour;
 	}
-	
+	public Integer getAttackPercentOne()
+	{
+		return attackPercentOne;
+	}
+	public void setAttackPercentOne(Integer attackPercentOne)
+	{
+		this.attackPercentOne = attackPercentOne;
+	}
+	public Integer getAttackPercentTwo()
+	{
+		return attackPercentTwo;
+	}
+	public void setAttackPercentTwo(Integer attackPercentTwo)
+	{
+		this.attackPercentTwo = attackPercentTwo;
+	}
+	public Integer getAttackPercentThree()
+	{
+		return attackPercentThree;
+	}
+	public void setAttackPercentThree(Integer attackPercentThree)
+	{
+		this.attackPercentThree = attackPercentThree;
+	}
+	public Integer getAttackPercentFour()
+	{
+		return attackPercentFour;
+	}
+	public void setAttackPercentFour(Integer attackPercentFour)
+	{
+		this.attackPercentFour = attackPercentFour;
+	}
 	public Integer getRandomAttack()
 	{
 		Random rand = new Random(0);
-		int attack = Math.abs(rand.nextInt()%4+1);
-		return attack;
+		int attack = Math.abs(rand.nextInt()%100);
+		int firstBarrier = this.getAttackPercentOne();
+		int secondBarrier = firstBarrier + this.getAttackPercentTwo();
+		int thirdBarrier = secondBarrier + this.getAttackPercentThree();
+		int fourthBarrier = thirdBarrier + this.getAttackPercentFour();
+		if(attack < firstBarrier)
+		{
+			return this.getAttackOne();
+		}
+		else if(attack < secondBarrier)
+		{
+			return this.getAttackTwo();
+		}
+		else if(attack < thirdBarrier)
+		{
+			return this.getAttackThree();
+		}
+		else if(attack < fourthBarrier)
+		{
+			return this.getAttackFour();
+		}
+		return 0;
 	}
 }

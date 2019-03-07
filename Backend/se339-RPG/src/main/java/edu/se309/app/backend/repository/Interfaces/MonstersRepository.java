@@ -1,6 +1,7 @@
 package edu.se309.app.backend.repository.Interfaces;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -17,7 +18,7 @@ public interface MonstersRepository extends JpaRepository<Monster, Integer> {
 		List<Monster> findAll();
 		
 		@Override
-		Monster getOne(Integer id);
+		Optional<Monster> findById(Integer id);
 		
 		@Override
 		Monster save(Monster monster);

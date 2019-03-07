@@ -2,6 +2,7 @@ package edu.se309.app.backend.controller;
 
 import java.util.List;
 import java.util.Random;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +19,7 @@ import edu.se309.app.backend.repository.Interfaces.MonstersRepository;
 
 
 @RestController
-@RequestMapping("/monster")
+@RequestMapping("/api/monster")
 public class MonstersController 
 {
 	@Autowired
@@ -46,11 +47,15 @@ public class MonstersController
 	 * @return
 	 * 			The monster's data
 	 */
-	@GetMapping("/list/{monsterId}")
-	public Monster findById(@PathVariable("monsterId")Integer id)
+	@GetMapping("/{monsterID}")
+	public Optional<Monster> findById(@PathVariable("monsterID") Integer monsterID)
 	{
 		logger.info("Entered into Controller Layer");
-		Monster results = monstersRepository.getOne(id); 
+		Optional<Monster> results = monstersRepository.findById(monsterID);
+		logger.info("Number of Records Fetched: 1");
+		if (results == null) {
+			throw new RuntimeException("Invalid MonsterID:" + monsterID);
+		}
 		return results;
 	}
 	

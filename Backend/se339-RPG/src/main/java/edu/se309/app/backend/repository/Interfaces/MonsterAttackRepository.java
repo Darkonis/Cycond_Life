@@ -7,16 +7,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
-import edu.se309.app.backend.entity.MonsterStat;
+import edu.se309.app.backend.entity.MonsterAttack;
 
 @Repository
-public interface MonsterStatRepository extends JpaRepository<MonsterStat, Integer> 
+public interface MonsterAttackRepository extends JpaRepository<MonsterAttack, Integer> 
 {
 	@Override
-	List<MonsterStat> findAll();
-	
+	List<MonsterAttack> findAll();
 	
 	@Override
-	Optional<MonsterStat> findById(Integer id);
+	Optional<MonsterAttack> findById(Integer id);
 	
 }

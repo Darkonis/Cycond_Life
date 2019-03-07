@@ -11,33 +11,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import edu.se309.app.backend.entity.MonsterStat;
-import edu.se309.app.backend.repository.Interfaces.MonsterStatRepository;
-
+import edu.se309.app.backend.entity.MonsterAttack;
+import edu.se309.app.backend.repository.Interfaces.MonsterAttackRepository;
 
 @RestController
-@RequestMapping("/api/monster/stat")
-public class MonsterStatController 
+@RequestMapping("/api/monster/attack")
+public class MonsterAttackController
 {
 	@Autowired
-	MonsterStatRepository monsterStatRepository;
+	MonsterAttackRepository monsterAttackRepository;
 	
-	private final Logger logger = LoggerFactory.getLogger(MonsterStatController.class);
+	private final Logger logger = LoggerFactory.getLogger(MonsterAttackController.class);
 	
 	@GetMapping("/list")
-	public List<MonsterStat> findAll()
+	public List<MonsterAttack> findAll()
 	{
 		logger.info("Entered into Controller Layer");
-		List<MonsterStat>result = monsterStatRepository.findAll();
+		List<MonsterAttack>result = monsterAttackRepository.findAll();
 		logger.info("Number of Records Fetched:" + result.size());
 		return result;
 	}
 	
-	@GetMapping("/{monsterStatID}")
-	public Optional<MonsterStat> findById(@PathVariable Integer monsterStatID)
+	@GetMapping("/{monsterAttackID}")
+	public Optional<MonsterAttack> findById(@PathVariable Integer monsterAttackID)
 	{
 		 logger.info("Entered into Controller Layer");
-		 Optional<MonsterStat> results = monsterStatRepository.findById(monsterStatID); 
+		 Optional<MonsterAttack> results = monsterAttackRepository.findById(monsterAttackID); 
 		 logger.info("Number of Records Fetched: 1");
 		 return results;
 	}
