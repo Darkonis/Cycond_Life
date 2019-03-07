@@ -7,4 +7,8 @@ public interface AccountRepositoryCustom {
  Account findByEmail(String email);	
 	
  Account findByUsername(String username);
+ 
+ 
 }
+
+

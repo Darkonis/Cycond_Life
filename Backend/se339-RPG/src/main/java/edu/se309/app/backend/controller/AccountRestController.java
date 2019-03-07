@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.se309.app.backend.entity.Account;
+import edu.se309.app.backend.entity.UserStat;
 import edu.se309.app.backend.service.interfaces.AccountService;
 import edu.se309.app.backend.service.interfaces.UserStatService;
 
@@ -91,10 +92,58 @@ public class AccountRestController {
 		}	
 	}
 	
-	@PutMapping("/change")
-	public Account updateAccount(@RequestBody Account account) {
+	@PutMapping("/incrementStat/{accountId}/{stat}")
+	public UserStat updateAccount(@PathVariable("accountId") int accountId, @PathVariable("stat") String stat){
+		stat = stat.toLowerCase();
+		Account account = accountService.findById(accountId).get();
+		if (account == null) {
+			throw new RuntimeException("Invalid account: accountId not valid: " + accountId);
+		}
+		if (stat.equals("bs")){
+			account.getUserStat().setBs(account.getUserStat().getBs() + 1);
+		} else if (stat.equals("resolve")) {
+			account.getUserStat().setResolve(account.getUserStat().getResolve() + 1);
+		} else if (stat.equals("criticalthinking")) {
+			account.getUserStat().setCriticalThinking(account.getUserStat().getCriticalThinking() + 1);
+		} else if (stat.equals("ingenuity")) {
+			account.getUserStat().setIngenuity(account.getUserStat().getIngenuity() + 1);
+		} else if (stat.equals("presentation")) {
+			account.getUserStat().setPresentation(account.getUserStat().getPresentation() + 1);
+		} else {
+			throw new RuntimeException("Invalid request: stat not valid: " + stat);
+		}
 		accountService.save(account);
-		return account;
-	}	
+		return account.getUserStat();
+	}
+	
+	@PutMapping("/modifyStats/{accountId}")
+	public UserStat modifyUserStats (@PathVariable Integer accountId, @RequestBody UserStat userStat){
+		Account account = accountService.findById(accountId).get();
+		if (account == null) {
+			throw new RuntimeException("Invalid account: accountId not valid: " + accountId);
+		} else {
+			if (account.getUserStat() == null) { 
+				throw new RuntimeException("Invalid account: account doesn't have stats: " + accountId);
+			} else {
+				account.setUserStat(userStat);
+				accountService.save(account);
+				return account.getUserStat();
+			}
+		}
+		
+	}
+	
+	private boolean statVerify (String stat) {
+		
+		if (stat.equals("bs")||stat.equals("resolve")
+				||stat.equals("criticalThinking")||stat.equals("ingenuity")
+				||stat.equals("presentation")){
+			return true;
+		} else {
+			return false;
+		}
+		
+		
+	}
 
 }

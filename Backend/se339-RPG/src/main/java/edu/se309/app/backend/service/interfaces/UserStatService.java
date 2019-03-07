@@ -13,5 +13,6 @@ public interface UserStatService {
 	Optional<UserStat> findById(int userStatId);
 	UserStat findByAccountId(Integer accountId);
 	
+	
 
 }
