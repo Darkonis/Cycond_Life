@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import edu.se309.app.backend.service.interfaces.BaseService;
 
 public class BaseController<T, ID extends Serializable, R extends BaseService<T, ID>> {
@@ -20,7 +21,7 @@ public class BaseController<T, ID extends Serializable, R extends BaseService<T,
   }
 
   @DeleteMapping("/{id}")
-  String deleteById(ID id) {
+  String deleteById(@PathVariable("id") ID id) {
     r.deleteById(id);
     String className = this.getClass().getSimpleName();
     className = className.substring(0, className.lastIndexOf('C'));
@@ -33,7 +34,7 @@ public class BaseController<T, ID extends Serializable, R extends BaseService<T,
   }
 
   @GetMapping("/{id}")
-  public T findById(ID id) {
+  public T findById(@PathVariable ID id) {
     return r.findById(id);
   }
 
