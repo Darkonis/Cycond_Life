@@ -1,8 +1,10 @@
 package edu.se309.app.backend.controller;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
+import edu.se309.app.backend.entity.Monster;
+import java.util.Optional;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,13 +13,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+
+
 
 import edu.se309.app.backend.entity.Monster;
 import edu.se309.app.backend.repository.Interfaces.MonsterRepository;
 
 
 @RestController
-@RequestMapping("/monster")
+
+@RequestMapping("/api/monster")
 public class MonstersController 
 {
 	@Autowired
@@ -45,12 +51,18 @@ public class MonstersController
 	 * @return
 	 * 			The monster's data
 	 */
-	@GetMapping("/list/{monsterId}")
-	public Optional<Monster> findById(@PathVariable("monsterId") int id)
+	@GetMapping("/{monsterID}")
+	public Optional<Monster> findById(@PathVariable("monsterID") Integer monsterID)
 	{
-		 logger.info("Entered into Controller Layer");
-		 Optional<Monster> results = monsterRepository.findById(id); 
-		 return results;
+
+		logger.info("Entered into Controller Layer");
+		Optional<Monster> results = monstersRepository.findById(monsterID);
+		logger.info("Number of Records Fetched: 1");
+		if (results == null) {
+			throw new RuntimeException("Invalid MonsterID:" + monsterID);
+		}
+		return results;
+
 	}
 	
 	/**
