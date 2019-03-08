@@ -4,66 +4,55 @@ import java.util.Random;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name = "monster_stat")
 public class MonsterStat 
 {
 	@Id
-    @Column(name = "id")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private Integer id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")   
+    private int id;
 	
-	@Column(name = "name")
-	@NotFound(action = NotFoundAction.IGNORE)
+	@Column(name = "name")	
 	private String name;
 	
-	@Column(name = "hp")
-	@NotFound(action = NotFoundAction.IGNORE)
-	private Integer hp;
+	@Column(name = "hp")	
+	private int hp;
 	
-	@Column(name = "attack_one")
-	@NotFound(action = NotFoundAction.IGNORE)
-	private Integer attackOne;
+	@Column(name = "attack_one")	
+	private int attackOne;
 	
-	@Column(name = "attack_two")
-	@NotFound(action = NotFoundAction.IGNORE)
-	private Integer attackTwo;
+	@Column(name = "attack_two")	
+	private int attackTwo;
 	
-	@Column(name = "attack_three")
-	@NotFound(action = NotFoundAction.IGNORE)
-	private Integer attackThree;
+	@Column(name = "attack_three")	
+	private int attackThree;
 	
-	@Column(name = "attack_four")
-	@NotFound(action = NotFoundAction.IGNORE)
-	private Integer attackFour;
+	@Column(name = "attack_four")	
+	private int attackFour;
 	
-	@Column(name = "attack_percent_one")
-	@NotFound(action = NotFoundAction.IGNORE)
-	private Integer attackPercentOne;
+	@Column(name = "attack_percent_one")	
+	private int attackPercentOne;
 	
-	@Column(name = "attack_percent_two")
-	@NotFound(action = NotFoundAction.IGNORE)
-	private Integer attackPercentTwo;
+	@Column(name = "attack_percent_two")	
+	private int attackPercentTwo;
 	
-	@Column(name = "attack_percent_three")
-	@NotFound(action = NotFoundAction.IGNORE)
-	private Integer attackPercentThree;
+	@Column(name = "attack_percent_three")	
+	private int attackPercentThree;
 	
-	@Column(name = "attack_percent_four")
-	@NotFound(action = NotFoundAction.IGNORE)
-	private Integer attackPercentFour;
+	@Column(name = "attack_percent_four")	
+	private int attackPercentFour;
 	
-	public Integer getId()
+	public int getId()
 	{
 		return id;
 	}
-	public void setId(Integer id)
+	public void setId(int id)
 	{
 		this.id = id;
 	}
@@ -75,82 +64,82 @@ public class MonsterStat
 	{
 		this.name = name;
 	}
-	public Integer getHp()
+	public int getHp()
 	{
 		return hp;
 	}
-	public void setHp(Integer hp)
+	public void setHp(int hp)
 	{
 		this.hp = hp;
 	}
-	public Integer getAttackOne()
+	public int getAttackOne()
 	{
 		return attackOne;
 	}
-	public void setAttackOne(Integer attackOne)
+	public void setAttackOne(int attackOne)
 	{
 		this.attackOne = attackOne;
 	}
-	public Integer getAttackTwo()
+	public int getAttackTwo()
 	{
 		return attackTwo;
 	}
-	public void setAttackTwo(Integer attackTwo)
+	public void setAttackTwo(int attackTwo)
 	{
 		this.attackTwo = attackTwo;
 	}
-	public Integer getAttackThree()
+	public int getAttackThree()
 	{
 		return attackThree;
 	}
-	public void setAttackThree(Integer attackThree)
+	public void setAttackThree(int attackThree)
 	{
 		this.attackThree = attackThree;
 	}
-	public Integer getAttackFour()
+	public int getAttackFour()
 	{
 		return attackFour;
 	}
-	public void setAttackFour(Integer attackFour)
+	public void setAttackFour(int attackFour)
 	{
 		this.attackFour = attackFour;
 	}
-	public Integer getAttackPercentOne()
+	public int getAttackPercentOne()
 	{
 		return attackPercentOne;
 	}
-	public void setAttackPercentOne(Integer attackPercentOne)
+	public void setAttackPercentOne(int attackPercentOne)
 	{
 		this.attackPercentOne = attackPercentOne;
 	}
-	public Integer getAttackPercentTwo()
+	public int getAttackPercentTwo()
 	{
 		return attackPercentTwo;
 	}
-	public void setAttackPercentTwo(Integer attackPercentTwo)
+	public void setAttackPercentTwo(int attackPercentTwo)
 	{
 		this.attackPercentTwo = attackPercentTwo;
 	}
-	public Integer getAttackPercentThree()
+	public int getAttackPercentThree()
 	{
 		return attackPercentThree;
 	}
-	public void setAttackPercentThree(Integer attackPercentThree)
+	public void setAttackPercentThree(int attackPercentThree)
 	{
 		this.attackPercentThree = attackPercentThree;
 	}
-	public Integer getAttackPercentFour()
+	public int getAttackPercentFour()
 	{
 		return attackPercentFour;
 	}
-	public void setAttackPercentFour(Integer attackPercentFour)
+	public void setAttackPercentFour(int attackPercentFour)
 	{
 		this.attackPercentFour = attackPercentFour;
 	}
-	public Integer getRandomAttack()
+	public int getRandomAttack()
 	{
-		Random rand = new Random(0);
-		int attack = Math.abs(rand.nextInt()%100);
+		Random rand = new Random();
+		int attack = rand.nextInt(100);
 		int firstBarrier = this.getAttackPercentOne();
 		int secondBarrier = firstBarrier + this.getAttackPercentTwo();
 		int thirdBarrier = secondBarrier + this.getAttackPercentThree();

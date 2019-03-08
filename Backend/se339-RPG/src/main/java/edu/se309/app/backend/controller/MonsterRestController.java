@@ -1,48 +1,40 @@
 package edu.se309.app.backend.controller;
 
 import java.util.List;
-import java.util.Random;
-import edu.se309.app.backend.entity.Monster;
-import java.util.Optional;
 
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
-
-
 
 import edu.se309.app.backend.entity.Monster;
-import edu.se309.app.backend.repository.Interfaces.MonsterRepository;
+import edu.se309.app.backend.service.interfaces.MonsterService;
+import io.swagger.annotations.ApiOperation;
 
 
 @RestController
 
-@RequestMapping("/api/monster")
+@RequestMapping("/api/monsters")
 public class MonsterRestController 
 {
-	@Autowired
-	MonsterRepository monsterRepository;
+	private MonsterService monsterService;
 	
-	private final Logger logger = LoggerFactory.getLogger(MonsterRestController.class);
+	@Autowired
+	public MonsterRestController(MonsterService monsterService) {
+		this.monsterService = monsterService;
+	}
 	
 	/**
 	 * Lists the current monsters in a html form for testing.
 	 * @return
 	 * 		The html for the list of all monsters.
 	 */
-	@GetMapping("/list")
+	@GetMapping("/")
 	public List<Monster> findAll()
-	{
-		logger.info("Entered into Controller Layer");
-		List<Monster>result = monsterRepository.findAll();
-		logger.info("Number of Records Fetched:" + result.size());
-		return result;
+	{		
+		return monsterService.findAll();
 	}
 	/**
 	 * View a specific monster's data
@@ -52,17 +44,9 @@ public class MonsterRestController
 	 * 			The monster's data
 	 */
 	@GetMapping("/{monsterID}")
-	public Optional<Monster> findById(@PathVariable("monsterID") Integer monsterID)
+	public Monster findById(@PathVariable("monsterID") int id)
 	{
-
-		logger.info("Entered into Controller Layer");
-		Optional<Monster> results = monsterRepository.findById(monsterID);
-		logger.info("Number of Records Fetched: 1");
-		if (results == null) {
-			throw new RuntimeException("Invalid MonsterID:" + monsterID);
-		}
-		return results;
-
+		return monsterService.findById(id);
 	}
 	
 	/**
@@ -70,78 +54,15 @@ public class MonsterRestController
 	 * @return
 	 * 		The html for the page to return to the sub-menu and list
 	 */
-	@GetMapping("/generate")
-	public String generateMonster()
+	@PostMapping("/generate")
+	public List<Monster> generateMonster()
 	{
-		monsterRepository.deleteAll();//deletes the current list
-        int num_monsters = 50;
-        int j = 0;
-        Random rand = new Random(0);
-            //add Campinile base
-        	for(int i = 0; i < num_monsters;i++)
-        	{
-        		double lat = (rand.nextInt()%3)/1000.0 + 42.0254;
-        		double lon = (rand.nextInt()%3)/1000.0 - 93.6461;
-        		Monster newMon = new Monster();
-                newMon.setType(Math.abs(1));//sets the type for the monster
-                newMon.setLat(lat);//sets the latitude for the monster
-                newMon.setLon(lon);//sets the longitude for the monster
-                newMon.setId(j);//sets the id for the monster
-                j++;
-                monsterRepository.save(newMon);//saves the monster to the sql list
-        	}
-        	//add Hoover base
-        	for(int i = 0; i < num_monsters;i++)
-        	{
-        		double lat = (rand.nextInt()%3)/1000.0 + 42.0267;
-        		double lon = (rand.nextInt()%3)/1000.0 - 93.6512;
-        		Monster newMon = new Monster();
-                newMon.setType(2);//sets the type for the monster
-                newMon.setLat(lat);//sets the latitude for the monster
-                newMon.setLon(lon);//sets the longitude for the monster
-                newMon.setId(j);//sets the id for the monster
-                j++;
-                monsterRepository.save(newMon);//saves the monster to the sql list
-        	}
-        	//add Physics base
-        	for(int i = 0; i < num_monsters;i++)
-        	{
-        		double lat = (rand.nextInt()%3)/1000.0 + 42.0295;
-        		double lon = (rand.nextInt()%3)/1000.0 - 93.6473;
-        		Monster newMon = new Monster();
-                newMon.setType(3);//sets the type for the monster
-                newMon.setLat(lat);//sets the latitude for the monster
-                newMon.setLon(lon);//sets the longitude for the monster
-                newMon.setId(j);//sets the id for the monster
-                j++;
-                monsterRepository.save(newMon);//saves the monster to the sql list
-        	}
-        	//add troxell base
-        	for(int i = 0; i < num_monsters;i++)
-        	{
-        		double lat = (rand.nextInt()%6)/1000.0 + 42.0308;
-        		double lon = (rand.nextInt()%6)/1000.0 - 93.6536;
-        		Monster newMon = new Monster();
-                newMon.setType(4);//sets the type for the monster
-                newMon.setLat(lat);//sets the latitude for the monster
-                newMon.setLon(lon);//sets the longitude for the monster
-                newMon.setId(j);//sets the id for the monster
-                j++;
-                monsterRepository.save(newMon);//saves the monster to the sql list
-        	}
-        	//isu cemetary base
-        	for(int i = 0; i < num_monsters;i++)
-        	{
-        		double lat = (rand.nextInt()%3)/1000.0 + 42.0278;
-        		double lon = (rand.nextInt()%3)/1000.0 - 93.6440;
-        		Monster newMon = new Monster();
-                newMon.setType(5);//sets the type for the monster
-                newMon.setLat(lat);//sets the latitude for the monster
-                newMon.setLon(lon);//sets the longitude for the monster
-                newMon.setId(j);//sets the id for the monster
-                j++;
-                monsterRepository.save(newMon);//saves the monster to the sql list
-        	}
-	return "Finished<br><br><a href=\"http://localhost:8080/monster\">return</a><br><a href=\"http://localhost:8080/monster/list\">List of Current Monsters</a>";
+		return monsterService.generateMonsters();		
+	}
+	
+	@ApiOperation(value="returns first moster's id or -1 if the list is empty")
+	@GetMapping("/fistId")
+	public int getFirstId(){
+		return monsterService.firstMonsterId();
 	}
 }

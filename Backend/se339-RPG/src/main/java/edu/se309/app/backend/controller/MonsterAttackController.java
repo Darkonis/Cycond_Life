@@ -3,41 +3,37 @@ package edu.se309.app.backend.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import edu.se309.app.backend.entity.MonsterAttack;
-import edu.se309.app.backend.repository.Interfaces.MonsterAttackRepository;
+import edu.se309.app.backend.repository.interfaces.MonsterAttackRepository;
+import edu.se309.app.backend.service.interfaces.MonsterAttackService;
 
 @RestController
 @RequestMapping("/api/monster/attack")
 public class MonsterAttackController
 {
+	
+	MonsterAttackService monsterAttackService;
+	
 	@Autowired
-	MonsterAttackRepository monsterAttackRepository;
+	public MonsterAttackController(MonsterAttackService monsterAttackService) {
+		this.monsterAttackService = monsterAttackService;
+	}	
 	
-	private final Logger logger = LoggerFactory.getLogger(MonsterAttackController.class);
-	
-	@GetMapping("/list")
+	@GetMapping("/")
 	public List<MonsterAttack> findAll()
 	{
-		logger.info("Entered into Controller Layer");
-		List<MonsterAttack>result = monsterAttackRepository.findAll();
-		logger.info("Number of Records Fetched:" + result.size());
-		return result;
+		return monsterAttackService.findAll();
 	}
 	
-	@GetMapping("/{monsterAttackID}")
-	public Optional<MonsterAttack> findById(@PathVariable Integer monsterAttackID)
+	@GetMapping("/{monsterAttackId}")
+	public MonsterAttack findById(@PathVariable int monsterAttackId)
 	{
-		 logger.info("Entered into Controller Layer");
-		 Optional<MonsterAttack> results = monsterAttackRepository.findById(monsterAttackID); 
-		 logger.info("Number of Records Fetched: 1");
-		 return results;
+		 return monsterAttackService.findById(monsterAttackId);
 	}
 }

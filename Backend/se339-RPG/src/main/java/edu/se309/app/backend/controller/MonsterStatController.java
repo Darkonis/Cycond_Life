@@ -6,39 +6,36 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import edu.se309.app.backend.entity.MonsterStat;
-import edu.se309.app.backend.repository.Interfaces.MonsterStatRepository;
+import edu.se309.app.backend.service.interfaces.MonsterStatService;
 
 
 @RestController
-@RequestMapping("/api/monster/stat")
+@RequestMapping("/api/monsters/stat")
 public class MonsterStatController 
 {
+	
+	private MonsterStatService monsterStatService;
+	
 	@Autowired
-	MonsterStatRepository monsterStatRepository;
+	public MonsterStatController(MonsterStatService monsterStatService) {
+		this.monsterStatService = monsterStatService;
+	}	
 	
-	private final Logger logger = LoggerFactory.getLogger(MonsterStatController.class);
-	
-	@GetMapping("/list")
+	@GetMapping("/")
 	public List<MonsterStat> findAll()
 	{
-		logger.info("Entered into Controller Layer");
-		List<MonsterStat>result = monsterStatRepository.findAll();
-		logger.info("Number of Records Fetched:" + result.size());
-		return result;
+		return monsterStatService.findAll();
 	}
 	
 	@GetMapping("/{monsterStatID}")
-	public Optional<MonsterStat> findById(@PathVariable Integer monsterStatID)
+	public MonsterStat findById(@PathVariable int monsterStatID)
 	{
-		 logger.info("Entered into Controller Layer");
-		 Optional<MonsterStat> results = monsterStatRepository.findById(monsterStatID); 
-		 logger.info("Number of Records Fetched: 1");
-		 return results;
+		 return monsterStatService.findById(monsterStatID);
 	}
 }
