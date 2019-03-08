@@ -18,10 +18,7 @@ public class SpringFoxConfig extends WebMvcConfigurationSupport {
 	
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-	    registry.addRedirectViewController("/v2/api-docs", "/v2/api-docs");
-	    registry.addRedirectViewController("/configuration/ui", "/configuration/ui");
-	    registry.addRedirectViewController("/configuration/security", "/configuration/security");
-	    registry.addRedirectViewController("/swagger-resources", "/swagger-resources");
+	    registry.addRedirectViewController("/v2/api-docs", "/v2/api-docs"); 
 	    registry.addRedirectViewController("/", "/swagger-ui.html");
 	   
 	}
