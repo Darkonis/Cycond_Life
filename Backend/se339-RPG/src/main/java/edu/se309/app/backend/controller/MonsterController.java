@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 
 @RequestMapping("/api/monsters")
-public class MonsterController extends BaseRestController<Monster, Integer, MonsterService> {
+public class MonsterController extends BaseController<Monster, Integer, MonsterService> {
 	@Autowired
 	public MonsterController(MonsterService monsterService) {
 		super(monsterService);

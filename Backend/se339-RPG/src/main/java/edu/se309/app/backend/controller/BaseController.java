@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import edu.se309.app.backend.service.interfaces.BaseService;
 
-public class BaseRestController<T, ID extends Serializable, R extends BaseService<T, ID>> {
+public class BaseController<T, ID extends Serializable, R extends BaseService<T, ID>> {
 
 	private R r;
 	
 
-	public BaseRestController(R r) {
+	public BaseController(R r) {
 		this.r = r;
 		
 	}

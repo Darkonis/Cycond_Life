@@ -9,7 +9,7 @@ import edu.se309.app.backend.service.interfaces.MonsterAttackService;
 
 @RestController
 @RequestMapping("/api/monsters/attack")
-public class MonsterAttackController extends BaseRestController<MonsterAttack, Integer, MonsterAttackService> {
+public class MonsterAttackController extends BaseController<MonsterAttack, Integer, MonsterAttackService> {
 	@Autowired
 	public MonsterAttackController(MonsterAttackService monsterAttackService) {
 		super(monsterAttackService);

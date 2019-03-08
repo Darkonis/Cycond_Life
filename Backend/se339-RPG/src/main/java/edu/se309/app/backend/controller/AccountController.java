@@ -15,7 +15,7 @@ import edu.se309.app.backend.service.interfaces.AccountService;
 
 @RestController
 @RequestMapping("/api/accounts")
-public class AccountController extends BaseRestController<Account, Integer, AccountService> {
+public class AccountController extends BaseController<Account, Integer, AccountService> {
 
 	@Autowired
 	public AccountController(AccountService accountService) {

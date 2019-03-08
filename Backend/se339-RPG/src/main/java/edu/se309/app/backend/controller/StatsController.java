@@ -15,41 +15,31 @@ import edu.se309.app.backend.service.interfaces.StatService;
 
 @RestController
 @RequestMapping("/api/stats")
-public class StatsController {
+public class StatsController extends BaseController<UserStat,Integer,StatService> {
 
-	private StatService statService;
+	
 
 	@Autowired
 	public StatsController(StatService statService) {
-		this.statService = statService;
-	}
-
-	@GetMapping("/count")
-	public long count() {
-		return statService.count();
-	}
-
-	@GetMapping("/")
-	public List<UserStat> findAll() {
-		return statService.findAll();
-	}
+		super(statService);
+	}	
 
 	@PutMapping("/incrementStat/{accountId}/{stat}")
 	public UserStat incrementStat(@PathVariable("accountId") Integer accountId, @PathVariable("stat") String stat) {
-		return statService.incrementByOne(accountId, stat);
+		return getService().incrementByOne(accountId, stat);
 	}
 
 	@PutMapping("/updateStats/{accountId}")
 	public UserStat modifyUserStats(@PathVariable Integer accountId, @RequestBody UserStat userStat) {
-		UserStat userStatWithAccount = statService.findByAccountId(accountId);
+		UserStat userStatWithAccount = getService().findByAccountId(accountId);
 		userStatWithAccount.copyStats(userStat);
-		statService.save(userStatWithAccount);
+		getService().save(userStatWithAccount);
 		return userStatWithAccount;
 	}
 
 	@PutMapping("/updateStat/{accountId}/{stat}/{value}")
 	public UserStat updateStat(@PathVariable int accountId, String stat, int value) {
-		return statService.updateUserStat(accountId, stat, value);
+		return getService().updateUserStat(accountId, stat, value);
 	}
 
 }
