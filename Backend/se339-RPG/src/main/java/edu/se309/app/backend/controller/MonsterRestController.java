@@ -24,12 +24,12 @@ import edu.se309.app.backend.repository.Interfaces.MonsterRepository;
 @RestController
 
 @RequestMapping("/api/monster")
-public class MonstersController 
+public class MonsterRestController 
 {
 	@Autowired
 	MonsterRepository monsterRepository;
 	
-	private final Logger logger = LoggerFactory.getLogger(MonstersController.class);
+	private final Logger logger = LoggerFactory.getLogger(MonsterRestController.class);
 	
 	/**
 	 * Lists the current monsters in a html form for testing.
@@ -56,7 +56,7 @@ public class MonstersController
 	{
 
 		logger.info("Entered into Controller Layer");
-		Optional<Monster> results = monstersRepository.findById(monsterID);
+		Optional<Monster> results = monsterRepository.findById(monsterID);
 		logger.info("Number of Records Fetched: 1");
 		if (results == null) {
 			throw new RuntimeException("Invalid MonsterID:" + monsterID);
