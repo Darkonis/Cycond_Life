@@ -4,10 +4,11 @@ import java.util.List;
 
 import edu.se309.app.backend.entity.Monster;
 
-public interface MonsterService {
+public interface MonsterService extends BaseService<Monster, Integer> {
 	
-	List<Monster> findAll();	
-	void save(Monster monster);
 	void deleteAll();
 
+	List<Monster> generateMonsters();
+	
+	int firstMonsterId();
 }

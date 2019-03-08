@@ -9,7 +9,7 @@ import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Repository;
 
 import edu.se309.app.backend.entity.BuildingLocation;
-import edu.se309.app.backend.repository.Interfaces.BuildingLocationRepository;
+import edu.se309.app.backend.repository.interfaces.BuildingLocationRepository;
 
 @Repository
 public class BuildingLocationRepositoryImplementation implements BuildingLocationRepository {

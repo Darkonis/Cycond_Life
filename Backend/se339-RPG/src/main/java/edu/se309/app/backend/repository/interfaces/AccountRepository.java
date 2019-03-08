@@ -1,4 +1,4 @@
-package edu.se309.app.backend.repository.Interfaces;
+package edu.se309.app.backend.repository.interfaces;
 
 import java.util.Optional;
 
