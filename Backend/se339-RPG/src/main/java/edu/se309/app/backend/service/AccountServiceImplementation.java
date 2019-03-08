@@ -12,17 +12,18 @@ import edu.se309.app.backend.repository.interfaces.AccountRepository;
 import edu.se309.app.backend.service.interfaces.AccountService;
 
 @Service
-public class AccountServiceImplementation extends BaseServiceImplementation<Account, Integer, AccountRepository> implements AccountService {
+public class AccountServiceImplementation extends BaseServiceImplementation<Account, Integer, AccountRepository>
+		implements AccountService {
 
 	@Autowired
 	public AccountServiceImplementation(AccountRepository accountRepository) {
-		super(accountRepository);		
+		super(accountRepository);
 	}
 
 	@Override
 	@Transactional
 	@NonNull
-	public Account findByEmail(String email) {		
+	public Account findByEmail(String email) {
 		Optional<Account> account = getRepository().findByEmailIgnoreCase(email);
 		return nullCheck(account, "Invalid request: No account found with the email: " + email);
 	}
