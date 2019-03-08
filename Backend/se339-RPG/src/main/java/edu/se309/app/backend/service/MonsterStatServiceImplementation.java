@@ -8,11 +8,12 @@ import edu.se309.app.backend.repository.interfaces.MonsterStatRepository;
 import edu.se309.app.backend.service.interfaces.MonsterStatService;
 
 @Service
-public class MonsterStatServiceImplementation extends BaseServiceImplementation<MonsterStat, Integer, MonsterStatRepository> implements MonsterStatService {
+public class MonsterStatServiceImplementation
+		extends BaseServiceImplementation<MonsterStat, Integer, MonsterStatRepository> implements MonsterStatService {
 
 	@Autowired
 	public MonsterStatServiceImplementation(MonsterStatRepository monsterStatRepository) {
-		super(monsterStatRepository);		
+		super(monsterStatRepository);
 	}
 
 }

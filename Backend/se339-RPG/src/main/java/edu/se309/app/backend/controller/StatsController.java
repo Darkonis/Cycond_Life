@@ -15,44 +15,41 @@ import edu.se309.app.backend.service.interfaces.StatService;
 
 @RestController
 @RequestMapping("/api/stats")
-public class StatsRestController {
-	
+public class StatsController {
+
 	private StatService statService;
-	
+
 	@Autowired
-	public StatsRestController(StatService statService) {		
+	public StatsController(StatService statService) {
 		this.statService = statService;
 	}
-	
-	@PutMapping("/updateStat/{accountId}/{stat}/{value}")
-	public UserStat updateStat (@PathVariable int accountId, String stat, int value) {
-		return statService.updateUserStat(accountId, stat, value);	
+
+	@GetMapping("/count")
+	public long count() {
+		return statService.count();
+	}
+
+	@GetMapping("/")
+	public List<UserStat> findAll() {
+		return statService.findAll();
 	}
 
 	@PutMapping("/incrementStat/{accountId}/{stat}")
-	public UserStat incrementStat(@PathVariable("accountId") Integer accountId, @PathVariable("stat") String stat){
-		return statService.incrementByOne(accountId, stat);	
+	public UserStat incrementStat(@PathVariable("accountId") Integer accountId, @PathVariable("stat") String stat) {
+		return statService.incrementByOne(accountId, stat);
 	}
-	
+
 	@PutMapping("/updateStats/{accountId}")
-	public UserStat modifyUserStats (@PathVariable Integer accountId, @RequestBody UserStat userStat){
+	public UserStat modifyUserStats(@PathVariable Integer accountId, @RequestBody UserStat userStat) {
 		UserStat userStatWithAccount = statService.findByAccountId(accountId);
 		userStatWithAccount.copyStats(userStat);
 		statService.save(userStatWithAccount);
 		return userStatWithAccount;
 	}
-	
-	@GetMapping("/")
-	public List<UserStat> findAll(){
-		return statService.findAll();
+
+	@PutMapping("/updateStat/{accountId}/{stat}/{value}")
+	public UserStat updateStat(@PathVariable int accountId, String stat, int value) {
+		return statService.updateUserStat(accountId, stat, value);
 	}
-	
-	@GetMapping("/count")
-	public long count(){
-		return statService.count();
-	}
-	
-	
-	
 
 }

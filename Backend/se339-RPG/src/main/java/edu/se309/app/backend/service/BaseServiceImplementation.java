@@ -23,10 +23,14 @@ public class BaseServiceImplementation<T, ID extends Serializable, R extends Bas
 
 	@Override
 	@Transactional
-	@NotNull
-	public T findById(ID id) {
-		Optional<T> t = r.findById(id);
-		return nullCheck(t, "Invalid request: no such id: " + id);
+	public long count() {
+		return r.count();
+	}
+
+	@Override
+	@Transactional
+	public void deleteById(ID id) {
+		r.deleteById(id);
 	}
 
 	@Override
@@ -37,24 +41,12 @@ public class BaseServiceImplementation<T, ID extends Serializable, R extends Bas
 
 	@Override
 	@Transactional
-	public void save(T entity) {
-		r.save(entity);
-
+	@NotNull
+	public T findById(ID id) {
+		Optional<T> t = r.findById(id);
+		return nullCheck(t, "Invalid request: no such id: " + id);
 	}
 
-	@Override
-	@Transactional
-	public long count() {
-		return r.count();
-	}
-
-	@Override
-	@Transactional
-	public void deleteById(ID id) {
-		r.deleteById(id);
-
-	}
-	
 	public R getRepository() {
 		return r;
 	}
@@ -66,6 +58,13 @@ public class BaseServiceImplementation<T, ID extends Serializable, R extends Bas
 		} else {
 			return t.get();
 		}
+	}
+
+	@Override
+	@Transactional
+	public void save(T entity) {
+		r.save(entity);
+
 	}
 
 }

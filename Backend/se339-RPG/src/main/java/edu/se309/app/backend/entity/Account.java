@@ -1,7 +1,5 @@
 package edu.se309.app.backend.entity;
 
-
-
 import java.util.Date;
 import java.util.Objects;
 
@@ -19,53 +17,68 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="accounts")
+@Table(name = "accounts")
 public class Account {
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="username", nullable = false)
+
+	@Column(name = "username", nullable = false)
 	private String username;
-	
-	@Column(name="password", nullable = false)
+
+	@Column(name = "password", nullable = false)
 	private String password;
-	
-	@Column(name="first_name")
+
+	@Column(name = "first_name")
 	private String firstName;
-	
-	@Column(name="last_name")
+
+	@Column(name = "last_name")
 	private String lastName;
-	
-	@Column(name="email", nullable = false)
+
+	@Column(name = "email", nullable = false)
 	private String email;
-	
-	@Column(name="created_on")
+
+	@Column(name = "created_on")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdOn;
-	
-	@Column(name="account_type", nullable = false)
+
+	@Column(name = "account_type", nullable = false)
 	private String accountType;
-	
+
 	@JsonIgnore
-	@OneToOne(mappedBy="account", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
 	private UserStat userStat;
-	
+
 	public Account() {
-		
+
 	}
 
 	public Account(String username, String password, String firstName, String lastName, String email,
-			String accountType) {		
+			String accountType) {
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.accountType = accountType;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Account other = (Account) obj;
+		return Objects.equals(accountType, other.accountType) && Objects.equals(createdOn, other.getCreatedOn())
+				&& Objects.equals(email, other.getEmail()) && Objects.equals(firstName, other.getFirstName())
+				&& id == other.getAccountId() && Objects.equals(lastName, other.getLastName())
+				&& Objects.equals(password, other.getPassword()) && Objects.equals(userStat, other.getUserStat())
+				&& Objects.equals(username, other.getUsername());
 	}
 
 	public int getAccountId() {
@@ -102,6 +115,11 @@ public class Account {
 
 	public UserStat getUserStat() {
 		return userStat;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(accountType, createdOn, email, firstName, id, lastName, password, userStat, username);
 	}
 
 	public void setAccountId(int accountId) {
@@ -150,28 +168,4 @@ public class Account {
 				+ accountType + ", userStat=" + userStat + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(accountType, createdOn, email, firstName, id, lastName, password, userStat, username);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Account other = (Account) obj;
-		return Objects.equals(accountType, other.accountType) && Objects.equals(createdOn, other.getCreatedOn())
-				&& Objects.equals(email, other.getEmail()) && Objects.equals(firstName, other.getFirstName()) && id == other.getAccountId()
-				&& Objects.equals(lastName, other.getLastName()) && Objects.equals(password, other.getPassword())
-				&& Objects.equals(userStat, other.getUserStat()) && Objects.equals(username, other.getUsername());
-	}
-	
-	
-	
-	
-	
 }

@@ -8,12 +8,12 @@ import edu.se309.app.backend.repository.interfaces.MonsterAttackRepository;
 import edu.se309.app.backend.service.interfaces.MonsterAttackService;
 
 @Service
-public class MonsterAttackServiceImplementation extends BaseServiceImplementation<MonsterAttack,Integer,MonsterAttackRepository> implements MonsterAttackService{
+public class MonsterAttackServiceImplementation extends
+		BaseServiceImplementation<MonsterAttack, Integer, MonsterAttackRepository> implements MonsterAttackService {
 
 	@Autowired
 	public MonsterAttackServiceImplementation(MonsterAttackRepository monsterAttackRepository) {
 		super(monsterAttackRepository);
-	}	
-	
+	}
 
 }

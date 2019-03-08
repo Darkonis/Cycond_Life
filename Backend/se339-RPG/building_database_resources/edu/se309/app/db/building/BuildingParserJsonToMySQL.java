@@ -33,7 +33,7 @@ public class BuildingParserJsonToMySQL {
 		for (int i = 0; i < ja.size(); i++) {
 			JsonObject jo = (JsonObject) ja.get(i);
 			Node n = gson.fromJson(jo, Node.class);
-			nodes.put(n.getId(), n);			
+			nodes.put(n.getId(), n);
 		}
 
 		// Read Way JSON file to java object
@@ -48,8 +48,8 @@ public class BuildingParserJsonToMySQL {
 			JsonArray arr = jo.get("nodes").getAsJsonArray();
 			String name = "null";
 			if (!jo.get("name").isJsonNull()) {
-				name = "'"+jo.get("name").getAsString() +"'";
-			} 
+				name = "'" + jo.get("name").getAsString() + "'";
+			}
 			ArrayList<Node> tempNodes = new ArrayList<>();
 
 			for (int j = 0; j < arr.size(); j++) {
@@ -71,8 +71,8 @@ public class BuildingParserJsonToMySQL {
 			JsonArray arr = jo.get("members").getAsJsonArray();
 			String name = "null";
 			if (!jo.get("name").isJsonNull()) {
-				name = "'"+jo.get("name").getAsString() +"'";
-			} 
+				name = "'" + jo.get("name").getAsString() + "'";
+			}
 			Way outer = null;
 			ArrayList<Way> inner = new ArrayList<>();
 
@@ -96,19 +96,18 @@ public class BuildingParserJsonToMySQL {
 
 			relations.add(new Relation(id, outer, inner, name));
 		}
-		
-		//Writes an SQL file
-		FileWriter f = new FileWriter(directory + "building_name_gen.sql");		
-		for(Way w: ways) {
-			f.write(w.toString()+"\n\n");			
+
+		// Writes an SQL file
+		FileWriter f = new FileWriter(directory + "building_name_gen.sql");
+		for (Way w : ways) {
+			f.write(w.toString() + "\n\n");
 		}
-		for(Relation r: relations) {
-			f.write(r.toString()+"\n\n");			
+		for (Relation r : relations) {
+			f.write(r.toString() + "\n\n");
 		}
 		f.close();
 		System.out.println("DONE!");
 		reader.close();
-		
 
 	}
 

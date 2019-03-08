@@ -11,4 +11,3 @@ public class Se309RpgApplication {
 	}
 
 }
-

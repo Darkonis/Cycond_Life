@@ -8,14 +8,23 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
 /**
- * Base Repository used to control which repository functions are exposed. 
+ * Base Repository used to control which repository functions are exposed.
  */
 @NoRepositoryBean
-public interface BaseRepository<T, ID extends Serializable> extends JpaRepository<T,ID> {
-	Optional<T> findById(ID id);
-	List<T> findAll();
-	<S extends T> S save(S entity);
+public interface BaseRepository<T, ID extends Serializable> extends JpaRepository<T, ID> {
+	@Override
 	long count();
+
+	@Override
 	void deleteById(ID id);
+
+	@Override
+	List<T> findAll();
+
+	@Override
+	Optional<T> findById(ID id);
+
+	@Override
+	<S extends T> S save(S entity);
 
 }

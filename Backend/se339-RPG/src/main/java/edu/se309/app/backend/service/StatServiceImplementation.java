@@ -17,20 +17,20 @@ import edu.se309.app.backend.service.interfaces.StatService;
 @Service
 public class StatServiceImplementation extends BaseServiceImplementation<UserStat, Integer, UserStatRepository>
 		implements StatService {
-	
 
 	@Autowired
 	public StatServiceImplementation(UserStatRepository userStatRepository) {
-		super(userStatRepository);		
+		super(userStatRepository);
 	}
 
 	@Override
 	@Transactional
 	@NonNull
 	public UserStat findByAccountId(int accountId) {
-		Optional<UserStat> userStat = getRepository().findByAccountId(accountId);		
-		return (super.nullCheck(userStat, "Invalid Request: No such account found with Id: " + Integer.toString(accountId)));
-		
+		Optional<UserStat> userStat = getRepository().findByAccountId(accountId);
+		return (super.nullCheck(userStat,
+				"Invalid Request: No such account found with Id: " + Integer.toString(accountId)));
+
 	}
 
 	@Override
