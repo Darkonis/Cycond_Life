@@ -16,8 +16,10 @@ public class BuildingLocation {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "building_id")
   private int buildingId;
+
   @Column(name = "geo", columnDefinition = "geometry")
   private Polygon geo;
+
   @Column(name = "earned_stat")
   private String earnedStat;
 

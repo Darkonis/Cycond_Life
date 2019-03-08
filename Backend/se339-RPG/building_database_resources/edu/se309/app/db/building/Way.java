@@ -5,7 +5,9 @@ import java.util.ArrayList;;
 public class Way {
 
   private ArrayList<Node> nodes;
+
   private long id;
+
   private String name;
 
   public Way(long id, ArrayList<Node> nodes, String name) {

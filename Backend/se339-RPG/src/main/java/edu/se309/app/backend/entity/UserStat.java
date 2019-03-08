@@ -19,18 +19,25 @@ public class UserStat {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "stats_id")
   private int statsId;
+
   @Column(name = "bs", columnDefinition = "UNSIGNED INT(11)")
   private int bs;
+
   @Column(name = "resolve", columnDefinition = "UNSIGNED INT(11)")
   private int resolve;
+
   @Column(name = "critical_thinking", columnDefinition = "UNSIGNED INT(11)")
   private int criticalThinking;
+
   @Column(name = "ingenuity", columnDefinition = "UNSIGNED INT(11)")
   private int ingenuity;
+
   @Column(name = "presentation", columnDefinition = "UNSIGNED INT(11)")
   private int presentation;
+
   @Column(name = "monsters_killed", columnDefinition = "UNSIGNED INT(11)")
   private int monstersKilled;
+
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "account_id")
   private Account account;

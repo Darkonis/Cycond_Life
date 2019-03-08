@@ -8,9 +8,11 @@ public class Node {
   @SerializedName("id")
   @Expose
   private long id;
+
   @SerializedName("lat")
   @Expose
   private double lat;
+
   @SerializedName("lon")
   @Expose
   private double lon;

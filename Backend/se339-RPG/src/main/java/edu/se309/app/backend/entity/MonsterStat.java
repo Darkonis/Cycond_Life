@@ -16,24 +16,34 @@ public class MonsterStat {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
   private int id;
+
   @Column(name = "name")
   private String name;
+
   @Column(name = "hp")
   private int hp;
+
   @Column(name = "attack_one")
   private int attackOne;
+
   @Column(name = "attack_two")
   private int attackTwo;
+
   @Column(name = "attack_three")
   private int attackThree;
+
   @Column(name = "attack_four")
   private int attackFour;
+
   @Column(name = "attack_percent_one")
   private int attackPercentOne;
+
   @Column(name = "attack_percent_two")
   private int attackPercentTwo;
+
   @Column(name = "attack_percent_three")
   private int attackPercentThree;
+
   @Column(name = "attack_percent_four")
   private int attackPercentFour;
 

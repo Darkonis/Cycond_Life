@@ -22,21 +22,29 @@ public class Account {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
   private int id;
+
   @Column(name = "username", nullable = false)
   private String username;
+
   @Column(name = "password", nullable = false)
   private String password;
+
   @Column(name = "first_name")
   private String firstName;
+
   @Column(name = "last_name")
   private String lastName;
+
   @Column(name = "email", nullable = false)
   private String email;
+
   @Column(name = "created_on")
   @Temporal(TemporalType.TIMESTAMP)
   private Date createdOn;
+
   @Column(name = "account_type", nullable = false)
   private String accountType;
+
   @JsonIgnore
   @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
   private UserStat userStat;

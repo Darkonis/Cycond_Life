@@ -34,8 +34,11 @@ public class Relation {
   }
 
   private long id;
+
   private Way outer;
+
   private ArrayList<Way> inner;
+
   private String name;
 
   public Relation(long id, Way outer, ArrayList<Way> inner, String name) {

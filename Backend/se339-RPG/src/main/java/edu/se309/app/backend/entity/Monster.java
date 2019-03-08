@@ -18,16 +18,19 @@ public class Monster {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
   private int id;
+
   /**
    * Currently not being used but will determine what the monster actually is.
    */
   @Column(name = "type")
   private int type;
+
   /**
    * The Longitude of the given monster
    */
   @Column(name = "longitude")
   private double longitude;
+
   /**
    * The Latitude of the given monster
    *
