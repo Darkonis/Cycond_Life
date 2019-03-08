@@ -9,7 +9,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import edu.se309.app.backend.entity.UserStat;
-import edu.se309.app.backend.repository.interfaces.UserStatRepository;
+import edu.se309.app.backend.repository.UserStatRepository;
 import edu.se309.app.backend.service.interfaces.StatService;
 
 @Service

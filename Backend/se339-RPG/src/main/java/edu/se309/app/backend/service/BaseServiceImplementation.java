@@ -6,7 +6,7 @@ import java.util.Optional;
 import javax.validation.constraints.NotNull;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.transaction.annotation.Transactional;
-import edu.se309.app.backend.repository.interfaces.BaseRepository;
+import edu.se309.app.backend.repository.BaseRepository;
 import edu.se309.app.backend.service.interfaces.BaseService;
 
 public class BaseServiceImplementation<T, ID extends Serializable, R extends BaseRepository<T, ID>>

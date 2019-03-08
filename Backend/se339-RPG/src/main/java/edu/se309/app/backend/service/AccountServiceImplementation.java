@@ -6,7 +6,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import edu.se309.app.backend.entity.Account;
-import edu.se309.app.backend.repository.interfaces.AccountRepository;
+import edu.se309.app.backend.repository.AccountRepository;
 import edu.se309.app.backend.service.interfaces.AccountService;
 
 @Service

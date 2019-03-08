@@ -3,7 +3,7 @@ package edu.se309.app.backend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import edu.se309.app.backend.entity.MonsterStat;
-import edu.se309.app.backend.repository.interfaces.MonsterStatRepository;
+import edu.se309.app.backend.repository.MonsterStatRepository;
 import edu.se309.app.backend.service.interfaces.MonsterStatService;
 
 @Service
