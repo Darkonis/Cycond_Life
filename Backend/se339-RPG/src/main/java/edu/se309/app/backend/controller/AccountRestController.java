@@ -9,15 +9,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.se309.app.backend.entity.Account;
-import edu.se309.app.backend.entity.UserStat;
 import edu.se309.app.backend.service.interfaces.AccountService;
-import edu.se309.app.backend.service.interfaces.UserStatService;
 
 //Possible TODO refactor error checking. When deleting user, also delete all associated rows from other tables. Currently just deletes account
 
@@ -25,13 +22,11 @@ import edu.se309.app.backend.service.interfaces.UserStatService;
 @RequestMapping("/api/accounts")
 public class AccountRestController {
 	
-	private AccountService accountService;
-	private UserStatService userStatService;
+	private AccountService accountService;	
 	
 	@Autowired
-	public AccountRestController(AccountService accountService, UserStatService userStatService) {
-		this.accountService = accountService;
-		this.userStatService = userStatService;
+	public AccountRestController(AccountService accountService) {
+		this.accountService = accountService;		
 	}
 	
 	@PostMapping("/add")
@@ -40,110 +35,48 @@ public class AccountRestController {
 		Date currentDate = new Date();
 		account.setCreatedOn(currentDate);
 		account.getUserStat().setStatsId(0);
-		account.getUserStat().setAccount(account);
-		userStatService.save(account.getUserStat());
+		account.getUserStat().setAccount(account);		
 		accountService.save(account);
 		return account;		
 	}
 	
-	@DeleteMapping("/{accountID}")
-	public String deleteAccount(@PathVariable int accountID) {
-		Optional<Account> toBeDeletedAccount = accountService.findById(accountID);
-		if (toBeDeletedAccount == null) {
-			throw new RuntimeException("Invalid request: accountId not found: " + accountID);
-		} else {	
-			accountService.deleteById(accountID);
-			return "Deleted Account with Id: " + accountID;
-		}		
-	}
+	@DeleteMapping("/{accountId}")
+	public String deleteAccount(@PathVariable int accountId) {		
+		return "Deleted Account with Id: " + accountId;
+	}		
+	
 	
 	@GetMapping("/")
 	public List<Account> findAll(){
 		return accountService.findAll();
 	}
 	
-	@GetMapping("/getByEmail/{email}")
-	public Account getAccountByEmail(@PathVariable String email) {
-		Account account = accountService.findByEmail(email);
-		if (account == null) {
-			throw new RuntimeException("Invalid request: email not found: " + email);
-		} else {			
-			return account;
-		}	
+	@GetMapping("/findByEmail")
+	public Account findAccountByEmail(@RequestBody String email) {
+		return accountService.findByEmail(email);
+		
 	}
 	
-	@GetMapping("/{accountID}")
-	public Optional<Account> getAccountByID(@PathVariable int accountID) {
-		Optional<Account> account = accountService.findById(accountID);
-		if (account == null) {
-			throw new RuntimeException("Invalid request: accountID not found: " + accountID);
-		} else {			
-			return account;
-		}	
+	@GetMapping("/{accountId}")
+	public Account getAccountById(@PathVariable int accountId) {
+		return accountService.findById(accountId);
+			
 	}
 	
-	@GetMapping("/getByUsername/{username}")
+	@GetMapping("/findByUsername/{username}")
 	public Account getAccountByUsername(@PathVariable String username) {
-		Account account = accountService.findByUsername(username);
-		if (account == null) {
-			throw new RuntimeException("Invalid request: username not found: " + username);
-		} else {			
-			return account;
-		}	
-	}
-	
-	@PutMapping("/incrementStat/{accountId}/{stat}")
-	public UserStat updateAccount(@PathVariable("accountId") int accountId, @PathVariable("stat") String stat){
-		stat = stat.toLowerCase();
-		Account account = accountService.findById(accountId).get();
-		if (account == null) {
-			throw new RuntimeException("Invalid account: accountId not valid: " + accountId);
-		}
-		if (stat.equals("bs")){
-			account.getUserStat().setBs(account.getUserStat().getBs() + 1);
-		} else if (stat.equals("resolve")) {
-			account.getUserStat().setResolve(account.getUserStat().getResolve() + 1);
-		} else if (stat.equals("criticalthinking")) {
-			account.getUserStat().setCriticalThinking(account.getUserStat().getCriticalThinking() + 1);
-		} else if (stat.equals("ingenuity")) {
-			account.getUserStat().setIngenuity(account.getUserStat().getIngenuity() + 1);
-		} else if (stat.equals("presentation")) {
-			account.getUserStat().setPresentation(account.getUserStat().getPresentation() + 1);
-		} else {
-			throw new RuntimeException("Invalid request: stat not valid: " + stat);
-		}
-		accountService.save(account);
-		return account.getUserStat();
-	}
-	
-	@PutMapping("/modifyStats/{accountId}")
-	public UserStat modifyUserStats (@PathVariable Integer accountId, @RequestBody UserStat userStat){
-		Account account = accountService.findById(accountId).get();
-		if (account == null) {
-			throw new RuntimeException("Invalid account: accountId not valid: " + accountId);
-		} else {
-			if (account.getUserStat() == null) { 
-				throw new RuntimeException("Invalid account: account doesn't have stats: " + accountId);
-			} else {
-				account.setUserStat(userStat);
-				accountService.save(account);
-				return account.getUserStat();
-			}
-		}
+		return accountService.findByUsername(username);
 		
 	}
 	
-	private boolean statVerify (String stat) {
-		
-		if (stat.equals("bs")||stat.equals("resolve")
-				||stat.equals("criticalThinking")||stat.equals("ingenuity")
-				||stat.equals("presentation")){
-			return true;
-		} else {
-			return false;
-		}
-		
-		
+	@GetMapping("/count")
+	public long count(){
+		return accountService.count();
 	}
+	
+	
+		
+		
+	
 
 }

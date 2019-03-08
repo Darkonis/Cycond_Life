@@ -2,6 +2,8 @@ package edu.se309.app.backend.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -18,8 +20,8 @@ public class Monster
 	 * Monster Id primary way of identifying what monster is what.
 	 */
 	@Id
-    @Column(name = "id")
-    @NotFound(action = NotFoundAction.IGNORE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")	
     private Integer id;
 	
 	/**

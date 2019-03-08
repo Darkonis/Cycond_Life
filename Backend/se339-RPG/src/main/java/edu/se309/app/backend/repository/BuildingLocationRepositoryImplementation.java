@@ -9,14 +9,14 @@ import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Repository;
 
 import edu.se309.app.backend.entity.BuildingLocation;
-import edu.se309.app.backend.repository.Interfaces.BuildingLocationDAO;
+import edu.se309.app.backend.repository.Interfaces.BuildingLocationRepository;
 
 @Repository
-public class BuildingLocationDAOImplementation implements BuildingLocationDAO {
+public class BuildingLocationRepositoryImplementation implements BuildingLocationRepository {
 	private EntityManager entityManager;	
 	
 	@Autowired
-	public BuildingLocationDAOImplementation(EntityManager entityManager) {
+	public BuildingLocationRepositoryImplementation(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 	

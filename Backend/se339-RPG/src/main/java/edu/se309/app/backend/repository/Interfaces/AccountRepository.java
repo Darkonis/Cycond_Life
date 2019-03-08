@@ -1,9 +1,11 @@
 package edu.se309.app.backend.repository.Interfaces;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
 import edu.se309.app.backend.entity.Account;
 
-public interface AccountRepository extends JpaRepository<Account,Integer> {	
+public interface AccountRepository extends BaseRepository<Account,Integer> {
 	
+	Optional<Account> findByEmailIgnoreCase(String email);			
+	 Optional<Account> findByUsernameIgnoreCase(String username);
 }

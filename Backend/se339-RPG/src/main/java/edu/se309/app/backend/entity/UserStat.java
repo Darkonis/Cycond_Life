@@ -1,5 +1,7 @@
 package edu.se309.app.backend.entity;
 
+import java.util.Objects;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,7 +38,18 @@ public class UserStat {
 	@Column(name="presentation",columnDefinition = "UNSIGNED INT(11)")
 	private int presentation;
 	
-	@JsonIgnore
+	@Column(name="monsters_killed",columnDefinition = "UNSIGNED INT(11)")
+	private int monstersKilled;
+	
+	public int getMonstersKilled() {
+		return monstersKilled;
+	}
+
+	public void setMonstersKilled(int monstersKilled) {
+		this.monstersKilled = monstersKilled;
+	}
+
+	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "account_id")
 	private Account account;
@@ -45,12 +58,8 @@ public class UserStat {
 		
 	}
 		
-	public UserStat(int bs, int resolve, int criticalThinking, int ingenuity, int presentation) {
-		this.bs = bs;
-		this.resolve = resolve;
-		this.criticalThinking = criticalThinking;
-		this.ingenuity = ingenuity;
-		this.presentation = presentation;		
+	public UserStat(Account account) {
+		this.account = account;
 	}
 
 	public Account getAccount() {
@@ -63,7 +72,7 @@ public class UserStat {
 
 	public int getCriticalThinking() {
 		return criticalThinking;
-	}
+	}	
 
 	public int getIngenuity() {
 		return ingenuity;
@@ -82,7 +91,20 @@ public class UserStat {
 	}
 
 	public void setAccount(Account account) {
-		this.account = account;
+		if(sameAccountCheck(account)) {
+			return;
+		}
+		Account oldAccount = this.account;
+		if (oldAccount != null) {
+			oldAccount.setUserStat(null);
+		}
+		if (account != null) {
+			account.setUserStat(this);
+		}		
+	}
+	//returns true if newAccount and account are the same
+	private boolean sameAccountCheck(Account newAccount) {
+		return account == null? newAccount == null: account.equals(newAccount);
 	}
 
 
@@ -112,10 +134,40 @@ public class UserStat {
 
 	@Override
 	public String toString() {
-		return "UserStat [statsId=" + statsId + ", bs=" + bs + ", resolve=" + resolve
-				+ ", criticalThinking=" + criticalThinking + ", ingenuity=" + ingenuity + ", presentation="
-				+ presentation + "]";
+		return "UserStat [statsId=" + statsId + ", bs=" + bs + ", resolve=" + resolve + ", criticalThinking="
+				+ criticalThinking + ", ingenuity=" + ingenuity + ", presentation=" + presentation + ", monstersKilled="
+				+ monstersKilled + "]";
 	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(account, bs, criticalThinking, ingenuity, monstersKilled, presentation, resolve, statsId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserStat other = (UserStat) obj;
+		return Objects.equals(account, other.getAccount()) && bs == other.getBs() && criticalThinking == other.getCriticalThinking()
+				&& ingenuity == other.getIngenuity() && monstersKilled == other.getMonstersKilled()
+				&& presentation == other.getPresentation() && resolve == other.getResolve() && statsId == other.getStatsId();
+	}
+	
+	public void copyStats(UserStat newUserStats) {
+		setBs(newUserStats.getBs());
+		setCriticalThinking(newUserStats.getCriticalThinking());
+		setIngenuity(newUserStats.getIngenuity());
+		setPresentation(newUserStats.getPresentation());
+		setResolve(newUserStats.getResolve());
+		setMonstersKilled(newUserStats.getMonstersKilled());
+	}
+	
+	
 
 
 }

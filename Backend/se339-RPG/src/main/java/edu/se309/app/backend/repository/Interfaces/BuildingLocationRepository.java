@@ -4,7 +4,7 @@ import org.springframework.data.geo.Point;
 
 import edu.se309.app.backend.entity.BuildingLocation;
 
-public interface BuildingLocationDAO {	
+public interface BuildingLocationRepository {	
 	
 	public BuildingLocation findBuildingStat(Point point);
 }

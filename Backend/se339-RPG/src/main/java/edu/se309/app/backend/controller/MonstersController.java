@@ -3,23 +3,17 @@ package edu.se309.app.backend.controller;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
-import edu.se309.app.backend.entity.Monster;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.se309.app.backend.entity.Monster;
-import edu.se309.app.backend.repository.Interfaces.MonstersRepository;
+import edu.se309.app.backend.repository.Interfaces.MonsterRepository;
 
 
 @RestController
@@ -27,7 +21,7 @@ import edu.se309.app.backend.repository.Interfaces.MonstersRepository;
 public class MonstersController 
 {
 	@Autowired
-	MonstersRepository monstersRepository;
+	MonsterRepository monsterRepository;
 	
 	private final Logger logger = LoggerFactory.getLogger(MonstersController.class);
 	
@@ -40,7 +34,7 @@ public class MonstersController
 	public List<Monster> findAll()
 	{
 		logger.info("Entered into Controller Layer");
-		List<Monster>result = monstersRepository.findAll();
+		List<Monster>result = monsterRepository.findAll();
 		logger.info("Number of Records Fetched:" + result.size());
 		return result;
 	}
@@ -55,7 +49,7 @@ public class MonstersController
 	public Optional<Monster> findById(@PathVariable("monsterId") int id)
 	{
 		 logger.info("Entered into Controller Layer");
-		 Optional<Monster> results = monstersRepository.findById(id); 
+		 Optional<Monster> results = monsterRepository.findById(id); 
 		 return results;
 	}
 	
@@ -67,7 +61,7 @@ public class MonstersController
 	@GetMapping("/generate")
 	public String generateMonster()
 	{
-		monstersRepository.deleteAll();//deletes the current list
+		monsterRepository.deleteAll();//deletes the current list
         int num_monsters = 50;
         int j = 0;
         Random rand = new Random(0);
@@ -82,7 +76,7 @@ public class MonstersController
                 newMon.setLon(lon);//sets the longitude for the monster
                 newMon.setId(j);//sets the id for the monster
                 j++;
-                monstersRepository.save(newMon);//saves the monster to the sql list
+                monsterRepository.save(newMon);//saves the monster to the sql list
         	}
         	//add Hoover base
         	for(int i = 0; i < num_monsters;i++)
@@ -95,7 +89,7 @@ public class MonstersController
                 newMon.setLon(lon);//sets the longitude for the monster
                 newMon.setId(j);//sets the id for the monster
                 j++;
-                monstersRepository.save(newMon);//saves the monster to the sql list
+                monsterRepository.save(newMon);//saves the monster to the sql list
         	}
         	//add Physics base
         	for(int i = 0; i < num_monsters;i++)
@@ -108,7 +102,7 @@ public class MonstersController
                 newMon.setLon(lon);//sets the longitude for the monster
                 newMon.setId(j);//sets the id for the monster
                 j++;
-                monstersRepository.save(newMon);//saves the monster to the sql list
+                monsterRepository.save(newMon);//saves the monster to the sql list
         	}
         	//add troxell base
         	for(int i = 0; i < num_monsters;i++)
@@ -121,7 +115,7 @@ public class MonstersController
                 newMon.setLon(lon);//sets the longitude for the monster
                 newMon.setId(j);//sets the id for the monster
                 j++;
-                monstersRepository.save(newMon);//saves the monster to the sql list
+                monsterRepository.save(newMon);//saves the monster to the sql list
         	}
         	//isu cemetary base
         	for(int i = 0; i < num_monsters;i++)
@@ -134,7 +128,7 @@ public class MonstersController
                 newMon.setLon(lon);//sets the longitude for the monster
                 newMon.setId(j);//sets the id for the monster
                 j++;
-                monstersRepository.save(newMon);//saves the monster to the sql list
+                monsterRepository.save(newMon);//saves the monster to the sql list
         	}
 	return "Finished<br><br><a href=\"http://localhost:8080/monster\">return</a><br><a href=\"http://localhost:8080/monster/list\">List of Current Monsters</a>";
 	}

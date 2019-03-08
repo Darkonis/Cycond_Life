@@ -4,23 +4,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Point;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.se309.app.backend.repository.Interfaces.BuildingLocationDAO;
+import edu.se309.app.backend.repository.Interfaces.BuildingLocationRepository;
 import edu.se309.app.backend.service.interfaces.BuildingLocationService;
 
 public class BuildingLocationServiceImplementation implements BuildingLocationService {	
 
 	
-private BuildingLocationDAO buildingLocationDAO;
+private BuildingLocationRepository buildingLocationRepository;
 	
 	@Autowired
-	public BuildingLocationServiceImplementation(BuildingLocationDAO buildingLocationDAO) {
-		this.buildingLocationDAO = buildingLocationDAO;
+	public BuildingLocationServiceImplementation(BuildingLocationRepository buildingLocationRepository) {
+		this.buildingLocationRepository = buildingLocationRepository;
 	}
 	
 	@Override
 	@Transactional
 	public String findBuildingStat(Point point) {
-		return buildingLocationDAO.findBuildingStat(point).getEarnedStat().toLowerCase();		
+		return buildingLocationRepository.findBuildingStat(point).getEarnedStat().toLowerCase();		
 	}
 
 }
