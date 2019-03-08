@@ -16,6 +16,6 @@ public interface BaseRepository<T, ID extends Serializable> extends JpaRepositor
 	List<T> findAll();
 	<S extends T> S save(S entity);
 	long count();
-	void deleteById();
+	void deleteById(ID id);
 
 }
