@@ -23,15 +23,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import edu.se309.app.backend.entity.Monster;
 import edu.se309.app.backend.repository.Interfaces.MonstersRepository;
+import edu.se309.app.backend.service.interfaces.*;
 
 
 @RestController
-
 @RequestMapping("/api/monster")
 public class MonstersController 
 {
+	private MonsterService monsterService;
+	
 	@Autowired
-	MonstersRepository monstersRepository;
+	public MonstersController(MonsterService monsterService)
+	{
+		this.monsterService = monsterService;
+	}
+	
 	
 	private final Logger logger = LoggerFactory.getLogger(MonstersController.class);
 	
@@ -44,7 +50,7 @@ public class MonstersController
 	public List<Monster> findAll()
 	{
 		logger.info("Entered into Controller Layer");
-		List<Monster>result = monstersRepository.findAll();
+		List<Monster>result = monsterService.findAll();
 		logger.info("Number of Records Fetched:" + result.size());
 		return result;
 	}
@@ -59,7 +65,7 @@ public class MonstersController
 	public Optional<Monster> findById(@PathVariable("monsterID") Integer monsterID)
 	{
 		logger.info("Entered into Controller Layer");
-		Optional<Monster> results = monstersRepository.findById(monsterID);
+		Optional<Monster> results = monsterService.findById(monsterID);
 		logger.info("Number of Records Fetched: 1");
 		if (results == null) {
 			throw new RuntimeException("Invalid MonsterID:" + monsterID);
@@ -75,7 +81,7 @@ public class MonstersController
 	@GetMapping("/generate")
 	public String generateMonster()
 	{
-		monstersRepository.deleteAll();//deletes the current list
+		monsterService.deleteAll();//deletes the current list
         int num_monsters = 50;
         int j = 0;
         Random rand = new Random(0);
@@ -90,7 +96,7 @@ public class MonstersController
                 newMon.setLon(lon);//sets the longitude for the monster
                 newMon.setId(j);//sets the id for the monster
                 j++;
-                monstersRepository.save(newMon);//saves the monster to the sql list
+                monsterService.save(newMon);//saves the monster to the sql list
         	}
         	//add Hoover base
         	for(int i = 0; i < num_monsters;i++)
@@ -103,7 +109,7 @@ public class MonstersController
                 newMon.setLon(lon);//sets the longitude for the monster
                 newMon.setId(j);//sets the id for the monster
                 j++;
-                monstersRepository.save(newMon);//saves the monster to the sql list
+                monsterService.save(newMon);//saves the monster to the sql list
         	}
         	//add Physics base
         	for(int i = 0; i < num_monsters;i++)
@@ -116,7 +122,7 @@ public class MonstersController
                 newMon.setLon(lon);//sets the longitude for the monster
                 newMon.setId(j);//sets the id for the monster
                 j++;
-                monstersRepository.save(newMon);//saves the monster to the sql list
+                monsterService.save(newMon);//saves the monster to the sql list
         	}
         	//add troxell base
         	for(int i = 0; i < num_monsters;i++)
@@ -129,7 +135,7 @@ public class MonstersController
                 newMon.setLon(lon);//sets the longitude for the monster
                 newMon.setId(j);//sets the id for the monster
                 j++;
-                monstersRepository.save(newMon);//saves the monster to the sql list
+                monsterService.save(newMon);//saves the monster to the sql list
         	}
         	//isu cemetary base
         	for(int i = 0; i < num_monsters;i++)
@@ -142,7 +148,7 @@ public class MonstersController
                 newMon.setLon(lon);//sets the longitude for the monster
                 newMon.setId(j);//sets the id for the monster
                 j++;
-                monstersRepository.save(newMon);//saves the monster to the sql list
+                monsterService.save(newMon);//saves the monster to the sql list
         	}
 	return "Finished<br><br><a href=\"http://localhost:8080/monster\">return</a><br><a href=\"http://localhost:8080/monster/list\">List of Current Monsters</a>";
 	}
