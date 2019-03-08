@@ -3,7 +3,6 @@ package edu.se309.app.backend.repository.interfaces;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
@@ -12,19 +11,19 @@ import org.springframework.data.repository.NoRepositoryBean;
  */
 @NoRepositoryBean
 public interface BaseRepository<T, ID extends Serializable> extends JpaRepository<T, ID> {
-	@Override
-	long count();
 
-	@Override
-	void deleteById(ID id);
+  @Override
+  long count();
 
-	@Override
-	List<T> findAll();
+  @Override
+  void deleteById(ID id);
 
-	@Override
-	Optional<T> findById(ID id);
+  @Override
+  List<T> findAll();
 
-	@Override
-	<S extends T> S save(S entity);
+  @Override
+  Optional<T> findById(ID id);
 
+  @Override
+  <S extends T> S save(S entity);
 }

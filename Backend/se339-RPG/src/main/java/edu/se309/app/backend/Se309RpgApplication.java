@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Se309RpgApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Se309RpgApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(Se309RpgApplication.class, args);
+  }
 }

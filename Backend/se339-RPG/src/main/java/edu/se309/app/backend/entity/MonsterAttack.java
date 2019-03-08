@@ -11,47 +11,31 @@ import javax.persistence.Table;
 @Table(name = "monster_attack")
 public class MonsterAttack {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private int id;
+  @Column(name = "name")
+  private String name;
+  @Column(name = "damage")
+  private String damage;
 
-	@Column(name = "name")
-	private String name;
+  public MonsterAttack() {}
 
-	@Column(name = "damage")
-	private String damage;
+  public String getDamage() { return damage; }
 
-	public MonsterAttack() {
+  public int getId() { return id; }
 
-	}
+  public String getName() { return name; }
 
-	public String getDamage() {
-		return damage;
-	}
+  public void setDamage(String damage) { this.damage = damage; }
 
-	public int getId() {
-		return id;
-	}
+  public void setId(Integer id) { this.id = id; }
 
-	public String getName() {
-		return name;
-	}
+  public void setName(String name) { this.name = name; }
 
-	public void setDamage(String damage) {
-		this.damage = damage;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public String toString() {
-		return "MonsterAttack [id=" + id + ", name=" + name + ", damage=" + damage + "]";
-	}
+  @Override
+  public String toString() {
+    return "MonsterAttack [id=" + id + ", name=" + name + ", damage=" + damage + "]";
+  }
 }

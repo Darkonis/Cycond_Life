@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface BaseService<T, ID extends Serializable> {
-	long count();
 
-	void deleteById(ID id);
+  long count();
 
-	List<T> findAll();
+  void deleteById(ID id);
 
-	T findById(ID id);
+  List<T> findAll();
 
-	void save(T entity);
+  T findById(ID id);
 
+  void save(T entity);
 }

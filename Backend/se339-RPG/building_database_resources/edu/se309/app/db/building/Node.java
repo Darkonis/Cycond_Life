@@ -5,37 +5,30 @@ import com.google.gson.annotations.SerializedName;
 
 public class Node {
 
-	@SerializedName("id")
-	@Expose
-	private long id;
-	@SerializedName("lat")
-	@Expose
-	private double lat;
-	@SerializedName("lon")
-	@Expose
-	private double lon;
+  @SerializedName("id")
+  @Expose
+  private long id;
+  @SerializedName("lat")
+  @Expose
+  private double lat;
+  @SerializedName("lon")
+  @Expose
+  private double lon;
 
-	public Node(long id, double lat, double lon) {
-		this.lon = lon;
-		this.lat = lat;
-		this.id = id;
-	}
+  public Node(long id, double lat, double lon) {
+    this.lon = lon;
+    this.lat = lat;
+    this.id = id;
+  }
 
-	public long getId() {
-		return id;
-	}
+  public long getId() { return id; }
 
-	public double getLat() {
-		return lat;
-	}
+  public double getLat() { return lat; }
 
-	public double getLon() {
-		return lon;
-	}
+  public double getLon() { return lon; }
 
-	@Override
-	public String toString() {
-		return String.valueOf(lat) + " " + String.valueOf(lon);
-	}
-
+  @Override
+  public String toString() {
+    return String.valueOf(lat) + " " + String.valueOf(lon);
+  }
 }

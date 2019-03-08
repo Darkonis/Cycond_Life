@@ -1,14 +1,13 @@
 package edu.se309.app.backend.service.interfaces;
 
 import java.util.List;
-
 import edu.se309.app.backend.entity.Monster;
 
 public interface MonsterService extends BaseService<Monster, Integer> {
 
-	void deleteAll();
+  void deleteAll();
 
-	int firstMonsterId();
+  int firstMonsterId();
 
-	List<Monster> generateMonsters();
+  List<Monster> generateMonsters();
 }
