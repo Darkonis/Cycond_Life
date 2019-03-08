@@ -11,11 +11,10 @@ import edu.se309.app.backend.service.interfaces.BaseService;
 public class BaseController<T, ID extends Serializable, R extends BaseService<T, ID>> {
 
 	private R r;
-	
 
 	public BaseController(R r) {
 		this.r = r;
-		
+
 	}
 
 	@GetMapping("/count")
@@ -27,7 +26,7 @@ public class BaseController<T, ID extends Serializable, R extends BaseService<T,
 	String deleteById(ID id) {
 		r.deleteById(id);
 		String className = this.getClass().getSimpleName();
-		className = className.substring(0,className.lastIndexOf('C'));
+		className = className.substring(0, className.lastIndexOf('C'));
 		return "Deleted " + className + " with id: " + id.toString();
 	}
 

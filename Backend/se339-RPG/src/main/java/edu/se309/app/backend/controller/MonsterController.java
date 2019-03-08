@@ -20,7 +20,7 @@ public class MonsterController extends BaseController<Monster, Integer, MonsterS
 	public MonsterController(MonsterService monsterService) {
 		super(monsterService);
 	}
-	
+
 	@PostMapping("/generate")
 	public List<Monster> generateMonster() {
 		return getService().generateMonsters();

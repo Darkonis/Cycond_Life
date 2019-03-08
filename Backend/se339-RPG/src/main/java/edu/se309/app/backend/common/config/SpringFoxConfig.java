@@ -15,18 +15,18 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SpringFoxConfig extends WebMvcConfigurationSupport {
-	
-	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-	    registry.addRedirectViewController("/v2/api-docs", "/v2/api-docs"); 
-	    registry.addRedirectViewController("/", "/swagger-ui.html");
-	   
-	}
-	
+
 	@Override
 	protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/**").addResourceLocations("classpath:/META-INF/resources/");		
+		registry.addResourceHandler("/**").addResourceLocations("classpath:/META-INF/resources/");
 		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+	}
+
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+		registry.addRedirectViewController("/v2/api-docs", "/v2/api-docs");
+		registry.addRedirectViewController("/", "/swagger-ui.html");
+
 	}
 
 	@Bean

@@ -26,7 +26,7 @@ public class AccountController extends BaseController<Account, Integer, AccountS
 	public Account addAccount(@RequestBody Account account) {
 		account.setAccountId(0);
 		Date currentDate = new Date();
-		account.setCreatedOn(currentDate);		
+		account.setCreatedOn(currentDate);
 		getService().save(account);
 		return account;
 	}

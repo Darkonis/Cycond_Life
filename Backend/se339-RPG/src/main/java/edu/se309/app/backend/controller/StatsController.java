@@ -1,9 +1,6 @@
 package edu.se309.app.backend.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,14 +12,12 @@ import edu.se309.app.backend.service.interfaces.StatService;
 
 @RestController
 @RequestMapping("/api/stats")
-public class StatsController extends BaseController<UserStat,Integer,StatService> {
-
-	
+public class StatsController extends BaseController<UserStat, Integer, StatService> {
 
 	@Autowired
 	public StatsController(StatService statService) {
 		super(statService);
-	}	
+	}
 
 	@PutMapping("/incrementStat/{accountId}/{stat}")
 	public UserStat incrementStat(@PathVariable("accountId") Integer accountId, @PathVariable("stat") String stat) {
