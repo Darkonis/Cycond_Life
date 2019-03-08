@@ -6,62 +6,39 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import org.springframework.data.geo.Polygon;
 
 @Entity
-@Table(name="building_locations")
+@Table(name = "building_locations")
 public class BuildingLocation {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="building_id")
-	private int buildingId;
-	
-	@Column(name="geo", columnDefinition = "geometry")
-	private Polygon geo;
-	
-	
-	@Column(name="earned_stat")
-	private String earnedStat;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "building_id")
+  private int buildingId;
 
-	public BuildingLocation() {
-		
-	}
-	
-	public BuildingLocation(Polygon geo, String earnedStat) {
-		this.geo = geo;
-		this.earnedStat = earnedStat;
-	}
+  @Column(name = "geo", columnDefinition = "geometry")
+  private Polygon geo;
 
-	public int getBuildingId() {
-		return buildingId;
-	}
+  @Column(name = "earned_stat")
+  private String earnedStat;
 
-	public String getEarnedStat() {
-		return earnedStat;
-	}
+  public BuildingLocation() {}
 
-	public Polygon getGeo() {
-		return geo;
-	}
+  public BuildingLocation(Polygon geo, String earnedStat) {
+    this.geo = geo;
+    this.earnedStat = earnedStat;
+  }
 
-	public void setBuildingId(int buildingId) {
-		this.buildingId = buildingId;
-	}
-	
-	
-	public void setEarnedStat(String earnedStat) {
-		this.earnedStat = earnedStat;
-	}
-	
-	
-	public void setGeo(Polygon geo) {
-		this.geo = geo;
-	}
-	
-	
-	
-	
-	
+  public int getBuildingId() { return buildingId; }
+
+  public String getEarnedStat() { return earnedStat; }
+
+  public Polygon getGeo() { return geo; }
+
+  public void setBuildingId(int buildingId) { this.buildingId = buildingId; }
+
+  public void setEarnedStat(String earnedStat) { this.earnedStat = earnedStat; }
+
+  public void setGeo(Polygon geo) { this.geo = geo; }
 }

@@ -44,7 +44,7 @@ bash.sh
 
 #Eclipse
 .metadata
-bin/
+bin*
 tmp/
 *.tmp
 *.bak
