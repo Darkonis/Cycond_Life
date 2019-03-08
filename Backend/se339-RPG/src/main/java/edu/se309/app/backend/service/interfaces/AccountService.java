@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import edu.se309.app.backend.entity.Account;
 
-public interface AccountService {
+public interface AccountService extends BaseService<Account,Integer> {
 	
 public void deleteById(int accountId);
 	
