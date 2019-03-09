@@ -58,8 +58,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         if(g==null) {
             g = new Game(mMap);
-   //         g.generate_mMap();
+   //        g.generate_mMap();
         }
+
         //Initializing googleApiClient
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -83,7 +84,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(india));
         mMap.setOnMarkerDragListener(this);
         mMap.setOnMapLongClickListener(this);
-
+        display_monsters();
         //g.display_monsters();
     }
 
@@ -136,23 +137,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         LatLng latLng = new LatLng(latitude, longitude);
                         mMap.addMarker(new MarkerOptions()
                                 .position(latLng)
-                                .draggable(true)
+                                .draggable(false)
                                 .title("You are here!!!!"));
-                        for(int i=0;i<Game.num_monsters;i++)
-                        {
-                            if(Game.monster_map.get(i).getResolve()<=0)
-                            {
-                                continue;
-                            }
-                            mMap.addMarker(new MarkerOptions().position(new LatLng(g.monster_map.get(i).get_latitude(),g.monster_map.get(i).get_longitude())).draggable(false).title("Monster: "+ i));
-                        }
+                        display_monsters();
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
                         mMap.getUiSettings().setZoomControlsEnabled(false);
+                        mMap.getUiSettings().setAllGesturesEnabled(false);
 
 
                     }
-
+    private void display_monsters()
+    {
+        for(int i=0;i<Game.num_monsters;i++)
+        {
+            if(Game.monster_map.get(i).getResolve()<=0)
+            {
+                continue;
+            }
+            mMap.addMarker(new MarkerOptions().position(new LatLng(Game.monster_map.get(i).get_latitude(),Game.monster_map.get(i).get_longitude())).draggable(false).title("Monster: "+ i));
+        }
+       // mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(latitude,longitude)));
+  //      moveMap();
+    }
     @Override
     public void onClick(View view) {
         Log.v(TAG,"view click event");
@@ -183,7 +190,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if(player.getResolve()<=0) return;
         for(int i=0;i<Game.num_monsters;i++)
         {
-            if(Math.abs(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(latLng.longitude))<=.001&&Math.abs(Math.abs(g.monster_map.get(i).get_latitude())-Math.abs(latLng.latitude))<=.001)
+            if(Math.abs(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(latLng.longitude))<=.001&&Math.abs(Math.abs(Game.monster_map.get(i).get_latitude())-Math.abs(latLng.latitude))<=.001)
             {
                 opponent=Game.monster_map.get(i);
                 Combat.set_combatants(opponent,g);
@@ -223,8 +230,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleApiClient.disconnect();
         super.onStop();
     }
-
-
+    protected  void onPause()
+    {
+        super.onPause();
+    }
+    protected void onResume()
+    {
+        super.onResume();
+       // getCurrentLocation();
+        //display_monsters();
+    }
     @Override
     public boolean onMarkerClick(Marker marker) {
         Toast.makeText(MapsActivity.this, "onMarkerClick", Toast.LENGTH_SHORT).show();

@@ -130,7 +130,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Will save a temp account that can be accessed by the rest of the app in later iterations
-                Player.create_the_instance("tmp");
+                Player.create_the_instance("Over9000");
                 final Intent openMenu = new Intent(Login.this, menu.class);
                 startActivity(openMenu);
             }
