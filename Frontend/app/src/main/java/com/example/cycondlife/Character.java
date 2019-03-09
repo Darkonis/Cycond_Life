@@ -12,19 +12,37 @@ public class Character {
     /*
     the ability to quickly and rapidly confuse your opponent (attack)
      */
-    private int BS;
+    protected int BS;
     /*
         ones determination in combat basically hp
      */
-    private int resolve;
-    private int max_resolve;
-    private int tinkering;
-    private int critical_thinking;
-    private int presentation;
-    private String major ="Student";
-    private int tinkering_points;
+    protected int resolve;
+    /*
+    ones potential for resolve
+     */
+    protected int max_resolve;
+    /*
+    ones unmodded resolve
+     */
+    protected int base_resolve;
+    /*
+        The ability to create new things
+     */
+    protected int tinkering;
+
+    protected int critical_thinking;
+    protected  int base_critical_thinking;
+    protected int presentation;
+    protected  int base_presentation;
+    protected String major ="Student";
+    protected int tinkering_points;
+    protected int base_tinkering;
+    protected int max_tinkering;
     //the distance monsters will appear
-    private double visual_range=.5;
+    /*
+    TODO might make this variable base on class a trouble sense is you will
+     */
+    protected double visual_range=.03;
     Character()
     {
 
