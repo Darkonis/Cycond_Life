@@ -29,7 +29,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 public class Json_handler {
 
     private String user,pass,first,last,email,type;
-    private String mJSONURLString = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/";
+    public final String mJSONBASEString = "http://cs309-sd-6.misc.iastate.edu:8080/api/";
+    public final String mAccountString ="accounts/";
     private Context mContext;
     JSONArray a;
     private JSONObject o;
@@ -75,7 +76,7 @@ public class Json_handler {
         @Override
         protected String doInBackground(String... urls) {
             try {
-                URL url = new URL("http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/" +user_id);
+                URL url = new URL(mJSONBASEString+ mAccountString+user_id);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("DELETE");
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -94,8 +95,9 @@ public class Json_handler {
 
                 conn.disconnect();
             } catch (Exception e) {
-                e.printStackTrace();
                 Log.i("Cycond Life", "Error on delete");
+                e.printStackTrace();
+
             }
             return "deleted";
         }
@@ -105,7 +107,7 @@ public class Json_handler {
         @Override
         protected String doInBackground(String... urls) {
             try {
-                URL url = new URL("http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/");
+                URL url = new URL("http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/add");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");

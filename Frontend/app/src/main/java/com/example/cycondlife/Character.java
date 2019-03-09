@@ -7,12 +7,12 @@ public class Character {
     private boolean isPlayer;
     private double lat;
     private double lng;
-    private String name = "tmp";
+    protected String name = "tmp";
     //potentially move to an enum array
     /*
     the ability to quickly and rapidly confuse your opponent (attack)
      */
-    private int BS;
+    protected int BS=10;
     /*
         ones determination in combat basically hp
      */
@@ -107,9 +107,10 @@ public class Character {
      */
     public static int do_combat(Character play, Character mon)
     {
-        mon.take_dmg(play.BS);
+        dice dmg_rng = new dice("1+1d4");
+        mon.take_dmg(play.BS+dmg_rng.roll());
         if(mon.resolve <=0) return 1;
-        play.take_dmg(mon.BS);
+        play.take_dmg(mon.BS+dmg_rng.roll());
         if(play.resolve<=0) return 2;
         return 0;
     }

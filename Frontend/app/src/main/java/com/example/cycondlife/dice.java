@@ -12,7 +12,7 @@ public class dice {
         //CharSequence c = "d";
         base = Integer.parseInt(s.substring(0,s.indexOf('+')));
         number = Integer.parseInt(s.substring(s.indexOf('+'),s.indexOf('d')));
-        sides= Integer.parseInt(s.substring(s.indexOf('d')));
+        sides= Integer.parseInt(s.substring(s.indexOf('d')+1));
         //TODO make based off time
          rand = new Random();
     }

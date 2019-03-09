@@ -115,6 +115,7 @@ public class dev_menu extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hide_entries();
                 submit_delete.setVisibility(View.VISIBLE);
                 id.setVisibility(View.VISIBLE);
             }
@@ -126,7 +127,8 @@ public class dev_menu extends AppCompatActivity {
 
                 int i =0;
                 try {
-                    i = s.charAt(0)-48;
+                  i=  Integer.parseInt(s);
+                  //  i = s.charAt(0)-48;
                 }
                 catch(Exception e)
                 {

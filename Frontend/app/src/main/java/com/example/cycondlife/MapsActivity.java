@@ -183,6 +183,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapLongClick(LatLng latLng) {
         // mMap.clear();
         final Context context = this;
+        if(player.getResolve()<=0) return;
         Intent intent = new Intent(context, Combat.class);
         boolean found=false;
         Log.i("Cycond Life","LAT lang ="+latLng.latitude+" "+latLng.longitude);
@@ -192,6 +193,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         {
             if(Math.abs(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(latLng.longitude))<=.001&&Math.abs(Math.abs(Game.monster_map.get(i).get_latitude())-Math.abs(latLng.latitude))<=.001)
             {
+                if(Game.monster_map.get(i).getResolve()<=0)
+                {
+                    continue;
+                }
                 opponent=Game.monster_map.get(i);
                 Combat.set_combatants(opponent,g);
                 found=true;
@@ -245,6 +250,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Toast.makeText(MapsActivity.this, "onMarkerClick", Toast.LENGTH_SHORT).show();
         return true;
     }
-
 
 }
