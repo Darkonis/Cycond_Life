@@ -11,4 +11,6 @@ public interface StatService extends BaseService<UserStat, Integer> {
   UserStat incrementByOne(int accountId, String stat);
 
   UserStat updateUserStat(int accountId, String stat, int value);
+  
+  UserStat getByUsername(String username);
 }

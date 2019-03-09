@@ -70,4 +70,13 @@ public class StatServiceImplementation extends BaseServiceImplementation<UserSta
     PropertyAccessor myAccessor = PropertyAccessorFactory.forBeanPropertyAccess(userStat);
     return setStatValue(myAccessor, userStat, stat, value);
   }
+
+  @Override
+  @Transactional
+  public UserStat getByUsername(String username) {
+	Optional<UserStat> userStat = getRepository().findByAccountUsername(username);
+	return nullCheck(userStat, "Invalid request: no stats found for username: " + username);
+}
+  
+  
 }
