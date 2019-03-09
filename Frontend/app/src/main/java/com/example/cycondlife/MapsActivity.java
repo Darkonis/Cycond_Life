@@ -84,7 +84,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(india));
         mMap.setOnMarkerDragListener(this);
         mMap.setOnMapLongClickListener(this);
-        display_monsters();
+       // display_monsters();
         //g.display_monsters();
     }
 
