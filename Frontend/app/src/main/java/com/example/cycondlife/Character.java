@@ -4,19 +4,19 @@ public class Character {
     /*
     basic stats and info
      */
-    protected boolean isPlayer;
-    protected double lat;
-    protected double lng;
-    protected String name = "tmp";
+    private boolean isPlayer;
+    private double lat;
+    private double lng;
+    private String name = "tmp";
     //potentially move to an enum array
     /*
     the ability to quickly and rapidly confuse your opponent (attack)
      */
-    protected int BS;
+    private int BS;
     /*
         ones determination in combat basically hp
      */
-    protected int resolve;
+    protected int resolve=100;
     /*
     ones potential for resolve
      */
@@ -28,21 +28,18 @@ public class Character {
     /*
         The ability to create new things
      */
-    protected int tinkering;
+    protected int tinkering=0;
 
-    protected int critical_thinking;
+    protected int critical_thinking =0;
     protected  int base_critical_thinking;
-    protected int presentation;
+    protected int presentation=0;
     protected  int base_presentation;
     protected String major ="Student";
     protected int tinkering_points;
     protected int base_tinkering;
     protected int max_tinkering;
     //the distance monsters will appear
-    /*
-    TODO might make this variable base on class a trouble sense is you will
-     */
-    protected double visual_range=.03;
+    private double visual_range=.5;
     Character()
     {
 
