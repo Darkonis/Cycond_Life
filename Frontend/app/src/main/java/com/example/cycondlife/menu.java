@@ -25,7 +25,6 @@ public class menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        pull_monster_map();
         //button object creations
         Button stats = findViewById(R.id.stats);
         Button inventory = findViewById(R.id.inventory);
@@ -33,6 +32,10 @@ public class menu extends AppCompatActivity {
         Button friends = findViewById(R.id.friends);
         Button map = findViewById(R.id.map);
         Button dev_menu = findViewById(R.id.dev_menu);
+        if(Game.monster_map.size()==0)
+        {
+            pull_monster_map();
+        }
         stats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +73,7 @@ public class menu extends AppCompatActivity {
                     JSONArray response = a;
                     for(int i=0;i<response.length();i++) {
                         JSONObject mon = response.getJSONObject(i);
-                        Game.add_monster(new Character(mon.getInt("id"), mon.getInt("type"), mon.getDouble("lat"), mon.getDouble("lon")));
+                        Game.add_monster(new Character(mon.getInt("id"), mon.getInt("type"), mon.getDouble("latitude"), mon.getDouble("longitude")));
                         Game.num_monsters++;
                     }
                 }
@@ -103,7 +106,7 @@ public class menu extends AppCompatActivity {
         Context c= getApplicationContext();
         final RequestQueue requestQueue = Volley.newRequestQueue(c);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                "http://cs309-sd-6.misc.iastate.edu:8080/api/monster/list/",
+                "http://cs309-sd-6.misc.iastate.edu:8080/api/monsters/",
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -119,12 +122,21 @@ public class menu extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // Do something when error occurred
-                        Log.i("Cycond Life", "request error");
+                        Log.i("Cycond Life", "monster request error");
                         Log.i("Cycond Life", error.getLocalizedMessage());
                     }
 
     });
         requestQueue.add(jsonArrayRequest);
     }
-
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+    }
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+    }
 }

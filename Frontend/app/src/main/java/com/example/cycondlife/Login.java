@@ -12,15 +12,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
+import android.os.AsyncTask;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.DataOutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class Login extends AppCompatActivity {
 
@@ -65,7 +74,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Will save a temp account that can be accessed by the rest of the app in later iterations
-                Player.create_the_instance("TestUser2");
+                Player.create_the_instance("Over9000");
                 final Intent openMenu = new Intent(Login.this, menu.class);
                 startActivity(openMenu);
             }
