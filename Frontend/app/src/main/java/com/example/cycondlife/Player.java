@@ -15,6 +15,7 @@ public class Player extends Character {
     {
         super();
         username=user;
+        name=user;
     }
     public static Player get_instance()
     {

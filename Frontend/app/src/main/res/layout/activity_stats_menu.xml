@@ -20,36 +20,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="133dp"
+        android:layout_marginBottom="2dp"
         android:text="Name:"
-        app:layout_constraintBottom_toTopOf="@+id/Class"
-        app:layout_constraintStart_toStartOf="@+id/Class"
+        app:layout_constraintBottom_toTopOf="@+id/Major"
+        app:layout_constraintStart_toStartOf="@+id/Major"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Class"
+        android:id="@+id/Major"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginBottom="1dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
         android:text="Major"
         app:layout_constraintBottom_toTopOf="@+id/resolve"
-        app:layout_constraintEnd_toEndOf="@+id/bs"
-        app:layout_constraintStart_toEndOf="@+id/bs"
+        app:layout_constraintStart_toStartOf="@+id/bs"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
         android:id="@+id/resolve"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
         android:text="Resolve"
         app:layout_constraintBottom_toTopOf="@+id/bs"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Class" />
+        app:layout_constraintTop_toBottomOf="@+id/Major" />
 
     <TextView
         android:id="@+id/bs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="2dp"
         android:text="BS"
         app:layout_constraintBottom_toTopOf="@+id/tinkering"
         app:layout_constraintStart_toStartOf="@+id/resolve"
@@ -59,19 +60,19 @@
         android:id="@+id/tinkering"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
         android:text="tinkering"
         app:layout_constraintBottom_toTopOf="@+id/critical_thinking"
-        app:layout_constraintStart_toStartOf="@+id/bs"
+        app:layout_constraintStart_toStartOf="@+id/critical_thinking"
         app:layout_constraintTop_toBottomOf="@+id/bs" />
 
     <TextView
         android:id="@+id/critical_thinking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="483dp"
+        android:layout_marginBottom="470dp"
         android:text="critical thinking"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/resolve"
-        app:layout_constraintStart_toEndOf="@+id/resolve"
+        app:layout_constraintStart_toStartOf="@+id/resolve"
         app:layout_constraintTop_toBottomOf="@+id/tinkering" />
 </android.support.constraint.ConstraintLayout>

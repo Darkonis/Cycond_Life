@@ -29,7 +29,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 public class Json_handler {
 
     private String user,pass,first,last,email,type;
-    private String mJSONURLString = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts";
+    private String mJSONURLString = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/";
     private Context mContext;
     JSONArray a;
     private JSONObject o;

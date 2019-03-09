@@ -7,7 +7,7 @@ public class Character {
     private boolean isPlayer;
     private double lat;
     private double lng;
-    private String name = "tmp";
+    protected String name = "tmp";
     //potentially move to an enum array
     /*
     the ability to quickly and rapidly confuse your opponent (attack)
@@ -16,13 +16,13 @@ public class Character {
     /*
         ones determination in combat basically hp
      */
-    private int resolve;
+    private int resolve=100;
     private int max_resolve;
-    private int tinkering;
-    private int critical_thinking;
-    private int presentation;
+    private int tinkering=0;
+    private int critical_thinking=0;
+    private int presentation=0;
     private String major ="Student";
-    private int tinkering_points;
+    private int tinkering_points=0;
     //the distance monsters will appear
     private double visual_range=.5;
     Character()
