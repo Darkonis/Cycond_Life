@@ -1,6 +1,7 @@
 package edu.se309.app.backend.entity;
 
 import java.util.Objects;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,7 +43,8 @@ public class UserStat {
   @JoinColumn(name = "account_id")
   private Account account;
 
-  public UserStat() {}
+  public UserStat() {
+  }
 
   public UserStat(Account account) {
     this.account = account;
@@ -59,9 +61,15 @@ public class UserStat {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj) { return true; }
-    if (obj == null) { return false; }
-    if (getClass() != obj.getClass()) { return false; }
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
     UserStat other = (UserStat) obj;
     return Objects.equals(account, other.getAccount()) && bs == other.getBs()
       && criticalThinking == other.getCriticalThinking() && ingenuity == other.getIngenuity()
@@ -69,26 +77,41 @@ public class UserStat {
       && resolve == other.getResolve() && statsId == other.getStatsId();
   }
 
-  public Account getAccount() { return account; }
+  public Account getAccount() {
+    return account;
+  }
 
-  public int getBs() { return bs; }
+  public int getBs() {
+    return bs;
+  }
 
-  public int getCriticalThinking() { return criticalThinking; }
+  public int getCriticalThinking() {
+    return criticalThinking;
+  }
 
-  public int getIngenuity() { return ingenuity; }
+  public int getIngenuity() {
+    return ingenuity;
+  }
 
-  public int getMonstersKilled() { return monstersKilled; }
+  public int getMonstersKilled() {
+    return monstersKilled;
+  }
 
-  public int getPresentation() { return presentation; }
+  public int getPresentation() {
+    return presentation;
+  }
 
-  public int getResolve() { return resolve; }
+  public int getResolve() {
+    return resolve;
+  }
 
-  public int getStatsId() { return statsId; }
+  public int getStatsId() {
+    return statsId;
+  }
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, bs, criticalThinking, ingenuity, monstersKilled, presentation,
-      resolve, statsId);
+    return Objects.hash(account, bs, criticalThinking, ingenuity, monstersKilled, presentation, resolve, statsId);
   }
 
   // returns true if newAccount and account are the same
@@ -97,34 +120,50 @@ public class UserStat {
   }
 
   public void setAccount(Account account) {
-    if (sameAccountCheck(account)) { return; }
+    if (sameAccountCheck(account)) {
+      return;
+    }
     Account oldAccount = this.account;
-    if (oldAccount != null) { oldAccount.setUserStat(null); }
-    if (account != null) { account.setUserStat(this); }
+    if (oldAccount != null) {
+      oldAccount.setUserStat(null);
+    }
+    if (account != null) {
+      account.setUserStat(this);
+    }
   }
 
-  public void setBs(int bs) { this.bs = bs; }
+  public void setBs(int bs) {
+    this.bs = bs;
+  }
 
   public void setCriticalThinking(int criticalThinking) {
     this.criticalThinking = criticalThinking;
   }
 
-  public void setIngenuity(int ingenuity) { this.ingenuity = ingenuity; }
+  public void setIngenuity(int ingenuity) {
+    this.ingenuity = ingenuity;
+  }
 
-  public void setMonstersKilled(int monstersKilled) { this.monstersKilled = monstersKilled; }
+  public void setMonstersKilled(int monstersKilled) {
+    this.monstersKilled = monstersKilled;
+  }
 
-  public void setPresentation(int presentation) { this.presentation = presentation; }
+  public void setPresentation(int presentation) {
+    this.presentation = presentation;
+  }
 
-  public void setResolve(int resolve) { this.resolve = resolve; }
+  public void setResolve(int resolve) {
+    this.resolve = resolve;
+  }
 
-  public void setStatsId(int statsId) { this.statsId = statsId; }
+  public void setStatsId(int statsId) {
+    this.statsId = statsId;
+  }
 
   @Override
   public String toString() {
-    return "UserStat [statsId=" + statsId + ", bs=" + bs + ", resolve=" + resolve
-      + ", criticalThinking="
-      + criticalThinking + ", ingenuity=" + ingenuity + ", presentation=" + presentation
-      + ", monstersKilled="
+    return "UserStat [statsId=" + statsId + ", bs=" + bs + ", resolve=" + resolve + ", criticalThinking="
+      + criticalThinking + ", ingenuity=" + ingenuity + ", presentation=" + presentation + ", monstersKilled="
       + monstersKilled + "]";
   }
 }

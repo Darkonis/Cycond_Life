@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -18,8 +19,7 @@ public class SpringFoxConfig extends WebMvcConfigurationSupport {
   @Override
   protected void addResourceHandlers(ResourceHandlerRegistry registry) {
     registry.addResourceHandler("/**").addResourceLocations("classpath:/META-INF/resources/");
-    registry.addResourceHandler("/webjars/**")
-      .addResourceLocations("classpath:/META-INF/resources/webjars/");
+    registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
   }
 
   @Override
@@ -31,7 +31,6 @@ public class SpringFoxConfig extends WebMvcConfigurationSupport {
   @Bean
   public Docket apiDocket() {
     return new Docket(DocumentationType.SWAGGER_2).select()
-      .apis(RequestHandlerSelectors.basePackage("edu.se309.app.backend")).paths(PathSelectors.any())
-      .build();
+      .apis(RequestHandlerSelectors.basePackage("edu.se309.app.backend")).paths(PathSelectors.any()).build();
   }
 }

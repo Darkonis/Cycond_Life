@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import edu.se309.app.backend.entity.UserStat;
 import edu.se309.app.backend.service.interfaces.StatService;
 
@@ -19,8 +20,7 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
   }
 
   @PutMapping("/incrementStat/{accountId}/{stat}")
-  public UserStat incrementStat(@PathVariable("accountId") Integer accountId,
-    @PathVariable("stat") String stat) {
+  public UserStat incrementStat(@PathVariable("accountId") Integer accountId, @PathVariable("stat") String stat) {
     return getService().incrementByOne(accountId, stat);
   }
 

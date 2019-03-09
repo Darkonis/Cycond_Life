@@ -16,11 +16,17 @@ public class Way {
     this.name = name;
   }
 
-  public long getId() { return id; }
+  public long getId() {
+    return id;
+  }
 
-  public String getName() { return name; }
+  public String getName() {
+    return name;
+  }
 
-  public ArrayList<Node> getNodes() { return nodes; }
+  public ArrayList<Node> getNodes() {
+    return nodes;
+  }
 
   public String nodeStringBuilder() {
     StringBuilder sb = new StringBuilder();
@@ -35,7 +41,6 @@ public class Way {
   public String toString() {
     String outputNodes = nodeStringBuilder();
     return "INSERT INTO building_locations (building_name,geo,earned_stat)" + " VALUES (" + name
-      + ",ST_GeomFromText('POLYGON((" + outputNodes + "))',4326)," + Relation.getRandomStat(name)
-      + ");";
+      + ",ST_GeomFromText('POLYGON((" + outputNodes + "))',4326)," + Relation.getRandomStat(name) + ");";
   }
 }

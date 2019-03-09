@@ -22,19 +22,32 @@ public class MonsterAttack {
   @Column(name = "damage")
   private String damage;
 
-  public MonsterAttack() {}
+  public MonsterAttack() {
+  }
 
-  public String getDamage() { return damage; }
+  public String getDamage() {
+    return damage;
+  }
 
-  public int getId() { return id; }
+  public int getId() {
+    return id;
+  }
 
-  public String getName() { return name; }
+  public String getName() {
+    return name;
+  }
 
-  public void setDamage(String damage) { this.damage = damage; }
+  public void setDamage(String damage) {
+    this.damage = damage;
+  }
 
-  public void setId(Integer id) { this.id = id; }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-  public void setName(String name) { this.name = name; }
+  public void setName(String name) {
+    this.name = name;
+  }
 
   @Override
   public String toString() {

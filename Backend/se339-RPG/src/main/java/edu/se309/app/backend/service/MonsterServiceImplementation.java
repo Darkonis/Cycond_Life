@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import edu.se309.app.backend.entity.Monster;
 import edu.se309.app.backend.repository.MonsterRepository;
 import edu.se309.app.backend.service.interfaces.MonsterService;
 
 @Service
-public class MonsterServiceImplementation
-  extends BaseServiceImplementation<Monster, Integer, MonsterRepository>
+public class MonsterServiceImplementation extends BaseServiceImplementation<Monster, Integer, MonsterRepository>
   implements MonsterService {
 
   @Autowired
