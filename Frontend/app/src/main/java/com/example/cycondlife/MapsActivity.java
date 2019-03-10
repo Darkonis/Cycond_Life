@@ -82,7 +82,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng india = new LatLng(42.03, -92.03);
         mMap.addMarker(new MarkerOptions().position(india).title("Marker in Ames"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(india));
-        mMap.setOnMarkerDragListener(this);
+       // mMap.setOnMarkerDragListener(this);
         mMap.setOnMapLongClickListener(this);
        // display_monsters();
         //g.display_monsters();
@@ -139,6 +139,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 .position(latLng)
                                 .draggable(false)
                                 .title("You are here!!!!"));
+
                         display_monsters();
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
@@ -248,6 +249,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public boolean onMarkerClick(Marker marker) {
         Toast.makeText(MapsActivity.this, "onMarkerClick", Toast.LENGTH_SHORT).show();
+        moveMap();
         return true;
     }
 
