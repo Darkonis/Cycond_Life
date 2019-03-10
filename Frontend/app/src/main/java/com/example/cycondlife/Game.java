@@ -1,6 +1,7 @@
 //TODO move this into the proper package
 package com.example.cycondlife;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import com.example.cycondlife.Character;
@@ -87,7 +88,8 @@ public class Game {
     }
 
 
-    static void change_player_hp(int hp) {
+    static void change_player_hp(int hp, Context c) {
         player.setResolve(hp);
+        player.update_stat(hp,"resolve",c);
     }
 }

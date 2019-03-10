@@ -1,5 +1,7 @@
 package com.example.cycondlife;
 
+import android.content.Context;
+
 public class Character {
     /*
     basic stats and info
@@ -104,13 +106,14 @@ public class Character {
     }
     /*
     maybe move this into combat class
+    also remove character play its not signleton style
      */
-    public static int do_combat(Character play, Character mon)
+    public static int do_combat(Character play, Character mon, Context c)
     {
         dice dmg_rng = new dice("1+1d4");
         mon.take_dmg(play.BS+dmg_rng.roll());
         if(mon.resolve <=0) return 1;
-        play.take_dmg(mon.BS+dmg_rng.roll());
+        Player.get_instance().take_dmg(mon.BS,c);
         if(play.resolve<=0) return 2;
         return 0;
     }

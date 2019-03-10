@@ -150,7 +150,7 @@ public class dev_menu extends AppCompatActivity {
         res_hp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Game.change_player_hp(100);
+                Game.change_player_hp(100,getApplicationContext());
             }
         });
     }

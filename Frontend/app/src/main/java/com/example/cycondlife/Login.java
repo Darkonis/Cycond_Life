@@ -74,7 +74,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Will save a temp account that can be accessed by the rest of the app in later iterations
-                Player.create_the_instance("Over9000");
+                Player.create_the_instance("Over9000",13);
                 final Intent openMenu = new Intent(Login.this, menu.class);
                 startActivity(openMenu);
             }
@@ -134,13 +134,18 @@ public class Login extends AppCompatActivity {
                                 String nameToCheck = info.get("username").toString();
                                 String passToCheck = info.get("password").toString();
 
-                                if(nameToCheck.equals(userName) && passToCheck.equals(userPass))    {
-                                    c.get_object_response(info);
+                                        if(nameToCheck.equals(userName) && passToCheck.equals(userPass))    {
+                                            if(Player.get_instance()!=null) {
+                                                Player.destroy_the_instance(); //remove the previous player if needed
+                                            }
+                                            Player.create_the_instance(userName,info.getInt("accountId")); //on good login create the player object
+
+                                            startActivity(openMenu);
+                                        }
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
                                 }
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
 
                         fail.setVisibility(View.VISIBLE);   //Should only display on codition of fail, will be changed
                     }
