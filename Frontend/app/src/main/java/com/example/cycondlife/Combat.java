@@ -34,8 +34,7 @@ public class Combat extends AppCompatActivity {
         setup_buttons();
         update_status();
     }
-    public static void set_combatants(
-            Character mnstr,Game tmp)
+    public static void set_combatants(Character mnstr,Game tmp)
     {
         monster=mnstr;
         //player=pyr;
@@ -48,6 +47,9 @@ public class Combat extends AppCompatActivity {
         player_stuff=findViewById(R.id.health);
         monster_stuff=findViewById(R.id.eHealth);
     }
+    /*
+    TODO adjust so that online health is updated at the end of combat
+     */
     private void setup_buttons()
     {
         button_flee.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +62,7 @@ public class Combat extends AppCompatActivity {
         attack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               int ret= Character.do_combat(player,monster);
+               int ret= Character.do_combat(player,monster,getApplicationContext());
                update_status();
                if(ret ==1)
                {
