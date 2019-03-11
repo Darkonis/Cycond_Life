@@ -28,7 +28,7 @@ public class StatServiceImplementation extends BaseServiceImplementation<UserSta
   @NonNull
   public UserStat findByAccountId(int accountId) {
     Optional<UserStat> userStat = getRepository().findByAccountId(accountId);
-    return (super.nullCheck(userStat,
+    return (nullCheck(userStat,
       "Invalid Request: No such account found with Id: " + Integer.toString(accountId)));
   }
 
@@ -76,7 +76,6 @@ public class StatServiceImplementation extends BaseServiceImplementation<UserSta
   public UserStat getByUsername(String username) {
 	Optional<UserStat> userStat = getRepository().findByAccountUsername(username);
 	return nullCheck(userStat, "Invalid request: no stats found for username: " + username);
-}
-  
+} 
   
 }
