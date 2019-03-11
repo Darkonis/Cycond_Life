@@ -26,8 +26,8 @@ public class MonsterController extends BaseController<Monster, Integer, MonsterS
     return getService().generateMonsters();
   }
 
-  @ApiOperation(value = "returns first moster's id or -1 if the list is empty")
-  @GetMapping("/fistId")
+  @ApiOperation(value = "returns first moster's primary key id or -1 if the list is empty")
+  @GetMapping("/firstId")
   public int getFirstId() {
     return getService().firstMonsterId();
   }

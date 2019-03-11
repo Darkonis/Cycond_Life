@@ -2,13 +2,10 @@ package edu.se309.app.backend.entity;
 
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,10 +13,8 @@ import javax.persistence.Table;
 @Table(name = "stats")
 public class UserStat {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "stats_id")
-  private int statsId;
+  @Id  
+  private int id;
 
   @Column(name = "bs", columnDefinition = "UNSIGNED INT(11)")
   private int bs;
@@ -39,11 +34,12 @@ public class UserStat {
   @Column(name = "monsters_killed", columnDefinition = "UNSIGNED INT(11)")
   private int monstersKilled;
 
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "account_id")
+  @OneToOne  
+  @MapsId  
   private Account account;
 
-  public UserStat() {
+  public UserStat() {	
+	  
   }
 
   public UserStat(Account account) {
@@ -60,22 +56,19 @@ public class UserStat {
   }
 
   @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    UserStat other = (UserStat) obj;
-    return Objects.equals(account, other.getAccount()) && bs == other.getBs()
-      && criticalThinking == other.getCriticalThinking() && ingenuity == other.getIngenuity()
-      && monstersKilled == other.getMonstersKilled() && presentation == other.getPresentation()
-      && resolve == other.getResolve() && statsId == other.getStatsId();
-  }
+public boolean equals(Object obj) {
+	if (this == obj) {
+		return true;
+	}
+	if (obj == null) {
+		return false;
+	}
+	if (getClass() != obj.getClass()) {
+		return false;
+	}
+	UserStat other = (UserStat) obj;
+	return id == other.id;
+}
 
   public Account getAccount() {
     return account;
@@ -105,14 +98,14 @@ public class UserStat {
     return resolve;
   }
 
-  public int getStatsId() {
-    return statsId;
+  public int getId() {
+    return id;
   }
 
   @Override
-  public int hashCode() {
-    return Objects.hash(account, bs, criticalThinking, ingenuity, monstersKilled, presentation, resolve, statsId);
-  }
+public int hashCode() {
+	return Objects.hash(id);
+}
 
   // returns true if newAccount and account are the same
   private boolean sameAccountCheck(Account newAccount) {
@@ -120,6 +113,7 @@ public class UserStat {
   }
 
   public void setAccount(Account account) {
+	  
     if (sameAccountCheck(account)) {
       return;
     }
@@ -130,6 +124,7 @@ public class UserStat {
     if (account != null) {
       account.setUserStat(this);
     }
+    this.account = account;
   }
 
   public void setBs(int bs) {
@@ -156,13 +151,13 @@ public class UserStat {
     this.resolve = resolve;
   }
 
-  public void setStatsId(int statsId) {
-    this.statsId = statsId;
+  public void setId(int id) {
+    this.id = id;
   }
 
   @Override
   public String toString() {
-    return "UserStat [statsId=" + statsId + ", bs=" + bs + ", resolve=" + resolve + ", criticalThinking="
+    return "UserStat [id=" + id + ", bs=" + bs + ", resolve=" + resolve + ", criticalThinking="
       + criticalThinking + ", ingenuity=" + ingenuity + ", presentation=" + presentation + ", monstersKilled="
       + monstersKilled + "]";
   }
