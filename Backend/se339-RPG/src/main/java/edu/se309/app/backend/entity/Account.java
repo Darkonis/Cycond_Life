@@ -3,7 +3,6 @@ package edu.se309.app.backend.entity;
 import java.util.Date;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -48,10 +47,10 @@ public class Account {
   private String accountType;
 
   @JsonIgnore
-  @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+  @OneToOne(mappedBy = "account")
   private UserStat userStat;
 
-  public Account() {
+public Account() {
   }
 
   public Account(String username, String password, String firstName, String lastName, String email,
@@ -65,27 +64,19 @@ public class Account {
   }
 
   @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    Account other = (Account) obj;
-    return Objects.equals(accountType, other.accountType) && Objects.equals(createdOn, other.getCreatedOn())
-      && Objects.equals(email, other.getEmail()) && Objects.equals(firstName, other.getFirstName())
-      && id == other.getAccountId() && Objects.equals(lastName, other.getLastName())
-      && Objects.equals(password, other.getPassword()) && Objects.equals(userStat, other.getUserStat())
-      && Objects.equals(username, other.getUsername());
-  }
-
-  public int getAccountId() {
-    return id;
-  }
+public boolean equals(Object obj) {
+	if (this == obj) {
+		return true;
+	}
+	if (obj == null) {
+		return false;
+	}
+	if (getClass() != obj.getClass()) {
+		return false;
+	}
+	Account other = (Account) obj;
+	return id == other.id && Objects.equals(username, other.username);
+}
 
   public String getAccountType() {
     return accountType;
@@ -102,6 +93,10 @@ public class Account {
   public String getFirstName() {
     return firstName;
   }
+
+  public int getId() {
+	return id;
+}
 
   public String getLastName() {
     return lastName;
@@ -120,17 +115,14 @@ public class Account {
   }
 
   @Override
-  public int hashCode() {
-    return Objects.hash(accountType, createdOn, email, firstName, id, lastName, password, userStat, username);
-  }
-
-  public void setAccountId(int accountId) {
-    this.id = accountId;
-  }
+public int hashCode() {
+	return Objects.hash(id, username);
+}
 
   public void setAccountType(String accountType) {
     this.accountType = accountType;
   }
+
 
   public void setCreatedOn(Date createdOn) {
     this.createdOn = createdOn;
@@ -143,6 +135,10 @@ public class Account {
   public void setFirstName(String firstName) {
     this.firstName = firstName.toLowerCase();
   }
+
+  public void setId(int id) {
+	this.id = id;
+}
 
   public void setLastName(String lastName) {
     this.lastName = lastName.toLowerCase();
@@ -160,7 +156,9 @@ public class Account {
     if (userStat.equals(this.userStat)) {
       return;
     }
+    this.userStat = userStat;
     userStat.setAccount(this);
+    
   }
 
   @Override
