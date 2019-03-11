@@ -1,6 +1,8 @@
 package edu.se309.app.backend.controller;
 
 import java.util.List;
+import java.util.Optional;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +25,7 @@ public class MonsterController extends BaseController<Monster, Integer, MonsterS
   public List<Monster> generateMonster() {
     return getService().generateMonsters();
   }
-
+  
   @ApiOperation(value = "returns first moster's id or -1 if the list is empty")
   @GetMapping("/fistId")
   public int getFirstId() { return getService().firstMonsterId(); }

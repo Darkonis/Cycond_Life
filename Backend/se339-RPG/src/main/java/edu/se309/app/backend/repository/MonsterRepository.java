@@ -7,6 +7,6 @@ public interface MonsterRepository extends BaseRepository<Monster, Integer> {
 
   @Override
   void deleteAll();
-
+  
   Optional<Monster> findFirstByOrderByIdAsc();
 }
