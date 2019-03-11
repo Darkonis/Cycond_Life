@@ -1,5 +1,7 @@
 package com.example.cycondlife;
 
+import android.content.Context;
+
 public class Character {
     /*
     basic stats and info
@@ -7,7 +9,7 @@ public class Character {
     private boolean isPlayer;
     private double lat;
     private double lng;
-    private String name = "tmp";
+    protected String name = "tmp";
     //potentially move to an enum array
     /*
     the ability to quickly and rapidly confuse your opponent (attack)
@@ -16,13 +18,13 @@ public class Character {
     /*
         ones determination in combat basically hp
      */
-    private int resolve;
+    protected int resolve=100;
     private int max_resolve;
-    private int tinkering;
-    private int critical_thinking;
-    private int presentation;
+    private int tinkering=0;
+    private int critical_thinking=0;
+    private int presentation=0;
     private String major ="Student";
-    private int tinkering_points;
+    private int tinkering_points=0;
     //the distance monsters will appear
     private double visual_range=.5;
     Character()
@@ -89,12 +91,13 @@ public class Character {
     }
     /*
     maybe move this into combat class
+    also remove character play its not signleton style
      */
-    public static int do_combat(Character play, Character mon)
+    public static int do_combat(Character play, Character mon, Context c)
     {
         mon.take_dmg(play.BS);
         if(mon.resolve <=0) return 1;
-        play.take_dmg(mon.BS);
+        Player.get_instance().take_dmg(mon.BS,c);
         if(play.resolve<=0) return 2;
         return 0;
     }

@@ -2,6 +2,7 @@ package edu.se309.app.backend.entity;
 
 import java.util.Date;
 import java.util.Objects;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -49,7 +51,8 @@ public class Account {
   @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
   private UserStat userStat;
 
-  public Account() {}
+  public Account() {
+  }
 
   public Account(String username, String password, String firstName, String lastName, String email,
     String accountType) {
@@ -63,70 +66,107 @@ public class Account {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj) { return true; }
-    if (obj == null) { return false; }
-    if (getClass() != obj.getClass()) { return false; }
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
     Account other = (Account) obj;
-    return Objects.equals(accountType, other.accountType)
-      && Objects.equals(createdOn, other.getCreatedOn())
+    return Objects.equals(accountType, other.accountType) && Objects.equals(createdOn, other.getCreatedOn())
       && Objects.equals(email, other.getEmail()) && Objects.equals(firstName, other.getFirstName())
       && id == other.getAccountId() && Objects.equals(lastName, other.getLastName())
-      && Objects.equals(password, other.getPassword())
-      && Objects.equals(userStat, other.getUserStat())
+      && Objects.equals(password, other.getPassword()) && Objects.equals(userStat, other.getUserStat())
       && Objects.equals(username, other.getUsername());
   }
 
-  public int getAccountId() { return id; }
+  public int getAccountId() {
+    return id;
+  }
 
-  public String getAccountType() { return accountType; }
+  public String getAccountType() {
+    return accountType;
+  }
 
-  public Date getCreatedOn() { return createdOn; }
+  public Date getCreatedOn() {
+    return createdOn;
+  }
 
-  public String getEmail() { return email; }
+  public String getEmail() {
+    return email;
+  }
 
-  public String getFirstName() { return firstName; }
+  public String getFirstName() {
+    return firstName;
+  }
 
-  public String getLastName() { return lastName; }
+  public String getLastName() {
+    return lastName;
+  }
 
-  public String getPassword() { return password; }
+  public String getPassword() {
+    return password;
+  }
 
-  public String getUsername() { return username; }
+  public String getUsername() {
+    return username;
+  }
 
-  public UserStat getUserStat() { return userStat; }
+  public UserStat getUserStat() {
+    return userStat;
+  }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountType, createdOn, email, firstName, id, lastName, password, userStat,
-      username);
+    return Objects.hash(accountType, createdOn, email, firstName, id, lastName, password, userStat, username);
   }
 
-  public void setAccountId(int accountId) { this.id = accountId; }
+  public void setAccountId(int accountId) {
+    this.id = accountId;
+  }
 
-  public void setAccountType(String accountType) { this.accountType = accountType; }
+  public void setAccountType(String accountType) {
+    this.accountType = accountType;
+  }
 
-  public void setCreatedOn(Date createdOn) { this.createdOn = createdOn; }
+  public void setCreatedOn(Date createdOn) {
+    this.createdOn = createdOn;
+  }
 
-  public void setEmail(String email) { this.email = email.toLowerCase(); }
+  public void setEmail(String email) {
+    this.email = email.toLowerCase();
+  }
 
-  public void setFirstName(String firstName) { this.firstName = firstName.toLowerCase(); }
+  public void setFirstName(String firstName) {
+    this.firstName = firstName.toLowerCase();
+  }
 
-  public void setLastName(String lastName) { this.lastName = lastName.toLowerCase(); }
+  public void setLastName(String lastName) {
+    this.lastName = lastName.toLowerCase();
+  }
 
-  public void setPassword(String password) { this.password = password; }
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-  public void setUsername(String username) { this.username = username.toLowerCase(); }
+  public void setUsername(String username) {
+    this.username = username.toLowerCase();
+  }
 
   public void setUserStat(UserStat userStat) {
-    if (userStat.equals(this.userStat)) { return; }
+    if (userStat.equals(this.userStat)) {
+      return;
+    }
     userStat.setAccount(this);
   }
 
   @Override
   public String toString() {
-    return "Account [id=" + id + ", username=" + username + ", password=" + password
-      + ", firstName=" + firstName
-      + ", lastName=" + lastName + ", email=" + email + ", createdOn=" + createdOn
-      + ", accountType="
+    return "Account [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
+      + ", lastName=" + lastName + ", email=" + email + ", createdOn=" + createdOn + ", accountType="
       + accountType + ", userStat=" + userStat + "]";
   }
 }

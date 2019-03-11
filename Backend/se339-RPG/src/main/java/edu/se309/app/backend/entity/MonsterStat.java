@@ -1,6 +1,7 @@
 package edu.se309.app.backend.entity;
 
 import java.util.Random;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -47,27 +48,49 @@ public class MonsterStat {
   @Column(name = "attack_percent_four")
   private int attackPercentFour;
 
-  public int getAttackFour() { return attackFour; }
+  public int getAttackFour() {
+    return attackFour;
+  }
 
-  public int getAttackOne() { return attackOne; }
+  public int getAttackOne() {
+    return attackOne;
+  }
 
-  public int getAttackPercentFour() { return attackPercentFour; }
+  public int getAttackPercentFour() {
+    return attackPercentFour;
+  }
 
-  public int getAttackPercentOne() { return attackPercentOne; }
+  public int getAttackPercentOne() {
+    return attackPercentOne;
+  }
 
-  public int getAttackPercentThree() { return attackPercentThree; }
+  public int getAttackPercentThree() {
+    return attackPercentThree;
+  }
 
-  public int getAttackPercentTwo() { return attackPercentTwo; }
+  public int getAttackPercentTwo() {
+    return attackPercentTwo;
+  }
 
-  public int getAttackThree() { return attackThree; }
+  public int getAttackThree() {
+    return attackThree;
+  }
 
-  public int getAttackTwo() { return attackTwo; }
+  public int getAttackTwo() {
+    return attackTwo;
+  }
 
-  public int getHp() { return hp; }
+  public int getHp() {
+    return hp;
+  }
 
-  public int getId() { return id; }
+  public int getId() {
+    return id;
+  }
 
-  public String getName() { return name; }
+  public String getName() {
+    return name;
+  }
 
   public int getRandomAttack() {
     Random rand = new Random();
@@ -82,13 +105,19 @@ public class MonsterStat {
       return this.getAttackTwo();
     } else if (attack < thirdBarrier) {
       return this.getAttackThree();
-    } else if (attack < fourthBarrier) { return this.getAttackFour(); }
+    } else if (attack < fourthBarrier) {
+      return this.getAttackFour();
+    }
     return 0;
   }
 
-  public void setAttackFour(int attackFour) { this.attackFour = attackFour; }
+  public void setAttackFour(int attackFour) {
+    this.attackFour = attackFour;
+  }
 
-  public void setAttackOne(int attackOne) { this.attackOne = attackOne; }
+  public void setAttackOne(int attackOne) {
+    this.attackOne = attackOne;
+  }
 
   public void setAttackPercentFour(int attackPercentFour) {
     this.attackPercentFour = attackPercentFour;
@@ -106,13 +135,23 @@ public class MonsterStat {
     this.attackPercentTwo = attackPercentTwo;
   }
 
-  public void setAttackThree(int attackThree) { this.attackThree = attackThree; }
+  public void setAttackThree(int attackThree) {
+    this.attackThree = attackThree;
+  }
 
-  public void setAttackTwo(int attackTwo) { this.attackTwo = attackTwo; }
+  public void setAttackTwo(int attackTwo) {
+    this.attackTwo = attackTwo;
+  }
 
-  public void setHp(int hp) { this.hp = hp; }
+  public void setHp(int hp) {
+    this.hp = hp;
+  }
 
-  public void setId(int id) { this.id = id; }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-  public void setName(String name) { this.name = name; }
+  public void setName(String name) {
+    this.name = name;
+  }
 }

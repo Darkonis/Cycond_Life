@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -20,8 +21,7 @@ public class BuildingParserJsonToMySQL {
     ArrayList<Way> ways = new ArrayList<>();
     ArrayList<Relation> relations = new ArrayList<>();
     // Read Node JSON file to java object
-    String directory = System.getProperty("user.dir")
-      + "/building_database_resources/edu/se309/app/db/building/";
+    String directory = System.getProperty("user.dir") + "/building_database_resources/edu/se309/app/db/building/";
     Reader reader = new FileReader(directory + "node.json");
     Gson gson = new Gson();
     JsonParser jp = new JsonParser();
@@ -42,7 +42,9 @@ public class BuildingParserJsonToMySQL {
       long id = jo.get("id").getAsLong();
       JsonArray arr = jo.get("nodes").getAsJsonArray();
       String name = "null";
-      if (!jo.get("name").isJsonNull()) { name = "'" + jo.get("name").getAsString() + "'"; }
+      if (!jo.get("name").isJsonNull()) {
+        name = "'" + jo.get("name").getAsString() + "'";
+      }
       ArrayList<Node> tempNodes = new ArrayList<>();
       for (int j = 0; j < arr.size(); j++) {
         tempNodes.add(nodes.get(arr.get(j).getAsLong()));
@@ -60,7 +62,9 @@ public class BuildingParserJsonToMySQL {
       long id = jo.get("id").getAsLong();
       JsonArray arr = jo.get("members").getAsJsonArray();
       String name = "null";
-      if (!jo.get("name").isJsonNull()) { name = "'" + jo.get("name").getAsString() + "'"; }
+      if (!jo.get("name").isJsonNull()) {
+        name = "'" + jo.get("name").getAsString() + "'";
+      }
       Way outer = null;
       ArrayList<Way> inner = new ArrayList<>();
       for (int j = 0; j < arr.size(); j++) {

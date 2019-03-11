@@ -3,9 +3,12 @@ package edu.se309.app.backend.service;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
+
 import javax.validation.constraints.NotNull;
+
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.transaction.annotation.Transactional;
+
 import edu.se309.app.backend.repository.BaseRepository;
 import edu.se309.app.backend.service.interfaces.BaseService;
 
@@ -44,7 +47,9 @@ public class BaseServiceImplementation<T, ID extends Serializable, R extends Bas
     return nullCheck(t, "Invalid request: no such id: " + id);
   }
 
-  public R getRepository() { return r; }
+  public R getRepository() {
+    return r;
+  }
 
   @NotNull
   public T nullCheck(Optional<T> t, String errorMessage) {

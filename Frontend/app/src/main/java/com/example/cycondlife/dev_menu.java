@@ -41,7 +41,7 @@ public class dev_menu extends AppCompatActivity {
     private CoordinatorLayout mCLayout;
     private Button mButtonDo;
     private TextView mTextView;
-    private String mJSONURLString = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts";
+    private String mJSONURLString = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/";
     private Button call_name;
     private Button submit_button;
     private Button submit_delete;
@@ -148,7 +148,7 @@ public class dev_menu extends AppCompatActivity {
         res_hp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Game.change_player_hp(100);
+                Game.change_player_hp(100,getApplicationContext());
             }
         });
     }
@@ -208,11 +208,11 @@ public class dev_menu extends AppCompatActivity {
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 String[] out = new String[response.length()];
-                                for (int k = 0; k < response.length(); k++) {
-                                    out[k] = response.get(k).toString();
 
-                                    Log.i("Cycond life", "onResponse: " + out[k]);
-                                }
+                                    out[i] = response.get(i).toString();
+
+                                    Log.i("Cycond life", "onResponse: " + out[i]);
+
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

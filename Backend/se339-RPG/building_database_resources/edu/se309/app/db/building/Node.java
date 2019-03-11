@@ -23,11 +23,17 @@ public class Node {
     this.id = id;
   }
 
-  public long getId() { return id; }
+  public long getId() {
+    return id;
+  }
 
-  public double getLat() { return lat; }
+  public double getLat() {
+    return lat;
+  }
 
-  public double getLon() { return lon; }
+  public double getLon() {
+    return lon;
+  }
 
   @Override
   public String toString() {

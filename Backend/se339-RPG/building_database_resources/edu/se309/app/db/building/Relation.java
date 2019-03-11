@@ -6,7 +6,9 @@ import java.util.Random;
 public class Relation {
 
   public static String getRandomStat(String name) {
-    if (name == "null" || name == null) { return "'none'"; }
+    if (name == "null" || name == null) {
+      return "'none'";
+    }
     Random ran = new Random();
     int statSelector = ran.nextInt(5);
     String statName = "none";
@@ -48,13 +50,21 @@ public class Relation {
     this.name = name;
   }
 
-  public long getId() { return id; }
+  public long getId() {
+    return id;
+  }
 
-  public ArrayList<Way> getInner() { return inner; }
+  public ArrayList<Way> getInner() {
+    return inner;
+  }
 
-  public String getName() { return name; }
+  public String getName() {
+    return name;
+  }
 
-  public Way getOuter() { return outer; }
+  public Way getOuter() {
+    return outer;
+  }
 
   private String innerStringBuilder() {
     StringBuilder sb = new StringBuilder();
