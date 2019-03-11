@@ -7,6 +7,10 @@ import org.json.JSONObject;
 
 import android.content.Context;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
 /*
     This should be a singleton there should only be one player
  */
@@ -21,7 +25,7 @@ public class Player extends Character {
     }
     private static int monstersKilled;
     private final String statlink="/api/stats/updateStat/";
-    private Player(String user,int id)
+    private Player(String user,int id,Context c)
     {
         super();
         username=user;
@@ -50,20 +54,21 @@ public class Player extends Character {
                 }
             }
         };
-
+      //  RequestQueue q = new Volley.newRequestQueue(c);
+       // JsonObjectRequest j = new JsonObjectRequest()
     }
     public static Player get_instance()
     {
         return player_instance;
     }
     public static int getMonstersKilled(){return monstersKilled;}
-    public static synchronized void create_the_instance(String user,int id)
+    public static synchronized void create_the_instance(String user,int id,Context c)
     {
         if(player_instance!=null)
         {
             return;
         }
-        player_instance = new Player(user,id);
+        player_instance = new Player(user,id,c);
     }
     public static synchronized void destroy_the_instance()
     {

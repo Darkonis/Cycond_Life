@@ -38,7 +38,7 @@ public class Login extends AppCompatActivity {
     private TextView pass;
     private TextView fail;
     private Button adLogin;
-
+    private Button create;
     private String JSONURL = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/";
     private Context thisContext;
 
@@ -47,7 +47,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        create = findViewById(R.id.create);
         submit = findViewById(R.id.loginBut);
         name = findViewById(R.id.username);
         pass = findViewById(R.id.password);
@@ -62,7 +62,13 @@ public class Login extends AppCompatActivity {
         }
 
         fail.setVisibility(View.INVISIBLE);
-
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Intent openCreate = new Intent(Login.this,CreateAccount.class);
+                startActivity(openCreate);
+            }
+        });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +80,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Will save a temp account that can be accessed by the rest of the app in later iterations
-                Player.create_the_instance("Over9000",13);
+                Player.create_the_instance("Over9000",13,getApplicationContext());
                 final Intent openMenu = new Intent(Login.this, menu.class);
                 startActivity(openMenu);
             }
@@ -96,7 +102,7 @@ public class Login extends AppCompatActivity {
             public void get_object_response(JSONObject o) {
                 try {
                     if (userPass.equals( o.get("password"))) {
-                        Player.create_the_instance(userName);
+                        Player.create_the_instance(userName,o.getInt("accountId"),getApplicationContext());
                         startActivity(openMenu);
                     }
                 }
@@ -138,7 +144,7 @@ public class Login extends AppCompatActivity {
                                             if(Player.get_instance()!=null) {
                                                 Player.destroy_the_instance(); //remove the previous player if needed
                                             }
-                                            Player.create_the_instance(userName,info.getInt("accountId")); //on good login create the player object
+                                            Player.create_the_instance(userName,info.getInt("accountId"),getApplicationContext()); //on good login create the player object
 
                                             startActivity(openMenu);
                                         }

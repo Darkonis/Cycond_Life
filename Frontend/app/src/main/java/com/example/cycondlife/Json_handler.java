@@ -50,6 +50,12 @@ public class Json_handler {
         delete_user d=new delete_user();
         d.execute();
     }
+    public void add_stats(int id)
+    {
+        JSONObject j = new JSONObject();
+        //JsonObjectRequest jsonMain = new JsonObjectRequest()
+
+    }
     protected void update_stat(int id, String stat,int value)
     {
        // this.getApplicationContext();
@@ -92,8 +98,8 @@ public class Json_handler {
         this.email=email;
         if(!(type.equals("admin")||type.equals("user"))) return false;
         this.type=type;
-        Add_user asyncT = new Add_user();
-        asyncT.execute();
+        Add_user a=new Add_user();
+        a.execute();
         return true; //TODO add check for succsessful completion
     }
     private JSONObject buidJsonObject() throws JSONException {
