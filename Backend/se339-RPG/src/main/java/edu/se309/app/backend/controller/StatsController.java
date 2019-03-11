@@ -42,4 +42,8 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
   public UserStat getStatsByUsername(@PathVariable("username") String username) {
 	  return getService().getByUsername(username);
   }
+  @GetMapping("/getByAccount/{accountId}")
+  public UserStat getStatsByAccountId(@PathVariable("accountId") int accountId) {
+	  return getService().findByAccountId(accountId);
+  }
 }
