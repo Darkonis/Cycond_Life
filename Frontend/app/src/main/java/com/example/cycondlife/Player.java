@@ -32,6 +32,7 @@ public class Player extends Character {
     private static int monstersKilled;
     private final String statlink="/api/stats/updateStat/";
     private Context context;
+    private Callback_handler callback;
     private Player(String user,int idt,Context c)
     {
         super();
@@ -39,7 +40,7 @@ public class Player extends Character {
         name=user;
         this.id=idt;
         this.context = c;
-        Callback_handler callback = new Callback_handler() {
+        callback = new Callback_handler() {
             @Override
             public void get_response(JSONArray a) {
                 for (int i = 0; i < a.length(); i++)
@@ -77,6 +78,7 @@ public class Player extends Character {
                 }
             }
         };
+        //TODO this could be made more efficant
         get_users(callback);
       //  RequestQueue q = new Volley.newRequestQueue(c);
        // JsonObjectRequest j = new JsonObjectRequest()
@@ -86,6 +88,10 @@ public class Player extends Character {
         return player_instance;
     }
     public static int getMonstersKilled(){return monstersKilled;}
+    public void force_update()
+    {
+        get_users(callback);
+    }
     public static synchronized void create_the_instance(String user,int id,Context c)
     {
         if(player_instance!=null)

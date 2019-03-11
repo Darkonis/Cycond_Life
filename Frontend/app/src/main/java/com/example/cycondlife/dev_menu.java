@@ -49,6 +49,8 @@ public class dev_menu extends AppCompatActivity {
     private Button submit2;
     private Button delete;
     private Button res_hp;
+    private Button submit_stat;
+    private Button update_stat;
 
     private TextView user;
     private TextView pass;
@@ -57,6 +59,9 @@ public class dev_menu extends AppCompatActivity {
     private TextView email;
     private TextView type;
     private TextView id;
+    private TextView stat_accountId;
+    private TextView value;
+    private TextView stat_name;
     private Json_handler j;
 
     @Override
@@ -83,6 +88,23 @@ public class dev_menu extends AppCompatActivity {
                 email.setVisibility(View.VISIBLE);
                 type.setVisibility(View.VISIBLE);
                 submit2.setVisibility(View.VISIBLE);
+            }
+        });
+        update_stat.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                hide_entries();
+                stat_accountId.setVisibility(View.VISIBLE);
+                stat_name.setVisibility(View.VISIBLE);
+                submit_stat.setVisibility(View.VISIBLE);
+                value.setVisibility(View.VISIBLE);
+            }
+        });
+        submit_stat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                j.update_stat(Integer.parseInt(stat_accountId.getText().toString()),stat_name.getText().toString(), Integer.parseInt(value.getText().toString()));
+                Player.get_instance().force_update();
             }
         });
         submit2.setOnClickListener(new View.OnClickListener() {
@@ -167,6 +189,10 @@ public class dev_menu extends AppCompatActivity {
         type.setVisibility(View.GONE);
         submit_delete.setVisibility(View.GONE);
         id.setVisibility(View.GONE);
+        stat_accountId.setVisibility(View.GONE);
+        submit_stat.setVisibility(View.GONE);
+        stat_name.setVisibility(View.GONE);
+        value.setVisibility(View.GONE);
     }
     private void set_elements()
     {
@@ -192,6 +218,11 @@ public class dev_menu extends AppCompatActivity {
         delete = findViewById(R.id.delete);
         submit_delete = findViewById(R.id.submit_delete);
         res_hp=findViewById(R.id.res);
+        value =findViewById(R.id.value);
+        submit_stat =findViewById(R.id.submit_stat_change);
+        stat_name =findViewById(R.id.statName);
+                update_stat=findViewById(R.id.updateStat);
+                stat_accountId = findViewById(R.id.accountId);
     }
     public void get_users(Context c) {
         final RequestQueue requestQueue = Volley.newRequestQueue(c);
