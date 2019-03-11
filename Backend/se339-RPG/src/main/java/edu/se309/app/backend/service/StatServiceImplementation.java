@@ -6,7 +6,6 @@ import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.PropertyAccessor;
 import org.springframework.beans.PropertyAccessorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,25 +24,16 @@ public class StatServiceImplementation extends BaseServiceImplementation<UserSta
 
   @Override
   @Transactional
-  @NonNull
-  public UserStat findByAccountId(int accountId) {
-    Optional<UserStat> userStat = getRepository().findByAccountId(accountId);
-    return (nullCheck(userStat,
-      "Invalid Request: No such account found with Id: " + Integer.toString(accountId)));
-  }
-
-  @Override
-  @Transactional
-  public UserStat incrementByAmount(int accountId, String stat, int amount) {
-    UserStat userStat = findByAccountId(accountId);
+  public UserStat incrementByAmount(int id, String stat, int amount) {
+    UserStat userStat = findById(id);
     PropertyAccessor myAccessor = PropertyAccessorFactory.forBeanPropertyAccess(userStat);
     return setStatValue(myAccessor, userStat, stat, ((Integer) myAccessor.getPropertyValue(stat)) + amount);
   }
 
   @Override
   @Transactional
-  public UserStat incrementByOne(int accountId, String stat) {
-    return incrementByAmount(accountId, stat, 1);
+  public UserStat incrementByOne(int id, String stat) {
+    return incrementByAmount(id, stat, 1);
   }
 
   private boolean isStat(String stat) {
@@ -65,8 +55,8 @@ public class StatServiceImplementation extends BaseServiceImplementation<UserSta
 
   @Override
   @Transactional
-  public UserStat updateUserStat(int accountId, String stat, int value) {
-    UserStat userStat = findByAccountId(accountId);
+  public UserStat updateUserStat(int id, String stat, int value) {
+    UserStat userStat = findById(id);
     PropertyAccessor myAccessor = PropertyAccessorFactory.forBeanPropertyAccess(userStat);
     return setStatValue(myAccessor, userStat, stat, value);
   }
