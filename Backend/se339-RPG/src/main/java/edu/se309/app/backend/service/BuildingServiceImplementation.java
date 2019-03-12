@@ -27,8 +27,11 @@ public class BuildingServiceImplementation extends BaseServiceImplementation<Bui
 public String findEarnedStatFromLocation(String longitude, String latitude) {	
 	return buildingRepositoryCustom.findBuildingStat(longitude,latitude);
 	
-	
-	
+}
+	@Override
+	@Transactional
+	public String findBuildingNameFromLocation(String longitude, String latitude) {	
+		return buildingRepositoryCustom.findBuildingName(longitude,latitude);	
 }
 
 

@@ -25,6 +25,11 @@ public class BuildingController extends BaseController<Building, Integer, Buildi
 		return getService().findEarnedStatFromLocation(longitude,latitude);
 	}
 	
+	@GetMapping("/getBuildingName/{longitude}/{latitude}/")
+	public String findBuildingNameLocation(@PathVariable String longitude,@PathVariable String latitude) {
+			
+		return getService().findBuildingNameFromLocation(longitude,latitude);
+	}
 
 
 }

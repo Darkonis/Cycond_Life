@@ -1,14 +1,10 @@
 package edu.se309.app.backend.repository;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import edu.se309.app.backend.entity.Building;
 
 @Repository
 public class BuildingRepositoryCustom  {
@@ -23,10 +19,25 @@ public class BuildingRepositoryCustom  {
   public String findBuildingStat(String longitude, String latitude) {
     
     String queryStr = "SELECT earned_stat FROM building_locations as b WHERE (ST_WITHIN(ST_SRID(POINT("+longitude+","+ latitude +"), 4326), b.geo))";     
-    List<Object[]> earnedStat = entityManager.createNativeQuery(queryStr).getResultList();
-    if (earnedStat.isEmpty()) {
+    try {
+    	String earnedStat = (String) entityManager.createNativeQuery(queryStr).getSingleResult();
+    	return earnedStat;
+    } catch (NoResultException e) {    		
     	return "none";
     }
-    return (String)(((Building) earnedStat.get(0)[0]).getEarnedStat());
+    
+  }
+  
+  public String findBuildingName(String longitude, String latitude) {	    
+	  String queryStr = "SELECT building_name FROM building_locations as b WHERE (ST_WITHIN(ST_SRID(POINT("+longitude+","+ latitude +"), 4326), b.geo))";     
+	    try {
+	    	String buildingName = (String) entityManager.createNativeQuery(queryStr).getSingleResult();
+	    	if (buildingName == null) {
+	    		return "none";
+	    	}
+	    	return buildingName;
+	    } catch (NoResultException e) {    		
+	    	return "none";
+	    }
   }
 }
