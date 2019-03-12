@@ -27,6 +27,7 @@ public class UpdateServer {
 			}
 			if(currentTime.compareTo(respawnTime) >= 0)
 			{
+				System.out.println("Monsters Respawned");
 				respawnTime = currentTime.plusMinutes(15);
 				String url = "http://cs309-sd-6.misc.iastate.edu:8080/api/monsters/generate";
 				URL obj = new URL(url);
