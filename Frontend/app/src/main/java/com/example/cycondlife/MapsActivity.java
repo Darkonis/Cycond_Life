@@ -140,7 +140,7 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
                                 .draggable(false)
                                 .title("You are here!!!!"));
 
-                        display_monsters();
+
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
                         mMap.getUiSettings().setZoomControlsEnabled(false);
@@ -150,6 +150,8 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
                     }
     private void display_monsters()
     {
+        mMap.clear();
+
         for(int i=0;i<Game.num_monsters;i++)
         {
             if(Game.monster_map.get(i).getResolve()<=0)
@@ -158,6 +160,7 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
             }
             mMap.addMarker(new MarkerOptions().position(new LatLng(Game.monster_map.get(i).get_latitude(),Game.monster_map.get(i).get_longitude())).draggable(false).title("Monster: "+ i));
         }
+        moveMap();
        // mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(latitude,longitude)));
   //      moveMap();
     }
@@ -169,6 +172,7 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         getCurrentLocation();
+        display_monsters();
     }
     @Override
     public void onConnectionSuspended(int i) {
