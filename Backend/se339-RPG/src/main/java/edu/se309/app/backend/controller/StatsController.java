@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.se309.app.backend.entity.Account;
 import edu.se309.app.backend.entity.UserStat;
 import edu.se309.app.backend.service.interfaces.AccountService;
+import edu.se309.app.backend.service.interfaces.BuildingService;
 import edu.se309.app.backend.service.interfaces.StatService;
 
 
@@ -19,12 +20,14 @@ import edu.se309.app.backend.service.interfaces.StatService;
 @RequestMapping("/api/stats")
 public class StatsController extends BaseController<UserStat, Integer, StatService> {
 
+	BuildingService buildingService;
 	AccountService accountService;
 	
   @Autowired
-  public StatsController(StatService statService, AccountService accountService) {
+  public StatsController(StatService statService, AccountService accountService, BuildingService buildingService) {
     super(statService);
     this.accountService = accountService;
+    this.buildingService = buildingService;
   }
 
   @PutMapping("/incrementStat/{id}/{stat}")
@@ -61,5 +64,16 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
 	  getService().save(newUserStat);
 	  return newUserStat;
   }
+  
+  @PutMapping("/updateStatByLocation/{id}/{longitude}/{latitude}/")
+  public String UpdateStatByLocation(@PathVariable Integer id, @PathVariable String longitude,@PathVariable String latitude) {
+	String stat = buildingService.findEarnedStatFromLocation(longitude, latitude);
+	if (stat.equals("none")) {
+		return "No stats were updated based on location";
+	}
+	UserStat userStat = getService().incrementByOne(id,stat);
+	getService().save(userStat);
+    return stat+ " was updated by one. \n current stats: \n" + userStat.toString();
+  }  
 
 }
