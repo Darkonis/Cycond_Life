@@ -1,5 +1,7 @@
 package com.example.cycondlife;
 
+import android.content.Context;
+
 public class Character {
     /*
     basic stats and info
@@ -7,7 +9,7 @@ public class Character {
     private boolean isPlayer;
     private double lat;
     private double lng;
-    private String name;
+    protected String name = "tmp";
     //potentially move to an enum array
     /*
     the ability to quickly and rapidly confuse your opponent (attack)
@@ -16,11 +18,13 @@ public class Character {
     /*
         ones determination in combat basically hp
      */
-    private int resolve;
-    private int tinkering;
-    private int critical_thinking;
-    private int presentation;
+    protected int resolve=100;
+    private int max_resolve;
+    private int tinkering=0;
+    private int critical_thinking=0;
+    private int presentation=0;
     private String major ="Student";
+    private int tinkering_points=0;
     //the distance monsters will appear
     private double visual_range=.5;
     Character()
@@ -35,6 +39,15 @@ public class Character {
     /*
     creates a generic monster for testing
      */
+    public Character(int id, int type, double lat,double lng)
+    {
+        isPlayer=false;
+        BS=10;
+        resolve=100;
+        this.lat=lat;
+        this.lng=lng;
+        name = "Monster:"+id;
+    }
     public Character(double lat,double lng)
     {
         isPlayer=false;
@@ -42,7 +55,7 @@ public class Character {
         resolve=100;
         this.lat=lat;
         this.lng=lng;
-
+        name="tmp";
 
     }
     Character(boolean isPlayer,double lat,double longitude,int attack)
@@ -78,15 +91,33 @@ public class Character {
     }
     /*
     maybe move this into combat class
+    also remove character play its not signleton style
      */
-    public static int do_combat(Character play, Character mon)
+    public static int do_combat(Character play, Character mon, Context c)
     {
         mon.take_dmg(play.BS);
         if(mon.resolve <=0) return 1;
-        play.take_dmg(mon.BS);
+        Player.get_instance().take_dmg(mon.BS,c);
         if(play.resolve<=0) return 2;
         return 0;
     }
     public int getResolve() {return resolve;}
     public void setResolve (int i) {resolve=i;}
+    /*
+     private int BS
+    private int resolve;
+    private int max_resolve;
+    private int tinkering;
+    private int critical_thinking;
+    private int presentation;
+    private String major ="Student";
+     */
+    public String getName(){return name;}
+    public int getBS(){return BS;}
+    public String getMajor(){return major;}
+    public int getMax_resolve(){return max_resolve;}
+    public int getTinkering(){return tinkering;}
+    public int getCritical_thinking(){return critical_thinking;}
+    public int getPresentation(){return presentation;}
+
 }

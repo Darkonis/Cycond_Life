@@ -40,7 +40,7 @@ public class Login extends AppCompatActivity {
     private TextView fail;
     private Button adLogin;
 
-    private String JSONURL = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts";
+    private String JSONURL = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/";
     private Context thisContext;
 
     MediaPlayer mediaPlayer;    //used to play music when the app is opened, currently handled outside of onCreate
@@ -102,7 +102,7 @@ public class Login extends AppCompatActivity {
                                             if(Player.get_instance()!=null) {
                                                 Player.destroy_the_instance(); //remove the previous player if needed
                                             }
-                                            Player.create_the_instance(userName); //on good login create the player object
+                                            Player.create_the_instance(userName,info.getInt("accountId")); //on good login create the player object
 
                                             startActivity(openMenu);
                                         }
@@ -133,7 +133,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Will save a temp account that can be accessed by the rest of the app in later iterations
-                Player.create_the_instance("tmp");
+                Player.create_the_instance("Over9000",13);
                 final Intent openMenu = new Intent(Login.this, menu.class);
                 startActivity(openMenu);
             }
