@@ -1,6 +1,8 @@
 package edu.se309.app.backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,13 +18,13 @@ public class BuildingController extends BaseController<Building, Integer, Buildi
 		super(buildingService);
 
 	}
+
+	@GetMapping("/getStat/{longitude}/{latitude}/")
+	public String findEarnedStatByLocation(@PathVariable String longitude,@PathVariable String latitude) {
+			
+		return getService().findEarnedStatFromLocation(longitude,latitude);
+	}
 	
-//	@Override
-//	public List<Building> findAll() {
-//		List<Building> broken= new ArrayList<>();
-//		Building b = new Building(null,"Currently Broken");
-//		broken.add(b);
-//		return broken;
-//	}
+
 
 }
