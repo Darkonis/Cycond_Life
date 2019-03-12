@@ -50,7 +50,7 @@ public class Player extends Character {
 
                         if (a.getJSONObject(i).getInt("accountId")==id)
                         {
-                            get_stats(a.getJSONObject(i).getInt("statsId"),this,context);
+                            get_stats(a.getJSONObject(i).getInt("id"),this,context);
                         }
                     }
                     catch (Exception e) {
@@ -66,8 +66,8 @@ public class Player extends Character {
                 try {
 
                    resolve= o.getInt("resolve");
-                   tinkering = o.getInt("tinkering");
-                   BS = o.getInt("BS");
+                 //  tinkering = o.getInt("tinkering");
+                   BS = o.getInt("bs");
                    presentation = o.getInt("presentation");
                    monstersKilled = o.getInt("monstersKilled");
 
@@ -79,7 +79,7 @@ public class Player extends Character {
             }
         };
         //TODO this could be made more efficant
-        get_users(callback);
+        get_stats(id,callback,c);
       //  RequestQueue q = new Volley.newRequestQueue(c);
        // JsonObjectRequest j = new JsonObjectRequest()
     }
@@ -90,7 +90,7 @@ public class Player extends Character {
     public static int getMonstersKilled(){return monstersKilled;}
     public void force_update()
     {
-        get_users(callback);
+        get_stats(id,callback,context);
     }
     public static synchronized void create_the_instance(String user,int id,Context c)
     {
@@ -123,7 +123,7 @@ public class Player extends Character {
                         public void onErrorResponse(VolleyError error) {
                             // Do something when error occurred
                             Log.i("Cycond Life", "user stats error");
-                            Log.i("Cycond Life", error.getLocalizedMessage());
+                            Log.i("Cycond Life", error.toString());
                         }
                     });
         r.add(o);
@@ -157,7 +157,7 @@ public class Player extends Character {
                     public void onErrorResponse(VolleyError error) {
                         // Do something when error occurred
                         Log.i("Cycond Life", "stats request error");
-                        Log.i("Cycond Life", error.getLocalizedMessage());
+                        Log.i("Cycond Life", error.toString());
                     }
                 }
         );

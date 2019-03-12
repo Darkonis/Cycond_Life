@@ -13,15 +13,21 @@ public class dice {
         base = Integer.parseInt(s.substring(0,s.indexOf('+')));
         number = Integer.parseInt(s.substring(s.indexOf('+'),s.indexOf('d')));
         sides= Integer.parseInt(s.substring(s.indexOf('d')+1));
-        //TODO make based off time
-         rand = new Random();
+        /*
+        this might not work
+         */
+         rand = new Random(System.currentTimeMillis());
     }
     public dice (int base,int numb,int sides)
     {
         this.sides=sides;
         this.base=base;
         this.number=numb;
-
+        rand = new Random(System.currentTimeMillis());
+    }
+    public void setSeed(int seed)
+    {
+        rand = new Random(seed);
     }
     public int roll()
     {
