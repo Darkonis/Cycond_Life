@@ -1,6 +1,5 @@
 package com.example.cycondlife;
 
-import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -32,8 +31,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 public class Json_handler {
 
     private String user,pass,first,last,email,type;
-    private String mJSONURLString = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/";
-    private Context mContext ;
+    public final String mJSONBASEString = "http://cs309-sd-6.misc.iastate.edu:8080/api/";
+    public final String mAccountString ="accounts/";
+    private Context mContext;
     JSONArray a;
     private JSONObject o;
     volatile boolean done;
@@ -50,9 +50,16 @@ public class Json_handler {
         delete_user d=new delete_user();
         d.execute();
     }
+    public void add_stats(int id)
+    {
+        JSONObject j = new JSONObject();
+        //JsonObjectRequest jsonMain = new JsonObjectRequest()
+
+    }
     protected void update_stat(int id, String stat,int value)
     {
        // this.getApplicationContext();
+        if (value<0)value=0;
         JSONObject j = new JSONObject();
         final RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonObjectRequest jsonMain = new JsonObjectRequest(Request.Method.PUT, statlink + id + "/"+"{stat}/{value}?stat="+stat+"&value="+value , j, new Response.Listener<JSONObject>() {
@@ -92,8 +99,8 @@ public class Json_handler {
         this.email=email;
         if(!(type.equals("admin")||type.equals("user"))) return false;
         this.type=type;
-        Add_user asyncT = new Add_user();
-        asyncT.execute();
+        Add_user a=new Add_user();
+        a.execute();
         return true; //TODO add check for succsessful completion
     }
     private JSONObject buidJsonObject() throws JSONException {
@@ -112,7 +119,7 @@ public class Json_handler {
         @Override
         protected String doInBackground(String... urls) {
             try {
-                URL url = new URL("http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/" +user_id);
+                URL url = new URL(mJSONBASEString+ mAccountString+user_id);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("DELETE");
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -133,6 +140,8 @@ public class Json_handler {
             } catch (Exception e) {
                 e.printStackTrace();
                 Log.i("Cycond Life", "Error on delete");
+                e.printStackTrace();
+
             }
             return "deleted";
         }
@@ -142,7 +151,7 @@ public class Json_handler {
         @Override
         protected String doInBackground(String... urls) {
             try {
-                URL url = new URL("http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/");
+                URL url = new URL("http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/add");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");

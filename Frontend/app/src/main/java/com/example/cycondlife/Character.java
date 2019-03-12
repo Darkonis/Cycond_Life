@@ -14,17 +14,32 @@ public class Character {
     /*
     the ability to quickly and rapidly confuse your opponent (attack)
      */
-    private int BS;
+    protected int BS=10;
     /*
         ones determination in combat basically hp
      */
     protected int resolve=100;
-    private int max_resolve;
-    private int tinkering=0;
-    private int critical_thinking=0;
-    private int presentation=0;
-    private String major ="Student";
-    private int tinkering_points=0;
+    /*
+    ones potential for resolve
+     */
+    protected int max_resolve;
+    /*
+    ones unmodded resolve
+     */
+    protected int base_resolve;
+    /*
+        The ability to create new things
+     */
+    protected int tinkering=0;
+
+    protected int critical_thinking =0;
+    protected  int base_critical_thinking;
+    protected int presentation=0;
+    protected  int base_presentation;
+    protected String major ="Student";
+    protected int tinkering_points;
+    protected int base_tinkering;
+    protected int max_tinkering;
     //the distance monsters will appear
     private double visual_range=.5;
     Character()
@@ -95,7 +110,8 @@ public class Character {
      */
     public static int do_combat(Character play, Character mon, Context c)
     {
-        mon.take_dmg(play.BS);
+        dice dmg_rng = new dice("1+1d4");
+        mon.take_dmg(play.BS+dmg_rng.roll());
         if(mon.resolve <=0) return 1;
         Player.get_instance().take_dmg(mon.BS,c);
         if(play.resolve<=0) return 2;

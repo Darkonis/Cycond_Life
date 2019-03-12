@@ -63,6 +63,8 @@
         <activity
             android:name=".Combat"
             android:label="@string/title_combat" />
+        <activity android:name=".CreateAccount"
+            android:label="createAccount" />
     </application>
 
 </manifest>

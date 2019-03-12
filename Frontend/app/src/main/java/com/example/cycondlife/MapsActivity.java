@@ -82,9 +82,9 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
         LatLng india = new LatLng(42.03, -92.03);
         mMap.addMarker(new MarkerOptions().position(india).title("Marker in Ames"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(india));
-        mMap.setOnMarkerDragListener(this);
+       // mMap.setOnMarkerDragListener(this);
         mMap.setOnMapLongClickListener(this);
-        display_monsters();
+       // display_monsters();
         //g.display_monsters();
     }
 
@@ -139,7 +139,8 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
                                 .position(latLng)
                                 .draggable(false)
                                 .title("You are here!!!!"));
-                        display_monsters();
+
+
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
                         mMap.getUiSettings().setZoomControlsEnabled(false);
@@ -149,6 +150,8 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
                     }
     private void display_monsters()
     {
+        mMap.clear();
+
         for(int i=0;i<Game.num_monsters;i++)
         {
             if(Game.monster_map.get(i).getResolve()<=0)
@@ -157,6 +160,7 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
             }
             mMap.addMarker(new MarkerOptions().position(new LatLng(Game.monster_map.get(i).get_latitude(),Game.monster_map.get(i).get_longitude())).draggable(false).title("Monster: "+ i));
         }
+        moveMap();
        // mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(latitude,longitude)));
   //      moveMap();
     }
@@ -168,6 +172,7 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         getCurrentLocation();
+        display_monsters();
     }
     @Override
     public void onConnectionSuspended(int i) {
@@ -183,6 +188,7 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
     public void onMapLongClick(LatLng latLng) {
         // mMap.clear();
         final Context context = this;
+        if(player.getResolve()<=0) return;
         Intent intent = new Intent(context, Combat.class);
         boolean found=false;
         Log.i("Cycond Life","LAT lang ="+latLng.latitude+" "+latLng.longitude);
@@ -192,6 +198,10 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
         {
             if(Math.abs(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(latLng.longitude))<=.001&&Math.abs(Math.abs(Game.monster_map.get(i).get_latitude())-Math.abs(latLng.latitude))<=.001)
             {
+                if(Game.monster_map.get(i).getResolve()<=0)
+                {
+                    continue;
+                }
                 opponent=Game.monster_map.get(i);
                 Combat.set_combatants(opponent,g);
                 found=true;
@@ -243,8 +253,8 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
     @Override
     public boolean onMarkerClick(Marker marker) {
         Toast.makeText(MapsActivity.this, "onMarkerClick", Toast.LENGTH_SHORT).show();
+        moveMap();
         return true;
     }
-
 
 }

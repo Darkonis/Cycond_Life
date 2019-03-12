@@ -3,13 +3,10 @@ package com.example.cycondlife;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -22,11 +19,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class menu extends AppCompatActivity {
-    public callback_handler callback;
+    public Callback_handler callback;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +66,7 @@ public class menu extends AppCompatActivity {
     }
     private void pull_monster_map()
     {
-        callback = new callback_handler() {
+        callback = new Callback_handler() {
             @Override
             public void get_response(JSONArray a) {
                 try {
@@ -107,7 +101,7 @@ public class menu extends AppCompatActivity {
         View view = this.getWindow().getDecorView();
         view.setBackgroundColor(color);
     }   */
-    public void getResponse(int method, String url, JSONObject jsonValue, final callback_handler callback)
+    public void getResponse(int method, String url, JSONObject jsonValue, final Callback_handler callback)
     {
         Context c= getApplicationContext();
         final RequestQueue requestQueue = Volley.newRequestQueue(c);
