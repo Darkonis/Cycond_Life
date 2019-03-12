@@ -30,7 +30,7 @@ public class BaseController<T, ID extends Serializable, S extends BaseService<T,
     return "Deleted " + className + " with id: " + id.toString();
   }
 
-  @GetMapping
+  @GetMapping("/")
   public List<T> findAll() {
     return s.findAll();
   }

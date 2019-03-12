@@ -4,5 +4,4 @@ import edu.se309.app.backend.entity.Building;
 
 public interface BuildingRepository extends BaseRepository<Building,Integer>{
  
-
 }

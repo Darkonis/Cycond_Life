@@ -49,7 +49,7 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
   public UserStat getStatsByUsername(@PathVariable("username") String username) {
 	  return getService().getByUsername(username);
   }
-  
+
   
   @PostMapping("/add")
   public UserStat createStats(@RequestBody UserStat userStat) {
@@ -61,4 +61,5 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
 	  getService().save(newUserStat);
 	  return newUserStat;
   }
+
 }
