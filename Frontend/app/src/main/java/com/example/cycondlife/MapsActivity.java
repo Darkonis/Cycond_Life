@@ -123,7 +123,7 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
                             //moving the map to location
                             moveMap();
                         }
-
+                    display_monsters();
                     }
                 });
     }
@@ -156,19 +156,19 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
         for(int i=0;i<Game.num_monsters;i++)
         {
             if(Game.monster_map.get(i).getResolve()<=0||
-                   Math.sqrt(
+                    (Math.sqrt(
                            Math.pow(Game.monster_map.get(i).get_latitude()-player.get_latitude(),2)+
-                                   Math.pow(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(player.get_longitude()),2))<player.visual_range)
+                                   Math.pow(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(player.get_longitude()),2))>=player.visual_range))
 
             {
                 Log.i("Cycond Test", "result "+Math.sqrt(
                         Math.pow(Game.monster_map.get(i).get_latitude()-player.get_latitude(),2)+
                                 Math.pow(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(player.get_longitude()),2)));
-                Log.i("Cycond Test", "t6 "+
+               /* Log.i("Cycond Test", "t6 "+
                         Math.pow(Game.monster_map.get(i).get_latitude()-player.get_latitude(),2));
                 Log.i("Cycond Test", "t7 "+
                         Math.pow(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(player.get_longitude()),2));
-
+*/
 
                 continue;
             }
