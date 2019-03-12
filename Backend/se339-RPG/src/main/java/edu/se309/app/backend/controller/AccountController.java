@@ -24,7 +24,7 @@ public class AccountController extends BaseController<Account, Integer, AccountS
 
   @PostMapping("/add")
   public Account addAccount(@RequestBody Account account) {
-    account.setAccountId(0);
+    account.setId(0);
     Date currentDate = new Date();
     account.setCreatedOn(currentDate);
     getService().save(account);
