@@ -140,7 +140,8 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
                                 .draggable(false)
                                 .title("You are here!!!!"));
 
-
+                        player.setLat(latitude);
+                        player.setLong(longitude);
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
                         mMap.getUiSettings().setZoomControlsEnabled(false);
@@ -154,8 +155,21 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
 
         for(int i=0;i<Game.num_monsters;i++)
         {
-            if(Game.monster_map.get(i).getResolve()<=0)
+            if(Game.monster_map.get(i).getResolve()<=0||
+                   Math.sqrt(
+                           Math.pow(Game.monster_map.get(i).get_latitude()-player.get_latitude(),2)+
+                                   Math.pow(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(player.get_longitude()),2))<player.visual_range)
+
             {
+                Log.i("Cycond Test", "result "+Math.sqrt(
+                        Math.pow(Game.monster_map.get(i).get_latitude()-player.get_latitude(),2)+
+                                Math.pow(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(player.get_longitude()),2)));
+                Log.i("Cycond Test", "t6 "+
+                        Math.pow(Game.monster_map.get(i).get_latitude()-player.get_latitude(),2));
+                Log.i("Cycond Test", "t7 "+
+                        Math.pow(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(player.get_longitude()),2));
+
+
                 continue;
             }
             mMap.addMarker(new MarkerOptions().position(new LatLng(Game.monster_map.get(i).get_latitude(),Game.monster_map.get(i).get_longitude())).draggable(false).title("Monster: "+ i));
