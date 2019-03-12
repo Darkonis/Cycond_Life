@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,6 +42,8 @@ public class Login extends AppCompatActivity {
     private Button create;
     private String JSONURL = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/";
     private Context thisContext;
+
+    MediaPlayer mediaPlayer;    //used to play music when the app is opened, currently handled outside of onCreate
 
 
     @Override
@@ -169,4 +172,28 @@ public class Login extends AppCompatActivity {
         // Add JsonArrayRequest to the RequestQueue
         requestQueue.add(jsonArrayRequest);
     }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mediaPlayer.stop();
+    }
+
+    @Override
+    protected void onResume()   {
+        super.onResume();
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.test_song);
+        mediaPlayer.start();
+    }
+
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mediaPlayer.release();
+    }
+
+
 }

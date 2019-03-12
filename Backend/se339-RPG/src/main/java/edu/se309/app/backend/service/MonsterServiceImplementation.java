@@ -32,7 +32,7 @@ public class MonsterServiceImplementation extends BaseServiceImplementation<Mons
   @Transactional
   public int firstMonsterId() {
     Optional<Monster> optMonster = getRepository().findFirstByOrderByIdAsc();
-    if (optMonster.isEmpty()) {
+    if (!optMonster.isPresent()) {
       return -1;
     } else {
       return optMonster.get().getId();

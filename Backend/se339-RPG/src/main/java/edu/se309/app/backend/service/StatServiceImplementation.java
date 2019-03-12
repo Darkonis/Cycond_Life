@@ -66,7 +66,6 @@ public class StatServiceImplementation extends BaseServiceImplementation<UserSta
   public UserStat getByUsername(String username) {
 	Optional<UserStat> userStat = getRepository().findByAccountUsername(username);
 	return nullCheck(userStat, "Invalid request: no stats found for username: " + username);
-}
-  
+} 
   
 }

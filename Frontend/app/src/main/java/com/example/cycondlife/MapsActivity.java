@@ -30,7 +30,7 @@ import android.content.Intent;
 import android.content.Context;
 
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
+public class  MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         GoogleMap.OnMarkerDragListener,

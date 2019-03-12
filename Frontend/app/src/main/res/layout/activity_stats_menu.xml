@@ -6,73 +6,73 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/stats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Stats"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="133dp"
-        android:layout_marginBottom="2dp"
-        android:text="Name:"
-        app:layout_constraintBottom_toTopOf="@+id/Major"
-        app:layout_constraintStart_toStartOf="@+id/Major"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/Major"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:text="Major"
-        app:layout_constraintBottom_toTopOf="@+id/resolve"
-        app:layout_constraintStart_toStartOf="@+id/bs"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
-
-    <TextView
         android:id="@+id/resolve"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="42dp"
         android:text="Resolve"
-        app:layout_constraintBottom_toTopOf="@+id/bs"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Major" />
+        app:layout_constraintTop_toBottomOf="@+id/Header" />
 
     <TextView
         android:id="@+id/bs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="16dp"
         android:text="BS"
-        app:layout_constraintBottom_toTopOf="@+id/tinkering"
-        app:layout_constraintStart_toStartOf="@+id/resolve"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resolve" />
 
     <TextView
         android:id="@+id/tinkering"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:text="tinkering"
-        app:layout_constraintBottom_toTopOf="@+id/critical_thinking"
-        app:layout_constraintStart_toStartOf="@+id/critical_thinking"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="16dp"
+        android:text="Ttinkering"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bs" />
 
     <TextView
         android:id="@+id/critical_thinking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="470dp"
-        android:text="critical thinking"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/resolve"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="16dp"
+        android:text="Critical Thinking"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tinkering" />
+
+    <TextView
+        android:id="@+id/Header"
+        android:layout_width="352dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="48dp"
+        android:text="Username: Major"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="30sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
