@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.se309.app.backend.entity.Account;
 import edu.se309.app.backend.entity.UserStat;
 import edu.se309.app.backend.service.interfaces.AccountService;
+import edu.se309.app.backend.service.interfaces.BuildingService;
 import edu.se309.app.backend.service.interfaces.StatService;
 
 
@@ -19,12 +20,14 @@ import edu.se309.app.backend.service.interfaces.StatService;
 @RequestMapping("/api/stats")
 public class StatsController extends BaseController<UserStat, Integer, StatService> {
 
+	BuildingService buildingService;
 	AccountService accountService;
 	
   @Autowired
-  public StatsController(StatService statService, AccountService accountService) {
+  public StatsController(StatService statService, AccountService accountService, BuildingService buildingService) {
     super(statService);
     this.accountService = accountService;
+    this.buildingService = buildingService;
   }
 
   @PutMapping("/incrementStat/{id}/{stat}")
@@ -60,6 +63,12 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
 	  newUserStat.setAccount(account);	  
 	  getService().save(newUserStat);
 	  return newUserStat;
+  }
+  
+  @PutMapping("/updateStatByLocation/{id}/{longitude}/{latitude}")
+  public UserStat UpdateStatByLocation(@PathVariable Integer id, @PathVariable String longitude,@PathVariable String latitude) {
+	String stat = buildingService.findBuildingNameFromLocation(longitude, latitude);
+    return incrementStat(id,stat);
   }
 
 }
