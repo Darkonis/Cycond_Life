@@ -15,7 +15,7 @@ public class BuildingRepositoryCustom  {
   public BuildingRepositoryCustom(EntityManager entityManager) {
     this.entityManager = entityManager;
   }
-
+//
   public String findBuildingStat(String longitude, String latitude) {
     
     String queryStr = "SELECT earned_stat FROM building_locations as b WHERE (ST_WITHIN(ST_SRID(POINT("+longitude+","+ latitude +"), 4326), b.geo))";     
