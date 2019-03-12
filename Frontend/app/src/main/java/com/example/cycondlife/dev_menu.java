@@ -88,6 +88,7 @@ public class dev_menu extends AppCompatActivity {
         submit2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                hide_entries();
                 j.send_new_user(user.getText().toString(), pass.getText().toString(),
                         first.getText().toString(), last.getText().toString(),
                         email.getText().toString(), type.getText().toString());
@@ -104,6 +105,7 @@ public class dev_menu extends AppCompatActivity {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hide_entries();
                 if (!mTextView.getText().toString().equals("")) {
                     get_user(mTextView.getText().toString());
                 }
@@ -115,6 +117,7 @@ public class dev_menu extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hide_entries();
                 submit_delete.setVisibility(View.VISIBLE);
                 id.setVisibility(View.VISIBLE);
             }
@@ -122,6 +125,7 @@ public class dev_menu extends AppCompatActivity {
         submit_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hide_entries();
                 String s =id.getText().toString();
 
                 int i =0;
@@ -139,6 +143,7 @@ public class dev_menu extends AppCompatActivity {
         mButtonDo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                hide_entries();
                 // Empty the TextView
 //                mTextView.setText("");
                 ArrayList t;
@@ -148,6 +153,7 @@ public class dev_menu extends AppCompatActivity {
         res_hp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hide_entries();
                 Game.change_player_hp(100,getApplicationContext());
             }
         });
