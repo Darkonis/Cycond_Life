@@ -15,7 +15,7 @@ public class Building {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "building_id")
+  @Column(name = "id")
   private int buildingId;
 
   @Column(name = "geo", columnDefinition = "geometry")
