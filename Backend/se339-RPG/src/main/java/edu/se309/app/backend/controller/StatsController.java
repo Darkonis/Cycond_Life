@@ -65,10 +65,15 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
 	  return newUserStat;
   }
   
-  @PutMapping("/updateStatByLocation/{id}/{longitude}/{latitude}")
-  public UserStat UpdateStatByLocation(@PathVariable Integer id, @PathVariable String longitude,@PathVariable String latitude) {
-	String stat = buildingService.findBuildingNameFromLocation(longitude, latitude);
-    return incrementStat(id,stat);
-  }
+  @PutMapping("/updateStatByLocation/{id}/{longitude}/{latitude}/")
+  public String UpdateStatByLocation(@PathVariable Integer id, @PathVariable String longitude,@PathVariable String latitude) {
+	String stat = buildingService.findEarnedStatFromLocation(longitude, latitude);
+	if (stat.equals("none")) {
+		return "No stats were updated based on location";
+	}
+	UserStat userStat = getService().incrementByOne(id,stat);
+	getService().save(userStat);
+    return stat+ " was updated by one. \n current stats: \n" + userStat.toString();
+  }  
 
 }
