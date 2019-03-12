@@ -41,13 +41,13 @@ public class Character {
     protected int base_tinkering;
     protected int max_tinkering;
     //the distance monsters will appear
-    private double visual_range=.5;
+    public double visual_range=.002;
     Character()
     {
 
         isPlayer=false;
         lat =42.03;
-        lng =93.63;
+        lng =-93.63;
         BS =10;
         resolve =100;
     }
