@@ -16,19 +16,20 @@ public class UpdateServer {
 	public static void main(String[] args) throws MalformedURLException, IOException {
 		OffsetDateTime currentTime = OffsetDateTime.now();
 		OffsetDateTime regenTime = currentTime.plusSeconds(10);
-		OffsetDateTime respawnTime = currentTime.plusMinutes(15);
+		OffsetDateTime respawnTime = currentTime.plusMinutes(1);
 		while(true)
 		{
 			currentTime =OffsetDateTime.now();
 			if(currentTime.compareTo(regenTime) >= 0)
 			{
 				System.out.println("Health Regained");
-				regenTime = currentTime.plusSeconds(10);	
+				regenTime = currentTime.plusSeconds(10);
+
 			}
 			if(currentTime.compareTo(respawnTime) >= 0)
 			{
 				System.out.println("Monsters Respawned");
-				respawnTime = currentTime.plusMinutes(15);
+				respawnTime = currentTime.plusMinutes(1);
 				String url = "http://cs309-sd-6.misc.iastate.edu:8080/api/monsters/generate";
 				URL obj = new URL(url);
 				HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -37,6 +38,7 @@ public class UpdateServer {
 				DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 				wr.flush();
 				wr.close();
+				con.getResponseCode();
 			}
 		}
 	}
