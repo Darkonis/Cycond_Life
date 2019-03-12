@@ -20,8 +20,8 @@ public class Building {
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "geo", columnDefinition = "GEOMETRY")	
-	private Geometry geo;
+//	@Column(name = "geo", columnDefinition = "GEOMETRY")	
+//	private Geometry geo;
 
 	@Column(name = "earned_stat")
 	private String earnedStat;
@@ -44,9 +44,9 @@ public class Building {
 		return earnedStat;
 	}
 
-	public Geometry getGeo() {
-		return geo;
-	}
+//	public Geometry getGeo() {
+//		return geo;
+//	}
 
 	public void setId(int id) {
 		this.id = id;
@@ -60,7 +60,7 @@ public class Building {
 		this.earnedStat = earnedStat;
 	}
 
-	public void setGeo(Geometry geo) {
-		this.geo = geo;
-	}
+//	public void setGeo(Geometry geo) {
+//		this.geo = geo;
+//	}
 }

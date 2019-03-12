@@ -53,7 +53,7 @@ public class BaseServiceImplementation<T, ID extends Serializable, R extends Bas
 
   @NotNull
   public T nullCheck(Optional<T> t, String errorMessage) {
-    if (t.isEmpty()) {
+    if (!t.isPresent()) {
       throw new ServiceException(errorMessage);
     } else {
       return t.get();
