@@ -83,6 +83,7 @@
         android:layout_marginRight="60dp"
         android:background="@android:color/holo_blue_light"
         android:text="Login"
+        android:textColor="@color/place_autocomplete_search_text"
         app:fontFamily="@font/carter_one"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -113,16 +114,15 @@
 
     <Button
         android:id="@+id/create"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@android:color/holo_blue_light"
         android:text="Create Account"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
-        android:textColor="@android:color/holo_blue_light"
+        android:textColor="@color/place_autocomplete_search_text"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/loginBut"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 </android.support.constraint.ConstraintLayout>
