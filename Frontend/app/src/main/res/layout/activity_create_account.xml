@@ -13,6 +13,7 @@
         android:ems="10"
         android:hint="username"
         android:inputType="textPersonName"
+        app:fontFamily="@font/carter_one"
         app:layout_constraintBottom_toTopOf="@+id/first"
         app:layout_constraintStart_toStartOf="@+id/first" />
 
@@ -25,6 +26,7 @@
         android:ems="10"
         android:hint="first name"
         android:inputType="textPersonName"
+        app:fontFamily="@font/carter_one"
         app:layout_constraintBottom_toTopOf="@+id/last"
         app:layout_constraintStart_toStartOf="@+id/last" />
 
@@ -38,6 +40,7 @@
         android:ems="10"
         android:hint="last name"
         android:inputType="textPersonName"
+        app:fontFamily="@font/carter_one"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -48,6 +51,7 @@
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
+        app:fontFamily="@font/carter_one"
         app:layout_constraintStart_toStartOf="@+id/user"
         app:layout_constraintTop_toBottomOf="@+id/user" />
 
@@ -60,18 +64,22 @@
         android:ems="10"
         android:hint="email"
         android:inputType="textEmailAddress"
+        app:fontFamily="@font/carter_one"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/last"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/finish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
         android:layout_marginTop="52dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:background="@android:color/holo_blue_light"
         android:text="Finish"
-        app:layout_constraintEnd_toEndOf="@+id/email"
+        android:textColor="@color/place_autocomplete_search_text"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
 </android.support.constraint.ConstraintLayout>
