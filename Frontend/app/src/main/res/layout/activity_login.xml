@@ -76,13 +76,14 @@
 
     <Button
         android:id="@+id/loginBut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="60dp"
         android:layout_marginRight="60dp"
         android:background="@android:color/holo_blue_light"
         android:text="Login"
+        android:textColor="@color/place_autocomplete_search_text"
         app:fontFamily="@font/carter_one"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -101,28 +102,25 @@
 
     <Button
         android:id="@+id/adminLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/common_google_signin_btn_text_dark_focused"
-        android:text="Admin\nlogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@android:color/holo_blue_dark"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/create"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@android:color/holo_blue_light"
         android:text="Create Account"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
-        android:textColor="@android:color/holo_blue_light"
+        android:textColor="@color/place_autocomplete_search_text"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/loginBut"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 </android.support.constraint.ConstraintLayout>
