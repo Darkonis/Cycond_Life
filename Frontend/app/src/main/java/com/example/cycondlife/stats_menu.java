@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-
+//TODO add stats
 public class stats_menu extends AppCompatActivity {
     TextView name;
     //TextView major;
