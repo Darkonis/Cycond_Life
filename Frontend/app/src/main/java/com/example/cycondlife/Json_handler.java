@@ -69,7 +69,8 @@ public class Json_handler {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-
+                    Log.i("Cycond Error","add stats Error");
+                    Log.i("Cycond Error",error.toString());
                 }
             });
             requestQueue.add(t);
