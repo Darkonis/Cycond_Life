@@ -105,7 +105,7 @@ public class Login extends AppCompatActivity {
             public void get_object_response(JSONObject o) {
                 try {
                     if (userPass.equals( o.get("password"))) {
-                        Player.create_the_instance(userName,o.getInt("accountId"),getApplicationContext());
+                        Player.create_the_instance(userName,o.getInt("id"),getApplicationContext());
                         startActivity(openMenu);
                     }
                 }
@@ -147,7 +147,7 @@ public class Login extends AppCompatActivity {
                                             if(Player.get_instance()!=null) {
                                                 Player.destroy_the_instance(); //remove the previous player if needed
                                             }
-                                            Player.create_the_instance(userName,info.getInt("accountId"),getApplicationContext()); //on good login create the player object
+                                            Player.create_the_instance(userName,info.getInt("id"),getApplicationContext()); //on good login create the player object
 
                                             startActivity(openMenu);
                                         }
