@@ -40,6 +40,8 @@ public class Json_handler {
     private int user_id;
    volatile ArrayList<String[]> t;
     private final String statlink="http://cs309-sd-6.misc.iastate.edu:8080/api/stats/updateStat/";
+    private final String statlinkadd="http://cs309-sd-6.misc.iastate.edu:8080/api/stats/add/";
+
     Json_handler(Context c)
     {
         mContext =c;
@@ -52,9 +54,29 @@ public class Json_handler {
     }
     public void add_stats(int id)
     {
+        final RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JSONObject j = new JSONObject();
-        //JsonObjectRequest jsonMain = new JsonObjectRequest()
+        try {
+            j.accumulate("presentation", 10);
+            j.accumulate("creativity",10);
+            j.accumulate("critical thinking",10);
+            JsonObjectRequest t=new JsonObjectRequest(Request.Method.POST, statlinkadd, j, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Log.i("Cycond Response",response.toString());
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
 
+                }
+            });
+            requestQueue.add(t);
+        }
+        catch (Exception e)
+        {
+            Log.i("Cycond Error",e.toString());
+        }
     }
     protected void update_stat(int id, String stat,int value)
     {
