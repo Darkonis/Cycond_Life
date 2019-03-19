@@ -97,7 +97,7 @@ public class Character {
      */
     public static int do_combat(Character play, Character mon, Context c)
     {
-        dice dmg_rng = new dice("1+1d4");
+        Dice dmg_rng = new Dice("1+1d4");
         mon.take_dmg(play.BS+dmg_rng.roll());
         if(mon.resolve <=0) return 1;
         Player.get_instance().take_dmg(mon.BS,c);

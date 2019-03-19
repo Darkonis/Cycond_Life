@@ -2,12 +2,12 @@ package com.example.cycondlife;
 
 import java.util.Random;
 
-public class dice {
+public class Dice {
     int sides=0;
     int base=0;
     int number=0;
     Random rand;
-    public dice(String s)
+    public Dice(String s)
     {
         //CharSequence c = "d";
         base = Integer.parseInt(s.substring(0,s.indexOf('+')));
@@ -18,7 +18,7 @@ public class dice {
          */
          rand = new Random(System.currentTimeMillis());
     }
-    public dice (int base,int numb,int sides)
+    public Dice(int base, int numb, int sides)
     {
         this.sides=sides;
         this.base=base;
