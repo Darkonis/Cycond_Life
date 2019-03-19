@@ -2,6 +2,8 @@ package com.example.cycondlife;
 
 import org.json.JSONObject;
 
+import java.util.Random;
+
 public class Monster extends Character {
     Dice attack1;
     Dice attack2;
@@ -22,6 +24,14 @@ public class Monster extends Character {
         percent2=p2;
         percent3=p3;
         percent4=p4;
+    }
+    public int make_an_attack( Random rand)
+    {
+        int atk=rand.nextInt()%100;
+        if(atk<percent1)return attack1.roll();
+        if(atk<percent1+percent2)return attack2.roll();
+        if(atk<percent1+percent2+percent3)return attack3.roll();
+        return attack4.roll();
     }
 
 }
