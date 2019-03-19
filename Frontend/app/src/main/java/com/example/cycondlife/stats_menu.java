@@ -33,8 +33,6 @@ public class stats_menu extends AppCompatActivity {
         //major.setText("major: "+ player.getMajor());
         resolve.setText("Resolve: "+ player.getResolve());
         bs.setText("BS: "+player.getBS());
-        tinkering.setText("Tinkering: "+ player.getTinkering());
-        critical_thinking.setText("Critical Thinking: "+player.getCritical_thinking());
     }
 
    /* public void setActivityBackgroundColor(int color) {      //Can possibly be used to change background color of activity
