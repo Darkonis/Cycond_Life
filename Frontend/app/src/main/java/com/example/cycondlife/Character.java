@@ -9,8 +9,13 @@ public class Character {
     private boolean isPlayer;
     private double lat;
     private double lng;
+    protected int presentation;
+    protected int creativity;
+    protected int critical_thinking;
+    protected String major;
     protected String name = "tmp";
     //potentially move to an enum array
+    //TODO change to formula calculation
     /*
     the ability to quickly and rapidly confuse your opponent (attack)
      */
@@ -22,25 +27,7 @@ public class Character {
     /*
     ones potential for resolve
      */
-    protected int max_resolve;
-    /*
-    ones unmodded resolve
-     */
-    protected int base_resolve;
-    /*
-        The ability to create new things
-     */
-    protected int tinkering=0;
 
-    protected int critical_thinking =0;
-    protected  int base_critical_thinking;
-    protected int presentation=0;
-    protected  int base_presentation;
-    protected String major ="Student";
-    protected int tinkering_points;
-    protected int base_tinkering;
-    protected int max_tinkering;
-    //the distance monsters will appear
     public double visual_range=.002;
     Character()
     {
@@ -131,9 +118,6 @@ public class Character {
     public String getName(){return name;}
     public int getBS(){return BS;}
     public String getMajor(){return major;}
-    public int getMax_resolve(){return max_resolve;}
-    public int getTinkering(){return tinkering;}
-    public int getCritical_thinking(){return critical_thinking;}
     public int getPresentation(){return presentation;}
 
 }
