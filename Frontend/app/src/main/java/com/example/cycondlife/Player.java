@@ -35,9 +35,23 @@ public class Player extends Character {
     private Callback_handler callback;
     private int experiance=0;
     private int level =1;
+
+    private int hitChance =100;
+    //TODO make this private
+    public double sight =.002;
+    private double critChance =1;
+    private double critMult =2;
+    private double dmgReduct =.1;
+    private double BS =10;
+    private int tinkPoints=50;
+    private double tinkMult=1.0;
+
+
+
     private Player(String user,int idt,Context c)
     {
         super();
+        update_substats();
         username=user;
         name=user;
         this.id=idt;
@@ -84,6 +98,7 @@ public class Player extends Character {
       //  RequestQueue q = new Volley.newRequestQueue(c);
        // JsonObjectRequest j = new JsonObjectRequest()
     }
+
     public static Player get_instance()
     {
         return player_instance;
@@ -93,6 +108,22 @@ public class Player extends Character {
     {
         get_stats(id,callback,context);
     }
+
+
+    public void update_substats()
+    {
+        hitChance =50+creativity+critical_thinking;
+        if(hitChance >99) hitChance =99;
+        sight =.001+(critical_thinking+0.0)/10000;
+        critChance=1+((critical_thinking+creativity)/1000)*9;
+        critMult= 2+ (presentation+critical_thinking)/500.0;
+        dmgReduct = .01 +(presentation+critChance)/100.0;
+        BS=(presentation+critical_thinking)/100;
+        tinkPoints=(int) Math.round(1.5*critical_thinking);
+        tinkMult=.9+(creativity+critical_thinking)/1500.0;
+
+    }
+
     public static synchronized void create_the_instance(String user,int id,Context c)
     {
         if(player_instance!=null)
@@ -101,10 +132,13 @@ public class Player extends Character {
         }
         player_instance = new Player(user,id,c);
     }
+
     public static synchronized void destroy_the_instance()
     {
         player_instance=null;
     }
+
+
     private void get_stats(int statsId,final Callback_handler c,Context t)
         {
             RequestQueue r =  Volley.newRequestQueue(t);

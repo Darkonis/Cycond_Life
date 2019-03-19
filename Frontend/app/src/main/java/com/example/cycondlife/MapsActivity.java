@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -246,7 +245,7 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
     {
         if((Math.sqrt(
                 Math.pow(Game.monster_map.get(i).get_latitude()-player.get_latitude(),2)+
-                        Math.pow(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(player.get_longitude()),2))>=player.visual_range)) {
+                        Math.pow(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(player.get_longitude()),2))>=player.sight)) {
             return true;
         }
         return false;

@@ -9,10 +9,10 @@ public class Character {
     private boolean isPlayer;
     private double lat;
     private double lng;
-    protected int presentation;
-    protected int creativity;
-    protected int critical_thinking;
-    protected String major;
+    protected int presentation=10;
+    protected int creativity=10;
+    protected int critical_thinking=10;
+    protected String major="student";
     protected String name = "tmp";
     //potentially move to an enum array
     //TODO change to formula calculation
@@ -28,7 +28,7 @@ public class Character {
     ones potential for resolve
      */
 
-    public double visual_range=.002;
+
     Character()
     {
 
