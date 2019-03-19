@@ -23,6 +23,16 @@ public class Se309RpgApplication  {
 		if(currentTime.compareTo(regenTime) >= 0)
 		{
 			regenTime = currentTime.plusSeconds(10);
+			String url = "http://localhost:8080/api/monsters/generate";
+			URL obj = new URL(url);
+			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+			con.setRequestMethod("POST");
+			con.setDoOutput(true);
+			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+			wr.flush();
+			wr.close();
+			int code = con.getResponseCode();
+			System.out.println(code);
 
 		}
 		if(currentTime.compareTo(respawnTime) >= 0)
