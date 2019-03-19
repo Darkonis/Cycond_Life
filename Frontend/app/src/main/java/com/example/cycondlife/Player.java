@@ -22,9 +22,6 @@ import static com.android.volley.toolbox.Volley.newRequestQueue;
  */
 public class Player extends Character {
     private static Player player_instance;
-    private String username;
-    private String password;
-    private int id;
     private Player()
     {
         super();
@@ -38,7 +35,7 @@ public class Player extends Character {
     private Player(String user,int idt,Context c)
     {
         super();
-        username=user;
+       // username=user;
         name=user;
         this.id=idt;
         this.context = c;

@@ -13,6 +13,7 @@ public class Character {
     protected int creativity;
     protected int critical_thinking;
     protected String major;
+    protected int id;
     protected String name = "tmp";
     //potentially move to an enum array
     //TODO change to formula calculation
