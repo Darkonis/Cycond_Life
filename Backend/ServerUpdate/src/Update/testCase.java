@@ -1,22 +1,12 @@
 package Update;
-import java.time.OffsetDateTime;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.MalformedURLException;
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
-import javax.net.ssl.HttpsURLConnection;
-
-
-public class UpdateServer {
+public class testCase {
 	public static void main(String[] args) throws MalformedURLException, IOException {
 	    int monstersToGenerate = 10;
 	    List<Monster> monsters = new ArrayList<>();
@@ -41,6 +31,7 @@ public class UpdateServer {
 	    			 }
 	    		 }
 	    	}
+	    	monsters.add(monster);
 	     }
 	    }
 	}
