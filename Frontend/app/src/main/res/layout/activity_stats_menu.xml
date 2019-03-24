@@ -40,7 +40,7 @@
         android:layout_marginStart="42dp"
         android:layout_marginLeft="42dp"
         android:layout_marginTop="16dp"
-        android:text="Ttinkering"
+        android:text="Tinkering"
         android:textColor="@android:color/holo_blue_light"
         android:textSize="18sp"
         app:fontFamily="@font/carter_one"
