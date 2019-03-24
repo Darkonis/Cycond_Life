@@ -144,8 +144,8 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
                         player.setLong(longitude);
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-                        mMap.getUiSettings().setZoomControlsEnabled(false);
-                        mMap.getUiSettings().setAllGesturesEnabled(false);
+                        mMap.getUiSettings().setZoomControlsEnabled(true);
+                        mMap.getUiSettings().setAllGesturesEnabled(true);
 
 
                     }
@@ -155,11 +155,7 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
 
         for(int i=0;i<Game.num_monsters;i++)
         {
-            if(Game.monster_map.get(i).getResolve()<=0||
-                    (Math.sqrt(
-                           Math.pow(Game.monster_map.get(i).get_latitude()-player.get_latitude(),2)+
-                                   Math.pow(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(player.get_longitude()),2))>=player.visual_range))
-
+            if(Game.monster_map.get(i).getResolve()<=0|| (!is_in_range(i)))
             {
                 Log.i("Cycond Test", "result "+Math.sqrt(
                         Math.pow(Game.monster_map.get(i).get_latitude()-player.get_latitude(),2)+
@@ -216,10 +212,14 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
                 {
                     continue;
                 }
-                opponent=Game.monster_map.get(i);
-                Combat.set_combatants(opponent,g);
-                found=true;
-                break;
+                if(is_in_range(i)){
+                    opponent=Game.monster_map.get(i);
+                    Combat.set_combatants(opponent,g);
+                    found=true;
+                    break;
+
+                }
+
             }
 
         }
@@ -242,7 +242,15 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
     public void onMarkerDragEnd(Marker marker) {
 
     }
-
+    private boolean is_in_range(int i)
+    {
+        if((Math.sqrt(
+                Math.pow(Game.monster_map.get(i).get_latitude()-player.get_latitude(),2)+
+                        Math.pow(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(player.get_longitude()),2))>=player.visual_range)) {
+            return true;
+        }
+        return false;
+    }
     @Override
     protected void onStart() {
         googleApiClient.connect();

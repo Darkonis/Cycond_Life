@@ -59,7 +59,7 @@ public class   Json_handler {
     protected void update_stat(int id, String stat,int value)
     {
        // this.getApplicationContext();
-        if (value<0)value=0;
+        if (value<0) value=0;
         JSONObject j = new JSONObject();
         final RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonObjectRequest jsonMain = new JsonObjectRequest(Request.Method.PUT, statlink + id + "/"+"{stat}/{value}?stat="+stat+"&value="+value , j, new Response.Listener<JSONObject>() {

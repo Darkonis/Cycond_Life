@@ -33,6 +33,8 @@ public class Player extends Character {
     private final String statlink="/api/stats/updateStat/";
     private Context context;
     private Callback_handler callback;
+    private int experiance=0;
+    private int level =1;
     private Player(String user,int idt,Context c)
     {
         super();
@@ -64,13 +66,12 @@ public class Player extends Character {
             @Override
             public void get_object_response(JSONObject o) {
                 try {
-
-                   resolve= o.getInt("resolve");
-                 //  tinkering = o.getInt("tinkering");
-                   BS = o.getInt("bs");
                    presentation = o.getInt("presentation");
                    monstersKilled = o.getInt("monstersKilled");
-
+                    critical_thinking = o.getInt("critical thinking");
+                    creativity = o.getInt("creativity");
+                    BS=presentation+critical_thinking;
+                    resolve= presentation;
                 }
                 catch(Exception e)
                 {
