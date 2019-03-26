@@ -28,7 +28,7 @@ import android.webkit.JsResult;
 import com.android.volley.toolbox.JsonObjectRequest;
 
 //TODO look into making this a super class to other activitys
-public class Json_handler {
+public class   Json_handler {
 
     private String user,pass,first,last,email,type;
     public final String mJSONBASEString = "http://cs309-sd-6.misc.iastate.edu:8080/api/";
@@ -59,7 +59,7 @@ public class Json_handler {
     protected void update_stat(int id, String stat,int value)
     {
        // this.getApplicationContext();
-        if (value<0)value=0;
+        if (value<0) value=0;
         JSONObject j = new JSONObject();
         final RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JsonObjectRequest jsonMain = new JsonObjectRequest(Request.Method.PUT, statlink + id + "/"+"{stat}/{value}?stat="+stat+"&value="+value , j, new Response.Listener<JSONObject>() {
@@ -83,7 +83,7 @@ public class Json_handler {
             public void onErrorResponse(VolleyError e)
             {
                 Log.i("Cy Error", "error posting stat change");
-                e.printStackTrace();
+                //e.printStackTrace();
             }
         }) ;
 
