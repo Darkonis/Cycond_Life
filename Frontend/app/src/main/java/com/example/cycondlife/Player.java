@@ -66,12 +66,12 @@ public class Player extends Character {
             @Override
             public void get_object_response(JSONObject o) {
                 try {
-                   presentation = o.getInt("presentation");
-                   monstersKilled = o.getInt("monstersKilled");
+                    presentation = o.getInt("presentation");
+                    monstersKilled = o.getInt("monstersKilled");
                     critical_thinking = o.getInt("critical thinking");
                     creativity = o.getInt("creativity");
-                    BS=presentation+critical_thinking;
-                    resolve= presentation;
+                    BS = presentation + critical_thinking;
+                    resolve = presentation;
                 }
                 catch(Exception e)
                 {
@@ -79,7 +79,7 @@ public class Player extends Character {
                 }
             }
         };
-        //TODO this could be made more efficant
+        //TODO this could be made more efficient
         get_stats(id,callback,c);
       //  RequestQueue q = new Volley.newRequestQueue(c);
        // JsonObjectRequest j = new JsonObjectRequest()

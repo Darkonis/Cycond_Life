@@ -58,13 +58,14 @@ public class Login extends AppCompatActivity {
         adLogin = findViewById(R.id.adminLogin);
 
         thisContext = getApplicationContext();
+        fail.setVisibility(View.INVISIBLE);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},
                     1);
         }
 
-        fail.setVisibility(View.INVISIBLE);
+
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,6 +114,7 @@ public class Login extends AppCompatActivity {
                 {
                     Log.i("Cycond Life", "parse error");
                     Log.i("Cycond Life", e.getLocalizedMessage());
+
                 }
 
             }
@@ -143,20 +145,22 @@ public class Login extends AppCompatActivity {
                                 String nameToCheck = info.get("username").toString();
                                 String passToCheck = info.get("password").toString();
 
-                                        if(nameToCheck.equals(userName) && passToCheck.equals(userPass))    {
-                                            if(Player.get_instance()!=null) {
-                                                Player.destroy_the_instance(); //remove the previous player if needed
-                                            }
-                                            Player.create_the_instance(userName,info.getInt("id"),getApplicationContext()); //on good login create the player object
-
-                                            startActivity(openMenu);
-                                        }
+                                if(nameToCheck.equals(userName) && passToCheck.equals(userPass))    {
+                                    if(Player.get_instance()!=null) {
+                                        Player.destroy_the_instance(); //remove the previous player if needed
                                     }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
+                                    Player.create_the_instance(userName,info.getInt("id"),getApplicationContext()); //on good login create the player object
 
-                        fail.setVisibility(View.VISIBLE);   //Should only display on codition of fail, will be changed
+                                    startActivity(openMenu);
+                                }   else    {
+                                    fail.setVisibility(View.VISIBLE);   //Should only display on condition of fail, will be changed
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
                     }
                 },
                 new Response.ErrorListener() {
