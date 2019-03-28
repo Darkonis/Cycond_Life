@@ -35,7 +35,10 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-
+        <activity android:name=".stats_menu"
+            android:label="stats_menu"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
@@ -50,6 +53,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".MapsActivity"
@@ -57,6 +63,8 @@
         <activity
             android:name=".Combat"
             android:label="@string/title_combat" />
+        <activity android:name=".CreateAccount"
+            android:label="createAccount" />
     </application>
 
 </manifest>

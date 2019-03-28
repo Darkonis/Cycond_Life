@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,16 +39,18 @@ public class Login extends AppCompatActivity {
     private TextView pass;
     private TextView fail;
     private Button adLogin;
-
-    private String JSONURL = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts";
+    private Button create;
+    private String JSONURL = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/";
     private Context thisContext;
+
+    MediaPlayer mediaPlayer;    //used to play music when the app is opened, currently handled outside of onCreate
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        create = findViewById(R.id.create);
         submit = findViewById(R.id.loginBut);
         name = findViewById(R.id.username);
         pass = findViewById(R.id.password);
@@ -62,44 +65,89 @@ public class Login extends AppCompatActivity {
         }
 
         fail.setVisibility(View.INVISIBLE);
-
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Intent openCreate = new Intent(Login.this,CreateAccount.class);
+                startActivity(openCreate);
+            }
+        });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String userName = name.getText().toString();
-                final String userPass = pass.getText().toString();
+                    check_validity();
+            }
+        });
 
+        adLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Will save a temp account that can be accessed by the rest of the app in later iterations
+                Player.create_the_instance("Over9000",13,getApplicationContext());
                 final Intent openMenu = new Intent(Login.this, menu.class);
+                startActivity(openMenu);
+            }
+        });
+    }
+    private void check_validity()
+    {
 
-                // Empty the TextView
-                name.setText("");
-                pass.setText("");
+        final String userName = name.getText().toString();
+        final String userPass = pass.getText().toString();
+        final Intent openMenu = new Intent(Login.this, menu.class);
+        final Callback_handler c = new Callback_handler() {
+            @Override
+            public void get_response(JSONArray a) {
+                return;
+            }
 
-                // Initialize a new RequestQueue instance
-                RequestQueue requestQueue = Volley.newRequestQueue(thisContext);
-                // Initialize a new JsonArrayRequest instance
-                JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                        JSONURL,
-                        new Response.Listener<JSONArray>() {
-                            @Override
-                            public void onResponse(JSONArray response) {
-                                // Do something with response
+            @Override
+            public void get_object_response(JSONObject o) {
+                try {
+                    if (userPass.equals( o.get("password"))) {
+                        Player.create_the_instance(userName,o.getInt("id"),getApplicationContext());
+                        startActivity(openMenu);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.i("Cycond Life", "parse error");
+                    Log.i("Cycond Life", e.getLocalizedMessage());
+                }
+
+            }
+        };
 
 
-                                // Process the JSON
-                                try {
-                                    // Loop through the array elements
-                                    for (int i = 0; i < response.length(); i++) {
-                                        // Get current json object
-                                        JSONObject info = response.getJSONObject(i);
-                                        String nameToCheck = info.get("username").toString();
-                                        String passToCheck = info.get("password").toString();
+        // Empty the TextView
+        name.setText("");
+        pass.setText("");
+
+        // Initialize a new RequestQueue instance
+        RequestQueue requestQueue = Volley.newRequestQueue(thisContext);
+        // Initialize a new JsonArrayRequest instance
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                JSONURL,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        // Do something with response
+
+
+                        // Process the JSON
+                        try {
+                            // Loop through the array elements
+                            for (int i = 0; i < response.length(); i++) {
+                                // Get current json object
+                                JSONObject info = response.getJSONObject(i);
+                                String nameToCheck = info.get("username").toString();
+                                String passToCheck = info.get("password").toString();
 
                                         if(nameToCheck.equals(userName) && passToCheck.equals(userPass))    {
                                             if(Player.get_instance()!=null) {
                                                 Player.destroy_the_instance(); //remove the previous player if needed
                                             }
-                                            Player.create_the_instance(userName); //on good login create the player object
+                                            Player.create_the_instance(userName,info.getInt("id"),getApplicationContext()); //on good login create the player object
 
                                             startActivity(openMenu);
                                         }
@@ -108,32 +156,44 @@ public class Login extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
 
-                                fail.setVisibility(View.VISIBLE);   //Should only display on codition of fail, will be changed
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                // Do something when error occurred
-                                Log.i("Cycond Life", "request error");
-                                Log.i("Cycond Life", error.getLocalizedMessage());
-                            }
-                        }
-                );
+                        fail.setVisibility(View.VISIBLE);   //Should only display on codition of fail, will be changed
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Do something when error occurred
+                        Log.i("Cycond Life", "request error");
+                        Log.i("Cycond Life", error.getLocalizedMessage());
+                    }
+                }
+        );
 
-                // Add JsonArrayRequest to the RequestQueue
-                requestQueue.add(jsonArrayRequest);
-            }
-        });
-
-        adLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Will save a temp account that can be accessed by the rest of the app in later iterations
-                Player.create_the_instance("tmp");
-                final Intent openMenu = new Intent(Login.this, menu.class);
-                startActivity(openMenu);
-            }
-        });
+        // Add JsonArrayRequest to the RequestQueue
+        requestQueue.add(jsonArrayRequest);
     }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mediaPlayer.stop();
+    }
+
+    @Override
+    protected void onResume()   {
+        super.onResume();
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.test_song);
+        mediaPlayer.start();
+    }
+
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mediaPlayer.release();
+    }
+
+
 }

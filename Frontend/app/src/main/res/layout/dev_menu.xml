@@ -19,9 +19,9 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:contentDescription="id"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         android:visibility="gone" />
 
     <Button
@@ -125,4 +125,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Restore current hp" />
+
+    <Button
+        android:id="@+id/updateStat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="updateStat" />
+
+    <EditText
+        android:id="@+id/statName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="stat name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/accountId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="accountId"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="value"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/submit_stat_change"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="submit change" />
 </LinearLayout>
