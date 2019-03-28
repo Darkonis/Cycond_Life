@@ -22,6 +22,7 @@
 /nbbuild/
 /dist/
 /nbdist/
+/logs/
 /.nb-gradle/
 /build/
 # Eclipse
