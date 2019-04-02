@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @Table(name = "consumable_item")
 public class ConsumableItem {
 	@Id
-	@GeneratedValue
 	@Column(name = "id")
 	private int id;
 	
@@ -23,6 +22,9 @@ public class ConsumableItem {
 	
 	@Column(name = "total_turns")
 	private int totalTurns;
+	
+	@Column(name = "points_increased")
+	private int pointsIncreased;
 	
 	public int getId() {
 		return id;
@@ -40,6 +42,10 @@ public class ConsumableItem {
 		return totalTurns;
 	}
 	
+	public int getPointsIncreased() {
+		return pointsIncreased;
+	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -55,10 +61,13 @@ public class ConsumableItem {
 	public void setTotalTurns(int totalTurns) {
 		this.totalTurns = totalTurns;
 	}
-	
+	public void setPointsIncreased(int pointsIncreased){
+		this.pointsIncreased = pointsIncreased;
+	}
 	@Override
 	public String toString() {
 		return "ConsumableItem [Id=" + id +", name=" + name + ", statEffected=" 
-				+ statEffected +", totalTurns=" + totalTurns + "]";
+				+ statEffected +", totalTurns=" + totalTurns + 
+				", pointsIncreased=" + pointsIncreased +"]";
 	}
 }
