@@ -63,7 +63,9 @@ class BuildingControllerTest {
 
     @Test
     public void deleteById() {
-        //TODO
+        String expected = "Deleted Building with id: " + building.getId();
+        String actual = buildingController.deleteById(building.getId());
+        assertEquals(expected,actual);
     }
 
     @Test

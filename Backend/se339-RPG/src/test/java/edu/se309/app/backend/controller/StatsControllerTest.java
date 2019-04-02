@@ -59,7 +59,9 @@ class StatsControllerTest {
 
     @Test
     void deleteById() {
-        //TODO
+        String expected = "Deleted Stats with id: " + stat.getId();
+        String actual = statsController.deleteById(stat.getId());
+        assertEquals(expected,actual);
     }
 
     @Test

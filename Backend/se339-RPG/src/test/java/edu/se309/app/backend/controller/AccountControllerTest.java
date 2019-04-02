@@ -40,7 +40,8 @@ public class AccountControllerTest {
 
     @Test
     void addAccount() {
-        //TODO
+        Account newAccount = accountController.addAccount(account);
+        assertEquals(account,newAccount);
     }
 
     @Test
@@ -69,7 +70,9 @@ public class AccountControllerTest {
 
     @Test
     public void deleteById() {
-        //TODO
+        String expected = "Deleted Account with id: " + account.getId();
+        String actual = accountController.deleteById(account.getId());
+        assertEquals(expected,actual);
     }
 
 

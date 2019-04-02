@@ -46,7 +46,9 @@ class MonsterStatControllerTest {
 
     @Test
     void deleteById() {
-        //TODO
+        String expected = "Deleted MonsterStat with id: " + monsterStat.getId();
+        String actual = monsterStatController.deleteById(monsterStat.getId());
+        assertEquals(expected,actual);
     }
 
     @Test

@@ -48,7 +48,9 @@ class MonsterControllerTest {
 
     @Test
     void deleteById() {
-        //TODO
+        String expected = "Deleted Monster with id: " + monster.getId();
+        String actual = monsterController.deleteById(monster.getId());
+        assertEquals(expected,actual);
     }
 
     @Test

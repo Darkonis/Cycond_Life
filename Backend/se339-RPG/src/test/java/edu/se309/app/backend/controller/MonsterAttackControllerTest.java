@@ -1,7 +1,9 @@
 package edu.se309.app.backend.controller;
 
 import edu.se309.app.backend.entity.Account;
+import edu.se309.app.backend.entity.MonsterAttack;
 import edu.se309.app.backend.entity.MonsterStat;
+import edu.se309.app.backend.service.interfaces.MonsterAttackService;
 import edu.se309.app.backend.service.interfaces.MonsterStatService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,51 +25,53 @@ import static org.mockito.Mockito.when;
 class MonsterAttackControllerTest {
 
     @InjectMocks
-    private MonsterStatController monsterStatController;
+    private MonsterAttackController monsterAttackController;
 
     @Mock
-    private MonsterStatService monsterStatService;
+    private MonsterAttackService monsterAttackService;
 
     @Mock
-    private MonsterStat monsterStat;
+    private MonsterAttack monsterAttack;
 
     @BeforeEach
     public void setup() {
-        monsterStat = mock(MonsterStat.class);
+        monsterAttack = mock(MonsterAttack.class);
         MockitoAnnotations.initMocks(this);
-        monsterStatService = monsterStatController.getService();
+        monsterAttackService = monsterAttackController.getService();
     }
 
     @Test
     public void count() {
         long expected = 1L;
-        when(monsterStatService.count()).thenReturn(expected);
-        long count = monsterStatController.count();
+        when(monsterAttackService.count()).thenReturn(expected);
+        long count = monsterAttackController.count();
         assertEquals(expected, count);
     }
 
     @Test
     public void deleteById() {
-        //TODO
+        String expected = "Deleted MonsterAttack with id: " + monsterAttack.getId();
+        String actual = monsterAttackController.deleteById(monsterAttack.getId());
+        assertEquals(expected,actual);
     }
 
     @Test
     public void findAll() {
-        MonsterStat monsterStat2 = mock(MonsterStat.class);
-        List<MonsterStat> monsterStats = new ArrayList<>();
-        monsterStats.add(monsterStat);
-        monsterStats.add(monsterStat2);
-        when(monsterStatService.findAll()).thenReturn(monsterStats);
-        List<MonsterStat> newMonsterStats = monsterStatController.findAll();
-        for (MonsterStat m : monsterStats) {
-            assertTrue(newMonsterStats.contains(m));
+        MonsterAttack monsterAttack2 = mock(MonsterAttack.class);
+        List<MonsterAttack> monsterAttacks = new ArrayList<>();
+        monsterAttacks.add(monsterAttack);
+        monsterAttacks.add(monsterAttack2);
+        when(monsterAttackService.findAll()).thenReturn(monsterAttacks);
+        List<MonsterAttack> newMonsterAttacks = monsterAttackController.findAll();
+        for (MonsterAttack m : monsterAttacks) {
+            assertTrue(newMonsterAttacks.contains(m));
         }
     }
 
     @Test
     public void findById() {
-        when(monsterStatService.findById(monsterStat.getId())).thenReturn(monsterStat);
-        MonsterStat newMonsterStat = monsterStatController.findById(monsterStat.getId());
-        assertEquals(monsterStat.getId(), newMonsterStat.getId());
+        when(monsterAttackService.findById(monsterAttack.getId())).thenReturn(monsterAttack);
+        MonsterAttack newMonsterAttack = monsterAttackController.findById(monsterAttack.getId());
+        assertEquals(monsterAttack.getId(), newMonsterAttack.getId());
     }
 }
