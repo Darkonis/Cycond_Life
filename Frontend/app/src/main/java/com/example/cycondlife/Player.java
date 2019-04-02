@@ -15,6 +15,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.util.ArrayList;
+
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
 /*
@@ -46,6 +48,10 @@ public class Player extends Character {
     private int tinkPoints=50;
     private double tinkMult=1.0;
     private double dodgeChance=15;
+    private ArrayList<Item> inv = new ArrayList<Item>();
+
+    private int itemCount=0;
+
 
     public int getHitChance() {
         return hitChance;
@@ -90,6 +96,7 @@ public class Player extends Character {
     {
         experiance+=val;
     }
+
 
     private Player(String user, int idt, Context c)
     {
@@ -152,7 +159,26 @@ public class Player extends Character {
         get_stats(id,callback,context);
     }
 
+    public ArrayList<Item> getInv() {
+        return inv;
+    }
+    public void addItem(Item i)
+    {
+        //TODO propagate to the server when possuible
+        if(inv.size()<20)
+        {
+            inv.add(i);
+        }
+        else
+        {
+            Log.i("Cycond Info", "You drop some items");
+        }
+    }
+    public Item removeItem(int index)
+    {
 
+        return inv.remove(index);
+    }
     public void update_substats()
     {
         hitChance =50+creativity+critical_thinking;
