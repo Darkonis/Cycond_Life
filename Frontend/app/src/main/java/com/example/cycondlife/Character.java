@@ -95,15 +95,7 @@ public class Character {
     maybe move this into combat class
     also remove character play its not signleton style
      */
-    public static int do_combat(Character play, Character mon, Context c)
-    {
-        Dice dmg_rng = new Dice("1+1d4");
-        mon.take_dmg(play.BS+dmg_rng.roll());
-        if(mon.resolve <=0) return 1;
-        Player.get_instance().take_dmg(mon.BS,c);
-        if(play.resolve<=0) return 2;
-        return 0;
-    }
+
     public int getResolve() {return resolve;}
     public void setResolve (int i) {resolve=i;}
     /*
@@ -116,7 +108,7 @@ public class Character {
     private String major ="Student";
      */
     public String getName(){return name;}
-    public int getBS(){return BS;}
+   // public int getBS(){return BS;}
     public String getMajor(){return major;}
     public int getPresentation(){return presentation;}
 

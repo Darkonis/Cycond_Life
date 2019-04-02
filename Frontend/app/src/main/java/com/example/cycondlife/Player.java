@@ -45,10 +45,53 @@ public class Player extends Character {
     private double BS =10;
     private int tinkPoints=50;
     private double tinkMult=1.0;
+    private double dodgeChance=15;
 
+    public int getHitChance() {
+        return hitChance;
+    }
+    public double getSight()
+    {
+        return sight;
+    }
+    public double getDodgeChance()
+    {
+        return dodgeChance;
+    }
+    public double getCritChance()
+    {
+        return critChance;
+    }
+    public double getCritMult()
+    {
+        return critMult;
+    }
+    public double getDmgReduct()
+    {
+        return  dmgReduct;
+    }
+    public double getBS()
+    {
+        return BS;
+    }
+    public int getTinkPoints()
+    {
+        return tinkPoints;
+    }
+    public double getTinkMult()
+    {
+        return tinkMult;
+    }
 
+    public int getLevel() {
+        return level;
+    }
+    public void incEXP(int val)
+    {
+        experiance+=val;
+    }
 
-    private Player(String user,int idt,Context c)
+    private Player(String user, int idt, Context c)
     {
         super();
         update_substats();
@@ -115,13 +158,13 @@ public class Player extends Character {
         hitChance =50+creativity+critical_thinking;
         if(hitChance >99) hitChance =99;
         sight =.001+(critical_thinking+0.0)/10000;
-        critChance=1+((critical_thinking+creativity)/1000)*9;
+        critChance=1+((critical_thinking+creativity)/1000.0)*9;
         critMult= 2+ (presentation+critical_thinking)/500.0;
         dmgReduct = .01 +(presentation+critChance)/100.0;
-        BS=(presentation+critical_thinking)/100;
+        BS=(presentation+critical_thinking)/100.0;
         tinkPoints=(int) Math.round(1.5*critical_thinking);
         tinkMult=.9+(creativity+critical_thinking)/1500.0;
-
+        dodgeChance= 15+(creativity/2000.0);
     }
 
     public static synchronized void create_the_instance(String user,int id,Context c)
