@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -24,6 +25,7 @@ public class Combat extends AppCompatActivity {
     Button item;
     TextView player_stuff;
     TextView monster_stuff;
+    ScrollView inventory;
     final static Player player = Player.get_instance();
     static Character monster;
     static Game g;
@@ -48,12 +50,19 @@ public class Combat extends AppCompatActivity {
         attack = findViewById(R.id.attack);
         player_stuff=findViewById(R.id.health);
         monster_stuff=findViewById(R.id.eHealth);
+        inventory = findViewById(R.id.inventorylist);
+        item= findViewById(R.id.item);
     }
     /*
     TODO adjust so that online health is updated at the end of combat
      */
-    private void setup_buttons()
-    {
+    private void setup_buttons() {
+        item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         button_flee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,27 +73,33 @@ public class Combat extends AppCompatActivity {
         attack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               int ret= do_combat(player,monster,getApplicationContext());
-               update_status();
-               if(ret ==1)
-               {
-                   Log.i("Cycond Life","Player has won combat");
-                   finishActivity(1);
+                int ret = do_combat(player, monster, getApplicationContext());
+                update_status();
+                if (ret == 1) {
+                    Log.i("Cycond Life", "Player has won combat");
+                    finishActivity(1);
 
-                   finish();
-               }
-               if(ret ==2 )
-               {
-                   Log.i("Cycond Life","Player has died");
-                   finishActivity(2);
-                   finish();
-               }
-               else
-               {
-                   Log.i("Cycond Life","Player Health is :" +player.getResolve() + " Enemy hp is: " + monster.getResolve());
-               }
+                    finish();
+                }
+                if (ret == 2) {
+                    Log.i("Cycond Life", "Player has died");
+                    finishActivity(2);
+                    finish();
+                } else {
+                    Log.i("Cycond Life", "Player Health is :" + player.getResolve() + " Enemy hp is: " + monster.getResolve());
+                }
             }
         });
+    }
+    private void reset()
+    {
+        inventory.setVisibility(View.GONE);
+    }
+    private void display_inventory()
+    {
+        inventory.setVisibility(View.VISIBLE);
+        inventory.addView(new View);
+        View t = new View();
     }
     private static int do_combat(Character play, Character mon, Context c)
     {
