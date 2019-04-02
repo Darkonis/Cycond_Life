@@ -12,54 +12,51 @@ import java.net.Socket;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-public class ChatSender extends AsyncTask<String, Void, Void> {
+public class ChatSender {
     //Socket chat;
 
     WebSocketClient chat;
-    DataOutputStream dos;
+    //DataOutputStream dos;
     PrintWriter pw;
 
 
-    @Override
-    protected Void doInBackground(String... voids)    {
+    public Void connectWebSocket(URI dest)  {
         //chat = new Socket();
 
-        String message = voids[0];
+        chat = new WebSocketClient(dest)   {
+            public void onMessage(String var1)  {
 
-        try {
-            chat = new WebSocketClient(new URI("wss://echo.websocket.org"))   {
-                public void onMessage(String var1)  {
+            }
 
-                }
+            public void onOpen(ServerHandshake var1)  {
 
-                public void onOpen(ServerHandshake var1)  {
+            }
 
-                }
+            public void onClose(int var1, String var2, boolean var3)    {
 
-                public void onClose(int var1, String var2, boolean var3)    {
+            }
 
-                }
+            public void onError(Exception var1)    {
 
-                public void onError(Exception var1)    {
+            }
+        };
 
-                }
-            };
+        chat.connect();
 
-
-        }   catch (URISyntaxException e)    {
-            e.printStackTrace();
-        }
-
-        try {
-            pw = new PrintWriter(chat.getSocket().getOutputStream());
-            pw.write(message);
-            pw.flush();
-            pw.close();
-        }   catch (IOException e) {
-
-        }
+//        try {
+//            pw = new PrintWriter(chat.getSocket().getOutputStream());
+//            pw.write(message);
+//            pw.flush();
+//            pw.close();
+//        }   catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
 
         return null;
+    }
+
+    public void sendMsg(String msg)  {
+        chat.send(msg);
     }
 }
