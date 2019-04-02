@@ -5,9 +5,11 @@ import edu.se309.app.backend.entity.Monster;
 import edu.se309.app.backend.service.interfaces.MonsterService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class MonsterControllerTest {
 
     @InjectMocks
@@ -31,6 +34,7 @@ class MonsterControllerTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         monster = mock(Monster.class);
+        monsterService = monsterController.getService();
     }
 
 
@@ -82,7 +86,8 @@ class MonsterControllerTest {
 
     @Test
     void getFirstId() {
-        when(monsterService.firstMonsterId()).thenReturn(monster.getId());
+        int id = monster.getId();
+        when(monsterService.firstMonsterId()).thenReturn(id);
         int newMonster = monsterController.getFirstId();
         assertEquals(monster.getId(), newMonster);
     }

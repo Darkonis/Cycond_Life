@@ -7,9 +7,11 @@ import edu.se309.app.backend.service.interfaces.BuildingService;
 import edu.se309.app.backend.service.interfaces.StatService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class StatsControllerTest {
 
     @InjectMocks
@@ -41,6 +44,9 @@ class StatsControllerTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         stat = mock(UserStat.class);
+        buildingService = statsController.getBuildingService();
+        accountService = statsController.getAccountService();
+        statService = statsController.getService();
     }
 
     @Test
@@ -53,6 +59,7 @@ class StatsControllerTest {
 
     @Test
     void deleteById() {
+        //TODO
     }
 
     @Test

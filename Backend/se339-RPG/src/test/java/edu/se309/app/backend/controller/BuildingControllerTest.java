@@ -4,9 +4,11 @@ import edu.se309.app.backend.entity.Building;
 import edu.se309.app.backend.service.interfaces.BuildingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +16,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class BuildingControllerTest {
 
     @InjectMocks
@@ -29,23 +33,23 @@ class BuildingControllerTest {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        building = new Building();
-        building.setBuildingName("some name");
-        building.setEarnedStat("none");
-        building.setId(1);
+        building = mock(Building.class);
+         buildingService = buildingController.getService();
     }
 
     @Test
     void findEarnedStatByLocation() {
-        when(buildingService.findEarnedStatFromLocation(anyString(), anyString())).thenReturn(building.getEarnedStat());
-        String newBuilding = buildingController.findEarnedStatByLocation(anyString(), anyString());
+        String earnedStat = building.getEarnedStat();
+        when(buildingService.findEarnedStatFromLocation(anyString(), anyString())).thenReturn(earnedStat);
+        String newBuilding = buildingController.findEarnedStatByLocation("Longitude", "Latitude");
         assertEquals(newBuilding, building.getEarnedStat());
     }
 
     @Test
     void findBuildingNameLocation() {
-        when(buildingService.findBuildingNameFromLocation(anyString(), anyString())).thenReturn(building.getBuildingName());
-        String newBuilding = buildingController.findBuildingNameLocation(anyString(), anyString());
+        String buildingName = building.getBuildingName();
+        when(buildingService.findBuildingNameFromLocation(anyString(), anyString())).thenReturn(buildingName);
+        String newBuilding = buildingController.findBuildingNameLocation("Longitude", "Latitude");
         assertEquals(newBuilding, building.getBuildingName());
     }
 
@@ -66,10 +70,7 @@ class BuildingControllerTest {
     public void findAll() {
         List<Building> buildings = new ArrayList<>();
         buildings.add(building);
-        Building building2 = new Building();
-        building2.setBuildingName("some other name");
-        building2.setEarnedStat("none");
-        building2.setId(2);
+        Building building2 = mock(Building.class);
         buildings.add(building2);
         when(buildingService.findAll()).thenReturn(buildings);
         List<Building> newBuildings = buildingController.findAll();

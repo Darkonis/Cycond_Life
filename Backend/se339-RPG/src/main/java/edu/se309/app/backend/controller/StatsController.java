@@ -74,6 +74,13 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
 	UserStat userStat = getService().incrementByOne(id,stat);
 	getService().save(userStat);
     return stat+ " was updated by one. \n current stats: \n" + userStat.toString();
-  }  
+  }
 
+    public BuildingService getBuildingService() {
+        return buildingService;
+    }
+
+    public AccountService getAccountService() {
+        return accountService;
+    }
 }
