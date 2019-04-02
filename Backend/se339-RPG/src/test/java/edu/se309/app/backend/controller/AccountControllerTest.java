@@ -9,16 +9,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 @ActiveProfiles("test")
@@ -31,19 +28,13 @@ public class AccountControllerTest implements BaseControllerTest {
     @Mock
     private AccountService accountService;
 
-    @Autowired
-    MockMvc mockMvc;
-
-    Account account;
+    private Account account;
 
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(accountController).build();
         account = new Account(1, "testUser", "password", "first", "last", "email", "admin");
     }
-
-
 
     @Test
     void addAccount() {
@@ -71,7 +62,7 @@ public class AccountControllerTest implements BaseControllerTest {
         long expected = 1L;
         when(accountService.count()).thenReturn(expected);
         long count = accountController.count();
-        assertEquals(expected,count);
+        assertEquals(expected, count);
     }
 
     @Override
@@ -84,13 +75,13 @@ public class AccountControllerTest implements BaseControllerTest {
     @Override
     @Test
     public void findAll() {
-        Account account2 = new Account(2,"user","password","f","l","e","user");
+        Account account2 = new Account(2, "user", "password", "f", "l", "e", "user");
         List<Account> accounts = new ArrayList<>();
         accounts.add(account);
         accounts.add(account2);
         when(accountService.findAll()).thenReturn(accounts);
         List<Account> newAccounts = accountController.findAll();
-        for (Account a: accounts){
+        for (Account a : accounts) {
             assertTrue(newAccounts.contains(a));
         }
 
