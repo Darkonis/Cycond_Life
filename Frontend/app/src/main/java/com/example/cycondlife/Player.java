@@ -48,7 +48,7 @@ public class Player extends Character {
     private int tinkPoints=50;
     private double tinkMult=1.0;
     private double dodgeChance=15;
-    private ArrayList<Item> inv = new ArrayList<Item>();
+    private ArrayList<Item> inv = new ArrayList<>();
 
     private int itemCount=0;
 
@@ -88,7 +88,6 @@ public class Player extends Character {
     {
         return tinkMult;
     }
-
     public int getLevel() {
         return level;
     }
@@ -101,6 +100,7 @@ public class Player extends Character {
     private Player(String user, int idt, Context c)
     {
         super();
+        Item.itemList.add(new Consumable(0,"lesser health potion","This potion sits in a red bottle labeled TEST",0,new Dice("2+2d4"),0,"You take a health Potion"));
         update_substats();
         username=user;
         name=user;
@@ -280,6 +280,12 @@ public class Player extends Character {
     {
         Json_handler j = new Json_handler(c);
         j.update_stat(id,stat,val);
+    }
+    public void changeResolve(int i)
+    {
+        resolve +=i;
+        Json_handler j = new Json_handler(context);
+        j.update_stat(Player.get_instance().id,"resolve",resolve);
     }
 
 }

@@ -2,7 +2,7 @@ package com.example.cycondlife;
 
 public class Consumable extends Item {
 
-
+    private final int health = 0x0;
    private Dice effect;
    private int duration;
    private String useMsg;
@@ -20,7 +20,11 @@ public class Consumable extends Item {
 
     public void use()
     {
-        //TODO implement use
+        switch (type)
+        {
+            case health:
+            Player.get_instance().changeResolve(effect.roll());
+        }
     }
     public String getUseMsg() {
         return useMsg;

@@ -1,11 +1,13 @@
 package com.example.cycondlife;
 
+import java.util.ArrayList;
+
 public abstract class Item {
     protected int itemID;
     protected String name;
     protected String description;
     protected int type;
-
+    protected static ArrayList<Item> itemList;
     public int getType(){
         return type;
     }
@@ -13,5 +15,18 @@ public abstract class Item {
     {
         return itemID;
     }
-
+    /*
+    finds an item on the item list by its id
+     */
+    public static Item findByID(int ID)
+    {
+        for(int i=0;i<itemList.size();i++)
+        {
+            if(itemList.get(i).itemID==ID);
+            {
+                return itemList.get(i);
+            }
+        }
+        return itemList.get(0);
+    }
 }
