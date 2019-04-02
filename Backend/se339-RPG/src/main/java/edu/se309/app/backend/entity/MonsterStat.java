@@ -47,7 +47,13 @@ public class MonsterStat {
 
   @Column(name = "attack_percent_four")
   private int attackPercentFour;
-
+  
+  @Column(name = "gold_value")
+  private String goldValue;
+  
+  @Column(name = "exp_value")
+  private String expValue;
+  
   public int getAttackFour() {
     return attackFour;
   }
@@ -79,7 +85,15 @@ public class MonsterStat {
   public int getAttackTwo() {
     return attackTwo;
   }
-
+  
+  public String getExpValue() {
+	  return expValue;
+  }
+  
+  public String getGoldValue() {
+	  return goldValue;
+  }
+  
   public int getHp() {
     return hp;
   }
@@ -91,7 +105,7 @@ public class MonsterStat {
   public String getName() {
     return name;
   }
-
+  
   public int getRandomAttack() {
     Random rand = new Random();
     int attack = rand.nextInt(100);
@@ -142,7 +156,15 @@ public class MonsterStat {
   public void setAttackTwo(int attackTwo) {
     this.attackTwo = attackTwo;
   }
-
+  
+  public void setExpValue(String expValue) {
+	  this.expValue = expValue;
+  }
+  
+  public void setGoldValue(String goldValue) {
+	  this.goldValue = goldValue;
+  }
+  
   public void setHp(int hp) {
     this.hp = hp;
   }
