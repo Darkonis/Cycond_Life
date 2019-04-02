@@ -22,6 +22,9 @@ import static com.android.volley.toolbox.Volley.newRequestQueue;
  */
 public class Player extends Character {
     private static Player player_instance;
+    private String username;
+    private String password;
+    private int id;
     private Player()
     {
         super();
@@ -32,10 +35,67 @@ public class Player extends Character {
     private Callback_handler callback;
     private int experiance=0;
     private int level =1;
-    private Player(String user,int idt,Context c)
+
+    private int hitChance =100;
+    //TODO make this private
+    public double sight =.002;
+    private double critChance =1;
+    private double critMult =2;
+    private double dmgReduct =.1;
+    private double BS =10;
+    private int tinkPoints=50;
+    private double tinkMult=1.0;
+    private double dodgeChance=15;
+
+    public int getHitChance() {
+        return hitChance;
+    }
+    public double getSight()
+    {
+        return sight;
+    }
+    public double getDodgeChance()
+    {
+        return dodgeChance;
+    }
+    public double getCritChance()
+    {
+        return critChance;
+    }
+    public double getCritMult()
+    {
+        return critMult;
+    }
+    public double getDmgReduct()
+    {
+        return  dmgReduct;
+    }
+    public double getBS()
+    {
+        return BS;
+    }
+    public int getTinkPoints()
+    {
+        return tinkPoints;
+    }
+    public double getTinkMult()
+    {
+        return tinkMult;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+    public void incEXP(int val)
+    {
+        experiance+=val;
+    }
+
+    private Player(String user, int idt, Context c)
     {
         super();
-       // username=user;
+        update_substats();
+        username=user;
         name=user;
         this.id=idt;
         this.context = c;
@@ -81,6 +141,7 @@ public class Player extends Character {
       //  RequestQueue q = new Volley.newRequestQueue(c);
        // JsonObjectRequest j = new JsonObjectRequest()
     }
+
     public static Player get_instance()
     {
         return player_instance;
@@ -90,6 +151,22 @@ public class Player extends Character {
     {
         get_stats(id,callback,context);
     }
+
+
+    public void update_substats()
+    {
+        hitChance =50+creativity+critical_thinking;
+        if(hitChance >99) hitChance =99;
+        sight =.001+(critical_thinking+0.0)/10000;
+        critChance=1+((critical_thinking+creativity)/1000.0)*9;
+        critMult= 2+ (presentation+critical_thinking)/500.0;
+        dmgReduct = .01 +(presentation+critChance)/100.0;
+        BS=(presentation+critical_thinking)/100.0;
+        tinkPoints=(int) Math.round(1.5*critical_thinking);
+        tinkMult=.9+(creativity+critical_thinking)/1500.0;
+        dodgeChance= 15+(creativity/2000.0);
+    }
+
     public static synchronized void create_the_instance(String user,int id,Context c)
     {
         if(player_instance!=null)
@@ -98,10 +175,13 @@ public class Player extends Character {
         }
         player_instance = new Player(user,id,c);
     }
+
     public static synchronized void destroy_the_instance()
     {
         player_instance=null;
     }
+
+
     private void get_stats(int statsId,final Callback_handler c,Context t)
         {
             RequestQueue r =  Volley.newRequestQueue(t);

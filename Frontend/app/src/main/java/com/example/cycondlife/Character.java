@@ -9,10 +9,10 @@ public class Character {
     private boolean isPlayer;
     private double lat;
     private double lng;
-    protected int presentation;
-    protected int creativity;
-    protected int critical_thinking;
-    protected String major;
+    protected int presentation=10;
+    protected int creativity=10;
+    protected int critical_thinking=10;
+    protected String major="student";
     protected int id;
     protected String name = "tmp";
     //potentially move to an enum array
@@ -29,7 +29,7 @@ public class Character {
     ones potential for resolve
      */
 
-    public double visual_range=.002;
+
     Character()
     {
 
@@ -96,15 +96,7 @@ public class Character {
     maybe move this into combat class
     also remove character play its not signleton style
      */
-    public static int do_combat(Character play, Character mon, Context c)
-    {
-        Dice dmg_rng = new Dice("1+1d4");
-        mon.take_dmg(play.BS+dmg_rng.roll());
-        if(mon.resolve <=0) return 1;
-        Player.get_instance().take_dmg(mon.BS,c);
-        if(play.resolve<=0) return 2;
-        return 0;
-    }
+
     public int getResolve() {return resolve;}
     public void setResolve (int i) {resolve=i;}
     /*
@@ -117,7 +109,7 @@ public class Character {
     private String major ="Student";
      */
     public String getName(){return name;}
-    public int getBS(){return BS;}
+   // public int getBS(){return BS;}
     public String getMajor(){return major;}
     public int getPresentation(){return presentation;}
 
