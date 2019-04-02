@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
-class BuildingControllerTest implements BaseControllerTest {
+class BuildingControllerTest {
 
     @InjectMocks
     private BuildingController buildingController;
@@ -40,7 +40,6 @@ class BuildingControllerTest implements BaseControllerTest {
         when(buildingService.findEarnedStatFromLocation(anyString(), anyString())).thenReturn(building.getEarnedStat());
         String newBuilding = buildingController.findEarnedStatByLocation(anyString(), anyString());
         assertEquals(newBuilding, building.getEarnedStat());
-
     }
 
     @Test
@@ -50,23 +49,19 @@ class BuildingControllerTest implements BaseControllerTest {
         assertEquals(newBuilding, building.getBuildingName());
     }
 
-    @Override
     @Test
     public void count() {
         long expected = 1L;
         when(buildingService.count()).thenReturn(expected);
         long count = buildingController.count();
         assertEquals(expected, count);
-
     }
 
-    @Override
     @Test
     public void deleteById() {
         //TODO
     }
 
-    @Override
     @Test
     public void findAll() {
         List<Building> buildings = new ArrayList<>();
@@ -77,19 +72,16 @@ class BuildingControllerTest implements BaseControllerTest {
         building2.setId(2);
         buildings.add(building2);
         when(buildingService.findAll()).thenReturn(buildings);
-        List<Building> newBuilding = buildingController.findAll();
+        List<Building> newBuildings = buildingController.findAll();
         for (Building b : buildings) {
-            assertTrue(newBuilding.contains(b));
+            assertTrue(newBuildings.contains(b));
         }
-
     }
 
-    @Override
     @Test
     public void findById() {
         when(buildingService.findById(building.getId())).thenReturn(building);
         Building newBuilding = buildingController.findById(building.getId());
         assertEquals(newBuilding.getId(), building.getId());
-
     }
 }

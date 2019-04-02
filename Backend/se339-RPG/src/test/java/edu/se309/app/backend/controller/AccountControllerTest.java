@@ -16,11 +16,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)
-public class AccountControllerTest implements BaseControllerTest {
+public class AccountControllerTest {
 
     @InjectMocks
     private AccountController accountController;
@@ -33,7 +34,7 @@ public class AccountControllerTest implements BaseControllerTest {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        account = new Account(1, "testUser", "password", "first", "last", "email", "admin");
+        account = mock(Account.class);
     }
 
     @Test
@@ -56,7 +57,6 @@ public class AccountControllerTest implements BaseControllerTest {
     }
 
 
-    @Override
     @Test
     public void count() {
         long expected = 1L;
@@ -65,17 +65,16 @@ public class AccountControllerTest implements BaseControllerTest {
         assertEquals(expected, count);
     }
 
-    @Override
+
     @Test
     public void deleteById() {
         //TODO
-
     }
 
-    @Override
+
     @Test
     public void findAll() {
-        Account account2 = new Account(2, "user", "password", "f", "l", "e", "user");
+        Account account2 = mock(Account.class);
         List<Account> accounts = new ArrayList<>();
         accounts.add(account);
         accounts.add(account2);
@@ -84,11 +83,9 @@ public class AccountControllerTest implements BaseControllerTest {
         for (Account a : accounts) {
             assertTrue(newAccounts.contains(a));
         }
-
-
     }
 
-    @Override
+
     @Test
     public void findById() {
         when(accountService.findById(account.getId())).thenReturn(account);
