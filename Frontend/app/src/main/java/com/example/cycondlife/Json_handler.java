@@ -28,7 +28,7 @@ import android.webkit.JsResult;
 import com.android.volley.toolbox.JsonObjectRequest;
 
 //TODO look into making this a super class to other activitys
-public class Json_handler {
+public class   Json_handler {
 
     private String user,pass,first,last,email,type;
     public final String mJSONBASEString = "http://cs309-sd-6.misc.iastate.edu:8080/api/";

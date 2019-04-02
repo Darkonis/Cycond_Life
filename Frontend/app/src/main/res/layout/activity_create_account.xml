@@ -9,76 +9,87 @@
         android:id="@+id/user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="55dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="110dp"
         android:ems="10"
         android:hint="username"
         android:inputType="textPersonName"
+        android:textColor="@color/colorPrimaryDark"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintBottom_toTopOf="@+id/first"
-        app:layout_constraintStart_toStartOf="@+id/first" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="first name"
         android:inputType="textPersonName"
+        android:textColor="@color/colorPrimaryDark"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintBottom_toTopOf="@+id/last"
-        app:layout_constraintStart_toStartOf="@+id/last" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pass" />
 
     <EditText
         android:id="@+id/last"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="81dp"
-        android:layout_marginLeft="81dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="last name"
         android:inputType="textPersonName"
+        android:textColor="@color/colorPrimaryDark"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintBottom_toTopOf="@+id/email"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/first" />
 
     <EditText
         android:id="@+id/pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
+        android:textColor="@color/colorPrimaryDark"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintStart_toStartOf="@+id/user"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="email"
         android:inputType="textEmailAddress"
+        android:textColor="@color/colorPrimaryDark"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/last"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/last" />
 
     <Button
         android:id="@+id/finish"
         android:layout_width="80dp"
         android:layout_height="50dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="60dp"
         android:layout_marginRight="60dp"
-        android:background="@android:color/holo_blue_light"
+        android:background="@color/colorPrimaryDark"
         android:text="Finish"
-        android:textColor="@color/place_autocomplete_search_text"
+        android:textColor="@color/colorPrimary"
         app:fontFamily="@font/carter_one"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
