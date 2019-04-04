@@ -1,5 +1,8 @@
 package com.example.cycondlife;
 
+import android.util.Log;
+import android.widget.TextView;
+
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.exceptions.WebsocketNotConnectedException;
 import org.java_websocket.handshake.ServerHandshake;
@@ -20,8 +23,9 @@ import javax.net.ssl.X509TrustManager;
 public class ChatSender {
     //Socket chat;
 
-    String receivedText;
+    String receivedText = "  Welcome to the global chat room!";
     WebSocketClient chat;
+    TextView chatBox;
     //DataOutputStream dos;
     //PrintWriter pw;
     //Toast noConnection = new Toast.makeText(getChatContext(), "Failed to connect to server", Toast.LENGTH_SHORT);
@@ -32,7 +36,10 @@ public class ChatSender {
 
         chat = new WebSocketClient(dest)   {
             public void onMessage(String var1)  {
-                receivedText += receivedText + "\n" + var1;
+                receivedText += "\r\n" + "  Username: " + var1;
+                //chatBox.setText("");
+                chatBox.setText(receivedText);
+                Log.i("CyLife Websocket", var1);
             }
 
             public void onOpen(ServerHandshake var1)  {
@@ -103,23 +110,26 @@ public class ChatSender {
 
     //need a way to make background listener
     public String getReceivedStuff()  {
-        BufferedReader in;
-
-        try {
-            in = new BufferedReader(new InputStreamReader(chat.getSocket().getInputStream()));
-
-            while (in.ready()) {
-                receivedText += "echo: " + in.readLine();
-            }
-
-            in.close();
-        }   catch (IOException e)   {
-            e.printStackTrace();
-        }
+//        BufferedReader in;
+//
+//        try {
+//            in = new BufferedReader(new InputStreamReader(chat.getSocket().getInputStream()));
+//
+//            while (in.ready()) {
+//                receivedText += "echo: " + in.readLine();
+//            }
+//
+//            in.close();
+//        }   catch (IOException e)   {
+//            e.printStackTrace();
+//        }
 
 
 
         return receivedText;
     }
 
+    public void passChatBox(TextView newChatBox)   {
+        chatBox = newChatBox;
+    }
 }
