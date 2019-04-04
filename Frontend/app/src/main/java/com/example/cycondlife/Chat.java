@@ -19,6 +19,7 @@ public class Chat extends AppCompatActivity {
     private TextView chatText;
     private URI toUse;
     private ChatSender sender;
+    private boolean firstCreate = true;
     //private Toast noConnection;
 
     @Override
@@ -38,9 +39,13 @@ public class Chat extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        sender = new ChatSender();
-        sender.connectWebSocket(toUse);
-        sender.passChatBox(chatText);
+        if(firstCreate) {
+            sender = new ChatSender();
+            sender.passChatBox(chatText);
+            sender.connectWebSocket(toUse);
+            firstCreate = false;
+        }
+
 
         sendBut.setOnClickListener(new View.OnClickListener() {
             @Override

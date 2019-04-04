@@ -23,7 +23,7 @@ import javax.net.ssl.X509TrustManager;
 public class ChatSender {
     //Socket chat;
 
-    String receivedText = "  Welcome to the global chat room!";
+    String receivedText = "";
     WebSocketClient chat;
     TextView chatBox;
     //DataOutputStream dos;
@@ -33,6 +33,7 @@ public class ChatSender {
 
     public Void connectWebSocket(URI dest)  {
         //chat = new Socket();
+        chatBox.setText("  connecting...");
 
         chat = new WebSocketClient(dest)   {
             public void onMessage(String var1)  {
@@ -43,15 +44,18 @@ public class ChatSender {
             }
 
             public void onOpen(ServerHandshake var1)  {
-
+                receivedText += "\r\n" + "  Welcome to the global chat room!";
+                chatBox.setText(receivedText);
             }
 
             public void onClose(int var1, String var2, boolean var3)    {
-
+                receivedText += "\r\n" + "  disconnected from chat";
+                chatBox.setText(receivedText);
             }
 
             public void onError(Exception var1)    {
-
+                receivedText += "\r\n" + "  connection failed";
+                chatBox.setText(receivedText);
             }
         };
 
