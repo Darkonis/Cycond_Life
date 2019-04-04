@@ -32,7 +32,6 @@
         android:ems="10"
         android:hint="enter text..."
         android:inputType="textMultiLine"
-        android:text="enter text..."
         android:textColor="@color/colorPrimaryDark"
         app:fontFamily="@font/carter_one"
         app:layout_constraintBottom_toBottomOf="parent"

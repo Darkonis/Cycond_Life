@@ -46,6 +46,7 @@ public class Chat extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 send();
+                userMessage.setText("");
             }
         });
     }
