@@ -97,6 +97,9 @@ public class Player extends Character {
         experiance+=val;
     }
 
+    public String getUsername() {
+        return username;
+    }
 
     private Player(String user, int idt, Context c)
     {
