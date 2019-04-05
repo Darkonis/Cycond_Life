@@ -24,6 +24,7 @@ public class Consumable extends Item {
         {
             case health:
             Player.get_instance().changeResolve(effect.roll());
+            break;
         }
     }
     public String getUseMsg() {

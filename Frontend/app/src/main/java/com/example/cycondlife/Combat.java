@@ -98,8 +98,8 @@ public class Combat extends AppCompatActivity {
     private void display_inventory()
     {
         inventory.setVisibility(View.VISIBLE);
-        inventory.addView(new View);
-        View t = new View();
+        //inventory.addView();
+
     }
     private static int do_combat(Character play, Character mon, Context c)
     {

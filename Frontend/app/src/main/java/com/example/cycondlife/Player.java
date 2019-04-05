@@ -176,7 +176,6 @@ public class Player extends Character {
     }
     public Item removeItem(int index)
     {
-
         return inv.remove(index);
     }
     public void update_substats()
