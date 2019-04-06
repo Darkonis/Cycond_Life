@@ -102,8 +102,8 @@
 
     <Button
         android:id="@+id/adminLogin"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:background="@color/colorPrimaryDark"
         app:fontFamily="@font/carter_one"
         app:layout_constraintBottom_toBottomOf="parent"
