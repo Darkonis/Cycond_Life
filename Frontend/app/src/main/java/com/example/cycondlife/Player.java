@@ -2,6 +2,7 @@ package com.example.cycondlife;
 
 import android.util.Log;
 
+import org.java_websocket.client.WebSocketClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,6 +16,9 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
 /*
@@ -25,12 +29,19 @@ public class Player extends Character {
     private String username;
     private String password;
     private int id;
+    private ChatSender sender;
+    private URI chatLink;
+
     private Player()
     {
         super();
     }
+
+
+
     private static int monstersKilled;
     private final String statlink="/api/stats/updateStat/";
+
     private Context context;
     private Callback_handler callback;
     private int experiance=0;
@@ -38,6 +49,19 @@ public class Player extends Character {
     private Player(String user,int idt,Context c)
     {
         super();
+
+        //Connect to chat websocket for persistent chat
+        try {
+            chatLink = new URI("wss://echo.websocket.org");
+        }
+        catch (URISyntaxException e)    {
+            e.printStackTrace();
+        }
+
+        sender = new ChatSender();
+        sender.connectWebSocket(chatLink);
+
+
         username=user;
         name=user;
         this.id=idt;
@@ -164,6 +188,11 @@ public class Player extends Character {
         );
         requestQueue.add(jsonArrayRequest);
     }
+
+    public ChatSender getSender() {
+        return sender;
+    }
+
     public void take_dmg(int dmg,Context c)
     {
        resolve=this.resolve-dmg;

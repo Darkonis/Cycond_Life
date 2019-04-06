@@ -1,5 +1,6 @@
 package com.example.cycondlife;
 
+import android.app.Activity;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -26,36 +27,40 @@ public class ChatSender {
     String receivedText = "";
     WebSocketClient chat;
     TextView chatBox;
+    Activity chatActivity;
     //DataOutputStream dos;
     //PrintWriter pw;
     //Toast noConnection = new Toast.makeText(getChatContext(), "Failed to connect to server", Toast.LENGTH_SHORT);
 
 
-    public Void connectWebSocket(URI dest)  {
+    public Void connectWebSocket(URI dest) {
         //chat = new Socket();
-        chatBox.setText("  connecting...");
+        receivedText += "  connecting...";
+        setChatText();
 
-        chat = new WebSocketClient(dest)   {
+        chat = new WebSocketClient(dest)  {
             public void onMessage(String var1)  {
                 receivedText += "\r\n" + "  Username: " + var1;
                 //chatBox.setText("");
-                chatBox.setText(receivedText);
+                setChatText();
                 Log.i("CyLife Websocket", var1);
             }
 
             public void onOpen(ServerHandshake var1)  {
-                receivedText += "\r\n" + "  Welcome to the global chat room!";
-                chatBox.setText(receivedText);
+                receivedText = "  Welcome to the global chat room!";
+                setChatText();
             }
 
             public void onClose(int var1, String var2, boolean var3)    {
                 receivedText += "\r\n" + "  disconnected from chat";
-                chatBox.setText(receivedText);
+                setChatText();
             }
 
             public void onError(Exception var1)    {
-                receivedText += "\r\n" + "  connection failed";
-                chatBox.setText(receivedText);
+                receivedText += "\r\n" + "  connection failure";
+                Log.i("CyLife Error:", var1.toString());
+                var1.printStackTrace();
+                setChatText();
             }
         };
 
@@ -133,7 +138,31 @@ public class ChatSender {
         return receivedText;
     }
 
+
     public void passChatBox(TextView newChatBox)   {
         chatBox = newChatBox;
+    }
+
+    public void passActivity(Activity activity) {
+        chatActivity = activity;
+    }
+
+    public void setChatText()  {
+        if(chatBox != null) {
+
+            //necessary for updating visible chat without errors
+            chatActivity.runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+                    chatBox.setText(receivedText);
+                }
+            });
+
+        }
+    }
+
+    public WebSocketClient getWebSocket()  {
+        return chat;
     }
 }
