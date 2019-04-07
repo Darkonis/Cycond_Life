@@ -7,5 +7,5 @@ public interface AccountService extends BaseService<Account,Integer>
 
       Account findByEmail(String email);
 
-        Account findByUsername(String username);
+      Account findByUsername(String username);
 }

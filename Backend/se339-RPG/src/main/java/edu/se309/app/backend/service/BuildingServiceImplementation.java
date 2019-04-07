@@ -34,6 +34,10 @@ public String findEarnedStatFromLocation(String longitude, String latitude) {
 		return buildingRepositoryCustom.findBuildingName(longitude,latitude);	
 }
 
+public BuildingRepositoryCustom getCustomRepository(){
+  	return buildingRepositoryCustom;
+}
+
 
   
 }
