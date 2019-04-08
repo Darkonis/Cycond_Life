@@ -3,6 +3,8 @@ package edu.se309.app.backend.rest.service;
 import edu.se309.app.backend.rest.entity.Monster;
 import edu.se309.app.backend.rest.repository.MonsterRepository;
 import edu.se309.app.backend.rest.service.interfaces.MonsterService;
+import org.springframework.beans.PropertyAccessor;
+import org.springframework.beans.PropertyAccessorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -78,6 +80,23 @@ public class MonsterServiceImplementation extends BaseServiceImplementation<Mons
         monster.setLatitude(latitude);
         // sets the latitude for the monster
         monster.setLongitude(longitude);// sets the longitude for the monster
+        monster.setInCombat(0);//starts monster out of combat
         return monster;
+    }
+    
+    @Override
+    @Transactional
+    public Monster markMonster(int id, boolean inCombat) {
+    	Monster monster = findById(id);
+    	PropertyAccessor myAccessor = PropertyAccessorFactory.forBeanPropertyAccess(monster);
+    	if(inCombat) {
+    		myAccessor.setPropertyValue("inCombat",1);
+    	}
+    	else if(!inCombat)
+    	{
+    		myAccessor.setPropertyValue("inCombat",0);
+    	}
+    	save(monster);
+    	return monster;
     }
 }

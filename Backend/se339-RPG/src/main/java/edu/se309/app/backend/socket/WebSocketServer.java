@@ -58,14 +58,14 @@ public class WebSocketServer {
         if(command.equals("Combat"))
         {
         	String subCommand = in.next();
+    		int id = Integer.parseInt(in.next());
         	if(subCommand.equals("Attack")){
-        		
+        		monsterService.markMonster(id, true);
         	}
         	else if(subCommand.equals("Defeat")){
-        		
+        		monsterService.markMonster(id, false);
         	}
         	else if(subCommand.equals("Victory")){
-        		int id = Integer.parseInt(in.next());
         		monsterService.deleteById(id);
         	}
         	else {

@@ -31,7 +31,10 @@ public class Monster {
      */
     @Column(name = "latitude")
     private double latitude;
-
+    
+    @Column(name = "in_combat")
+    private int inCombat;
+    
     public Monster() {
     }
 
@@ -106,7 +109,16 @@ public class Monster {
     public void setType(int type) {
         this.type = type;
     }
-
+    
+    public int getInCombat() {
+    	return inCombat;
+    }
+    
+    public void setInCombat(int inCombat)
+    {
+    	this.inCombat = inCombat;
+    }
+    
     @Override
     public String toString() {
         return "Monster [id=" + id + ", type=" + type + ", longitude=" + longitude + ", latitude=" + latitude + "]";
