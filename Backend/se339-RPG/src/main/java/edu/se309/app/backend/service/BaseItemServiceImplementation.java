@@ -8,7 +8,8 @@ import edu.se309.app.backend.repository.BaseItemRepository;
 import edu.se309.app.backend.service.interfaces.BaseItemService;
 
 @Service
-public class BaseItemServiceImplementation extends 
+public class
+BaseItemServiceImplementation extends
 	BaseServiceImplementation<BaseItem, Integer, BaseItemRepository> implements BaseItemService{
 	
 	@Autowired
