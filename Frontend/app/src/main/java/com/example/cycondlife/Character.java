@@ -9,8 +9,13 @@ public class Character {
     private boolean isPlayer;
     private double lat;
     private double lng;
+    protected int presentation=10;
+    protected int creativity=10;
+    protected int critical_thinking=10;
+    protected String major="student";
     protected String name = "tmp";
     //potentially move to an enum array
+    //TODO change to formula calculation
     /*
     the ability to quickly and rapidly confuse your opponent (attack)
      */
@@ -22,26 +27,8 @@ public class Character {
     /*
     ones potential for resolve
      */
-    protected int max_resolve;
-    /*
-    ones unmodded resolve
-     */
-    protected int base_resolve;
-    /*
-        The ability to create new things
-     */
-    protected int tinkering=0;
 
-    protected int critical_thinking =0;
-    protected  int base_critical_thinking;
-    protected int presentation=0;
-    protected  int base_presentation;
-    protected String major ="Student";
-    protected int tinkering_points;
-    protected int base_tinkering;
-    protected int max_tinkering;
-    //the distance monsters will appear
-    public double visual_range=.002;
+
     Character()
     {
 
@@ -108,15 +95,7 @@ public class Character {
     maybe move this into combat class
     also remove character play its not signleton style
      */
-    public static int do_combat(Character play, Character mon, Context c)
-    {
-        dice dmg_rng = new dice("1+1d4");
-        mon.take_dmg(play.BS+dmg_rng.roll());
-        if(mon.resolve <=0) return 1;
-        Player.get_instance().take_dmg(mon.BS,c);
-        if(play.resolve<=0) return 2;
-        return 0;
-    }
+
     public int getResolve() {return resolve;}
     public void setResolve (int i) {resolve=i;}
     /*
@@ -129,11 +108,8 @@ public class Character {
     private String major ="Student";
      */
     public String getName(){return name;}
-    public int getBS(){return BS;}
+   // public int getBS(){return BS;}
     public String getMajor(){return major;}
-    public int getMax_resolve(){return max_resolve;}
-    public int getTinkering(){return tinkering;}
-    public int getCritical_thinking(){return critical_thinking;}
     public int getPresentation(){return presentation;}
 
 }

@@ -2,6 +2,7 @@ package com.example.cycondlife;
 
 import android.util.Log;
 
+import org.java_websocket.client.WebSocketClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,6 +16,11 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import java.util.ArrayList;
+
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
 /*
@@ -25,17 +31,101 @@ public class Player extends Character {
     private String username;
     private String password;
     private int id;
+    private ChatSender sender;
+    private URI chatLink;
+
     private Player()
     {
         super();
     }
+
+
+
     private static int monstersKilled;
     private final String statlink="/api/stats/updateStat/";
+
     private Context context;
     private Callback_handler callback;
-    private Player(String user,int idt,Context c)
+    private int experiance=0;
+    private int level =1;
+
+    private int hitChance =100;
+    //TODO make this private
+    public double sight =.002;
+    private double critChance =1;
+    private double critMult =2;
+    private double dmgReduct =.1;
+    private double BS =10;
+    private int tinkPoints=50;
+    private double tinkMult=1.0;
+    private double dodgeChance=15;
+    private ArrayList<Item> inv = new ArrayList<Item>();
+
+    private int itemCount=0;
+
+
+    public int getHitChance() {
+        return hitChance;
+    }
+    public double getSight()
+    {
+        return sight;
+    }
+    public double getDodgeChance()
+    {
+        return dodgeChance;
+    }
+    public double getCritChance()
+    {
+        return critChance;
+    }
+    public double getCritMult()
+    {
+        return critMult;
+    }
+    public double getDmgReduct()
+    {
+        return  dmgReduct;
+    }
+    public double getBS()
+    {
+        return BS;
+    }
+    public int getTinkPoints()
+    {
+        return tinkPoints;
+    }
+    public double getTinkMult()
+    {
+        return tinkMult;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+    public void incEXP(int val)
+    {
+        experiance+=val;
+    }
+
+
+    private Player(String user, int idt, Context c)
     {
         super();
+        update_substats();
+
+        //Connect to chat websocket for persistent chat
+        try {
+            chatLink = new URI("wss://echo.websocket.org");
+        }
+        catch (URISyntaxException e)    {
+            e.printStackTrace();
+        }
+
+        sender = new ChatSender();
+        sender.connectWebSocket(chatLink);
+
+
         username=user;
         name=user;
         this.id=idt;
@@ -64,13 +154,12 @@ public class Player extends Character {
             @Override
             public void get_object_response(JSONObject o) {
                 try {
-
-                   resolve= o.getInt("resolve");
-                 //  tinkering = o.getInt("tinkering");
-                   BS = o.getInt("bs");
                    presentation = o.getInt("presentation");
                    monstersKilled = o.getInt("monstersKilled");
-
+                    critical_thinking = o.getInt("critical thinking");
+                    creativity = o.getInt("creativity");
+                    BS=presentation+critical_thinking;
+                    resolve= presentation;
                 }
                 catch(Exception e)
                 {
@@ -83,6 +172,7 @@ public class Player extends Character {
       //  RequestQueue q = new Volley.newRequestQueue(c);
        // JsonObjectRequest j = new JsonObjectRequest()
     }
+
     public static Player get_instance()
     {
         return player_instance;
@@ -92,6 +182,41 @@ public class Player extends Character {
     {
         get_stats(id,callback,context);
     }
+
+    public ArrayList<Item> getInv() {
+        return inv;
+    }
+    public void addItem(Item i)
+    {
+        //TODO propagate to the server when possuible
+        if(inv.size()<20)
+        {
+            inv.add(i);
+        }
+        else
+        {
+            Log.i("Cycond Info", "You drop some items");
+        }
+    }
+    public Item removeItem(int index)
+    {
+
+        return inv.remove(index);
+    }
+    public void update_substats()
+    {
+        hitChance =50+creativity+critical_thinking;
+        if(hitChance >99) hitChance =99;
+        sight =.001+(critical_thinking+0.0)/10000;
+        critChance=1+((critical_thinking+creativity)/1000.0)*9;
+        critMult= 2+ (presentation+critical_thinking)/500.0;
+        dmgReduct = .01 +(presentation+critChance)/100.0;
+        BS=(presentation+critical_thinking)/100.0;
+        tinkPoints=(int) Math.round(1.5*critical_thinking);
+        tinkMult=.9+(creativity+critical_thinking)/1500.0;
+        dodgeChance= 15+(creativity/2000.0);
+    }
+
     public static synchronized void create_the_instance(String user,int id,Context c)
     {
         if(player_instance!=null)
@@ -100,10 +225,13 @@ public class Player extends Character {
         }
         player_instance = new Player(user,id,c);
     }
+
     public static synchronized void destroy_the_instance()
     {
         player_instance=null;
     }
+
+
     private void get_stats(int statsId,final Callback_handler c,Context t)
         {
             RequestQueue r =  Volley.newRequestQueue(t);
@@ -163,6 +291,11 @@ public class Player extends Character {
         );
         requestQueue.add(jsonArrayRequest);
     }
+
+    public ChatSender getSender() {
+        return sender;
+    }
+
     public void take_dmg(int dmg,Context c)
     {
        resolve=this.resolve-dmg;

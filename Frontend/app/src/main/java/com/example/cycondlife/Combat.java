@@ -14,6 +14,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class Combat extends AppCompatActivity {
 
     Button button_flee;
@@ -25,7 +27,7 @@ public class Combat extends AppCompatActivity {
     final static Player player = Player.get_instance();
     static Character monster;
     static Game g;
-
+    //TODO make a status info where we can display what has happened in combat (a combat log)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +64,7 @@ public class Combat extends AppCompatActivity {
         attack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               int ret= Character.do_combat(player,monster,getApplicationContext());
+               int ret= do_combat(player,monster,getApplicationContext());
                update_status();
                if(ret ==1)
                {
@@ -83,6 +85,32 @@ public class Combat extends AppCompatActivity {
                }
             }
         });
+    }
+    private static int do_combat(Character play, Character mon, Context c)
+    {
+        //TODO bring up the idea of RNG based on class
+        Dice dmg_rng = new Dice("1+1d4");
+        Random rand =new Random();
+        if(rand.nextInt()%100+1<=player.getHitChance()) {
+            int dmg = play.BS + dmg_rng.roll();
+            if(rand.nextInt()%100+1<=player.getCritChance())
+            {
+                dmg*=player.getCritMult();
+            }
+
+            mon.take_dmg(dmg);
+        }
+
+        if(mon.resolve <=0) return 1;
+        if(rand.nextInt()%100+1>=player.getDodgeChance())
+        {
+            int dmg =mon.BS;
+            dmg *=(1-player.getDmgReduct());
+            player.take_dmg(dmg,c);
+        }
+
+        if(play.resolve<=0) return 2;
+        return 0;
     }
     private void update_status()
     {
