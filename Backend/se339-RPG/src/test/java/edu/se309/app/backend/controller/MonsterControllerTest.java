@@ -1,8 +1,8 @@
 package edu.se309.app.backend.controller;
 
-import edu.se309.app.backend.entity.Account;
-import edu.se309.app.backend.entity.Monster;
-import edu.se309.app.backend.service.interfaces.MonsterService;
+import edu.se309.app.backend.rest.controller.MonsterController;
+import edu.se309.app.backend.rest.entity.Monster;
+import edu.se309.app.backend.rest.service.interfaces.MonsterService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -50,7 +50,7 @@ class MonsterControllerTest {
     void deleteById() {
         String expected = "Deleted Monster with id: " + monster.getId();
         String actual = monsterController.deleteById(monster.getId());
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -83,7 +83,7 @@ class MonsterControllerTest {
         List<Monster> newMonsters = monsterController.generateMonster();
         for (Monster a : monsters) {
             assertTrue(newMonsters.contains(a));
-    }
+        }
     }
 
     @Test

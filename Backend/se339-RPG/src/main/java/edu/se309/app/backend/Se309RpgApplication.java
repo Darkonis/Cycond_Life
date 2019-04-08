@@ -14,7 +14,7 @@ import java.time.OffsetDateTime;
 @SpringBootApplication
 public class Se309RpgApplication {
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException {
         SpringApplication.run(Se309RpgApplication.class, args);
         OffsetDateTime currentTime = OffsetDateTime.now();
         OffsetDateTime regenTime = currentTime.plusSeconds(10);
@@ -38,4 +38,8 @@ public class Se309RpgApplication {
             }
         }
     }
+
+
 }
+
+
