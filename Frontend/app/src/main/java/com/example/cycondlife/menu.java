@@ -36,6 +36,7 @@ public class menu extends AppCompatActivity {
         {
             pull_monster_map();
         }
+
         stats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +60,14 @@ public class menu extends AppCompatActivity {
                 Log.i("Cycond Life", "Attempt to open dev menu");
                 Intent openDevMenu = new Intent(menu.this, dev_menu.class);
                 startActivity(openDevMenu);
+            }
+        });
+
+        friends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openFriends= new Intent(menu.this, Chat.class);
+                startActivity(openFriends);
             }
         });
 

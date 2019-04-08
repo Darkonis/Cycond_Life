@@ -32,7 +32,6 @@ public class AccountServiceImplementation extends BaseServiceImplementation<Acco
   @Transactional
   @NonNull
   public Account findByUsername(String username) {
-    username.toLowerCase();
     Optional<Account> account = getRepository().findByUsernameIgnoreCase(username);
     return nullCheck(account, "Invalid request: No account found for user: " + username);
   }
