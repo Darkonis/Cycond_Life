@@ -1,10 +1,8 @@
 package edu.se309.app.backend.controller;
 
-import edu.se309.app.backend.entity.Account;
-import edu.se309.app.backend.entity.MonsterAttack;
-import edu.se309.app.backend.entity.MonsterStat;
-import edu.se309.app.backend.service.interfaces.MonsterAttackService;
-import edu.se309.app.backend.service.interfaces.MonsterStatService;
+import edu.se309.app.backend.rest.controller.MonsterAttackController;
+import edu.se309.app.backend.rest.entity.MonsterAttack;
+import edu.se309.app.backend.rest.service.interfaces.MonsterAttackService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -52,7 +50,7 @@ class MonsterAttackControllerTest {
     public void deleteById() {
         String expected = "Deleted MonsterAttack with id: " + monsterAttack.getId();
         String actual = monsterAttackController.deleteById(monsterAttack.getId());
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test

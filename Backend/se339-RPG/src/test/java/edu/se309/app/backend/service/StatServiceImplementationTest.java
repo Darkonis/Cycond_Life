@@ -1,8 +1,9 @@
 package edu.se309.app.backend.service;
 
-import edu.se309.app.backend.entity.Account;
-import edu.se309.app.backend.entity.UserStat;
-import edu.se309.app.backend.repository.UserStatRepository;
+import edu.se309.app.backend.rest.entity.Account;
+import edu.se309.app.backend.rest.entity.UserStat;
+import edu.se309.app.backend.rest.service.StatServiceImplementation;
+import edu.se309.app.backend.rest.repository.UserStatRepository;
 import org.hibernate.service.spi.ServiceException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

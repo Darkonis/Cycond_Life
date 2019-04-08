@@ -1,7 +1,8 @@
 package edu.se309.app.backend.service;
 
-import edu.se309.app.backend.entity.Monster;
-import edu.se309.app.backend.repository.MonsterRepository;
+import edu.se309.app.backend.rest.entity.Monster;
+import edu.se309.app.backend.rest.repository.MonsterRepository;
+import edu.se309.app.backend.rest.service.MonsterServiceImplementation;
 import org.hibernate.service.spi.ServiceException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

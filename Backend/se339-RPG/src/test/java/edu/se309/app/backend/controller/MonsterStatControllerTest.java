@@ -1,7 +1,8 @@
 package edu.se309.app.backend.controller;
 
-import edu.se309.app.backend.entity.MonsterStat;
-import edu.se309.app.backend.service.interfaces.MonsterStatService;
+import edu.se309.app.backend.rest.controller.MonsterStatController;
+import edu.se309.app.backend.rest.entity.MonsterStat;
+import edu.se309.app.backend.rest.service.interfaces.MonsterStatService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,7 +34,7 @@ class MonsterStatControllerTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         monsterStat = mock(MonsterStat.class);
-        monsterStatService= monsterStatController.getService();
+        monsterStatService = monsterStatController.getService();
     }
 
     @Test
@@ -48,7 +49,7 @@ class MonsterStatControllerTest {
     void deleteById() {
         String expected = "Deleted MonsterStat with id: " + monsterStat.getId();
         String actual = monsterStatController.deleteById(monsterStat.getId());
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test

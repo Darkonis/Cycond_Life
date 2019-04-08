@@ -1,7 +1,8 @@
 package edu.se309.app.backend.service;
 
-import edu.se309.app.backend.entity.ConsumableItem;
-import edu.se309.app.backend.repository.ConsumableItemRepository;
+import edu.se309.app.backend.rest.entity.ConsumableItem;
+import edu.se309.app.backend.rest.repository.ConsumableItemRepository;
+import edu.se309.app.backend.rest.service.ConsumableItemServiceImplementation;
 import org.hibernate.service.spi.ServiceException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

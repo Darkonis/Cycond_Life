@@ -1,10 +1,11 @@
 package edu.se309.app.backend.controller;
 
-import edu.se309.app.backend.entity.Account;
-import edu.se309.app.backend.entity.UserStat;
-import edu.se309.app.backend.service.interfaces.AccountService;
-import edu.se309.app.backend.service.interfaces.BuildingService;
-import edu.se309.app.backend.service.interfaces.StatService;
+import edu.se309.app.backend.rest.controller.StatsController;
+import edu.se309.app.backend.rest.entity.Account;
+import edu.se309.app.backend.rest.entity.UserStat;
+import edu.se309.app.backend.rest.service.interfaces.AccountService;
+import edu.se309.app.backend.rest.service.interfaces.BuildingService;
+import edu.se309.app.backend.rest.service.interfaces.StatService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -61,7 +62,7 @@ class StatsControllerTest {
     void deleteById() {
         String expected = "Deleted Stats with id: " + stat.getId();
         String actual = statsController.deleteById(stat.getId());
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -86,7 +87,7 @@ class StatsControllerTest {
 
     @Test
     void incrementStat() {
-        when(statService.incrementByOne(anyInt(),anyString())).thenReturn(stat);
+        when(statService.incrementByOne(anyInt(), anyString())).thenReturn(stat);
         UserStat newStat = statsController.incrementStat(stat.getId(), "Critical_Thinking");
         assertEquals(stat.getId(), newStat.getId());
     }

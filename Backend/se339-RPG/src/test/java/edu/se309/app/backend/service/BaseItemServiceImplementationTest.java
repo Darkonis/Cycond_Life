@@ -1,7 +1,8 @@
 package edu.se309.app.backend.service;
 
-import edu.se309.app.backend.entity.BaseItem;
-import edu.se309.app.backend.repository.BaseItemRepository;
+import edu.se309.app.backend.rest.entity.BaseItem;
+import edu.se309.app.backend.rest.repository.BaseItemRepository;
+import edu.se309.app.backend.rest.service.BaseItemServiceImplementation;
 import org.hibernate.service.spi.ServiceException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
