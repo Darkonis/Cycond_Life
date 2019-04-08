@@ -69,12 +69,15 @@ public class WebSocketServer {
         		monsterService.deleteById(id);
         	}
         	else {
+                in.close();
         		throw new IOException();
         	}
         }
         else {
+            in.close();
         	throw new IOException();
         }
+        in.close();
     }
 
     @OnClose
