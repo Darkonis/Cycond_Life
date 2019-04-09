@@ -326,6 +326,10 @@ public class Player extends Character {
     public void changeResolve(int i)
     {
         resolve +=i;
+        if(resolve>=100)
+        {
+            resolve=100;
+        }
         Json_handler j = new Json_handler(context);
         j.update_stat(Player.get_instance().id,"resolve",resolve);
     }

@@ -23,10 +23,15 @@ public class Combat extends AppCompatActivity {
     Button attack;
     Button tech;
     Button item;
+    Button submitItem;
+
     TextView player_stuff;
     TextView monster_stuff;
-
     TextView inventory;
+    TextView itemID;
+
+
+
     final static Player player = Player.get_instance();
     static Character monster;
     static Game g;
@@ -53,6 +58,8 @@ public class Combat extends AppCompatActivity {
         monster_stuff=findViewById(R.id.eHealth);
         inventory = findViewById(R.id.inventoryList);
         item= findViewById(R.id.item);
+        itemID = findViewById(R.id.itemID);
+        submitItem = findViewById(R.id.useItem);
     }
     /*
     TODO adjust so that online health is updated at the end of combat
@@ -75,6 +82,7 @@ public class Combat extends AppCompatActivity {
         attack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                reset();
                 int ret = do_combat(player, monster, getApplicationContext());
                 update_status();
                 if (ret == 1) {
@@ -92,15 +100,38 @@ public class Combat extends AppCompatActivity {
                 }
             }
         });
-
+        submitItem.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(itemID.getText().toString().equals(""))
+                {
+                    return;
+                }
+                if(player.getInv().size()<=Integer.parseInt(itemID.getText().toString())||Integer.parseInt(itemID.getText().toString())<0)
+                {
+                    return;
+                }
+                Item i = player.getInv().get(Integer.parseInt(itemID.getText().toString()));
+                if(i.getClass().toString().equals("Consumable"))
+                {
+                    ((Consumable) i).use();
+                    update_status();
+                }
+                player.getInv().remove(i);
+            }
+        });
     }
     private void reset()
     {
         inventory.setVisibility(View.GONE);
         inventory.setText("");
+        itemID.setVisibility(View.GONE);
+        submitItem.setVisibility(View.GONE);
     }
     private void display_inventory()
     {
+        submitItem.setVisibility(View.VISIBLE);
+        itemID.setVisibility(View.VISIBLE);
         inventory.setVisibility(View.VISIBLE);
         String toDisp="Your inventory contains:\n";
         for(int i=0;i<player.getInv().size();i++)
