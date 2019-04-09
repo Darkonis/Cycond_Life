@@ -2,7 +2,7 @@ package com.example.cycondlife;
 
 public class Consumable extends Item {
 
-
+    private final int  health = 0x0;
    private Dice effect;
    private int duration;
    private String useMsg;
