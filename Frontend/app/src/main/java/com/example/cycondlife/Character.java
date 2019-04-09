@@ -14,6 +14,7 @@ public class Character {
     protected int critical_thinking=10;
     protected String major="student";
     protected String name = "tmp";
+    protected int id;
     //potentially move to an enum array
     //TODO change to formula calculation
     /*
@@ -49,6 +50,7 @@ public class Character {
         this.lat=lat;
         this.lng=lng;
         name = "Monster:"+id;
+        this.id=id;
     }
     public Character(double lat,double lng)
     {
@@ -87,6 +89,7 @@ public class Character {
     {
         return isPlayer;
     }
+    int getId(){return id;}
     public void take_dmg(int dmg)
     {
         this.resolve=this.resolve-dmg;

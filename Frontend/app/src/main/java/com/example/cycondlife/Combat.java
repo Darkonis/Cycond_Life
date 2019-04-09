@@ -39,7 +39,7 @@ public class Combat extends AppCompatActivity {
     {
        // SocketAddress s = new So
         if(combatClient.isOpen())return;
-        int port = 80;
+        int port = 8080;
         SocketAddress sockaddr = new InetSocketAddress("http://cs309-sd-6.misc.iastate.edu", port);
         Proxy p = new Proxy(Proxy.Type.HTTP,sockaddr);
         combatClient.setSocket(new Socket(p));
@@ -54,7 +54,7 @@ public class Combat extends AppCompatActivity {
         setup_buttons();
         update_status();
         setupSocket();
-        combatClient.send("COMBAT ATTACK");
+        combatClient.send("COMBAT ATTACK " +monster.getId());
     }
     public static void set_combatants(Character mnstr,Game tmp)
     {
@@ -78,6 +78,7 @@ public class Combat extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 combatClient.send("SYSTEM: "+ Player.get_instance().getUsername()+" has fled from " + monster.getName());
+                combatClient.send("COMBAT LOSS "+ monster.getId());
                 combatClient.close();
                 finishActivity(3);//flee combat
                 finish();
@@ -92,7 +93,7 @@ public class Combat extends AppCompatActivity {
                {
                    Log.i("Cycond Life","Player has won combat");
                    combatClient.send("SYSTEM: "+ Player.get_instance().getUsername()+" defeated " + monster.getName());
-                   combatClient.send("COMBAT VICTORY");
+                   combatClient.send("COMBAT VICTORY "+ monster.getId());
                    combatClient.close();
                    finishActivity(1);
 
@@ -102,7 +103,7 @@ public class Combat extends AppCompatActivity {
                {
                    Log.i("Cycond Life","Player has died");
                    combatClient.send("SYSTEM "+ Player.get_instance().getUsername()+"has been defeated by" + monster.getName());
-                   combatClient.send("COMBAT LOSS");
+                   combatClient.send("COMBAT LOSS "+ monster.getId());
                    combatClient.close();
                    finishActivity(2);
                    finish();
@@ -116,7 +117,6 @@ public class Combat extends AppCompatActivity {
     }
     private static int do_combat(Character play, Character mon, Context c)
     {
-        //TODO bring up the idea of RNG based on class
         Dice dmg_rng = new Dice("1+1d4");
         Random rand =new Random();
         if(rand.nextInt()%100+1<=player.getHitChance()) {

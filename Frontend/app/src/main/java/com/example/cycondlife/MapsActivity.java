@@ -143,8 +143,8 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
                         player.setLong(longitude);
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-                        mMap.getUiSettings().setZoomControlsEnabled(true);
-                        mMap.getUiSettings().setAllGesturesEnabled(true);
+                        mMap.getUiSettings().setZoomControlsEnabled(false);
+                        mMap.getUiSettings().setAllGesturesEnabled(false);
 
 
                     }

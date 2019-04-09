@@ -132,7 +132,7 @@ public class menu extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         // Do something when error occurred
                         Log.i("Cycond Life", "monster request error");
-                        Log.i("Cycond Life", error.getLocalizedMessage());
+                        Log.i("Cycond Life", "Shit");
                     }
 
     });
