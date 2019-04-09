@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import org.java_websocket.client.WebSocketClient;
+//import org.java_websocket.drafts.Draft_6455;
 import org.java_websocket.exceptions.WebsocketNotConnectedException;
 import org.java_websocket.handshake.ServerHandshake;
 
@@ -35,7 +36,7 @@ public class ChatSender {
 
     public Void connectWebSocket(URI dest) {
         //chat = new Socket();
-        receivedText += "  connecting...";
+        receivedText = "  connecting...";
         setChatText();
 
         chat = new WebSocketClient(dest)  {
@@ -63,34 +64,33 @@ public class ChatSender {
                 setChatText();
             }
         };
-
-        //chat.connect();
+        chat.connect();
 
         //Following TrustManager and try/catch is ONLY for WWS server, otherwise just use chat.connect() above (presumably)
-        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
-            public X509Certificate[] getAcceptedIssuers() {
-                X509Certificate[] myTrustedAnchors = new X509Certificate[0];
-                return myTrustedAnchors;
-            }
-
-            @Override
-            public void checkClientTrusted(X509Certificate[] certs,
-                                           String authType) {}
-
-            @Override
-            public void checkServerTrusted(X509Certificate[] certs,
-                                           String authType) {}
-        } };
-
-        try {
-            SSLContext sslContext = SSLContext.getInstance("TLS");
-            sslContext.init(null, trustAllCerts, new SecureRandom());
-            SSLSocketFactory factory = sslContext.getSocketFactory();
-            chat.setSocket(factory.createSocket());
-            chat.connectBlocking();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+//            public X509Certificate[] getAcceptedIssuers() {
+//                X509Certificate[] myTrustedAnchors = new X509Certificate[0];
+//                return myTrustedAnchors;
+//            }
+//
+//            @Override
+//            public void checkClientTrusted(X509Certificate[] certs,
+//                                           String authType) {}
+//
+//            @Override
+//            public void checkServerTrusted(X509Certificate[] certs,
+//                                           String authType) {}
+//        } };
+//
+//        try {
+//            SSLContext sslContext = SSLContext.getInstance("TLS");
+//            sslContext.init(null, trustAllCerts, new SecureRandom());
+//            SSLSocketFactory factory = sslContext.getSocketFactory();
+//            chat.setSocket(factory.createSocket());
+//            chat.connectBlocking();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
 
 
