@@ -1,5 +1,7 @@
 package com.example.cycondlife;
 
+import android.widget.Switch;
+
 public class Consumable extends Item {
 
 
@@ -18,9 +20,11 @@ public class Consumable extends Item {
         this.useMsg=use_msg;
     }
 
-    public void use()
+    public boolean use()
     {
-        //TODO implement use
+        if(type >=0) return true;
+        else return false;
+
     }
     public String getUseMsg() {
         return useMsg;
