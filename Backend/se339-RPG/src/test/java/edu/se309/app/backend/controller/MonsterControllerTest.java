@@ -96,17 +96,19 @@ class MonsterControllerTest {
     
     @Test
     void markMonster() {
+    	int inCombat = 1;
     	int id = monster.getId();
-    	when(monsterService.markMonster(id, true)).thenReturn(1);
+    	when(monsterService.markMonster(id, true)).thenReturn(inCombat);
     	int monster2 = monsterService.markMonster(id, true);
     	assertEquals(monster2, 1);
     }
     
     @Test
     void markMonster2() {
+    	int inCombat = 0;
     	int id = monster.getId();
-    	when(monsterService.markMonster(id, false)).thenReturn(0);
-    	int monster2 = monsterService.markMonster(id, false);
+    	when(monsterService.markMonster(id, true)).thenReturn(inCombat);
+    	int monster2 = monsterService.markMonster(id, true);
     	assertEquals(monster2, 0);
     }
 }

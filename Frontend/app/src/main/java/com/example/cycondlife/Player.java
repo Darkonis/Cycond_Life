@@ -108,6 +108,20 @@ public class Player extends Character {
         experiance+=val;
     }
 
+    private Player(String user, int idt)
+    {
+        super();
+        update_substats();
+        this.id=idt;
+        this.username=user;
+    }
+    /*
+    should be used only for test methods
+     */
+    public static synchronized void createTestInstance(String user, int idt)
+    {
+        player_instance = new Player(user,idt);
+    }
     public String getUsername() {
         return username;
     }
