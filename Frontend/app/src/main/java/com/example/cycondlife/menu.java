@@ -27,7 +27,7 @@ public class menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         //button object creations
         Button stats = findViewById(R.id.stats);
-        Button inventory = findViewById(R.id.inventory);
+        Button inventory = findViewById(R.id.inventorylist);
         Button shop = findViewById(R.id.shop);
         Button friends = findViewById(R.id.friends);
         Button map = findViewById(R.id.map);

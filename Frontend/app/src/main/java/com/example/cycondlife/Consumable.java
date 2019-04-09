@@ -18,14 +18,18 @@ public class Consumable extends Item {
         this.useMsg=use_msg;
     }
 
-    public void use()
+    public boolean use()
     {
+        boolean used = true;
         switch (type)
         {
             case health:
             Player.get_instance().changeResolve(effect.roll());
             break;
+            default:
+                used=false;
         }
+        return used;
     }
     public String getUseMsg() {
         return useMsg;
