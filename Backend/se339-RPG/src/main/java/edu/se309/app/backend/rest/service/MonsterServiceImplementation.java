@@ -86,7 +86,7 @@ public class MonsterServiceImplementation extends BaseServiceImplementation<Mons
     
     @Override
     @Transactional
-    public Monster markMonster(int id, boolean inCombat) {
+    public int markMonster(int id, boolean inCombat) {
     	Monster monster = findById(id);
     	PropertyAccessor myAccessor = PropertyAccessorFactory.forBeanPropertyAccess(monster);
     	if(inCombat) {
@@ -97,6 +97,6 @@ public class MonsterServiceImplementation extends BaseServiceImplementation<Mons
     		myAccessor.setPropertyValue("inCombat",0);
     	}
     	save(monster);
-    	return monster;
+    	return monster.getInCombat();
     }
 }

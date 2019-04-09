@@ -93,13 +93,14 @@ class StatServiceImplementationTest {
         when(statRepository.findById(stat.getId())).thenReturn(Optional.of(stat));
         when(statRepository.save(stat)).thenReturn(stat);
         UserStat actual = statService.incrementByAmount(stat.getId(), "criticalThinking", amount);
+        Boolean failed = false;
         assertEquals(stat, actual);
         try {
             statService.incrementByAmount(stat.getId(),fakeStat,amount);
-        } catch (ServiceException e) {
-            String expected = "Invalid request: No such stat found: " + fakeStat;
-            assertEquals(expected, e.getMessage());
+        } catch (Exception e) {
+        	failed = true;
         }
+        assertTrue(failed);
     }
 
     @Test
@@ -108,13 +109,14 @@ class StatServiceImplementationTest {
         when(statRepository.findById(stat.getId())).thenReturn(Optional.of(stat));
         when(statRepository.save(stat)).thenReturn(stat);
         UserStat actual = statService.incrementByOne(stat.getId(), "criticalThinking");
+        Boolean failed = false;
         assertEquals(stat, actual);
         try {
             statService.incrementByOne(stat.getId(),fakeStat);
-        } catch (ServiceException e) {
-            String expected = "Invalid request: No such stat found: " + fakeStat;
-            assertEquals(expected, e.getMessage());
+        } catch (Exception e) {
+        	failed = true;
         }
+        assertTrue(failed);
     }
 
     @Test

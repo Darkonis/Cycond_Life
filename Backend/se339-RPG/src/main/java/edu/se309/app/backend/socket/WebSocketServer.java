@@ -55,17 +55,17 @@ public class WebSocketServer {
         Account account = sessionAccountMap.get(session);
         Scanner in = new Scanner(message);
         String command = in.next();
-        if(command.equals("Combat"))
+        if(command.equals("COMBAT"))
         {
         	String subCommand = in.next();
     		int id = Integer.parseInt(in.next());
-        	if(subCommand.equals("Attack")){
+        	if(subCommand.equals("ATTACK")){
         		monsterService.markMonster(id, true);
         	}
-        	else if(subCommand.equals("Defeat")){
+        	else if(subCommand.equals("DEFEAT")){
         		monsterService.markMonster(id, false);
         	}
-        	else if(subCommand.equals("Victory")){
+        	else if(subCommand.equals("VICTORY")){
         		monsterService.deleteById(id);
         	}
         	else {
@@ -82,7 +82,8 @@ public class WebSocketServer {
 
     @OnClose
     public void onClose(Session session) throws IOException {
-        accountSessionMap.remove(account);
+        accountSessionMap.remove(sessionAccountMap.get(session));
+        sessionAccountMap.remove(session);
     }
 
 

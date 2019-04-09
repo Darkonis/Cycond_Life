@@ -103,4 +103,6 @@ class MonsterServiceImplementationTest {
     void generateMonsters() {
         //TODO
     }
+    
+    
 }

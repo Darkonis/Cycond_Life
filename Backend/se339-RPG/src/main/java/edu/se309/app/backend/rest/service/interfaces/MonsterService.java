@@ -12,5 +12,5 @@ public interface MonsterService extends BaseService<Monster, Integer> {
 
     List<Monster> generateMonsters();
     
-    Monster markMonster(int id, boolean inCombat);
+    int markMonster(int id, boolean inCombat);
 }
