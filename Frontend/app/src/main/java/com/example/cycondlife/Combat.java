@@ -15,13 +15,23 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.exceptions.WebsocketNotConnectedException;
+import org.java_websocket.handshake.ServerHandshake;
 
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.Socket;
 import java.net.SocketAddress;
+import java.net.URI;
+import java.security.SecureRandom;
+import java.security.cert.X509Certificate;
 import java.util.Random;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 public class Combat extends AppCompatActivity {
 
@@ -35,16 +45,83 @@ public class Combat extends AppCompatActivity {
     final static Player player = Player.get_instance();
     static Character monster;
     static Game g;
-    private void setupSocket()
-    {
-       // SocketAddress s = new So
-        if(combatClient.isOpen())return;
-        int port = 8080;
-        SocketAddress sockaddr = new InetSocketAddress("http://cs309-sd-6.misc.iastate.edu", port);
-        Proxy p = new Proxy(Proxy.Type.HTTP,sockaddr);
-        combatClient.setSocket(new Socket(p));
-        combatClient.connect();
+
+    private void setupSocket() {
+        URI tmp;
+        try {
+            tmp=new URI("http://cs309-sd-6.misc.iastate.edu:8080/websocket/"+player.getUsername());
+            connectWebSocket(tmp);
+        }
+        catch(Exception e)
+        {
+            Log.i("Cycond Error","setup error");
+        }
+
+
     }
+    public static void sendMsg(String msg)  {
+        try {
+            combatClient.send(msg);
+        }   catch (WebsocketNotConnectedException e) {
+            e.printStackTrace();
+            //noConnection = new Toast.makeText(getChatContext(), "Failed to connect to server", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    public Void connectWebSocket(URI dest) {
+        //chat = new Socket();
+
+        combatClient = new WebSocketClient(dest) {
+            public void onMessage(String var1) {
+                Log.i("CyLife Websocket", var1);
+            }
+
+            public void onOpen(ServerHandshake var1) {
+
+            }
+
+            public void onClose(int var1, String var2, boolean var3) {
+
+            }
+
+            public void onError(Exception var1) {
+                Log.i("CyLife Error:", var1.toString());
+                var1.printStackTrace();
+            }
+        };
+
+        //chat.connect();
+
+        //Following TrustManager and try/catch is ONLY for WWS server, otherwise just use chat.connect() above (presumably)
+        TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+            public X509Certificate[] getAcceptedIssuers() {
+                X509Certificate[] myTrustedAnchors = new X509Certificate[0];
+                return myTrustedAnchors;
+            }
+
+            @Override
+            public void checkClientTrusted(X509Certificate[] certs,
+                                           String authType) {
+            }
+
+            @Override
+            public void checkServerTrusted(X509Certificate[] certs,
+                                           String authType) {
+            }
+        }};
+
+        try {
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(null, trustAllCerts, new SecureRandom());
+            SSLSocketFactory factory = sslContext.getSocketFactory();
+            combatClient.setSocket(factory.createSocket());
+            combatClient.connectBlocking();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     //TODO make a status info where we can display what has happened in combat (a combat log)
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,7 +131,7 @@ public class Combat extends AppCompatActivity {
         setup_buttons();
         update_status();
         setupSocket();
-        combatClient.send("COMBAT ATTACK " +monster.getId());
+        sendMsg("COMBAT ATTACK " +monster.getId());
     }
     public static void set_combatants(Character mnstr,Game tmp)
     {
@@ -77,8 +154,8 @@ public class Combat extends AppCompatActivity {
         button_flee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                combatClient.send("SYSTEM: "+ Player.get_instance().getUsername()+" has fled from " + monster.getName());
-                combatClient.send("COMBAT LOSS "+ monster.getId());
+                sendMsg("SYSTEM: "+ Player.get_instance().getUsername()+" has fled from " + monster.getName());
+                sendMsg("COMBAT LOSS "+ monster.getId());
                 combatClient.close();
                 finishActivity(3);//flee combat
                 finish();
@@ -92,8 +169,8 @@ public class Combat extends AppCompatActivity {
                if(ret ==1)
                {
                    Log.i("Cycond Life","Player has won combat");
-                   combatClient.send("SYSTEM: "+ Player.get_instance().getUsername()+" defeated " + monster.getName());
-                   combatClient.send("COMBAT VICTORY "+ monster.getId());
+                   sendMsg("SYSTEM: "+ Player.get_instance().getUsername()+" defeated " + monster.getName());
+                   sendMsg("COMBAT VICTORY "+ monster.getId());
                    combatClient.close();
                    finishActivity(1);
 
@@ -102,8 +179,8 @@ public class Combat extends AppCompatActivity {
                if(ret ==2 )
                {
                    Log.i("Cycond Life","Player has died");
-                   combatClient.send("SYSTEM "+ Player.get_instance().getUsername()+"has been defeated by" + monster.getName());
-                   combatClient.send("COMBAT LOSS "+ monster.getId());
+                   sendMsg("SYSTEM "+ Player.get_instance().getUsername()+"has been defeated by" + monster.getName());
+                   sendMsg("COMBAT LOSS "+ monster.getId());
                    combatClient.close();
                    finishActivity(2);
                    finish();
@@ -125,7 +202,7 @@ public class Combat extends AppCompatActivity {
             {
                 dmg*=player.getCritMult();
             }
-            combatClient.send("SYSTEM:"+ Player.get_instance().getUsername()+"deals "+ dmg+" to the" + mon.getName());
+            sendMsg("SYSTEM:"+ Player.get_instance().getUsername()+"deals "+ dmg+" to the" + mon.getName());
             mon.take_dmg(dmg);
         }
 
@@ -135,7 +212,7 @@ public class Combat extends AppCompatActivity {
             int dmg =mon.BS;
             dmg *=(1-player.getDmgReduct());
             player.take_dmg(dmg,c);
-            combatClient.send("SYSTEM:"+ Player.get_instance().getUsername()+"takes "+ dmg+" from" + mon.getName());
+            sendMsg("SYSTEM:"+ Player.get_instance().getUsername()+"takes "+ dmg+" from" + mon.getName());
         }
 
         if(play.resolve<=0) return 2;

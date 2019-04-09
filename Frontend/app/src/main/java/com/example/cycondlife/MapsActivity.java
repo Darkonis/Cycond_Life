@@ -78,9 +78,6 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
         //googleMapOptions.mapType(googleMap.MAP_TYPE_HYBRID).compassEnabled(true);
 
         // Add a marker in Sydney and move the camera
-        LatLng india = new LatLng(42.03, -92.03);
-        mMap.addMarker(new MarkerOptions().position(india).title("Marker in Ames"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(india));
        // mMap.setOnMarkerDragListener(this);
         mMap.setOnMapLongClickListener(this);
        // display_monsters();
@@ -143,8 +140,8 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
                         player.setLong(longitude);
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-                        mMap.getUiSettings().setZoomControlsEnabled(false);
-                        mMap.getUiSettings().setAllGesturesEnabled(false);
+                        mMap.getUiSettings().setZoomControlsEnabled(true);
+                        mMap.getUiSettings().setAllGesturesEnabled(true);
 
 
                     }
@@ -245,7 +242,7 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
     {
         if((Math.sqrt(
                 Math.pow(Game.monster_map.get(i).get_latitude()-player.get_latitude(),2)+
-                        Math.pow(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(player.get_longitude()),2))>=player.sight)) {
+                        Math.pow(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(player.get_longitude()),2))<=player.sight)) {
             return true;
         }
         return false;
