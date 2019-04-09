@@ -50,6 +50,9 @@ public class Player extends Character {
     {
         super();
 
+        username=user;
+        name=user;
+
         //Connect to chat websocket for persistent chat
         try {
             chatLink = new URI("wss://echo.websocket.org");
@@ -61,9 +64,6 @@ public class Player extends Character {
         sender = new ChatSender();
         sender.connectWebSocket(chatLink);
 
-
-        username=user;
-        name=user;
         this.id=idt;
         this.context = c;
         callback = new Callback_handler() {

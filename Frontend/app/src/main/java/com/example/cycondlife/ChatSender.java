@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import org.java_websocket.client.WebSocketClient;
+//import org.java_websocket.drafts.Draft_6455;
 import org.java_websocket.exceptions.WebsocketNotConnectedException;
 import org.java_websocket.handshake.ServerHandshake;
 
@@ -35,7 +36,7 @@ public class ChatSender {
 
     public Void connectWebSocket(URI dest) {
         //chat = new Socket();
-        receivedText += "  connecting...";
+        receivedText = "  connecting...";
         setChatText();
 
         chat = new WebSocketClient(dest)  {
@@ -63,7 +64,6 @@ public class ChatSender {
                 setChatText();
             }
         };
-
         //chat.connect();
 
         //Following TrustManager and try/catch is ONLY for WWS server, otherwise just use chat.connect() above (presumably)
