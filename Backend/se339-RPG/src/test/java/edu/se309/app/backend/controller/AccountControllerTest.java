@@ -1,7 +1,8 @@
 package edu.se309.app.backend.controller;
 
-import edu.se309.app.backend.entity.Account;
-import edu.se309.app.backend.service.interfaces.AccountService;
+import edu.se309.app.backend.rest.controller.AccountController;
+import edu.se309.app.backend.rest.entity.Account;
+import edu.se309.app.backend.rest.service.interfaces.AccountService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,7 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.context.ActiveProfiles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class AccountControllerTest {
     @Test
     void addAccount() {
         Account newAccount = accountController.addAccount(account);
-        assertEquals(account,newAccount);
+        assertEquals(account, newAccount);
     }
 
     @Test
@@ -72,7 +72,7 @@ public class AccountControllerTest {
     public void deleteById() {
         String expected = "Deleted Account with id: " + account.getId();
         String actual = accountController.deleteById(account.getId());
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
 

@@ -1,10 +1,9 @@
 package edu.se309.app.backend.service;
 
-import edu.se309.app.backend.entity.Building;
-import edu.se309.app.backend.entity.Building;
-import edu.se309.app.backend.entity.Building;
-import edu.se309.app.backend.repository.BuildingRepositoryCustom;
-import edu.se309.app.backend.repository.BuildingRepository;
+import edu.se309.app.backend.rest.entity.Building;
+import edu.se309.app.backend.rest.repository.BuildingRepository;
+import edu.se309.app.backend.rest.repository.BuildingRepositoryCustom;
+import edu.se309.app.backend.rest.service.BuildingServiceImplementation;
 import org.hibernate.service.spi.ServiceException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -75,14 +74,14 @@ class BuildingServiceImplementationTest {
         int id = building.getId();
         when(buildingRepository.findById(id)).thenReturn(Optional.of(building));
         Building newBuilding = buildingService.findById(id);
-        assertEquals(building,newBuilding);
+        assertEquals(building, newBuilding);
     }
 
     @Test
     void nullCheck() {
         assertThrows(ServiceException.class,
-                ()-> buildingService.nullCheck(Optional.empty(),"Empty Test"));
-        assertEquals(building,buildingService.nullCheck(Optional.of(building),"Building Test"));
+                () -> buildingService.nullCheck(Optional.empty(), "Empty Test"));
+        assertEquals(building, buildingService.nullCheck(Optional.of(building), "Building Test"));
     }
 
     @Test
@@ -94,16 +93,16 @@ class BuildingServiceImplementationTest {
     @Test
     void findEarnedStatFromLocation() {
         String stat = "none";
-        when(buildingRepositoryCustom.findBuildingStat(anyString(),anyString())).thenReturn(stat);
-        String actual = buildingService.findEarnedStatFromLocation("longitude","latitude");
-        assertEquals(stat,actual);
+        when(buildingRepositoryCustom.findBuildingStat(anyString(), anyString())).thenReturn(stat);
+        String actual = buildingService.findEarnedStatFromLocation("longitude", "latitude");
+        assertEquals(stat, actual);
     }
 
     @Test
     void findBuildingNameFromLocation() {
         String buildingName = "none";
-        when(buildingRepositoryCustom.findBuildingName(anyString(),anyString())).thenReturn(buildingName);
-        String actual = buildingService.findBuildingNameFromLocation("longitude","latitude");
-        assertEquals(buildingName,actual);
+        when(buildingRepositoryCustom.findBuildingName(anyString(), anyString())).thenReturn(buildingName);
+        String actual = buildingService.findBuildingNameFromLocation("longitude", "latitude");
+        assertEquals(buildingName, actual);
     }
 }
