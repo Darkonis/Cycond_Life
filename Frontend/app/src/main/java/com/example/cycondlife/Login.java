@@ -75,7 +75,7 @@ public class Login extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    check_validity();
+                check_validity();
             }
         });
 
@@ -143,18 +143,18 @@ public class Login extends AppCompatActivity {
                                 String nameToCheck = info.get("username").toString();
                                 String passToCheck = info.get("password").toString();
 
-                                        if(nameToCheck.equals(userName) && passToCheck.equals(userPass))    {
-                                            if(Player.get_instance()!=null) {
-                                                Player.destroy_the_instance(); //remove the previous player if needed
-                                            }
-                                            Player.create_the_instance(userName,info.getInt("id"),getApplicationContext()); //on good login create the player object
-
-                                            startActivity(openMenu);
-                                        }
+                                if(nameToCheck.equals(userName) && passToCheck.equals(userPass))    {
+                                    if(Player.get_instance()!=null) {
+                                        Player.destroy_the_instance(); //remove the previous player if needed
                                     }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
+                                    Player.create_the_instance(userName,info.getInt("id"),getApplicationContext()); //on good login create the player object
+
+                                    startActivity(openMenu);
                                 }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
                         fail.setVisibility(View.VISIBLE);   //Should only display on codition of fail, will be changed
                     }

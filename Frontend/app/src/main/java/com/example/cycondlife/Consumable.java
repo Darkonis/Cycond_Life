@@ -2,7 +2,7 @@ package com.example.cycondlife;
 
 public class Consumable extends Item {
 
-
+    private final int  health = 0x0;
    private Dice effect;
    private int duration;
    private String useMsg;
@@ -18,9 +18,18 @@ public class Consumable extends Item {
         this.useMsg=use_msg;
     }
 
-    public void use()
+    public boolean use()
     {
-        //TODO implement use
+        boolean used = true;
+        switch (type)
+        {
+            case health:
+            Player.get_instance().changeResolve(effect.roll());
+            break;
+            default:
+                used=false;
+        }
+        return used;
     }
     public String getUseMsg() {
         return useMsg;

@@ -31,13 +31,13 @@
         android:textColor="@color/colorPrimary"
         android:textIsSelectable="false"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintBottom_toTopOf="@+id/inventory"
+        app:layout_constraintBottom_toTopOf="@+id/inventorylist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/inventory"
+        android:id="@+id/inventorylist"
         android:layout_width="108dp"
         android:layout_height="56dp"
         android:layout_marginBottom="20dp"

@@ -19,6 +19,8 @@ import com.android.volley.toolbox.Volley;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.util.ArrayList;
+
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
 /*
@@ -46,9 +48,85 @@ public class Player extends Character {
     private Callback_handler callback;
     private int experiance=0;
     private int level =1;
-    private Player(String user,int idt,Context c)
+
+    private int hitChance =100;
+    //TODO make this private
+    public double sight =.002;
+    private double critChance =1;
+    private double critMult =2;
+    private double dmgReduct =.1;
+    private double BS =10;
+    private int tinkPoints=50;
+    private double tinkMult=1.0;
+    private double dodgeChance=15;
+    private ArrayList<Item> inv = new ArrayList<>();
+
+    private int itemCount=0;
+
+
+    public int getHitChance() {
+        return hitChance;
+    }
+    public double getSight()
+    {
+        return sight;
+    }
+    public double getDodgeChance()
+    {
+        return dodgeChance;
+    }
+    public double getCritChance()
+    {
+        return critChance;
+    }
+    public double getCritMult()
+    {
+        return critMult;
+    }
+    public double getDmgReduct()
+    {
+        return  dmgReduct;
+    }
+    public double getBS()
+    {
+        return BS;
+    }
+    public int getTinkPoints()
+    {
+        return tinkPoints;
+    }
+    public double getTinkMult()
+    {
+        return tinkMult;
+    }
+    public int getLevel() {
+        return level;
+    }
+    public void incEXP(int val)
+    {
+        experiance+=val;
+    }
+
+    private Player(String user, int idt)
     {
         super();
+        update_substats();
+        this.id=idt;
+        this.username=user;
+    }
+    /*
+    should be used only for test methods
+     */
+    public static synchronized void createTestInstance(String user, int idt)
+    {
+        player_instance = new Player(user,idt);
+    }
+    private Player(String user, int idt, Context c)
+    {
+        super();
+        Consumable c1 =new Consumable(0,"lesser health potion","This potion sits in a red bottle labeled TEST",0,new Dice("2+2d4"),0,"You take a health Potion");
+        Item.itemList.add(c1);
+        update_substats();
 
         username=user;
         name=user;
@@ -108,6 +186,7 @@ public class Player extends Character {
       //  RequestQueue q = new Volley.newRequestQueue(c);
        // JsonObjectRequest j = new JsonObjectRequest()
     }
+
     public static Player get_instance()
     {
         return player_instance;
@@ -117,6 +196,40 @@ public class Player extends Character {
     {
         get_stats(id,callback,context);
     }
+
+    public ArrayList<Item> getInv() {
+        return inv;
+    }
+    public void addItem(Item i)
+    {
+        //TODO propagate to the server when possuible
+        if(inv.size()<20)
+        {
+            inv.add(i);
+        }
+        else
+        {
+            Log.i("Cycond Info", "You drop some items");
+        }
+    }
+    public Item removeItem(int index)
+    {
+        return inv.remove(index);
+    }
+    public void update_substats()
+    {
+        hitChance =50+creativity+critical_thinking;
+        if(hitChance >99) hitChance =99;
+        sight =.001+(critical_thinking+0.0)/10000;
+        critChance=1+((critical_thinking+creativity)/1000.0)*9;
+        critMult= 2+ (presentation+critical_thinking)/500.0;
+        dmgReduct = .01 +(presentation+critChance)/100.0;
+        BS=(presentation+critical_thinking)/100.0;
+        tinkPoints=(int) Math.round(1.5*critical_thinking);
+        tinkMult=.9+(creativity+critical_thinking)/1500.0;
+        dodgeChance= 15+(creativity/2000.0);
+    }
+
     public static synchronized void create_the_instance(String user,int id,Context c)
     {
         if(player_instance!=null)
@@ -125,10 +238,13 @@ public class Player extends Character {
         }
         player_instance = new Player(user,id,c);
     }
+
     public static synchronized void destroy_the_instance()
     {
         player_instance=null;
     }
+
+
     private void get_stats(int statsId,final Callback_handler c,Context t)
         {
             RequestQueue r =  Volley.newRequestQueue(t);
@@ -206,6 +322,16 @@ public class Player extends Character {
     {
         Json_handler j = new Json_handler(c);
         j.update_stat(id,stat,val);
+    }
+    public void changeResolve(int i)
+    {
+        resolve +=i;
+        if(resolve>=100)
+        {
+            resolve=100;
+        }
+        Json_handler j = new Json_handler(context);
+        j.update_stat(Player.get_instance().id,"resolve",resolve);
     }
 
 }

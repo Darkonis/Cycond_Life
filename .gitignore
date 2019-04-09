@@ -39,6 +39,8 @@
 
 # Maven
 log/
+logs/
+*.log
 target/
 bash.sh
 
