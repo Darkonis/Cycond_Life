@@ -48,15 +48,15 @@ public class Combat extends AppCompatActivity {
 
     private void setupSocket() {
         URI tmp;
+
         try {
-            tmp=new URI("http://cs309-sd-6.misc.iastate.edu:8080/websocket/"+player.getUsername());
+            tmp=new URI("ws://cs309-sd-6.misc.iastate.edu:8080/websocket/thisisausername");
             connectWebSocket(tmp);
         }
         catch(Exception e)
         {
             Log.i("Cycond Error","setup error");
         }
-
 
     }
     public static void sendMsg(String msg)  {

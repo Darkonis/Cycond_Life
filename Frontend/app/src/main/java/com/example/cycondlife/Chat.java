@@ -42,7 +42,7 @@ public class Chat extends AppCompatActivity {
         chatText.setMovementMethod(new ScrollingMovementMethod());
 
         try {
-            forReconnect = new URI("wss://echo.websocket.org");
+            forReconnect = new URI("ws://cs309-sd-6.misc.iastate.edu:8080/websocket/"+Player.get_instance().getUsername());
         }
         catch (URISyntaxException e)    {
             e.printStackTrace();
