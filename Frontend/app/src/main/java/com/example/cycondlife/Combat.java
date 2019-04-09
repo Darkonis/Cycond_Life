@@ -38,7 +38,7 @@ public class Combat extends AppCompatActivity {
     private void setupSocket()
     {
        // SocketAddress s = new So
-
+        if(combatClient.isOpen())return;
         int port = 80;
         SocketAddress sockaddr = new InetSocketAddress("http://cs309-sd-6.misc.iastate.edu", port);
         Proxy p = new Proxy(Proxy.Type.HTTP,sockaddr);
@@ -54,6 +54,7 @@ public class Combat extends AppCompatActivity {
         setup_buttons();
         update_status();
         setupSocket();
+        combatClient.send("COMBAT ATTACK");
     }
     public static void set_combatants(Character mnstr,Game tmp)
     {
@@ -91,6 +92,7 @@ public class Combat extends AppCompatActivity {
                {
                    Log.i("Cycond Life","Player has won combat");
                    combatClient.send("SYSTEM:"+ Player.get_instance().getUsername()+"defeated " + monster.getName());
+                   combatClient.send("COMBAT VICTORY");
                    combatClient.close();
                    finishActivity(1);
 
@@ -99,7 +101,8 @@ public class Combat extends AppCompatActivity {
                if(ret ==2 )
                {
                    Log.i("Cycond Life","Player has died");
-                   combatClient.send("SYSTEM:"+ Player.get_instance().getUsername()+"has been defeated by" + monster.getName());
+                   combatClient.send("SYSTEM "+ Player.get_instance().getUsername()+"has been defeated by" + monster.getName());
+                   combatClient.send("COMBAT LOSS");
                    combatClient.close();
                    finishActivity(2);
                    finish();
