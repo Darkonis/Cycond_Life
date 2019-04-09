@@ -90,11 +90,11 @@ public class MonsterServiceImplementation extends BaseServiceImplementation<Mons
     	Monster monster = findById(id);
     	PropertyAccessor myAccessor = PropertyAccessorFactory.forBeanPropertyAccess(monster);
     	if(inCombat) {
-    		myAccessor.setPropertyValue("inCombat",1);
+    		monster.setInCombat(1);
     	}
     	else if(!inCombat)
     	{
-    		myAccessor.setPropertyValue("inCombat",0);
+    		monster.setInCombat(0);
     	}
     	save(monster);
     	return monster.getInCombat();
