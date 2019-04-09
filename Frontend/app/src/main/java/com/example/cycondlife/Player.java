@@ -55,7 +55,7 @@ public class Player extends Character {
 
         //Connect to chat websocket for persistent chat
         try {
-            chatLink = new URI("wss://echo.websocket.org");
+            chatLink = new URI("ws://cs309-sd-6.misc.iastate.edu:8080/websocket/" + username);
         }
         catch (URISyntaxException e)    {
             e.printStackTrace();

@@ -64,33 +64,33 @@ public class ChatSender {
                 setChatText();
             }
         };
-        //chat.connect();
+        chat.connect();
 
         //Following TrustManager and try/catch is ONLY for WWS server, otherwise just use chat.connect() above (presumably)
-        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
-            public X509Certificate[] getAcceptedIssuers() {
-                X509Certificate[] myTrustedAnchors = new X509Certificate[0];
-                return myTrustedAnchors;
-            }
-
-            @Override
-            public void checkClientTrusted(X509Certificate[] certs,
-                                           String authType) {}
-
-            @Override
-            public void checkServerTrusted(X509Certificate[] certs,
-                                           String authType) {}
-        } };
-
-        try {
-            SSLContext sslContext = SSLContext.getInstance("TLS");
-            sslContext.init(null, trustAllCerts, new SecureRandom());
-            SSLSocketFactory factory = sslContext.getSocketFactory();
-            chat.setSocket(factory.createSocket());
-            chat.connectBlocking();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+//            public X509Certificate[] getAcceptedIssuers() {
+//                X509Certificate[] myTrustedAnchors = new X509Certificate[0];
+//                return myTrustedAnchors;
+//            }
+//
+//            @Override
+//            public void checkClientTrusted(X509Certificate[] certs,
+//                                           String authType) {}
+//
+//            @Override
+//            public void checkServerTrusted(X509Certificate[] certs,
+//                                           String authType) {}
+//        } };
+//
+//        try {
+//            SSLContext sslContext = SSLContext.getInstance("TLS");
+//            sslContext.init(null, trustAllCerts, new SecureRandom());
+//            SSLSocketFactory factory = sslContext.getSocketFactory();
+//            chat.setSocket(factory.createSocket());
+//            chat.connectBlocking();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
 
 
