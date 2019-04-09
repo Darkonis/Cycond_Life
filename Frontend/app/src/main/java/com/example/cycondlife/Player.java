@@ -124,7 +124,8 @@ public class Player extends Character {
     private Player(String user, int idt, Context c)
     {
         super();
-        Item.itemList.add(new Consumable(0,"lesser health potion","This potion sits in a red bottle labeled TEST",0,new Dice("2+2d4"),0,"You take a health Potion"));
+        Consumable c1 =new Consumable(0,"lesser health potion","This potion sits in a red bottle labeled TEST",0,new Dice("2+2d4"),0,"You take a health Potion");
+        Item.itemList.add(c1);
         update_substats();
 
         //Connect to chat websocket for persistent chat

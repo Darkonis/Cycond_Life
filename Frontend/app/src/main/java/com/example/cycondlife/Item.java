@@ -7,7 +7,7 @@ public abstract class Item {
     protected String name;
     protected String description;
     protected int type;
-    protected static ArrayList<Item> itemList;
+    protected static ArrayList<Item> itemList= new ArrayList<>();
     public int getType(){
         return type;
     }

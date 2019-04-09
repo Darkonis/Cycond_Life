@@ -184,6 +184,14 @@ public class dev_menu extends AppCompatActivity {
                 Player.get_instance().addItem(Item.findByID(Integer.parseInt(itemId.getText().toString())));
             }
         });
+        addItem.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                hide_entries();
+                itemId.setVisibility(View.VISIBLE);
+                submitItem.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     void hide_entries() {

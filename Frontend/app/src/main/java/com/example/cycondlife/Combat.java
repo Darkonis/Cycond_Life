@@ -51,7 +51,7 @@ public class Combat extends AppCompatActivity {
         attack = findViewById(R.id.attack);
         player_stuff=findViewById(R.id.health);
         monster_stuff=findViewById(R.id.eHealth);
-        inventory = findViewById(R.id.inventorylist);
+        inventory = findViewById(R.id.inventoryList);
         item= findViewById(R.id.item);
     }
     /*
@@ -61,7 +61,8 @@ public class Combat extends AppCompatActivity {
         item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                reset();
+                display_inventory();
             }
         });
         button_flee.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +92,7 @@ public class Combat extends AppCompatActivity {
                 }
             }
         });
+
     }
     private void reset()
     {
@@ -103,7 +105,7 @@ public class Combat extends AppCompatActivity {
         String toDisp="Your inventory contains:\n";
         for(int i=0;i<player.getInv().size();i++)
         {
-            toDisp+=i + "name: " +player.getInv().get(i).name+"\n";
+            toDisp+= i + " name: " +player.getInv().get(i).name+"\n";
         }
         inventory.setText(toDisp);
     }
