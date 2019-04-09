@@ -73,6 +73,15 @@ public class WebSocketServer {
         		throw new IOException();
         	}
         }
+        
+        if(command.equals("CHAT")) {
+        	String remaining = "CHAT " + account.getUsername() + ": ";
+        	while(in.hasNext()) {
+        		remaining += in.next() + " ";
+        	}
+        	broadcast(remaining);
+        }
+        
         else {
             in.close();
         	throw new IOException();
@@ -85,6 +94,19 @@ public class WebSocketServer {
         accountSessionMap.remove(sessionAccountMap.get(session));
         sessionAccountMap.remove(session);
     }
-
+    
+    private static void broadcast(String message) 
+  	      throws IOException 
+  {	  
+  	sessionAccountMap.forEach((session, account) -> {
+  		synchronized (session) {
+	            try {
+	                session.getBasicRemote().sendText(message);
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    });
+	}
 
 }
