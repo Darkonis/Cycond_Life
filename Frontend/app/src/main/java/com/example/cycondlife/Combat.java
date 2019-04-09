@@ -25,7 +25,8 @@ public class Combat extends AppCompatActivity {
     Button item;
     TextView player_stuff;
     TextView monster_stuff;
-    ScrollView inventory;
+
+    TextView inventory;
     final static Player player = Player.get_instance();
     static Character monster;
     static Game g;
@@ -94,12 +95,17 @@ public class Combat extends AppCompatActivity {
     private void reset()
     {
         inventory.setVisibility(View.GONE);
+        inventory.setText("");
     }
     private void display_inventory()
     {
         inventory.setVisibility(View.VISIBLE);
-        //inventory.addView();
-
+        String toDisp="Your inventory contains:\n";
+        for(int i=0;i<player.getInv().size();i++)
+        {
+            toDisp+=i + "name: " +player.getInv().get(i).name+"\n";
+        }
+        inventory.setText(toDisp);
     }
     private static int do_combat(Character play, Character mon, Context c)
     {

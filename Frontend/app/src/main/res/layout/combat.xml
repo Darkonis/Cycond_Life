@@ -78,17 +78,20 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp" />
 
-    <LinearLayout
-        android:id="@+id/inventorylist"
-        android:layout_width="395dp"
-        android:layout_height="396dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
+    <TextView
+        android:id="@+id/inventoryList"
+        android:layout_width="386dp"
+        android:layout_height="266dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="60dp"
+        android:text="TextView"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/attack"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"></LinearLayout>
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
