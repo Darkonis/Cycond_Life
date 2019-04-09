@@ -27,10 +27,9 @@ public class ConsumableTest {
 
     @Test
     public void use() {
-        i.add(new Consumable(001,"Test Item","This shouldn't be seen",0,new Dice("3+3d8"),0,"The item was used"))
+        i.add(new Consumable(001,"Test Item","This shouldn't be seen",0,new Dice("3+3d8"),0,"The item was used"));
+        //TODO IMPLEMENT use item
 
-    p.addItem();
-        p.addItem();
     }
 
     @Test
