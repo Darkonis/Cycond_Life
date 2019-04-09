@@ -77,7 +77,7 @@ public class Combat extends AppCompatActivity {
         button_flee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                combatClient.send("SYSTEM:"+ Player.get_instance().getUsername()+"has fled from " + monster.getName());
+                combatClient.send("SYSTEM: "+ Player.get_instance().getUsername()+" has fled from " + monster.getName());
                 combatClient.close();
                 finishActivity(3);//flee combat
                 finish();
@@ -91,7 +91,7 @@ public class Combat extends AppCompatActivity {
                if(ret ==1)
                {
                    Log.i("Cycond Life","Player has won combat");
-                   combatClient.send("SYSTEM:"+ Player.get_instance().getUsername()+"defeated " + monster.getName());
+                   combatClient.send("SYSTEM: "+ Player.get_instance().getUsername()+" defeated " + monster.getName());
                    combatClient.send("COMBAT VICTORY");
                    combatClient.close();
                    finishActivity(1);
