@@ -1,5 +1,7 @@
 package com.example.cycondlife;
 
+import android.widget.Switch;
+
 public class Consumable extends Item {
 
 
@@ -20,7 +22,7 @@ public class Consumable extends Item {
 
     public void use()
     {
-        //TODO implement use
+
     }
     public String getUseMsg() {
         return useMsg;
