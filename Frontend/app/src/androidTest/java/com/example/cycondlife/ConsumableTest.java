@@ -15,7 +15,7 @@ public class ConsumableTest {
     Player p;
     ArrayList<Item> i = new ArrayList<>();
     Consumable t = new Consumable(001,"Test Item","This shouldn't be seen",0,new Dice("3+3d8"),0,"The item was used");
-    Consumable t2 = new Consumable(-1,"Test failure Item","breaking stuff",-1,new Dice("3+3d8"),0,"The item broke");
+    Consumable t2 = new Consumable(-1,"Test failure Item","breaking stuff",-1,new Dice("3+3d8"),3,"The item broke");
 
     @Before
     public void setUp() throws Exception {
@@ -41,13 +41,12 @@ public class ConsumableTest {
 
     @Test
     public void getUseMsg() {
+        assertEquals(true,"The item was used".equals(t.getUseMsg()));
     }
 
     @Test
     public void getDuration() {
-    }
-
-    @Test
-    public void getEffect() {
+    assertEquals(0,t.getDuration());
+    assertEquals(3,t2.getDuration());
     }
 }
