@@ -50,12 +50,16 @@ public class Combat extends AppCompatActivity {
         URI tmp;
 
         try {
-            tmp=new URI("ws://cs309-sd-6.misc.iastate.edu:8080/websocket/thisisausername");
+            tmp=new URI("ws://cs309-sd-6.misc.iastate.edu:8080/websocket/"+player.getUsername());
             connectWebSocket(tmp);
         }
         catch(Exception e)
         {
             Log.i("Cycond Error","setup error");
+        }
+        if(!combatClient.isOpen())
+        {
+            Log.i("Cy Error","chat didn't open");
         }
 
     }
@@ -169,7 +173,7 @@ public class Combat extends AppCompatActivity {
                if(ret ==1)
                {
                    Log.i("Cycond Life","Player has won combat");
-                   sendMsg("SYSTEM: "+ Player.get_instance().getUsername()+" defeated " + monster.getName());
+                   sendMsg("SYSTEM "+ Player.get_instance().getUsername()+" defeated " + monster.getName());
                    sendMsg("COMBAT VICTORY "+ monster.getId());
                    combatClient.close();
                    finishActivity(1);
@@ -202,7 +206,7 @@ public class Combat extends AppCompatActivity {
             {
                 dmg*=player.getCritMult();
             }
-            sendMsg("SYSTEM:"+ Player.get_instance().getUsername()+"deals "+ dmg+" to the" + mon.getName());
+            sendMsg("SYSTEM "+ Player.get_instance().getUsername()+"deals "+ dmg+" to the" + mon.getName());
             mon.take_dmg(dmg);
         }
 
@@ -212,7 +216,7 @@ public class Combat extends AppCompatActivity {
             int dmg =mon.BS;
             dmg *=(1-player.getDmgReduct());
             player.take_dmg(dmg,c);
-            sendMsg("SYSTEM:"+ Player.get_instance().getUsername()+"takes "+ dmg+" from" + mon.getName());
+            sendMsg("SYSTEM "+ Player.get_instance().getUsername()+"takes "+ dmg+" from" + mon.getName());
         }
 
         if(play.resolve<=0) return 2;
