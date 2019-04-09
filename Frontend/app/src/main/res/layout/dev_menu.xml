@@ -138,7 +138,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="stat name"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:visibility="gone" />
 
     <EditText
         android:id="@+id/accountId"
@@ -146,7 +147,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="accountId"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:visibility="gone" />
 
     <EditText
         android:id="@+id/value"
@@ -154,11 +156,33 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="value"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/submit_stat_change"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="submit change" />
+        android:text="submit change"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/addItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="add item" />
+
+    <EditText
+        android:id="@+id/itemID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <Button
+        android:id="@+id/submitItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="submit" />
 </LinearLayout>

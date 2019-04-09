@@ -1,10 +1,8 @@
 package com.example.cycondlife;
 
-import android.widget.Switch;
-
 public class Consumable extends Item {
 
-
+    private final int  health = 0x0;
    private Dice effect;
    private int duration;
    private String useMsg;
@@ -22,9 +20,16 @@ public class Consumable extends Item {
 
     public boolean use()
     {
-        if(type >=0) return true;
-        else return false;
-
+        boolean used = true;
+        switch (type)
+        {
+            case health:
+            Player.get_instance().changeResolve(effect.roll());
+            break;
+            default:
+                used=false;
+        }
+        return used;
     }
     public String getUseMsg() {
         return useMsg;

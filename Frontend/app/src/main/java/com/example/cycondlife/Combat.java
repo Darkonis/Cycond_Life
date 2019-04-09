@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -22,8 +23,15 @@ public class Combat extends AppCompatActivity {
     Button attack;
     Button tech;
     Button item;
+    Button submitItem;
+
     TextView player_stuff;
     TextView monster_stuff;
+    TextView inventory;
+    TextView itemID;
+
+
+
     final static Player player = Player.get_instance();
     static Character monster;
     static Game g;
@@ -48,12 +56,22 @@ public class Combat extends AppCompatActivity {
         attack = findViewById(R.id.attack);
         player_stuff=findViewById(R.id.health);
         monster_stuff=findViewById(R.id.eHealth);
+        inventory = findViewById(R.id.inventoryList);
+        item= findViewById(R.id.item);
+        itemID = findViewById(R.id.itemID);
+        submitItem = findViewById(R.id.useItem);
     }
     /*
     TODO adjust so that online health is updated at the end of combat
      */
-    private void setup_buttons()
-    {
+    private void setup_buttons() {
+        item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reset();
+                display_inventory();
+            }
+        });
         button_flee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,27 +82,64 @@ public class Combat extends AppCompatActivity {
         attack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               int ret= do_combat(player,monster,getApplicationContext());
-               update_status();
-               if(ret ==1)
-               {
-                   Log.i("Cycond Life","Player has won combat");
-                   finishActivity(1);
+                reset();
+                int ret = do_combat(player, monster, getApplicationContext());
+                update_status();
+                if (ret == 1) {
+                    Log.i("Cycond Life", "Player has won combat");
+                    finishActivity(1);
 
-                   finish();
-               }
-               if(ret ==2 )
-               {
-                   Log.i("Cycond Life","Player has died");
-                   finishActivity(2);
-                   finish();
-               }
-               else
-               {
-                   Log.i("Cycond Life","Player Health is :" +player.getResolve() + " Enemy hp is: " + monster.getResolve());
-               }
+                    finish();
+                }
+                if (ret == 2) {
+                    Log.i("Cycond Life", "Player has died");
+                    finishActivity(2);
+                    finish();
+                } else {
+                    Log.i("Cycond Life", "Player Health is :" + player.getResolve() + " Enemy hp is: " + monster.getResolve());
+                }
             }
         });
+        submitItem.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(itemID.getText().toString().equals(""))
+                {
+                    return;
+                }
+                if(player.getInv().size()<=Integer.parseInt(itemID.getText().toString())||Integer.parseInt(itemID.getText().toString())<0)
+                {
+                    return;
+                }
+                Item i = player.getInv().get(Integer.parseInt(itemID.getText().toString()));
+               // if()
+                {
+                    ((Consumable) i).use();
+                    update_status();
+                }
+                player.getInv().remove(i);
+        reset();
+            }
+        });
+    }
+    private void reset()
+    {
+        inventory.setVisibility(View.GONE);
+        inventory.setText("");
+        itemID.setVisibility(View.GONE);
+        submitItem.setVisibility(View.GONE);
+    }
+    private void display_inventory()
+    {
+        submitItem.setVisibility(View.VISIBLE);
+        itemID.setVisibility(View.VISIBLE);
+        inventory.setVisibility(View.VISIBLE);
+        String toDisp="Your inventory contains:\n";
+        for(int i=0;i<player.getInv().size();i++)
+        {
+            toDisp+= i + " name: " +player.getInv().get(i).name+"\n";
+        }
+        inventory.setText(toDisp);
     }
     private static int do_combat(Character play, Character mon, Context c)
     {
