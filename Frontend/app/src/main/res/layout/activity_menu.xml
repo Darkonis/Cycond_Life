@@ -71,7 +71,7 @@
         android:layout_height="56dp"
         android:layout_marginTop="20dp"
         android:background="@color/colorPrimaryDark"
-        android:text="Friends"
+        android:text="Chat"
         android:textColor="@color/colorPrimary"
         app:fontFamily="@font/carter_one"
         app:layout_constraintEnd_toEndOf="parent"

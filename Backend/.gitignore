@@ -38,6 +38,8 @@
 .DS_Store
 
 # Maven
+logs/
+*.log
 log/
 target/
 bash.sh
