@@ -112,12 +112,13 @@ public class Combat extends AppCompatActivity {
                     return;
                 }
                 Item i = player.getInv().get(Integer.parseInt(itemID.getText().toString()));
-                if(i.getClass().toString().equals("Consumable"))
+               // if()
                 {
                     ((Consumable) i).use();
                     update_status();
                 }
                 player.getInv().remove(i);
+        reset();
             }
         });
     }
