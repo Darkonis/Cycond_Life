@@ -183,7 +183,7 @@ public class Combat extends AppCompatActivity {
                if(ret ==2 )
                {
                    Log.i("Cycond Life","Player has died");
-                   sendMsg("SYSTEM "+ Player.get_instance().getUsername()+"has been defeated by" + monster.getName());
+                   sendMsg("SYSTEM "+ Player.get_instance().getUsername()+" has  been defeated by" + monster.getName());
                    sendMsg("COMBAT LOSS "+ monster.getId());
                    combatClient.close();
                    finishActivity(2);
@@ -206,7 +206,7 @@ public class Combat extends AppCompatActivity {
             {
                 dmg*=player.getCritMult();
             }
-            sendMsg("SYSTEM "+ Player.get_instance().getUsername()+"deals "+ dmg+" to the" + mon.getName());
+            sendMsg("SYSTEM "+ Player.get_instance().getUsername()+" deals "+ dmg+" to the" + mon.getName());
             mon.take_dmg(dmg);
         }
 
@@ -216,7 +216,7 @@ public class Combat extends AppCompatActivity {
             int dmg =mon.BS;
             dmg *=(1-player.getDmgReduct());
             player.take_dmg(dmg,c);
-            sendMsg("SYSTEM "+ Player.get_instance().getUsername()+"takes "+ dmg+" from" + mon.getName());
+            sendMsg("SYSTEM "+ Player.get_instance().getUsername()+" takes "+ dmg+" from" + mon.getName());
         }
 
         if(play.resolve<=0) return 2;
