@@ -13,12 +13,16 @@ import static org.junit.Assert.*;
 public class ConsumableTest {
 
     Player p;
-    ArrayList<Item> i = new ArrayList();
+    ArrayList<Item> i = new ArrayList<>();
+    Consumable t = new Consumable(001,"Test Item","This shouldn't be seen",0,new Dice("3+3d8"),0,"The item was used");
+    Consumable t2 = new Consumable(-1,"Test failure Item","breaking stuff",-1,new Dice("3+3d8"),0,"The item broke");
+
     @Before
     public void setUp() throws Exception {
         Player.createTestInstance("Test",01);
         p=Player.get_instance();
-
+        p.addItem(t);
+        p.addItem(t2);
     }
 
     @After
@@ -27,8 +31,11 @@ public class ConsumableTest {
 
     @Test
     public void use() {
-        i.add(new Consumable(001,"Test Item","This shouldn't be seen",0,new Dice("3+3d8"),0,"The item was used"));
-        //TODO IMPLEMENT use item
+            i.add(t);
+        i.add(t2);
+        assertEquals(((Consumable) i.get(0)).use(),true);
+        assertEquals(((Consumable) i.get(1)).use(),false);
+        assertFalse(p.getInv().contains(t)); //This will fail until items are consumed by use
 
     }
 
