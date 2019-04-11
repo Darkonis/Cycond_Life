@@ -2,12 +2,12 @@ package edu.se309.app.backend.socket;
 
 
 import edu.se309.app.backend.rest.entity.Account;
-import edu.se309.app.backend.rest.service.AccountServiceImplementation;
 import edu.se309.app.backend.rest.service.interfaces.AccountService;
 import edu.se309.app.backend.rest.service.interfaces.MonsterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.web.socket.server.standard.SpringConfigurator;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -111,12 +111,12 @@ public class WebSocketServer {
         this.destroy();
     }
 
-    public Account getAccount() throws IOException{
+    public Account getAccount() throws IOException {
         session.getBasicRemote().sendText(account.toString());
         return account;
     }
 
-    public Session getSession() throws IOException{
+    public Session getSession() throws IOException {
         session.getBasicRemote().sendText(session.toString());
         return session;
     }
@@ -141,16 +141,16 @@ public class WebSocketServer {
         broadcast(chatMessage);
     }
 
-    public void DIRECT_MESSAGE(String payload) throws IOException{
+    public void DIRECT_MESSAGE(String payload) throws IOException {
         int indexOfSplit = payload.indexOf(" ");
-        Account receivingUser = accountService.findByUsername(payload.substring(0,indexOfSplit));
+        Account receivingUser = accountService.findByUsername(payload.substring(0, indexOfSplit));
         Session receivingSession = accountSessionMap.get(receivingUser);
         String chatMessage = "DM " + account.getUsername() + ": " + payload.substring(indexOfSplit + 1);
         receivingSession.getBasicRemote().sendText(chatMessage);
     }
 
     @Scheduled(fixedRate = 6000)
-    public void PingClientForGeo() throws IOException{
+    public void PingClientForGeo() throws IOException {
         session.getBasicRemote().sendText("RequestGeo");
     }
 

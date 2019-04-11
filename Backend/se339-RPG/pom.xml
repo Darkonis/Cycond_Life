@@ -13,9 +13,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+
     <groupId>edu.se309.app.backend</groupId>
     <artifactId>se309-RPG</artifactId>
-    <version>0.3.0-SNAPSHOT</version>
+    <version>0.4.0-SNAPSHOT</version>
     <name>se309-RPG</name>
     <description>The backend for an AR RPG for SE309</description>
 
@@ -149,6 +150,25 @@
 
         </plugins>
     </build>
+
+
+
+    <profiles>
+    <profile>
+        <id>production</id>
+        <build>
+            <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/java/edu/se309/app/backend</directory>
+                <excludes>
+                    <exclude>/websocket/**</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        </build>
+    </profile>
+</profiles>
 
 </project>
 

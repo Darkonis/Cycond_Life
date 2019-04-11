@@ -1,8 +1,10 @@
 package edu.se309.app.backend;
 
 
+import edu.se309.app.backend.socket.WebSocketConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
