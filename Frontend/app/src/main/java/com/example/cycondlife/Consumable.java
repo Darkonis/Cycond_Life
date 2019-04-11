@@ -3,7 +3,12 @@ package com.example.cycondlife;
 public class Consumable extends Item {
 
     private final int  health = 0x0;
-   private Dice effect;
+    private final int tinkering = 0x1;
+    private final int  creativity = 0x2;
+    private final int presentation= 0x3;
+    private final int  criticalThinking = 0x4;
+    private final int special= 0x5;
+    private Dice effect;
    private int duration;
    private String useMsg;
 
@@ -26,6 +31,14 @@ public class Consumable extends Item {
             case health:
             Player.get_instance().changeResolve(effect.roll());
             break;
+            case tinkering:
+                Player.get_instance().adjustTinkeringPoints(effect.roll());
+                break;
+            case criticalThinking:
+            case creativity:
+            case presentation:
+                Player.get_instance().addActiveItem(this);
+                break;
             default:
                 used=false;
         }

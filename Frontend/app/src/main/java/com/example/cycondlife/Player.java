@@ -60,6 +60,7 @@ public class Player extends Character {
     private double tinkMult=1.0;
     private double dodgeChance=15;
     private ArrayList<Item> inv = new ArrayList<>();
+    private ArrayList<Item> activeItems = new ArrayList<>();
 
     private int itemCount=0;
 
@@ -107,6 +108,10 @@ public class Player extends Character {
         experiance+=val;
     }
 
+    public void addActiveItem(Item i)
+    {
+        activeItems.add(i);
+    }
     private Player(String user, int idt)
     {
         super();
@@ -269,41 +274,6 @@ public class Player extends Character {
                     });
         r.add(o);
     }
-    private void get_users(final Callback_handler c) {
-        final RequestQueue requestQueue = Volley.newRequestQueue(context);
-        // Initialize a new JsonArrayRequest instance
-
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                "http://cs309-sd-6.misc.iastate.edu:8080/api/stats/",
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        // Do something with response
-                        //mTextView.setText(response.toString());
-
-                        // Process the JSON
-                        Log.i("Cycond test", "stats request succsessful");
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
-                                c.get_response(response);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Do something when error occurred
-                        Log.i("Cycond Life", "stats request error");
-                        Log.i("Cycond Life", error.toString());
-                    }
-                }
-        );
-        requestQueue.add(jsonArrayRequest);
-    }
 
     public ChatSender getSender() {
         return sender;
@@ -332,6 +302,11 @@ public class Player extends Character {
         }
         Json_handler j = new Json_handler(context);
         j.update_stat(Player.get_instance().id,"resolve",resolve);
+    }
+    public void adjustTinkeringPoints(int i)
+    {
+        tinkPoints+=i;
+        if((int) Math.round(1.5*critical_thinking)<tinkPoints) tinkPoints=(int) Math.round(1.5*critical_thinking);
     }
 
 }
