@@ -60,7 +60,7 @@ public class Player extends Character {
     private double tinkMult=1.0;
     private double dodgeChance=15;
     private ArrayList<Item> inv = new ArrayList<>();
-    private ArrayList<Item> activeItems = new ArrayList<>();
+    private ArrayList<Consumable> activeItems = new ArrayList<>();
 
     private int itemCount=0;
 
@@ -110,7 +110,11 @@ public class Player extends Character {
 
     public void addActiveItem(Item i)
     {
-        activeItems.add(i);
+        activeItems.add((Consumable) i);
+    }
+    public ArrayList<Consumable> getActives()
+    {
+        return activeItems;
     }
     private Player(String user, int idt)
     {

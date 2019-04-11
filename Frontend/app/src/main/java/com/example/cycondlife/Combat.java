@@ -30,7 +30,7 @@ public class Combat extends AppCompatActivity {
     TextView inventory;
     TextView itemID;
 
-
+   static Random rand =new Random(System.currentTimeMillis());
 
     final static Player player = Player.get_instance();
     static Character monster;
@@ -119,6 +119,7 @@ public class Combat extends AppCompatActivity {
                 }
                 player.getInv().remove(i);
         reset();
+        endTurn(getApplicationContext());
             }
         });
     }
@@ -145,7 +146,6 @@ public class Combat extends AppCompatActivity {
     {
         //TODO bring up the idea of RNG based on class
         Dice dmg_rng = new Dice("1+1d4");
-        Random rand =new Random();
         if(rand.nextInt()%100+1<=player.getHitChance()) {
             int dmg = play.BS + dmg_rng.roll();
             if(rand.nextInt()%100+1<=player.getCritChance())
@@ -157,15 +157,31 @@ public class Combat extends AppCompatActivity {
         }
 
         if(mon.resolve <=0) return 1;
+
+        endTurn(c);
+        if(play.resolve<=0) return 2;
+        return 0;
+    }
+    private static void endTurn(Context c)
+    {
         if(rand.nextInt()%100+1>=player.getDodgeChance())
         {
-            int dmg =mon.BS;
+            int dmg =monster.BS;
             dmg *=(1-player.getDmgReduct());
             player.take_dmg(dmg,c);
         }
-
-        if(play.resolve<=0) return 2;
-        return 0;
+        for(int i=0; i<Player.get_instance().getActives().size(); i++)
+        {
+            if(Player.get_instance().getActives().get(i).getDuration()==0)
+            {
+                Player.get_instance().getActives().remove(i);
+                i--;
+            }
+            else
+            {
+                Player.get_instance().getActives().get(i).decreaseDuration();
+            }
+        }
     }
     private void update_status()
     {

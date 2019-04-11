@@ -50,6 +50,7 @@ public class Consumable extends Item {
     public int getDuration() {
         return duration;
     }
+    public void decreaseDuration() {duration--;}
     public Dice getEffect() {
         return effect;
     }
