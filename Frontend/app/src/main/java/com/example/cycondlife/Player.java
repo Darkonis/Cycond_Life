@@ -2,7 +2,6 @@ package com.example.cycondlife;
 
 import android.util.Log;
 
-import org.java_websocket.client.WebSocketClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,7 +11,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -56,9 +54,10 @@ public class Player extends Character {
     private double critMult =2;
     private double dmgReduct =.1;
     private double BS =10;
-    private int tinkPoints=50;
+    private int tinkPointsMax =50;
     private double tinkMult=1.0;
     private double dodgeChance=15;
+    private int tinkeringPoints=-1;
     private ArrayList<Item> inv = new ArrayList<>();
     private ArrayList<Consumable> activeItems = new ArrayList<>();
 
@@ -92,10 +91,11 @@ public class Player extends Character {
     {
         return BS;
     }
-    public int getTinkPoints()
+    public int getTinkPointsMax()
     {
-        return tinkPoints;
+        return tinkPointsMax;
     }
+
     public double getTinkMult()
     {
         return tinkMult;
@@ -225,8 +225,37 @@ public class Player extends Character {
     {
         return inv.remove(index);
     }
+    public void parseActives()
+    {
+        for(int i=0;i<activeItems.size();i++)
+        {
+            Consumable c=activeItems.get(i);
+            switch (c.type)
+            {
+                case Consumable.creativity:
+                {
+                    creativity+=c.getEffect().roll();
+                    break;
+                }
+                case Consumable.presentation: {
+                    presentation += c.getEffect().roll();
+                    break;
+                }
+                case Consumable.criticalThinking: {
+                    critical_thinking += c.getEffect().roll();
+
+                    break;
+                }
+                default:
+                    Log.i("Cycond Error","unhandled item type please contact the developer");
+                break;
+
+            }
+        }
+    }
     public void update_substats()
     {
+        parseActives();
         hitChance =50+creativity+critical_thinking;
         if(hitChance >99) hitChance =99;
         sight =.001+(critical_thinking+0.0)/10000;
@@ -234,9 +263,10 @@ public class Player extends Character {
         critMult= 2+ (presentation+critical_thinking)/500.0;
         dmgReduct = .01 +(presentation+critChance)/100.0;
         BS=(presentation+critical_thinking)/100.0;
-        tinkPoints=(int) Math.round(1.5*critical_thinking);
+        tinkPointsMax =(int) Math.round(1.5*critical_thinking);
         tinkMult=.9+(creativity+critical_thinking)/1500.0;
         dodgeChance= 15+(creativity/2000.0);
+        if(tinkeringPoints==-1) tinkeringPoints=tinkPointsMax;
     }
 
     public static synchronized void create_the_instance(String user,int id,Context c)
@@ -309,8 +339,8 @@ public class Player extends Character {
     }
     public void adjustTinkeringPoints(int i)
     {
-        tinkPoints+=i;
-        if((int) Math.round(1.5*critical_thinking)<tinkPoints) tinkPoints=(int) Math.round(1.5*critical_thinking);
+        tinkPointsMax +=i;
+        if((int) Math.round(1.5*critical_thinking)< tinkPointsMax) tinkPointsMax =(int) Math.round(1.5*critical_thinking);
     }
 
 }

@@ -2,12 +2,13 @@ package com.example.cycondlife;
 
 public class Consumable extends Item {
 
-    private final int  health = 0x0;
-    private final int tinkering = 0x1;
-    private final int  creativity = 0x2;
-    private final int presentation= 0x3;
-    private final int  criticalThinking = 0x4;
-    private final int special= 0x5;
+    //TODO make an enum
+    public static final int  health = 0x0;
+    public static final int tinkering = 0x1;
+    public static final int  creativity = 0x2;
+    public static final int presentation= 0x3;
+    public static final int  criticalThinking = 0x4;
+    public static final int special= 0x5;
     private Dice effect;
    private int duration;
    private String useMsg;

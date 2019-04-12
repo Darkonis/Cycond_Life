@@ -117,7 +117,7 @@ public class Combat extends AppCompatActivity {
                     ((Consumable) i).use();
                     update_status();
                 }
-                player.getInv().remove(i);
+                player.removeItem(Integer.parseInt(itemID.getText().toString()));
         reset();
         endTurn(getApplicationContext());
             }
@@ -159,9 +159,15 @@ public class Combat extends AppCompatActivity {
         if(mon.resolve <=0) return 1;
 
         endTurn(c);
-        if(play.resolve<=0) return 2;
+        if(play.resolve<=0) {
+
+            return 2;
+        }
         return 0;
     }
+    /*
+    Do the monsters attack and decrease the time for any consumables
+     */
     private static void endTurn(Context c)
     {
         if(rand.nextInt()%100+1>=player.getDodgeChance())
