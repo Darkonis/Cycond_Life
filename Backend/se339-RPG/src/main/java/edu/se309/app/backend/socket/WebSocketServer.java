@@ -93,11 +93,9 @@ public class WebSocketServer {
         try {
             if (payload == null) {
                 Method method = WebSocketServer.class.getMethod(methodName);
-                System.out.println("MADE IT TO THE IF STATEMENT");
                 method.invoke(this);
             } else {
                 Method method = WebSocketServer.class.getMethod(methodName, String.class);
-                System.out.println("MADE IT TO THE ELSE STATEMENT");
                 method.invoke(this, payload);
             }
         } catch (Exception e) {
