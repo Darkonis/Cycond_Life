@@ -339,8 +339,8 @@ public class Player extends Character {
     }
     public void adjustTinkeringPoints(int i)
     {
-        tinkPointsMax +=i;
-        if((int) Math.round(1.5*critical_thinking)< tinkPointsMax) tinkPointsMax =(int) Math.round(1.5*critical_thinking);
+        tinkeringPoints +=i;
+        if((int) Math.round(1.5*critical_thinking)< tinkeringPoints) tinkeringPoints =(int) Math.round(1.5*critical_thinking);
     }
 
 }
