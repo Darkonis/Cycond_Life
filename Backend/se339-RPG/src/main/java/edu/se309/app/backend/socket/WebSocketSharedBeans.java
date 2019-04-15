@@ -2,7 +2,7 @@ package edu.se309.app.backend.socket;
 
 import edu.se309.app.backend.rest.controller.*;
 
-class WebSocketSharedObjects {
+class WebSocketSharedBeans {
 
     public static AccountController getAccountController() {
         return WebSocketAutoWire.getBean(AccountController.class);
@@ -23,7 +23,6 @@ class WebSocketSharedObjects {
 
     public static MonsterStatController getMonsterStatController() {
         return WebSocketAutoWire.getBean(MonsterStatController.class);
-
     }
 
     public static StatsController getStatsController() {
