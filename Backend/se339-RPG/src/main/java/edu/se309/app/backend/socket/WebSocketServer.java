@@ -1,6 +1,7 @@
 package edu.se309.app.backend.socket;
 
 
+import com.google.gson.Gson;
 import edu.se309.app.backend.rest.controller.AccountController;
 import edu.se309.app.backend.rest.entity.Account;
 import lombok.SneakyThrows;
@@ -14,6 +15,8 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.lang.reflect.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static edu.se309.app.backend.socket.WebSocketSharedSingleton.*;
 
@@ -62,15 +65,43 @@ public class WebSocketServer {
     }
 
     @SneakyThrows //TODO
-    private void parameterMethodCall(String message, int indexOfSplit) {
+    public void parameterMethodCall(String message, int indexOfSplit) {
         String methodName = message.substring(0, indexOfSplit).trim();
         String[] parameters = message.substring(indexOfSplit + 5).split("-,-");
         Method method = WebSocketSharedSingleton.getMethod(methodName);
         Class[] parametersClasses = method.getParameterTypes();
-
-        for (Class c: parametersClasses){
-
+        List<Object> parameterValues = new ArrayList<>();
+        for (int i = 0; i < parametersClasses.length; i++){
+            if (parametersClasses[i].isPrimitive()){
+                    if (parametersClasses[i] == int.class) {
+                        parameterValues.add(Integer.parseInt(parameters[i]));
+                    }  else if (parametersClasses[i] == boolean.class) {
+                        parameterValues.add(Boolean.parseBoolean(parameters[i]));
+                    }  else if (parametersClasses[i] == byte.class) {
+                        parameterValues.add(Byte.parseByte(parameters[i]));
+                    } else if (parametersClasses[i] == short.class) {
+                        parameterValues.add(Short.parseShort(parameters[i]));
+                    } else if (parametersClasses[i] == long.class) {
+                        parameterValues.add(Long.parseLong(parameters[i]));
+                    } else if (parametersClasses[i] == float.class) {
+                        parameterValues.add(Float.parseFloat(parameters[i]));
+                    } else if (parametersClasses[i] == double.class) {
+                        parameterValues.add(Double.parseDouble(parameters[i]));
+                    }
+            } else {
+                Gson gson = new Gson();
+                Object o = gson.fromJson(parameters[i],parametersClasses[i]);
+                parameterValues.add(o);
+            }
         }
+        if (Modifier.isStatic(method.getModifiers())){
+            Object o = method.invoke(null, parameterValues);
+            session.getBasicRemote().sendText(method.getReturnType().cast(o).toString());
+        } else {
+            Object o = WebSocketSharedSingleton.getSavedObject(method.getDeclaringClass().getName());
+            method.invoke(method.getReturnType().cast(o),parameterValues);
+        }
+
 }
 
     @OnClose
