@@ -18,7 +18,10 @@ public class BaseItem {
 
     @Column(name = "type_id")
     private int typeId;
-
+    
+    @Column(name = "value")
+    private int value;
+    
     public int getId() {
         return id;
     }
@@ -50,7 +53,14 @@ public class BaseItem {
     public void setTypeId(int typeId) {
         this.typeId = typeId;
     }
-
+    
+    public int getValue() {
+    	return value;
+    }
+    
+    public void setValue(int value) {
+    	this.value = value;
+    }
     @Override
     public String toString() {
         return "BaseItem [id=" + id + ", name=" + name + ", type=" + type + ", typeId=" + typeId + "]";

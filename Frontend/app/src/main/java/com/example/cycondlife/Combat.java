@@ -30,7 +30,7 @@ public class Combat extends AppCompatActivity {
     TextView inventory;
     TextView itemID;
 
-   static Random rand =new Random(System.currentTimeMillis());
+
 
     final static Player player = Player.get_instance();
     static Character monster;
@@ -115,11 +115,10 @@ public class Combat extends AppCompatActivity {
                // if()
                 {
                     ((Consumable) i).use();
-                    player.update_substats();
+                    update_status();
                 }
-                player.removeItem(Integer.parseInt(itemID.getText().toString()));
+                player.getInv().remove(i);
         reset();
-        endTurn(getApplicationContext());
             }
         });
     }
@@ -146,6 +145,7 @@ public class Combat extends AppCompatActivity {
     {
         //TODO bring up the idea of RNG based on class
         Dice dmg_rng = new Dice("1+1d4");
+        Random rand =new Random();
         if(rand.nextInt()%100+1<=player.getHitChance()) {
             int dmg = play.BS + dmg_rng.roll();
             if(rand.nextInt()%100+1<=player.getCritChance())
@@ -157,46 +157,15 @@ public class Combat extends AppCompatActivity {
         }
 
         if(mon.resolve <=0) return 1;
-
-        endTurn(c);
-        if(play.resolve<=0) {
-
-            return 2;
-        }
-        return 0;
-    }
-    /*
-    Do the monsters attack and decrease the time for any consumables
-     */
-    private static void endTurn(Context c)
-    {
-
         if(rand.nextInt()%100+1>=player.getDodgeChance())
         {
-            int dmg =monster.BS;
+            int dmg =mon.BS;
             dmg *=(1-player.getDmgReduct());
             player.take_dmg(dmg,c);
         }
-        for(int i=0; i<Player.get_instance().getActives().size(); i++)
-        {
-            Log.i("Cycond Info", "Duration:"+Player.get_instance().getActives().get(i).getDuration());
-            Consumable t =Player.get_instance().getActives().get(i);
-            if(t.getDuration()==0)
-            {
-                player.endItem(t);
-                Player.get_instance().getActives().remove(i);
 
-                i--;
-            }
-            else
-            {
-                player.endItem(t);
-                t.decreaseDuration();
-            }
-        }
-        Log.i("Cycond Info","creativity is:"+player.getCreativity());
-        player.update_substats();
-        Log.i("Cycond Info","creativity is:"+player.getCreativity());
+        if(play.resolve<=0) return 2;
+        return 0;
     }
     private void update_status()
     {
