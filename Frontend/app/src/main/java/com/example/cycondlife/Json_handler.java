@@ -1,6 +1,7 @@
 package com.example.cycondlife;
 
 import android.os.AsyncTask;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -41,10 +42,11 @@ public class   Json_handler {
    volatile ArrayList<String[]> t;
     private final String statlink="http://cs309-sd-6.misc.iastate.edu:8080/api/stats/updateStat/";
     private final String statlinkadd="http://cs309-sd-6.misc.iastate.edu:8080/api/stats/add/";
-
+    private static RequestQueue queue;
     Json_handler(Context c)
     {
         mContext =c;
+        queue= Volley.newRequestQueue(c);
     }
     public void delete_user(int user_id)
     {
@@ -201,6 +203,59 @@ public class   Json_handler {
                 Log.i("Cycond Life", "Error on push");
             }
             return "cool";
+        }
+    }
+    /**
+    make a generic Json call
+     type should be Request.Method.(this)
+     retType should be 0 for object
+     1 for array
+     anything else is currently unsupported and would need to be added
+     */
+    public static void makeCall(int type ,String url,final Callback_handler c,int retType, @Nullable JSONObject[] sendObjects)
+    {
+        JSONArray ar=  new JSONArray();
+        if(sendObjects!=null && sendObjects.length>1) {
+            for (int i = 0; i < sendObjects.length; i++) {
+                ar.put(sendObjects[i]);
+            }
+        }
+        else
+        {
+            ar=null;
+        }
+        JsonRequest t =null;
+        if(retType==1)
+        {
+            t = new JsonArrayRequest(type, url, ar, new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+                    c.get_response(response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("Cycond Error","Generic Json Request error");
+                }
+            });
+
+        }
+        else if(retType ==0)
+        {
+             t = new JsonObjectRequest(type, url, sendObjects[0], new Response.Listener<JSONObject>() {
+                 @Override
+                 public void onResponse(JSONObject response) {
+                     c.get_object_response(response);
+                 }
+             }, new Response.ErrorListener() {
+                 @Override
+                 public void onErrorResponse(VolleyError error) {
+                     Log.i("Cycond Error","Generic Json Request error");
+                 }
+             });
+        }
+        if(t !=null) {
+            queue.add(t);
         }
     }
 }

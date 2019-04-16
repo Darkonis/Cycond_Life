@@ -148,8 +148,9 @@ public class Login extends AppCompatActivity {
                                         Player.destroy_the_instance(); //remove the previous player if needed
                                     }
                                     Player.create_the_instance(userName,info.getInt("id"),getApplicationContext()); //on good login create the player object
-
+                                    Item.pullItemList();
                                     startActivity(openMenu);
+
                                 }
                             }
                         } catch (JSONException e) {

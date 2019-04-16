@@ -1,5 +1,14 @@
 package com.example.cycondlife;
 
+import android.util.Log;
+
+import com.android.volley.Request;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public abstract class Item {
@@ -29,5 +38,35 @@ public abstract class Item {
             }
         }
         return itemList.get(0);
+    }
+    public static void pullItemList()
+    {
+        itemList = new ArrayList<>();
+        Callback_handler c = new Callback_handler() {
+            @Override
+            public void get_response(JSONArray q) {
+                for(int i=0;i< q.length();i++)
+                {
+                    try {
+                    JSONObject a= q.getJSONObject(i);
+
+                        Item l = new Consumable(a.getInt("itemID"), a.getString("name"), a.getString("description"),
+                                a.getInt("type"), new Dice (a.getString("effect")), a.getInt("duration"), a.getString("useMSG"));
+                        itemList.add(l);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.i("Cycond Error","ItemList request parse error");
+                    }
+                }
+            }
+
+            @Override
+            public void get_object_response(JSONObject o) {
+                return;
+            }
+        };
+
+        Json_handler.makeCall(Request.Method.GET,"Get a url",c,1,null);
     }
 }
