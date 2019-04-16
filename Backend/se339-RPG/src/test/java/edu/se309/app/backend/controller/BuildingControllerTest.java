@@ -1,7 +1,8 @@
 package edu.se309.app.backend.controller;
 
-import edu.se309.app.backend.entity.Building;
-import edu.se309.app.backend.service.interfaces.BuildingService;
+import edu.se309.app.backend.rest.controller.BuildingController;
+import edu.se309.app.backend.rest.entity.Building;
+import edu.se309.app.backend.rest.service.interfaces.BuildingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,7 +35,7 @@ class BuildingControllerTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         building = mock(Building.class);
-         buildingService = buildingController.getService();
+        buildingService = buildingController.getService();
     }
 
     @Test
@@ -65,7 +66,7 @@ class BuildingControllerTest {
     public void deleteById() {
         String expected = "Deleted Building with id: " + building.getId();
         String actual = buildingController.deleteById(building.getId());
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test

@@ -51,6 +51,8 @@ public class dev_menu extends AppCompatActivity {
     private Button res_hp;
     private Button submit_stat;
     private Button update_stat;
+    private Button addItem;
+    private Button submitItem;
 
     private TextView user;
     private TextView pass;
@@ -62,6 +64,7 @@ public class dev_menu extends AppCompatActivity {
     private TextView stat_accountId;
     private TextView value;
     private TextView stat_name;
+    private TextView itemId;
     private Json_handler j;
 
     @Override
@@ -175,6 +178,20 @@ public class dev_menu extends AppCompatActivity {
                 Game.change_player_hp(100,getApplicationContext());
             }
         });
+        submitItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Player.get_instance().addItem(Item.findByID(Integer.parseInt(itemId.getText().toString())));
+            }
+        });
+        addItem.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                hide_entries();
+                itemId.setVisibility(View.VISIBLE);
+                submitItem.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     void hide_entries() {
@@ -193,6 +210,8 @@ public class dev_menu extends AppCompatActivity {
         submit_stat.setVisibility(View.GONE);
         stat_name.setVisibility(View.GONE);
         value.setVisibility(View.GONE);
+        submitItem.setVisibility(View.GONE);
+        itemId.setVisibility(View.GONE);
     }
     private void set_elements()
     {
@@ -223,6 +242,9 @@ public class dev_menu extends AppCompatActivity {
         stat_name =findViewById(R.id.statName);
                 update_stat=findViewById(R.id.updateStat);
                 stat_accountId = findViewById(R.id.accountId);
+        itemId = findViewById(R.id.itemID);
+        addItem = findViewById(R.id.addItem);
+        submitItem = findViewById(R.id.submitItem);
     }
     public void get_users(Context c) {
         final RequestQueue requestQueue = Volley.newRequestQueue(c);

@@ -3,10 +3,10 @@ package com.example.cycondlife;
 import java.util.Random;
 
 public class Dice {
-    int sides=0;
-    int base=0;
-    int number=0;
-    Random rand;
+    private int sides=0;
+    private int base=0;
+    private int number=0;
+    private Random rand = new Random(System.currentTimeMillis());
     public Dice(String s)
     {
         //CharSequence c = "d";
@@ -16,14 +16,14 @@ public class Dice {
         /*
         this might not work
          */
-         rand = new Random(System.currentTimeMillis());
+
     }
     public Dice(int base, int numb, int sides)
     {
         this.sides=sides;
         this.base=base;
         this.number=numb;
-        rand = new Random(System.currentTimeMillis());
+
     }
     public void setSeed(int seed)
     {

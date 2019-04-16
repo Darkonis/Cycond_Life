@@ -2,8 +2,14 @@ package com.example.cycondlife;
 
 public class Consumable extends Item {
 
-
-   private Dice effect;
+    //TODO make an enum
+    public static final int  health = 0x0;
+    public static final int tinkering = 0x1;
+    public static final int  creativity = 0x2;
+    public static final int presentation= 0x3;
+    public static final int  criticalThinking = 0x4;
+    public static final int special= 0x5;
+    private Dice effect;
    private int duration;
    private String useMsg;
 
@@ -18,9 +24,26 @@ public class Consumable extends Item {
         this.useMsg=use_msg;
     }
 
-    public void use()
+    public boolean use()
     {
-        //TODO implement use
+        boolean used = true;
+        switch (type)
+        {
+            case health:
+            Player.get_instance().changeResolve(effect.roll());
+            break;
+            case tinkering:
+                Player.get_instance().adjustTinkeringPoints(effect.roll());
+                break;
+            case criticalThinking:
+            case creativity:
+            case presentation:
+                Player.get_instance().addActiveItem(this.clone());
+                break;
+            default:
+                used=false;
+        }
+        return used;
     }
     public String getUseMsg() {
         return useMsg;
@@ -28,7 +51,13 @@ public class Consumable extends Item {
     public int getDuration() {
         return duration;
     }
+    public void decreaseDuration() {duration--;}
     public Dice getEffect() {
         return effect;
+    }
+    @Override
+    public Consumable clone()
+    {
+        return new Consumable(itemID,name,description,type,effect,duration,useMsg);
     }
 }

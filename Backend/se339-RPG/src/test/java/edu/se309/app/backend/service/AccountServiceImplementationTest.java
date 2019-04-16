@@ -1,7 +1,8 @@
 package edu.se309.app.backend.service;
 
-import edu.se309.app.backend.entity.Account;
-import edu.se309.app.backend.repository.AccountRepository;
+import edu.se309.app.backend.rest.entity.Account;
+import edu.se309.app.backend.rest.repository.AccountRepository;
+import edu.se309.app.backend.rest.service.AccountServiceImplementation;
 import org.hibernate.service.spi.ServiceException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -69,15 +70,15 @@ class AccountServiceImplementationTest {
         int id = account.getId();
         when(accountRepository.findById(id)).thenReturn(Optional.of(account));
         Account newAccount = accountService.findById(id);
-        assertEquals(account,newAccount);
+        assertEquals(account, newAccount);
 
     }
 
     @Test
     void nullCheck() {
         assertThrows(ServiceException.class,
-                ()-> accountService.nullCheck(Optional.empty(),"Empty Test"));
-        assertEquals(account,accountService.nullCheck(Optional.of(account),"Account Test"));
+                () -> accountService.nullCheck(Optional.empty(), "Empty Test"));
+        assertEquals(account, accountService.nullCheck(Optional.of(account), "Account Test"));
     }
 
     @Test
@@ -91,7 +92,7 @@ class AccountServiceImplementationTest {
         String email = account.getEmail();
         when(accountRepository.findByEmailIgnoreCase(email)).thenReturn(Optional.of(account));
         Account newAccount = accountService.findByEmail(email);
-        assertEquals(account,newAccount);
+        assertEquals(account, newAccount);
     }
 
     @Test
@@ -99,6 +100,6 @@ class AccountServiceImplementationTest {
         String username = account.getUsername();
         when(accountRepository.findByUsernameIgnoreCase(username)).thenReturn(Optional.of(account));
         Account newAccount = accountService.findByUsername(username);
-        assertEquals(account,newAccount);
+        assertEquals(account, newAccount);
     }
 }
