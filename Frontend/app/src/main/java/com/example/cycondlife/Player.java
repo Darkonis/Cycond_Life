@@ -100,6 +100,9 @@ public class Player extends Character {
     {
         return tinkMult;
     }
+    public double getTinkeringPoints()  {
+        return tinkeringPoints;
+    }
     public int getLevel() {
         return level;
     }

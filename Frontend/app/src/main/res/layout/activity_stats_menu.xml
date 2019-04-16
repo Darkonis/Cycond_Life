@@ -6,6 +6,118 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/creativity"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Creativity"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dmgReduct" />
+
+    <TextView
+        android:id="@+id/dmgReduct"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Damage Reduction"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sight" />
+
+    <TextView
+        android:id="@+id/sight"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Sight"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/critMult" />
+
+    <TextView
+        android:id="@+id/critMult"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Critical Multiplier"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/critChance" />
+
+    <TextView
+        android:id="@+id/critChance"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Critical Chance"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dodgeChance" />
+
+    <TextView
+        android:id="@+id/dodgeChance"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Dodge Chance"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hitChance" />
+
+    <TextView
+        android:id="@+id/hitChance"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Hit Chance"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tinkMult" />
+
+    <TextView
+        android:id="@+id/tinkMult"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Tinkering Multiplier"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tinkering" />
+
+    <TextView
         android:id="@+id/bs"
         android:layout_width="250dp"
         android:layout_height="24dp"
