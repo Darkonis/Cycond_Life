@@ -19,10 +19,6 @@
     <name>se309-RPG</name>
     <description>The backend for an AR RPG for SE309</description>
 
-    <properties>
-        <java.version>11</java.version>
-    </properties>
-
     <dependencies>
 
         <dependency>
@@ -137,37 +133,17 @@
             <scope>provided</scope>
         </dependency>
 
+
     </dependencies>
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
         </plugins>
     </build>
 
 
-
-    <profiles>
-    <profile>
-        <id>production</id>
-        <build>
-            <resources>
-            <resource>
-                <filtering>true</filtering>
-                <directory>src/main/java/edu/se309/app/backend</directory>
-                <excludes>
-                    <exclude>/websocket/**</exclude>
-                </excludes>
-            </resource>
-        </resources>
-        </build>
-    </profile>
-</profiles>
-
 </project>
-

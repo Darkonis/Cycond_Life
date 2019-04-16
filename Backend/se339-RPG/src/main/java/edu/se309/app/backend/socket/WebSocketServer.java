@@ -2,13 +2,30 @@ package edu.se309.app.backend.socket;
 
 
 import edu.se309.app.backend.rest.entity.Account;
-<<<<<<< HEAD
-import edu.se309.app.backend.rest.service.AccountServiceImplementation;
-import edu.se309.app.backend.rest.service.MonsterServiceImplementation;
-=======
 import edu.se309.app.backend.rest.service.interfaces.AccountService;
 import edu.se309.app.backend.rest.service.interfaces.MonsterService;
->>>>>>> b6d53edeb5376d09ddc0700d20648c536c78ff4c
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+import org.springframework.web.socket.server.standard.SpringConfigurator;
+
+import javax.websocket.OnClose;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
+import javax.websocket.server.PathParam;
+import javax.websocket.server.ServerEndpoint;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import edu.se309.app.backend.rest.entity.Account;
+import edu.se309.app.backend.rest.service.AccountServiceImplementation;
+import edu.se309.app.backend.rest.service.MonsterServiceImplementation;
+import edu.se309.app.backend.rest.service.interfaces.AccountService;
+import edu.se309.app.backend.rest.service.interfaces.MonsterService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -22,30 +39,23 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
-<<<<<<< HEAD
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-=======
 import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
->>>>>>> b6d53edeb5376d09ddc0700d20648c536c78ff4c
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * 
- * @author Vamsi Krishna Calpakkam
- *
- */
+
 @ServerEndpoint("/websocket/{username}")
 @Component
 public class WebSocketServer {
-	
 
     private static Map<Account, Session> accountSessionMap = Collections.synchronizedMap(new HashMap<>());
     private static Map<Session, Account> sessionAccountMap = Collections.synchronizedMap(new HashMap<>());
@@ -100,7 +110,7 @@ public class WebSocketServer {
         sessionAccountMap.put(session, account);
         accountSessionMap.put(account, session);
     }
-    
+
     @OnMessage
     public void onMessage(Session session, String message) throws IOException {
         int indexOfSplit = message.indexOf(" ");
@@ -115,57 +125,20 @@ public class WebSocketServer {
         try {
             if (payload == null) {
                 Method method = WebSocketServer.class.getMethod(methodName);
-                System.out.println("MADE IT TO THE IF STATEMENT");
                 method.invoke(this);
             } else {
                 Method method = WebSocketServer.class.getMethod(methodName, String.class);
-                System.out.println("MADE IT TO THE ELSE STATEMENT");
                 method.invoke(this, payload);
             }
         } catch (Exception e) {
             e.printStackTrace();
             throw new IOException("Message received did not map to a valid method");
         }
-        else {
-            in.close();
-        	throw new IOException();
-        }
-        in.close();
- 
-    @OnError
-    public void onError(Session session, Throwable throwable) 
-    {
-        // Do error handling here
-    	logger.info("Entered into Error");
     }
-    
-	private void sendMessageToParticularUser(String username, String message) 
-    {	
-    	try {
-    		usernameSessionMap.get(username).getBasicRemote().sendText(message);
-        } catch (IOException e) {
-        	e.printStackTrace();
-        }
-    }
-    
-    private static void broadcast(String message) 
-    	      throws IOException 
-    {	  
-    	sessionUsernameMap.forEach((session, username) -> {
-    		synchronized (session) {
-	            try {
-	                session.getBasicRemote().sendText(message);
-	            } catch (IOException e) {
-	                e.printStackTrace();
-	            }
-	        }
-	    });
-	}
 
+    @OnClose
     public void onClose(Session session) throws IOException {
-    	String message= username + " disconnected";
-        broadcast(message);
-    	this.destroy();
+        this.destroy();
     }
 
     public Account getAccount() throws IOException {
