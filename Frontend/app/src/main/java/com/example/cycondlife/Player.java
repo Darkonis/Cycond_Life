@@ -107,7 +107,7 @@ public class Player extends Character {
     {
         experiance+=val;
     }
-
+    public int getCreativity(){return super.creativity;}
     public void addActiveItem(Item i)
     {
         activeItems.add((Consumable) i);
@@ -118,7 +118,9 @@ public class Player extends Character {
     }
     private Player(String user, int idt)
     {
+
         super();
+        //int itemID,String name,String desc,int type,Dice effect,int duration,String use_msg
         update_substats();
         this.id=idt;
         this.username=user;
@@ -134,6 +136,7 @@ public class Player extends Character {
     {
         super();
         Consumable c1 =new Consumable(0,"lesser health potion","This potion sits in a red bottle labeled TEST",0,new Dice("2+2d4"),0,"You take a health Potion");
+        Item.itemList.add(new Consumable(002,"Test Duration","This item should be active for a little while",2,new Dice(("4+0d4")),5,"you drink the test potion you feel more powerful"));
         Item.itemList.add(c1);
         update_substats();
 
@@ -234,15 +237,21 @@ public class Player extends Character {
             {
                 case Consumable.creativity:
                 {
+                    Log.i("Cycond Info", "Creativity: "+creativity);
                     creativity+=c.getEffect().roll();
+                    Log.i("Cycond Info", "Creativity: "+creativity);
                     break;
                 }
                 case Consumable.presentation: {
+                    Log.i("Cycond Info", "presentation: "+presentation);
                     presentation += c.getEffect().roll();
+                    Log.i("Cycond Info", "presentation: "+presentation);
                     break;
                 }
                 case Consumable.criticalThinking: {
+                    Log.i("Cycond Info", "criticalThinking: "+critical_thinking);
                     critical_thinking += c.getEffect().roll();
+                    Log.i("Cycond Info", "criticalThinking: "+critical_thinking);
 
                     break;
                 }
@@ -251,6 +260,7 @@ public class Player extends Character {
                 break;
 
             }
+
         }
     }
     public void update_substats()
@@ -342,5 +352,28 @@ public class Player extends Character {
         tinkeringPoints +=i;
         if((int) Math.round(1.5*critical_thinking)< tinkeringPoints) tinkeringPoints =(int) Math.round(1.5*critical_thinking);
     }
+    public void endItem(Consumable c)
+    {
+        switch (c.type)
+        {
+            case Consumable.creativity:
+            {
+                creativity-=c.getEffect().roll();
+                break;
+            }
+            case Consumable.presentation: {
+                presentation -= c.getEffect().roll();
+                break;
+            }
+            case Consumable.criticalThinking: {
+                critical_thinking -= c.getEffect().roll();
 
+                break;
+            }
+            default:
+                Log.i("Cycond Error","unhandled item type please contact the developer");
+                break;
+
+        }
+    }
 }

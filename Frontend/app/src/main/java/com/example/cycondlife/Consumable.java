@@ -38,7 +38,7 @@ public class Consumable extends Item {
             case criticalThinking:
             case creativity:
             case presentation:
-                Player.get_instance().addActiveItem(this);
+                Player.get_instance().addActiveItem(this.clone());
                 break;
             default:
                 used=false;
@@ -54,5 +54,10 @@ public class Consumable extends Item {
     public void decreaseDuration() {duration--;}
     public Dice getEffect() {
         return effect;
+    }
+    @Override
+    public Consumable clone()
+    {
+        return new Consumable(itemID,name,description,type,effect,duration,useMsg);
     }
 }

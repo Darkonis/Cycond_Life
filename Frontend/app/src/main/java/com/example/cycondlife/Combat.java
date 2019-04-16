@@ -115,7 +115,7 @@ public class Combat extends AppCompatActivity {
                // if()
                 {
                     ((Consumable) i).use();
-                    update_status();
+                    player.update_substats();
                 }
                 player.removeItem(Integer.parseInt(itemID.getText().toString()));
         reset();
@@ -170,6 +170,7 @@ public class Combat extends AppCompatActivity {
      */
     private static void endTurn(Context c)
     {
+
         if(rand.nextInt()%100+1>=player.getDodgeChance())
         {
             int dmg =monster.BS;
@@ -178,16 +179,24 @@ public class Combat extends AppCompatActivity {
         }
         for(int i=0; i<Player.get_instance().getActives().size(); i++)
         {
-            if(Player.get_instance().getActives().get(i).getDuration()==0)
+            Log.i("Cycond Info", "Duration:"+Player.get_instance().getActives().get(i).getDuration());
+            Consumable t =Player.get_instance().getActives().get(i);
+            if(t.getDuration()==0)
             {
+                player.endItem(t);
                 Player.get_instance().getActives().remove(i);
+
                 i--;
             }
             else
             {
-                Player.get_instance().getActives().get(i).decreaseDuration();
+                player.endItem(t);
+                t.decreaseDuration();
             }
         }
+        Log.i("Cycond Info","creativity is:"+player.getCreativity());
+        player.update_substats();
+        Log.i("Cycond Info","creativity is:"+player.getCreativity());
     }
     private void update_status()
     {
