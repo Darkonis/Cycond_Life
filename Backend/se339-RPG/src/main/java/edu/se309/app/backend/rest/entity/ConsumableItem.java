@@ -16,7 +16,7 @@ public class ConsumableItem {
     private String name;
 
     @Column(name = "stat_effected")
-    private String statEffected;
+    private int statEffected;
 
     @Column(name = "total_turns")
     private int totalTurns;
@@ -40,11 +40,11 @@ public class ConsumableItem {
         this.name = name;
     }
 
-    public String getStatEffected() {
+    public int getStatEffected() {
         return statEffected;
     }
 
-    public void setStatEffected(String statEffected) {
+    public void setStatEffected(int statEffected) {
         this.statEffected = statEffected;
     }
 
