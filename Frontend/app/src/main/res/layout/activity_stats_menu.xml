@@ -6,26 +6,124 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/resolve"
+        android:id="@+id/creativity"
         android:layout_width="250dp"
         android:layout_height="24dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginLeft="42dp"
-        android:layout_marginTop="42dp"
-        android:text="Resolve"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Creativity"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         app:fontFamily="@font/carter_one"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Header" />
+        app:layout_constraintTop_toBottomOf="@+id/dmgReduct" />
+
+    <TextView
+        android:id="@+id/dmgReduct"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Damage Reduction"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sight" />
+
+    <TextView
+        android:id="@+id/sight"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Sight"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/critMult" />
+
+    <TextView
+        android:id="@+id/critMult"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Critical Multiplier"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/critChance" />
+
+    <TextView
+        android:id="@+id/critChance"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Critical Chance"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dodgeChance" />
+
+    <TextView
+        android:id="@+id/dodgeChance"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Dodge Chance"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hitChance" />
+
+    <TextView
+        android:id="@+id/hitChance"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Hit Chance"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tinkMult" />
+
+    <TextView
+        android:id="@+id/tinkMult"
+        android:layout_width="250dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Tinkering Multiplier"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tinkering" />
 
     <TextView
         android:id="@+id/bs"
         android:layout_width="250dp"
         android:layout_height="24dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginLeft="42dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
         android:text="BS"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
@@ -37,9 +135,9 @@
         android:id="@+id/tinkering"
         android:layout_width="250dp"
         android:layout_height="24dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginLeft="42dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
         android:text="Tinkering"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
@@ -48,18 +146,18 @@
         app:layout_constraintTop_toBottomOf="@+id/bs" />
 
     <TextView
-        android:id="@+id/critical_thinking"
+        android:id="@+id/resolve"
         android:layout_width="250dp"
         android:layout_height="24dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginLeft="42dp"
-        android:layout_marginTop="16dp"
-        android:text="Critical Thinking"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="24dp"
+        android:text="Resolve"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         app:fontFamily="@font/carter_one"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tinkering" />
+        app:layout_constraintTop_toBottomOf="@+id/level" />
 
     <TextView
         android:id="@+id/Header"
@@ -75,4 +173,18 @@
         app:fontFamily="@font/carter_one"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="4dp"
+        android:text="Level: "
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header" />
 </android.support.constraint.ConstraintLayout>
