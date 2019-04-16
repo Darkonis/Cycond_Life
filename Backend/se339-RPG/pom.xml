@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
@@ -13,15 +12,12 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+
     <groupId>edu.se309.app.backend</groupId>
     <artifactId>se309-RPG</artifactId>
-    <version>0.3.0-SNAPSHOT</version>
+    <version>0.4.0-SNAPSHOT</version>
     <name>se309-RPG</name>
     <description>The backend for an AR RPG for SE309</description>
-
-    <properties>
-        <java.version>11</java.version>
-    </properties>
 
     <dependencies>
 
@@ -137,18 +133,18 @@
             <scope>provided</scope>
         </dependency>
 
+
     </dependencies>
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
         </plugins>
     </build>
+
 
 </project>
 
