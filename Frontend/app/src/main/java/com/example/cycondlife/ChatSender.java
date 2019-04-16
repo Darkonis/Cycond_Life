@@ -41,7 +41,7 @@ public class ChatSender {
 
         chat = new WebSocketClient(dest)  {
             public void onMessage(String var1)  {
-                receivedText += "\r\n" + "  Username: " + var1;
+                receivedText += "\r\n  " + var1;
                 //chatBox.setText("");
                 setChatText();
                 Log.i("CyLife Websocket", var1);

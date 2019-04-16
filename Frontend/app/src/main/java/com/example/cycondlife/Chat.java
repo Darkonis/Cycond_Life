@@ -100,7 +100,7 @@ public class Chat extends AppCompatActivity {
 
 
     public void send()    {
-        sender.sendMsg(userMessage.getText().toString());
+        sender.sendMsg("CHAT " + userMessage.getText().toString());
 
         //chatText.setText(sender.getReceivedStuff());
     }
