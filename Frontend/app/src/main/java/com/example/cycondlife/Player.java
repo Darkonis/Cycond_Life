@@ -190,7 +190,7 @@ public class Player extends Character {
       //  RequestQueue q = new Volley.newRequestQueue(c);
        // JsonObjectRequest j = new JsonObjectRequest()
     }
-
+    public int getCreativity(){return creativity;}
     public static Player get_instance()
     {
         return player_instance;

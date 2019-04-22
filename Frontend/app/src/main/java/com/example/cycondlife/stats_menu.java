@@ -51,7 +51,7 @@ public class stats_menu extends AppCompatActivity {
         level.setText("Level " + player.getLevel());
         resolve.setText("Resolve: "+ player.getResolve());
         bs.setText("BS: "+player.getBS());
-        tinkering.setText("Tinkering: " + player.getTinkeringPoints() + "/" + player.getTinkPointsMax());
+        tinkering.setText("Tinkering: " + player.getTinkeringPoints() + "/" + player.getTinkeringPoints());
         tinkMult.setText("Tinkering Multiplier: " + player.getTinkMult());
         hitChance.setText("Hit Chance: " + player.getHitChance());
         sight.setText("Sight: " + player.getSight());
