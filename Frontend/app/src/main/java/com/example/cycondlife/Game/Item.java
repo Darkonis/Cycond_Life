@@ -1,4 +1,4 @@
-package com.example.cycondlife;
+package com.example.cycondlife.Game;
 
 import java.util.ArrayList;
 

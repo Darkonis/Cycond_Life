@@ -1,4 +1,4 @@
-package com.example.cycondlife;
+package com.example.cycondlife.Communication;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -42,7 +42,7 @@ public class   Json_handler {
     private final String statlink="http://cs309-sd-6.misc.iastate.edu:8080/api/stats/updateStat/";
     private final String statlinkadd="http://cs309-sd-6.misc.iastate.edu:8080/api/stats/add/";
 
-    Json_handler(Context c)
+    public Json_handler(Context c)
     {
         mContext =c;
     }
@@ -80,7 +80,7 @@ public class   Json_handler {
             Log.i("Cycond Error",e.toString());
         }
     }
-    protected void update_stat(int id, String stat,int value)
+    public void update_stat(int id, String stat,int value)
     {
        // this.getApplicationContext();
         if (value<0) value=0;

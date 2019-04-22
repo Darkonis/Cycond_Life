@@ -1,16 +1,10 @@
 package com.example.cycondlife;
 
-import android.widget.TextView;
+import com.example.cycondlife.Communication.ChatSender;
 
-import org.java_websocket.exceptions.WebsocketNotConnectedException;
-import org.junit.Rule;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 

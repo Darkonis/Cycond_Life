@@ -1,19 +1,19 @@
-package com.example.cycondlife;
+package com.example.cycondlife.Game;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.Button;
 import android.view.View;
-import android.view.View.OnClickListener;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.ScrollView;
 import android.widget.TextView;
+
+//import Consumable;
+import com.example.cycondlife.Dice;
+
+
+import com.example.cycondlife.R;
 
 import java.util.Random;
 

@@ -1,9 +1,9 @@
 package com.example.cycondlife;
 
-import org.junit.Before;
-import org.junit.Test;
+import com.example.cycondlife.Game.Character;
+import com.example.cycondlife.Game.Game;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class CombatTest {
 
@@ -14,8 +14,8 @@ public class CombatTest {
         Player p = Player.get_instance();
         Game g = new Game(null);
         Combat.set_combatants(c,g);
-        assertEquals(p,Combat.player);
-        assertEquals(c,Combat.monster);
+        assertEquals(p, Combat.player);
+        assertEquals(c, Combat.monster);
     }
 
 }

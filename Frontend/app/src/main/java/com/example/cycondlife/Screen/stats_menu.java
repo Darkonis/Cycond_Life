@@ -1,8 +1,11 @@
-package com.example.cycondlife;
+package com.example.cycondlife.Screen;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.example.cycondlife.Game.Player;
+import com.example.cycondlife.R;
 
 //TODO add stats
 public class stats_menu extends AppCompatActivity {

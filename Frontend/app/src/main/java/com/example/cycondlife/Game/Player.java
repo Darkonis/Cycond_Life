@@ -1,8 +1,7 @@
-package com.example.cycondlife;
+package com.example.cycondlife.Game;
 
 import android.util.Log;
 
-import org.java_websocket.client.WebSocketClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,6 +14,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.cycondlife.Communication.Callback_handler;
+import com.example.cycondlife.Communication.ChatSender;
+
+import com.example.cycondlife.Dice;
+import com.example.cycondlife.Communication.Json_handler;
 
 import java.net.URI;
 import java.net.URISyntaxException;

@@ -1,4 +1,4 @@
-package com.example.cycondlife;
+package com.example.cycondlife.Screen;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.cycondlife.Communication.Callback_handler;
+import com.example.cycondlife.Communication.Chat;
+import com.example.cycondlife.Game.Character;
+import com.example.cycondlife.Game.Game;
+import com.example.cycondlife.R;
 
 
 import org.json.JSONArray;
@@ -40,7 +45,7 @@ public class menu extends AppCompatActivity {
         stats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openStats= new Intent(menu.this,stats_menu.class);
+                Intent openStats= new Intent(menu.this, stats_menu.class);
                 startActivity(openStats);
             }
         });
@@ -58,7 +63,7 @@ public class menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i("Cycond Life", "Attempt to open dev menu");
-                Intent openDevMenu = new Intent(menu.this, dev_menu.class);
+                Intent openDevMenu = new Intent(menu.this, com.example.cycondlife.Screen.dev_menu.class);
                 startActivity(openDevMenu);
             }
         });

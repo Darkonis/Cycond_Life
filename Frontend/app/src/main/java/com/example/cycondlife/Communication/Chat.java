@@ -1,4 +1,4 @@
-package com.example.cycondlife;
+package com.example.cycondlife.Communication;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,7 +8,9 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.cycondlife.Game.Player;
+import com.example.cycondlife.R;
 
 import org.java_websocket.client.WebSocketClient;
 

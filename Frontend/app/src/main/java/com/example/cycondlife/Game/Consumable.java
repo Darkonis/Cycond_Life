@@ -1,4 +1,6 @@
-package com.example.cycondlife;
+package com.example.cycondlife.Game;
+
+import com.example.cycondlife.Dice;
 
 public class Consumable extends Item {
 

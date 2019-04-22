@@ -1,4 +1,4 @@
-package com.example.cycondlife;
+package com.example.cycondlife.Screen;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -14,6 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.cycondlife.Game.Character;
+import com.example.cycondlife.Game.Combat;
+import com.example.cycondlife.Game.Game;
+import com.example.cycondlife.Game.Player;
+import com.example.cycondlife.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;

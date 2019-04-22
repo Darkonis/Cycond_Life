@@ -1,4 +1,4 @@
-package com.example.cycondlife;
+package com.example.cycondlife.Communication;
 
 import android.app.Activity;
 import android.util.Log;
