@@ -37,6 +37,7 @@ public class menu extends AppCompatActivity {
         Button friends = findViewById(R.id.friends);
         Button map = findViewById(R.id.map);
         Button dev_menu = findViewById(R.id.dev_menu);
+        Button scanner = findViewById(R.id.scan);
         if(Game.monster_map.size()==0)
         {
             pull_monster_map();
@@ -75,7 +76,13 @@ public class menu extends AppCompatActivity {
                 startActivity(openFriends);
             }
         });
-
+        scanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openScanner= new Intent(menu.this,com.example.cycondlife.Ar.BarcodeCaptureActivity.class);
+                startActivity(openScanner);
+            }
+        });
 
     }
     private void pull_monster_map()
