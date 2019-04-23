@@ -23,7 +23,7 @@ public abstract class Item {
     {
         for(int i=0;i<itemList.size();i++)
         {
-            if(itemList.get(i).itemID==ID);
+            if(itemList.get(i).itemID==ID)
             {
                 return itemList.get(i);
             }

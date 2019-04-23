@@ -65,7 +65,7 @@ public class Player extends Character {
     private double tinkMult=1.0;
     private double dodgeChance=15;
     private int tinkeringPoints=-1;
-    private ArrayList<Item> inv = new ArrayList<>();
+    private ArrayList<Consumable> inv = new ArrayList<>();
     private ArrayList<Consumable> activeItems = new ArrayList<>();
 
     private int itemCount=0;
@@ -142,7 +142,7 @@ public class Player extends Character {
 
         username=user;
         name=user;
-
+        inv.add(c1.clone());
         //Connect to chat websocket for persistent chat
         try {
             chatLink = new URI("ws://cs309-sd-6.misc.iastate.edu:8080/websocket/" + username);
@@ -218,10 +218,10 @@ public class Player extends Character {
     }
 
 
-    public ArrayList<Item> getInv() {
+    public ArrayList<Consumable> getInv() {
         return inv;
     }
-    public void addItem(Item i)
+    public void addItem(Consumable i)
     {
         //TODO propagate to the server when possuible
         if(inv.size()<20)

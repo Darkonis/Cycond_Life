@@ -119,7 +119,6 @@ public class Combat extends AppCompatActivity {
                     player.update_substats();
 
                 }
-                player.getInv().remove(i);
                 player.removeItem(Integer.parseInt(itemID.getText().toString()));
                 reset();
                 endTurn(getApplicationContext());
