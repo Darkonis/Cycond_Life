@@ -20,7 +20,7 @@ public class InventoryController extends BaseController<Inventory, Integer, Inve
         super(inventoryService);
     }
     
-    @GetMapping("ByUserId/{id}")
+    @GetMapping("byUserId/{id}")
     public List<Inventory> getInventoryByUsername(@PathVariable int id) {
     	return getService().findByPlayerId(id);
     }
