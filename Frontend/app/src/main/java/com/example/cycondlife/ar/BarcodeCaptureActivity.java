@@ -434,7 +434,13 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
 
     @Override
     public void onBarcodeDetected(Barcode barcode) {
-        Player.get_instance().addItem(Item.findByID(Integer.parseInt(barcode.rawValue)));
+        try {
+            Player.get_instance().addItem(Item.findByID(Integer.parseInt(barcode.rawValue)));
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(),"this code is not in the correct format",Toast.LENGTH_SHORT);
+        }
         finishActivity(0);
     }
 }
