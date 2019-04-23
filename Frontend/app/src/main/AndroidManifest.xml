@@ -7,8 +7,10 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
+    <uses-feature android:name="android.hardware.camera" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -18,8 +20,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Chat"></activity>
-        <activity android:name=".Login">
+        <activity android:name=".communication.Chat"/>
+        <activity android:name=".screens.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,17 +29,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".dev_menu"
+            android:name=".screens.dev_menu"
             android:label="dev_menu"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".menu"
+            android:name=".screens.menu"
             android:label="@string/title_activity_menu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".stats_menu"
-            android:label="stats_menu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        android:name=".screens.stats_menu"
+        android:label="stats_menu"
+        android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ar.BarcodeCaptureActivity"
+            android:label="BarcodeCaptureActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -58,13 +64,13 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".screens.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".Combat"
+            android:name=".game.Combat"
             android:label="@string/title_combat" />
         <activity
-            android:name=".CreateAccount"
+            android:name=".screens.CreateAccount"
             android:label="createAccount" />
     </application>
 

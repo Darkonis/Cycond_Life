@@ -1,4 +1,4 @@
-package com.example.cycondlife;
+package com.example.cycondlife.screens;
 
 import android.Manifest;
 import android.content.Context;
@@ -13,24 +13,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.android.volley.NetworkResponse;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
-import android.os.AsyncTask;
+import com.example.cycondlife.communication.Callback_handler;
+import com.example.cycondlife.game.Player;
+import com.example.cycondlife.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.DataOutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class Login extends AppCompatActivity {
 
@@ -68,7 +62,7 @@ public class Login extends AppCompatActivity {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Intent openCreate = new Intent(Login.this,CreateAccount.class);
+                final Intent openCreate = new Intent(Login.this, CreateAccount.class);
                 startActivity(openCreate);
             }
         });

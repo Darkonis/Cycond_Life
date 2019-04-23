@@ -1,8 +1,11 @@
-package com.example.cycondlife;
+package com.example.cycondlife.screens;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.example.cycondlife.game.Player;
+import com.example.cycondlife.R;
 
 //TODO add stats
 public class stats_menu extends AppCompatActivity {
@@ -51,7 +54,7 @@ public class stats_menu extends AppCompatActivity {
         level.setText("Level " + player.getLevel());
         resolve.setText("Resolve: "+ player.getResolve());
         bs.setText("BS: "+player.getBS());
-        tinkering.setText("Tinkering: " + player.getTinkeringPoints() + "/" + player.getTinkPointsMax());
+        tinkering.setText("Tinkering: " + player.getTinkeringPoints() + "/" + player.getTinkeringPoints());
         tinkMult.setText("Tinkering Multiplier: " + player.getTinkMult());
         hitChance.setText("Hit Chance: " + player.getHitChance());
         sight.setText("Sight: " + player.getSight());

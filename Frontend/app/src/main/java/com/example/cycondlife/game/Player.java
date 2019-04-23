@@ -1,8 +1,7 @@
-package com.example.cycondlife;
+package com.example.cycondlife.game;
 
 import android.util.Log;
 
-import org.java_websocket.client.WebSocketClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,6 +14,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.cycondlife.communication.Callback_handler;
+import com.example.cycondlife.communication.ChatSender;
+
+import com.example.cycondlife.Dice;
+import com.example.cycondlife.communication.Json_handler;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -100,7 +104,8 @@ public class Player extends Character {
         return tinkMult;
     }
     public double getTinkeringPoints()  {
-        return tinkeringPoints;
+      //  return tinkeringPoints;
+        return tinkPoints;
     }
     public int getLevel() {
         return level;
@@ -189,7 +194,7 @@ public class Player extends Character {
       //  RequestQueue q = new Volley.newRequestQueue(c);
        // JsonObjectRequest j = new JsonObjectRequest()
     }
-
+    public int getCreativity(){return creativity;}
     public static Player get_instance()
     {
         return player_instance;

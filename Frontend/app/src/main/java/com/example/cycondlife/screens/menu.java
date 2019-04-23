@@ -1,4 +1,4 @@
-package com.example.cycondlife;
+package com.example.cycondlife.screens;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.cycondlife.ar.BarcodeCaptureActivity;
+import com.example.cycondlife.communication.Callback_handler;
+import com.example.cycondlife.communication.Chat;
+import com.example.cycondlife.game.Character;
+import com.example.cycondlife.game.Game;
+import com.example.cycondlife.R;
 
 
 import org.json.JSONArray;
@@ -32,6 +38,7 @@ public class menu extends AppCompatActivity {
         Button friends = findViewById(R.id.friends);
         Button map = findViewById(R.id.map);
         Button dev_menu = findViewById(R.id.dev_menu);
+        Button scanner = findViewById(R.id.scan);
         if(Game.monster_map.size()==0)
         {
             pull_monster_map();
@@ -40,7 +47,7 @@ public class menu extends AppCompatActivity {
         stats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openStats= new Intent(menu.this,stats_menu.class);
+                Intent openStats= new Intent(menu.this, stats_menu.class);
                 startActivity(openStats);
             }
         });
@@ -58,7 +65,7 @@ public class menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i("Cycond Life", "Attempt to open dev menu");
-                Intent openDevMenu = new Intent(menu.this, dev_menu.class);
+                Intent openDevMenu = new Intent(menu.this, com.example.cycondlife.screens.dev_menu.class);
                 startActivity(openDevMenu);
             }
         });
@@ -71,6 +78,16 @@ public class menu extends AppCompatActivity {
             }
         });
 
+        scanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(menu.this, BarcodeCaptureActivity.class);
+                intent.putExtra(BarcodeCaptureActivity.AutoFocus, true);
+                intent.putExtra(BarcodeCaptureActivity.UseFlash, false);
+
+                startActivityForResult(intent, 9001);
+            }
+        });
 
     }
     private void pull_monster_map()
