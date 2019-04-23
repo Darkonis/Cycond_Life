@@ -1,31 +1,15 @@
 //TODO move this into the proper package
-package com.example.cycondlife;
+package com.example.cycondlife.game;
 
 import android.content.Context;
-import android.os.Bundle;
 
-import com.example.cycondlife.Character;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.android.volley.NetworkResponse;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 
 
 import java.util.Random;
 import java.util.ArrayList;
-import java.util.List;
 //import edu.se309.app.backend.monsterspawn.*;
 
 public class Game {
@@ -34,12 +18,12 @@ public class Game {
     public static final Player player = Player.get_instance();
     //how large the generated area should be
     double world_bounds = .2;
-    GoogleMap mMap;
-   static int num_monsters = 0;
+   public GoogleMap mMap;
+   public static int num_monsters = 0;
     //TODO make this based of time
     Random rand = new Random(0);
 
-    Game(GoogleMap mMap) {
+    public Game(GoogleMap mMap) {
         this.mMap = mMap;
     }
     @Deprecated
@@ -49,7 +33,7 @@ public class Game {
             generate_monster();
         }
     }
-    static void add_monster(Character c)
+   public static void add_monster(Character c)
     {
         monster_map.add(c);
     }
@@ -88,7 +72,7 @@ public class Game {
     }
 
 
-    static void change_player_hp(int hp, Context c) {
+   public static void change_player_hp(int hp, Context c) {
         player.setResolve(hp);
         player.update_stat(hp,"resolve",c);
     }

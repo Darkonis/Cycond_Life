@@ -1,4 +1,4 @@
-package com.example.cycondlife;
+package com.example.cycondlife.communication;
 
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
@@ -20,11 +20,8 @@ import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import android.content.Context;
-import android.webkit.JsResult;
 
 import com.android.volley.toolbox.JsonObjectRequest;
 
@@ -43,7 +40,7 @@ public class   Json_handler {
     private final String statlink="http://cs309-sd-6.misc.iastate.edu:8080/api/stats/updateStat/";
     private final String statlinkadd="http://cs309-sd-6.misc.iastate.edu:8080/api/stats/add/";
     private static RequestQueue queue;
-    Json_handler(Context c)
+    public Json_handler(Context c)
     {
         mContext =c;
         queue= Volley.newRequestQueue(c);
@@ -82,7 +79,7 @@ public class   Json_handler {
             Log.i("Cycond Error",e.toString());
         }
     }
-    protected void update_stat(int id, String stat,int value)
+    public void update_stat(int id, String stat,int value)
     {
        // this.getApplicationContext();
         if (value<0) value=0;

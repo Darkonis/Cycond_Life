@@ -1,4 +1,4 @@
-package com.example.cycondlife;
+package com.example.cycondlife.communication;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

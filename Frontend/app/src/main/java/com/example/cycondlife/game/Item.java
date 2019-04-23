@@ -1,4 +1,4 @@
-package com.example.cycondlife;
+package com.example.cycondlife.game;
 
 import android.util.Log;
 
@@ -16,7 +16,7 @@ public abstract class Item {
     protected String name;
     protected String description;
     protected int type;
-    protected static ArrayList<Item> itemList= new ArrayList<>();
+    public static ArrayList<Item> itemList= new ArrayList<>();
     public int getType(){
         return type;
     }

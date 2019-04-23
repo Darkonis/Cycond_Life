@@ -1,7 +1,5 @@
 package com.example.cycondlife;
 
-import android.content.Context;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +18,7 @@ public class ConsumableTest {
     @Before
     public void setUp() throws Exception {
         Player.createTestInstance("Test",01);
-        p=Player.get_instance();
+        p= Player.get_instance();
         p.addItem(t);
         p.addItem(t2);
     }
