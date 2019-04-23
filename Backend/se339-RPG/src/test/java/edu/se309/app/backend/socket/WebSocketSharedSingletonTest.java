@@ -31,7 +31,7 @@ class WebSocketSharedSingletonTest {
         Map<String, Object> objects = WebSocketSharedSingleton.getSingletonObjectMap();
         for (Method m : buildingMethods) {
             if (m.getDeclaringClass().getPackage() == Building.class.getPackage()) {
-                System.out.println(m.toString());
+                System.out.println(m.toString());//TODO REMOVE PRINT
                 assertEquals(m, methods.get(m.toString()));
             } else {
                 assertNotEquals(m, methods.get(m.toString()));

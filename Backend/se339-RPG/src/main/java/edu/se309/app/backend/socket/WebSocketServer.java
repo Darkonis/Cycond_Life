@@ -47,13 +47,10 @@ public class WebSocketServer {
         } else {
             parameterMethodCall(message, indexOfSplit);
         }
-
-
-
     }
 
     @SneakyThrows
-    private void noParametersMethodCall(String message)  {
+    public void noParametersMethodCall(String message)  {
         Method method = WebSocketSharedSingleton.getMethod(message.trim());
         if (Modifier.isStatic(method.getModifiers())){
             Object o = method.invoke(null);

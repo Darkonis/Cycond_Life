@@ -99,6 +99,9 @@ public class Player extends Character {
     {
         return tinkMult;
     }
+    public double getTinkeringPoints()  {
+        return tinkeringPoints;
+    }
     public int getLevel() {
         return level;
     }
@@ -128,9 +131,12 @@ public class Player extends Character {
         Item.itemList.add(c1);
         update_substats();
 
+        username=user;
+        name=user;
+
         //Connect to chat websocket for persistent chat
         try {
-            chatLink = new URI("wss://echo.websocket.org");
+            chatLink = new URI("ws://cs309-sd-6.misc.iastate.edu:8080/websocket/" + username);
         }
         catch (URISyntaxException e)    {
             e.printStackTrace();
@@ -139,9 +145,6 @@ public class Player extends Character {
         sender = new ChatSender();
         sender.connectWebSocket(chatLink);
 
-
-        username=user;
-        name=user;
         this.id=idt;
         this.context = c;
         callback = new Callback_handler() {
