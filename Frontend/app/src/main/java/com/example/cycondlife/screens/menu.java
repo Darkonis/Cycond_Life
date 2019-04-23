@@ -94,7 +94,7 @@ public class menu extends AppCompatActivity {
     {
         callback = new Callback_handler() {
             @Override
-            public void get_response(JSONArray a) {
+            public void get_array_response(JSONArray a) {
                 try {
                     JSONArray response = a;
                     for(int i=0;i<response.length();i++) {
@@ -141,7 +141,7 @@ public class menu extends AppCompatActivity {
 
                         // Process the JSON
                         Log.i("Cycond test", "request succsessful");
-                        callback.get_response(response);
+                        callback.get_array_response(response);
                     }
                 },
                 new Response.ErrorListener() {

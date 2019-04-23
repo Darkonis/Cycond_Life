@@ -154,7 +154,7 @@ public class Player extends Character {
         this.context = c;
         callback = new Callback_handler() {
             @Override
-            public void get_response(JSONArray a) {
+            public void get_array_response(JSONArray a) {
                 for (int i = 0; i < a.length(); i++)
                 {
                     try {
@@ -293,7 +293,7 @@ public class Player extends Character {
                         Log.i("Cycond test", "stats request succsessful");
                         for (int i = 0; i < response.length(); i++) {
                             try {
-                                c.get_response(response);
+                                c.get_array_response(response);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
