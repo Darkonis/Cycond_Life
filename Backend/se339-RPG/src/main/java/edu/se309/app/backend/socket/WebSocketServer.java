@@ -20,8 +20,41 @@ import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import edu.se309.app.backend.rest.entity.Account;
+import edu.se309.app.backend.rest.service.AccountServiceImplementation;
+import edu.se309.app.backend.rest.service.MonsterServiceImplementation;
+import edu.se309.app.backend.rest.service.interfaces.AccountService;
+import edu.se309.app.backend.rest.service.interfaces.MonsterService;
+import edu.se309.app.backend.common.config.CustomConfigurator;
 
-@ServerEndpoint("/websocket/{username}")
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+import org.springframework.web.socket.server.standard.SpringConfigurator;
+
+import javax.websocket.OnClose;
+import javax.websocket.OnError;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
+import javax.websocket.server.PathParam;
+import javax.websocket.server.ServerEndpoint;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.lang.reflect.Method;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+@ServerEndpoint(value = "/websocket/{username}")
 @Component
 public class WebSocketServer {
 
@@ -120,18 +153,23 @@ public class WebSocketServer {
     }
 
     public void COMBAT(String payload) throws IOException {
-        int indexOfSplit = payload.indexOf(" ");
-        String subCommand = payload.substring(0, indexOfSplit - 1);
-        int id = Integer.parseInt(payload.substring(indexOfSplit + 2, payload.length() - 2));
+    	Scanner in = new Scanner(payload);
+        String subCommand = in.next();
+        int id = Integer.parseInt(in.next());
         if (subCommand.equals("ATTACK")) {
             monsterService.markMonster(id, true);
+            broadcast("Player: " + account.getUsername() + " attacked Monster " + id);
         } else if (subCommand.equals("DEFEAT")) {
             monsterService.markMonster(id, false);
+            broadcast("Player: " + account.getUsername() + " was defeated by Monster " + id);
         } else if (subCommand.equals("VICTORY")) {
             monsterService.deleteById(id);
+            broadcast("Player: " + account.getUsername() + " defeated Monster " + id);
         } else {
+        	in.close();
             throw new IOException();
         }
+        in.close();
     }
 
     public void CHAT(String payload) {

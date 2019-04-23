@@ -177,14 +177,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="ItemID"
         android:inputType="textPersonName"
-        android:visibility="gone" />
+        android:text="Name" />
 
     <Button
         android:id="@+id/submitItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="submit"
-        android:visibility="gone" />
+        android:text="submit" />
 </LinearLayout>

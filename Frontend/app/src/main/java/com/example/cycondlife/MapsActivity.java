@@ -143,8 +143,8 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
                         player.setLong(longitude);
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-                        mMap.getUiSettings().setZoomControlsEnabled(false);
-                        mMap.getUiSettings().setAllGesturesEnabled(false);
+                        mMap.getUiSettings().setZoomControlsEnabled(true);
+                        mMap.getUiSettings().setAllGesturesEnabled(true);
 
 
                     }
@@ -154,7 +154,7 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
 
         for(int i=0;i<Game.num_monsters;i++)
         {
-            if(Game.monster_map.get(i).getResolve()<=0|| (is_in_range(i)))
+            if(Game.monster_map.get(i).getResolve()<=0|| (!is_in_range(i)))
             {
                 Log.i("Cycond Test", "result "+Math.sqrt(
                         Math.pow(Game.monster_map.get(i).get_latitude()-player.get_latitude(),2)+
@@ -211,7 +211,7 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
                 {
                     continue;
                 }
-                if(!is_in_range(i)){
+                if(is_in_range(i)){
                     opponent=Game.monster_map.get(i);
                     Combat.set_combatants(opponent,g);
                     found=true;

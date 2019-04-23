@@ -3,10 +3,10 @@ package com.example.cycondlife;
 import java.util.Random;
 
 public class Dice {
-    private int sides=0;
-    private int base=0;
-    private int number=0;
-    private Random rand = new Random(System.currentTimeMillis());
+    int sides=0;
+    int base=0;
+    int number=0;
+    Random rand = new Random(System.currentTimeMillis());
     public Dice(String s)
     {
         //CharSequence c = "d";
