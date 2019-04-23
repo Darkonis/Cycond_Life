@@ -1,4 +1,4 @@
-package com.example.cycondlife.Game;
+package com.example.cycondlife.game;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,7 @@ public abstract class Item {
     protected String name;
     protected String description;
     protected int type;
-    protected static ArrayList<Item> itemList= new ArrayList<>();
+    public static ArrayList<Item> itemList= new ArrayList<>();
     public int getType(){
         return type;
     }

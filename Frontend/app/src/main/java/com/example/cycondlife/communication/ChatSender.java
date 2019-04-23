@@ -1,4 +1,4 @@
-package com.example.cycondlife.Communication;
+package com.example.cycondlife.communication;
 
 import android.app.Activity;
 import android.util.Log;
@@ -9,18 +9,7 @@ import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.exceptions.WebsocketNotConnectedException;
 import org.java_websocket.handshake.ServerHandshake;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.URI;
-import java.security.SecureRandom;
-import java.security.cert.X509Certificate;
-
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 
 public class ChatSender {
     //Socket chat;

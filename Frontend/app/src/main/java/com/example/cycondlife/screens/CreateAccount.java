@@ -1,4 +1,4 @@
-package com.example.cycondlife.Screen;
+package com.example.cycondlife.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +13,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.cycondlife.Communication.Json_handler;
-import com.example.cycondlife.Game.Player;
+import com.example.cycondlife.communication.Json_handler;
+import com.example.cycondlife.game.Player;
 import com.example.cycondlife.R;
 
 import org.json.JSONArray;

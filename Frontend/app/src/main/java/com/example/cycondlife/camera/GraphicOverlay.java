@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.cycondlife.Camera;
+package com.example.cycondlife.camera;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -160,7 +160,8 @@ public class GraphicOverlay<T extends GraphicOverlay.Graphic> extends View {
      */
     public List<T> getGraphics() {
         synchronized (mLock) {
-            return new Vector(mGraphics);
+            return
+                    new Vector(mGraphics);
         }
     }
 

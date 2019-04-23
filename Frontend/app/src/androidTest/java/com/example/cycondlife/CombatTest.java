@@ -1,9 +1,13 @@
 package com.example.cycondlife;
 
-import com.example.cycondlife.Game.Character;
-import com.example.cycondlife.Game.Game;
+import com.example.cycondlife.game.Character;
+import com.example.cycondlife.game.Combat;
+import com.example.cycondlife.game.Game;
+import com.example.cycondlife.game.Player;
 
 import org.junit.Test;
+
+import static junit.framework.TestCase.assertEquals;
 
 public class CombatTest {
 

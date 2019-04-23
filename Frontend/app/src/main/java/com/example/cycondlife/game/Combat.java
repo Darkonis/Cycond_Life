@@ -1,4 +1,4 @@
-package com.example.cycondlife.Game;
+package com.example.cycondlife.game;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -32,8 +32,8 @@ public class Combat extends AppCompatActivity {
 
 
 
-    final static Player player = Player.get_instance();
-    static Character monster;
+    public final static Player player = Player.get_instance();
+   public static Character monster;
     static Game g;
     //TODO make a status info where we can display what has happened in combat (a combat log)
     @Override

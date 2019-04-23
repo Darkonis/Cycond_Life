@@ -1,4 +1,4 @@
-package com.example.cycondlife.Screen;
+package com.example.cycondlife.screens;
 
 import android.Manifest;
 import android.app.Activity;
@@ -20,10 +20,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.cycondlife.Communication.Json_handler;
-import com.example.cycondlife.Game.Game;
-import com.example.cycondlife.Game.Item;
-import com.example.cycondlife.Game.Player;
+import com.example.cycondlife.communication.Json_handler;
+import com.example.cycondlife.game.Game;
+import com.example.cycondlife.game.Item;
+import com.example.cycondlife.game.Player;
 import com.example.cycondlife.R;
 
 import org.json.JSONArray;

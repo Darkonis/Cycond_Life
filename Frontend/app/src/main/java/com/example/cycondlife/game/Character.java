@@ -1,6 +1,4 @@
-package com.example.cycondlife.Game;
-
-import android.content.Context;
+package com.example.cycondlife.game;
 
 public class Character {
     /*
@@ -29,7 +27,7 @@ public class Character {
      */
 
 
-    Character()
+   public Character()
     {
 
         isPlayer=false;

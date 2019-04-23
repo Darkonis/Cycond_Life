@@ -1,6 +1,6 @@
 package com.example.cycondlife;
 
-import com.example.cycondlife.Communication.ChatSender;
+import com.example.cycondlife.communication.ChatSender;
 
 import org.junit.Test;
 

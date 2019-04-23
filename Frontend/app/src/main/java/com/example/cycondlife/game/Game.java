@@ -1,5 +1,5 @@
 //TODO move this into the proper package
-package com.example.cycondlife.Game;
+package com.example.cycondlife.game;
 
 import android.content.Context;
 

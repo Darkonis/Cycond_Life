@@ -1,4 +1,4 @@
-package com.example.cycondlife.Screen;
+package com.example.cycondlife.screens;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,10 +14,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.cycondlife.Communication.Callback_handler;
-import com.example.cycondlife.Communication.Chat;
-import com.example.cycondlife.Game.Character;
-import com.example.cycondlife.Game.Game;
+import com.example.cycondlife.ar.BarcodeCaptureActivity;
+import com.example.cycondlife.communication.Callback_handler;
+import com.example.cycondlife.communication.Chat;
+import com.example.cycondlife.game.Character;
+import com.example.cycondlife.game.Game;
 import com.example.cycondlife.R;
 
 
@@ -64,7 +65,7 @@ public class menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i("Cycond Life", "Attempt to open dev menu");
-                Intent openDevMenu = new Intent(menu.this, com.example.cycondlife.Screen.dev_menu.class);
+                Intent openDevMenu = new Intent(menu.this, com.example.cycondlife.screens.dev_menu.class);
                 startActivity(openDevMenu);
             }
         });
@@ -76,11 +77,15 @@ public class menu extends AppCompatActivity {
                 startActivity(openFriends);
             }
         });
+
         scanner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openScanner= new Intent(menu.this,com.example.cycondlife.Ar.BarcodeCaptureActivity.class);
-                startActivity(openScanner);
+                Intent intent = new Intent(menu.this, BarcodeCaptureActivity.class);
+                intent.putExtra(BarcodeCaptureActivity.AutoFocus, true);
+                intent.putExtra(BarcodeCaptureActivity.UseFlash, false);
+
+                startActivityForResult(intent, 9001);
             }
         });
 

@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.cycondlife.Ar;
+package com.example.cycondlife.ar;
 
 import android.content.Context;
 import android.support.annotation.UiThread;
 
-import com.example.cycondlife.Camera.GraphicOverlay;
+import com.example.cycondlife.camera.GraphicOverlay;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.Tracker;
 import com.google.android.gms.vision.barcode.Barcode;

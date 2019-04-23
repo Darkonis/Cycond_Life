@@ -1,10 +1,10 @@
-package com.example.cycondlife.Screen;
+package com.example.cycondlife.screens;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import com.example.cycondlife.Game.Player;
+import com.example.cycondlife.game.Player;
 import com.example.cycondlife.R;
 
 //TODO add stats

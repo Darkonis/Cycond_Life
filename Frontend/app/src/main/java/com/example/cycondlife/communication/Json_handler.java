@@ -1,4 +1,4 @@
-package com.example.cycondlife.Communication;
+package com.example.cycondlife.communication;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -7,8 +7,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -19,11 +17,8 @@ import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import android.content.Context;
-import android.webkit.JsResult;
 
 import com.android.volley.toolbox.JsonObjectRequest;
 

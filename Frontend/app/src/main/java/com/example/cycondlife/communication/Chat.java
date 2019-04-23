@@ -1,4 +1,4 @@
-package com.example.cycondlife.Communication;
+package com.example.cycondlife.communication;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.cycondlife.Game.Player;
+import com.example.cycondlife.game.Player;
 import com.example.cycondlife.R;
 
 import org.java_websocket.client.WebSocketClient;

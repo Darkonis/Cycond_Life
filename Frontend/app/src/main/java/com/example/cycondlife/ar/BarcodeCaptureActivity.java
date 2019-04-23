@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.cycondlife.Ar;
+package com.example.cycondlife.ar;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -43,10 +43,10 @@ import com.example.cycondlife.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.CommonStatusCodes;
-import com.example.cycondlife.Camera.CameraSource;
-import com.example.cycondlife.Camera.CameraSourcePreview;
+import com.example.cycondlife.camera.CameraSource;
+import com.example.cycondlife.camera.CameraSourcePreview;
 
-import com.example.cycondlife.Camera.GraphicOverlay;
+import com.example.cycondlife.camera.GraphicOverlay;
 import com.google.android.gms.vision.MultiProcessor;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
@@ -88,8 +88,8 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
         super.onCreate(icicle);
         setContentView(R.layout.activity_scanner);
 
-        mPreview = (CameraSourcePreview) findViewById(R.id.preview);
-        mGraphicOverlay = (GraphicOverlay<BarcodeGraphic>) findViewById(R.id.graphicOverlay);
+        mPreview =  findViewById(R.id.preview);
+        mGraphicOverlay =  findViewById(R.id.graphicOverlay);
 
         // read parameters from the intent used to launch the activity.
         boolean autoFocus = getIntent().getBooleanExtra(AutoFocus, false);
