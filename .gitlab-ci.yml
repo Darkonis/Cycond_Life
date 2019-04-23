@@ -1,4 +1,4 @@
- stages:
+stages:
   - mavenbuild
   - maventest
   - deploy
@@ -49,10 +49,9 @@ android-build:
     - chmod +x ./Frontend/gradlew
   tags:
     - frontend
-  
   script:
-  - cd Frontend
-  - ./gradlew assemble
+    - cd Frontend
+    - ./gradlew assemble
   artifacts:
     paths:
     - Frontend/app/build/outputs/
