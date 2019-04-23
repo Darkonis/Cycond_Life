@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import edu.se309.app.backend.rest.entity.Inventory;
+import java.util.ArrayList;
 import edu.se309.app.backend.rest.service.interfaces.InventoryService;
 
 @RestController
-@RequestMapping("/api/Inventory")
+@RequestMapping("/api/inventory")
 public class InventoryController extends BaseController<Inventory, Integer, InventoryService> {
 
     @Autowired
@@ -19,7 +20,7 @@ public class InventoryController extends BaseController<Inventory, Integer, Inve
         super(inventoryService);
     }
     
-    @GetMapping("/{id}")
+    @GetMapping("ByUserId/{id}")
     public List<Inventory> getInventoryByUsername(@PathVariable int id) {
     	return getService().findByPlayerId(id);
     }
