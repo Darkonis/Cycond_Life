@@ -9,6 +9,16 @@ public class Consumable extends Item {
    private int duration;
    private String useMsg;
 
+    /**
+     * Make a consumable item
+     * @param itemID
+     * @param name the items name
+     * @param desc the description of the item
+     * @param type what type of item is it
+     * @param effect dice type that controls the power of the effect
+     * @param duration how long effects last (in turns)
+     * @param use_msg what should be told to the player when an item is used
+     */
     Consumable(int itemID,String name,String desc,int type,Dice effect,int duration,String use_msg)
     {
         this.itemID=itemID;
@@ -20,6 +30,10 @@ public class Consumable extends Item {
         this.useMsg=use_msg;
     }
 
+    /**
+     * use and item
+     * @return weither t
+     */
     public boolean use()
     {
         boolean used = true;

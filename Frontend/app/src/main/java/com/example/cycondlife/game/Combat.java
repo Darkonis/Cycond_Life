@@ -31,11 +31,15 @@ public class Combat extends AppCompatActivity {
     TextView itemID;
 
 
-
+    //TODO make these private with get methods
     public final static Player player = Player.get_instance();
    public static Character monster;
     static Game g;
-    //TODO make a status info where we can display what has happened in combat (a combat log)
+
+    /**
+     * On the creation of this screen
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +48,12 @@ public class Combat extends AppCompatActivity {
         setup_buttons();
         update_status();
     }
+
+    /**
+     * setup the combatants before combat starts
+     * @param mnstr enemy
+     * @param tmp game
+     */
     public static void set_combatants(Character mnstr,Game tmp)
     {
         monster=mnstr;
