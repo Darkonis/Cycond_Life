@@ -1,14 +1,3 @@
-image: jangrewe/gitlab-ci-android
-
-before_script:
-- export GRADLE_USER_HOME=$(pwd)/.gradle
-- chmod +x ./gradlew
-
-cache:
-  key: ${CI_PROJECT_ID}
-  paths:
-  - .gradle/
-
  stages:
   - mavenbuild
   - maventest
@@ -53,12 +42,18 @@ docker-deploy:
     
 
 android-build:
+  image: javiersantos/android-ci:latest
+  stage: androidbuild
+  before_script:
+    - export GRADLE_USER_HOME-'pwd'/.gradle
+    - chmod +x ./Frontend/gradlew
   tags:
     - frontend
-  stage: androidbuild
+  
   script:
-  - ./gradlew assembleDebug
+  - cd Frontend
+  - ./gradlew assemble
   artifacts:
     paths:
-    - app/build/outputs/
+    - Frontend/app/build/outputs/
 
