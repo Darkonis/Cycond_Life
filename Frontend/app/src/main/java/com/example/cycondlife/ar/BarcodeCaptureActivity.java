@@ -40,6 +40,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.cycondlife.R;
+import com.example.cycondlife.game.Item;
+import com.example.cycondlife.game.Player;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.CommonStatusCodes;
@@ -432,6 +434,7 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
 
     @Override
     public void onBarcodeDetected(Barcode barcode) {
-        //do something with barcode data returned
+        Player.get_instance().addItem(Item.findByID(Integer.parseInt(barcode.rawValue)));
+        finishActivity(0);
     }
 }
