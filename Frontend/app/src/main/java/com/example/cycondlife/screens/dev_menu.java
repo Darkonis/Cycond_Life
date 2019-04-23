@@ -21,6 +21,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cycondlife.communication.Json_handler;
+import com.example.cycondlife.game.Consumable;
 import com.example.cycondlife.game.Game;
 import com.example.cycondlife.game.Item;
 import com.example.cycondlife.game.Player;
@@ -178,7 +179,7 @@ public class dev_menu extends AppCompatActivity {
         submitItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Player.get_instance().addItem(Item.findByID(Integer.parseInt(itemId.getText().toString())));
+                Player.get_instance().addItem((Consumable) Item.findByID(Integer.parseInt(itemId.getText().toString())));
             }
         });
         addItem.setOnClickListener( new View.OnClickListener(){
