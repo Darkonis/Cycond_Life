@@ -9,7 +9,7 @@ public class Consumable extends Item {
    private int duration;
    private String useMsg;
 
-    Consumable(int itemID,String name,String desc,int type,Dice effect,int duration,String use_msg)
+   public Consumable(int itemID,String name,String desc,int type,Dice effect,int duration,String use_msg)
     {
         this.itemID=itemID;
         this.name=name;

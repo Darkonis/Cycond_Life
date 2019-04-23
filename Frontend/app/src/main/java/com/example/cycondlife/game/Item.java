@@ -5,6 +5,9 @@ import android.util.Log;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
+import com.example.cycondlife.Dice;
+import com.example.cycondlife.communication.Callback_handler;
+import com.example.cycondlife.communication.Json_handler;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -50,7 +53,7 @@ public abstract class Item {
                     JSONObject a= q.getJSONObject(i);
 
                         Item l = new Consumable(a.getInt("itemID"), a.getString("name"), a.getString("description"),
-                                a.getInt("type"), new Dice (a.getString("effect")), a.getInt("duration"), a.getString("useMSG"));
+                                a.getInt("type"), new Dice(a.getString("effect")), a.getInt("duration"), a.getString("useMSG"));
                         itemList.add(l);
                     }
                     catch (Exception e)

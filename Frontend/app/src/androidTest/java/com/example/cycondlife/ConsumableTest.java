@@ -1,5 +1,9 @@
 package com.example.cycondlife;
 
+import com.example.cycondlife.game.Consumable;
+import com.example.cycondlife.game.Item;
+import com.example.cycondlife.game.Player;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
