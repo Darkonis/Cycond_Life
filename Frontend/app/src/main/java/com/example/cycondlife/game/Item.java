@@ -7,6 +7,7 @@ public abstract class Item {
     protected String name;
     protected String description;
     protected int type;
+    protected int cost;
     public static ArrayList<Item> itemList= new ArrayList<>();
     public int getType(){
         return type;
@@ -22,7 +23,7 @@ public abstract class Item {
     {
         for(int i=0;i<itemList.size();i++)
         {
-            if(itemList.get(i).itemID==ID);
+            if(itemList.get(i).itemID==ID)
             {
                 return itemList.get(i);
             }
