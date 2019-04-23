@@ -1,7 +1,19 @@
-stages:
+image: jangrewe/gitlab-ci-android
+
+before_script:
+- export GRADLE_USER_HOME=$(pwd)/.gradle
+- chmod +x ./gradlew
+
+cache:
+  key: ${CI_PROJECT_ID}
+  paths:
+  - .gradle/
+
+ stages:
   - mavenbuild
   - maventest
   - deploy
+  - androidbuild
 
 maven-build:
   image: maven:3-jdk-8
@@ -38,4 +50,15 @@ docker-deploy:
     - docker run -d -p 8080:8080 rpg309
   only:
     - master
+    
+
+android-build:
+  tags:
+    - frontend
+  stage: androidbuild
+  script:
+  - ./gradlew assembleDebug
+  artifacts:
+    paths:
+    - app/build/outputs/
 
