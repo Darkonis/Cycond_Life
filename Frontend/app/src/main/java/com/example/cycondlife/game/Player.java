@@ -27,8 +27,8 @@ import java.util.ArrayList;
 
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
-/*
-    This should be a singleton there should only be one player
+/**
+ * stores information about the players current state in a singlton format
  */
 public class Player extends Character {
     private static Player player_instance;
@@ -113,6 +113,11 @@ public class Player extends Character {
     public int getLevel() {
         return level;
     }
+
+    /**
+     * give the player experiance
+     * @param val
+     */
     public void incEXP(int val)
     {
         experiance+=val;
@@ -127,6 +132,13 @@ public class Player extends Character {
     }
     /*
     should be used only for test methods
+     */
+
+    /**
+     * create a generic test case for running tests
+     * IMPORTANT DO NO USE ANYWHERE ELSE
+     * @param user
+     * @param idt
      */
     public static synchronized void createTestInstance(String user, int idt)
     {
@@ -199,19 +211,34 @@ public class Player extends Character {
        // JsonObjectRequest j = new JsonObjectRequest()
     }
     public int getCreativity(){return creativity;}
+
+    /**
+     * get the current instance of the player class
+     * @return the only instance
+     */
     public static Player get_instance()
     {
         return player_instance;
     }
     public static int getMonstersKilled(){return monstersKilled;}
+
+    /**
+     * force an update of the player statistics
+     */
     public void force_update()
     {
         get_stats(id,callback,context);
     }
+
+    /**
+     *  add an item to the active effects table
+     * @param i item to add
+     */
     public void addActiveItem(Item i)
     {
         activeItems.add((Consumable) i);
     }
+
     public ArrayList<Consumable> getActives()
     {
         return activeItems;
@@ -221,6 +248,11 @@ public class Player extends Character {
     public ArrayList<Consumable> getInv() {
         return inv;
     }
+
+    /**
+     * add an item to the players inventory note the inventory cap of 20
+     * @param i item to add
+     */
     public void addItem(Consumable i)
     {
         //TODO propagate to the server when possuible
@@ -233,10 +265,20 @@ public class Player extends Character {
             Log.i("Cycond Info", "You drop some items");
         }
     }
+
+    /**
+     * safely remove an item from the inventory
+     * @param index
+     * @return the item that was removed
+     */
     public Item removeItem(int index)
     {
         return inv.remove(index);
     }
+
+    /**
+     * sort the the active item list and apply needed effects
+     */
     public void parseActives()
     {
         for(int i=0;i<activeItems.size();i++)
@@ -272,6 +314,11 @@ public class Player extends Character {
 
         }
     }
+
+    /**
+     * calculates the player substats base on primary stats
+     */
+    //TODO max resolve
     public void update_substats()
     {
         parseActives();
@@ -288,7 +335,13 @@ public class Player extends Character {
         if(tinkeringPoints==-1) tinkeringPoints=tinkPointsMax;
     }
 
-    public static synchronized void create_the_instance(String user,int id,Context c)
+    /**
+     * Create the singlton player
+     * @param user the username
+     * @param id the user id
+     * @param c the context
+     */
+        public static synchronized void create_the_instance(String user,int id,Context c)
     {
         if(player_instance!=null)
         {
@@ -297,6 +350,9 @@ public class Player extends Character {
         player_instance = new Player(user,id,c);
     }
 
+    /**
+     * nullify the player class (Note may break singlton pattern use with caution)
+     */
     public static synchronized void destroy_the_instance()
     {
         player_instance=null;
@@ -363,10 +419,19 @@ public class Player extends Character {
         requestQueue.add(jsonArrayRequest);
     }
 
+    /**
+     * get the chat sender
+     * @return the chat sender
+     */
     public ChatSender getSender() {
         return sender;
     }
 
+    /**
+     * updates the players Resolve
+     * @param dmg the amount of dmg taken
+     * @param c the context
+     */
     public void take_dmg(int dmg,Context c)
     {
        resolve=this.resolve-dmg;
@@ -376,11 +441,17 @@ public class Player extends Character {
     /*
     TODO adjust this to update locally as well
      */
+
     protected void update_stat(int val, String stat, Context c)
     {
         Json_handler j = new Json_handler(c);
         j.update_stat(id,stat,val);
     }
+
+    /**
+     * change the players health
+     * @param i new value
+     */
     public void changeResolve(int i)
     {
         resolve +=i;
@@ -391,11 +462,21 @@ public class Player extends Character {
         Json_handler j = new Json_handler(context);
         j.update_stat(Player.get_instance().id,"resolve",resolve);
     }
+
+    /**
+     * adjust the number of tinkering points you have
+     * @param i amount to change by
+     */
     public void adjustTinkeringPoints(int i)
     {
         tinkeringPoints +=i;
         if((int) Math.round(1.5*critical_thinking)< tinkeringPoints) tinkeringPoints =(int) Math.round(1.5*critical_thinking);
     }
+
+    /**
+     * end an items effect on the player
+     * @param c the item to end
+     */
     public void endItem(Consumable c)
     {
         switch (c.type)

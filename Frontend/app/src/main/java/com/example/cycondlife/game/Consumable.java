@@ -62,16 +62,35 @@ public class Consumable extends Item {
         }
         return used;
     }
+
+    /**
+     * Decrease the remaining duration of an item
+     */
     public void decreaseDuration() {duration--;}
     public String getUseMsg() {
         return useMsg;
     }
+
+    /**
+     * get the duration
+     * @return the duration
+     */
     public int getDuration() {
         return duration;
     }
+
+    /**
+     * return the effect of an item
+     * @return dice with effect
+     */
     public Dice getEffect() {
         return effect;
     }
+
+    /**
+     * create a copy
+     * @return the copy
+     */
     @Override
     public Consumable clone()
     {
