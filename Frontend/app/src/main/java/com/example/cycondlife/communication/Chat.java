@@ -100,13 +100,19 @@ public class Chat extends AppCompatActivity {
     }
 
 
-
+    /**
+    Send a message
+     */
     public void send()    {
         sender.sendMsg("CHAT " + userMessage.getText().toString());
 
         //chatText.setText(sender.getReceivedStuff());
     }
 
+    /**
+     * get the context
+     * @return the context
+     */
     public static Context getChatContext()  {
         return context;
     }

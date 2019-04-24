@@ -22,7 +22,11 @@ public class ChatSender {
     //PrintWriter pw;
     //Toast noConnection = new Toast.makeText(getChatContext(), "Failed to connect to server", Toast.LENGTH_SHORT);
 
-
+    /**
+     * Connect the websocket to the server
+     * @param dest the url to connect to
+     * @return return something
+     */
     public Void connectWebSocket(URI dest) {
         //chat = new Socket();
         receivedText = "  connecting...";
@@ -95,6 +99,10 @@ public class ChatSender {
         return null;
     }
 
+    /**
+     * send a message to all other users
+     * @param msg the message to be sent
+     */
     public void sendMsg(String msg)  {
         try {
             chat.send(msg);
@@ -105,7 +113,10 @@ public class ChatSender {
 
     }
 
-
+    /**
+     * return all recieved text
+     * @return the text
+     */
     //need a way to make background listener
     public String getReceivedStuff()  {
 //        BufferedReader in;
@@ -127,15 +138,25 @@ public class ChatSender {
         return receivedText;
     }
 
-
+    /**
+     * pass the view for the chat
+     * @param newChatBox what is being passed
+     */
     public void passChatBox(TextView newChatBox)   {
         chatBox = newChatBox;
     }
 
+    /**
+     *  pass the activity
+     * @param activity
+     */
     public void passActivity(Activity activity) {
         chatActivity = activity;
     }
 
+    /**
+     * update the visible chat
+     */
     public void setChatText()  {
         if(chatBox != null) {
 
@@ -151,6 +172,10 @@ public class ChatSender {
         }
     }
 
+    /**
+     * get the websocket
+     * @return the websocket
+     */
     public WebSocketClient getWebSocket()  {
         return chat;
     }

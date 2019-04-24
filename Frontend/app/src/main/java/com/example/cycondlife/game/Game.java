@@ -33,6 +33,11 @@ public class Game {
             generate_monster();
         }
     }
+
+    /**
+     * add a monster to the list
+     * @param c the monster to be added
+     */
    public static void add_monster(Character c)
     {
         monster_map.add(c);
@@ -71,7 +76,11 @@ public class Game {
         }
     }
 
-
+    /**
+     * change the players resolve
+     * @param hp the hp
+     * @param c the context
+     */
    public static void change_player_hp(int hp, Context c) {
         player.setResolve(hp);
         player.update_stat(hp,"resolve",c);

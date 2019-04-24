@@ -16,8 +16,11 @@ public abstract class Item {
     {
         return itemID;
     }
-    /*
-    finds an item on the item list by its id
+
+    /**
+     * find an item in the item list by Item ID
+     * @param ID the id of the item
+     * @return the item
      */
     public static Item findByID(int ID)
     {
