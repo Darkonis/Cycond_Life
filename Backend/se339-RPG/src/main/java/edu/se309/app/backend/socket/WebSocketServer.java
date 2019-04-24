@@ -158,13 +158,16 @@ public class WebSocketServer {
         int id = Integer.parseInt(in.next());
         if (subCommand.equals("ATTACK")) {
             monsterService.markMonster(id, true);
-            broadcast("Player: " + account.getUsername() + " attacked Monster " + id);
+            broadcast("REFRESH");
+            broadcast("CHAT Player: " + account.getUsername() + " attacked Monster " + id);
         } else if (subCommand.equals("DEFEAT")) {
             monsterService.markMonster(id, false);
-            broadcast("Player: " + account.getUsername() + " was defeated by Monster " + id);
+            broadcast("REFRESH");
+            broadcast("CHAT Player: " + account.getUsername() + " was defeated by Monster " + id);
         } else if (subCommand.equals("VICTORY")) {
             monsterService.deleteById(id);
-            broadcast("Player: " + account.getUsername() + " defeated Monster " + id);
+            broadcast("REFRESH");
+            broadcast("CHAT Player: " + account.getUsername() + " defeated Monster " + id);
         } else {
         	in.close();
             throw new IOException();
@@ -173,7 +176,7 @@ public class WebSocketServer {
     }
 
     public void CHAT(String payload) {
-        String chatMessage = "Chat " + account.getUsername() + ": " + payload;
+        String chatMessage = "CHAT Chat " + account.getUsername() + ": " + payload;
         broadcast(chatMessage);
     }
 
