@@ -56,8 +56,10 @@ public abstract class Item {
                     try {
                     JSONObject a= q.getJSONObject(i);
 
-                        Item l = new Consumable(a.getInt("itemID"), a.getString("name"), a.getString("description"),
-                                a.getInt("type"), new Dice(a.getString("effect")), a.getInt("duration"), a.getString("useMSG"));
+                       /* Item l = new Consumable(a.getInt("id"), a.getString("name"), a.getString("description"),
+                                a.getInt("statEffected"), new Dice(a.getString("pointsIncreased")), a.getInt("totalTurns"), a.getString("useMSG"));*/
+                        Item l = new Consumable(a.getInt("id"), a.getString("name"), "this is a description",
+                                a.getInt("statEffected"), new Dice(a.getString("pointsIncreased")), a.getInt("totalTurns"), "you used the item");
                         itemList.add(l);
                     }
                     catch (Exception e)
@@ -73,6 +75,6 @@ public abstract class Item {
             }
         };
 
-        Json_handler.makeCall(Request.Method.GET,"Get a url",c,1,null);
+        Json_handler.makeCall(Request.Method.GET,"http://cs309-sd-6.misc.iastate.edu:8080/api/items/consumable/",c,1,null);
     }
 }
