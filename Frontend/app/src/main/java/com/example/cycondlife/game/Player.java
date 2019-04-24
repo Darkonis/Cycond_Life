@@ -61,9 +61,12 @@ public class Player extends Character {
     private double dmgReduct =.1;
     private double BS =10;
     private int tinkPoints=50;
+    private int tinkPointsMax =50;
     private double tinkMult=1.0;
     private double dodgeChance=15;
-    private ArrayList<Item> inv = new ArrayList<>();
+    private int tinkeringPoints=-1;
+    private ArrayList<Consumable> inv = new ArrayList<>();
+    private ArrayList<Consumable> activeItems = new ArrayList<>();
 
     private int itemCount=0;
 
@@ -134,6 +137,7 @@ public class Player extends Character {
         super();
         Consumable c1 =new Consumable(0,"lesser health potion","This potion sits in a red bottle labeled TEST",0,new Dice("2+2d4"),0,"You take a health Potion");
         Item.itemList.add(c1);
+        Item.itemList.add(new Consumable(002,"Test Duration","This item should be active for a little while",2,new Dice(("4+0d4")),5,"you drink the test potion you feel more powerful"));
         update_substats();
 
         username=user;
@@ -204,11 +208,20 @@ public class Player extends Character {
     {
         get_stats(id,callback,context);
     }
+    public void addActiveItem(Item i)
+    {
+        activeItems.add((Consumable) i);
+    }
+    public ArrayList<Consumable> getActives()
+    {
+        return activeItems;
+    }
 
-    public ArrayList<Item> getInv() {
+
+    public ArrayList<Consumable> getInv() {
         return inv;
     }
-    public void addItem(Item i)
+    public void addItem(Consumable i)
     {
         //TODO propagate to the server when possuible
         if(inv.size()<20)
@@ -224,8 +237,44 @@ public class Player extends Character {
     {
         return inv.remove(index);
     }
+    public void parseActives()
+    {
+        for(int i=0;i<activeItems.size();i++)
+        {
+            Consumable c=activeItems.get(i);
+            switch (c.type)
+            {
+                case Consumable.creativity:
+                {
+                    Log.i("Cycond Info", "Creativity: "+creativity);
+                    creativity+=c.getEffect().roll();
+                    Log.i("Cycond Info", "Creativity: "+creativity);
+                    break;
+                }
+                case Consumable.presentation: {
+                    Log.i("Cycond Info", "presentation: "+presentation);
+                    presentation += c.getEffect().roll();
+                    Log.i("Cycond Info", "presentation: "+presentation);
+                    break;
+                }
+                case Consumable.criticalThinking: {
+                    Log.i("Cycond Info", "criticalThinking: "+critical_thinking);
+                    critical_thinking += c.getEffect().roll();
+                    Log.i("Cycond Info", "criticalThinking: "+critical_thinking);
+
+                    break;
+                }
+                default:
+                    Log.i("Cycond Error","unhandled item type please contact the developer");
+                    break;
+
+            }
+
+        }
+    }
     public void update_substats()
     {
+        parseActives();
         hitChance =50+creativity+critical_thinking;
         if(hitChance >99) hitChance =99;
         sight =.001+(critical_thinking+0.0)/10000;
@@ -233,9 +282,10 @@ public class Player extends Character {
         critMult= 2+ (presentation+critical_thinking)/500.0;
         dmgReduct = .01 +(presentation+critChance)/100.0;
         BS=(presentation+critical_thinking)/100.0;
-        tinkPoints=(int) Math.round(1.5*critical_thinking);
+        tinkPointsMax =(int) Math.round(1.5*critical_thinking);
         tinkMult=.9+(creativity+critical_thinking)/1500.0;
         dodgeChance= 15+(creativity/2000.0);
+        if(tinkeringPoints==-1) tinkeringPoints=tinkPointsMax;
     }
 
     public static synchronized void create_the_instance(String user,int id,Context c)
@@ -340,6 +390,35 @@ public class Player extends Character {
         }
         Json_handler j = new Json_handler(context);
         j.update_stat(Player.get_instance().id,"resolve",resolve);
+    }
+    public void adjustTinkeringPoints(int i)
+    {
+        tinkeringPoints +=i;
+        if((int) Math.round(1.5*critical_thinking)< tinkeringPoints) tinkeringPoints =(int) Math.round(1.5*critical_thinking);
+    }
+    public void endItem(Consumable c)
+    {
+        switch (c.type)
+        {
+            case Consumable.creativity:
+            {
+                creativity-=c.getEffect().roll();
+                break;
+            }
+            case Consumable.presentation: {
+                presentation -= c.getEffect().roll();
+                break;
+            }
+            case Consumable.criticalThinking: {
+                critical_thinking -= c.getEffect().roll();
+
+                break;
+            }
+            default:
+                Log.i("Cycond Error","unhandled item type please contact the developer");
+                break;
+
+        }
     }
 
 }

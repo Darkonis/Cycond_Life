@@ -2,6 +2,7 @@ stages:
   - mavenbuild
   - maventest
   - deploy
+  - androidbuild
 
 maven-build:
   image: maven:3-jdk-8
@@ -38,4 +39,20 @@ docker-deploy:
     - docker run -d -p 8080:8080 rpg309
   only:
     - master
+    
+
+android-build:
+  image: javiersantos/android-ci:latest
+  stage: androidbuild
+  before_script:
+    - export GRADLE_USER_HOME='pwd'/.gradle
+    - chmod +x ./Frontend/gradlew
+  tags:
+    - frontend
+  script:
+    - cd Frontend
+    - ./gradlew assemble
+  artifacts:
+    paths:
+    - Frontend/app/build/outputs/
 

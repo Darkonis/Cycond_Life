@@ -40,6 +40,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.cycondlife.R;
+import com.example.cycondlife.game.Consumable;
 import com.example.cycondlife.game.Item;
 import com.example.cycondlife.game.Player;
 import com.google.android.gms.common.ConnectionResult;
@@ -438,7 +439,14 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
      */
     @Override
     public void onBarcodeDetected(Barcode barcode) {
-        Player.get_instance().addItem(Item.findByID(Integer.parseInt(barcode.rawValue)));
+        try {
+            Player.get_instance().addItem((Consumable) Item.findByID(Integer.parseInt(barcode.rawValue)));
+            Log.i("Cycond info","Item ID:"+Integer.parseInt(barcode.rawValue));
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(),"this code is not in the correct format",Toast.LENGTH_SHORT);
+        }
         finishActivity(0);
     }
 }

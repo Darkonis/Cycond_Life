@@ -22,7 +22,7 @@ public class ConsumableItem {
     private int totalTurns;
 
     @Column(name = "points_increased")
-    private int pointsIncreased;
+    private String pointsIncreased;
 
     public int getId() {
         return id;
@@ -56,11 +56,11 @@ public class ConsumableItem {
         this.totalTurns = totalTurns;
     }
 
-    public int getPointsIncreased() {
+    public String getPointsIncreased() {
         return pointsIncreased;
     }
 
-    public void setPointsIncreased(int pointsIncreased) {
+    public void setPointsIncreased(String pointsIncreased) {
         this.pointsIncreased = pointsIncreased;
     }
 
