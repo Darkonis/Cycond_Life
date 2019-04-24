@@ -92,7 +92,7 @@ public class Login extends AppCompatActivity {
         final Intent openMenu = new Intent(Login.this, menu.class);
         final Callback_handler c = new Callback_handler() {
             @Override
-            public void get_response(JSONArray a) {
+            public void get_array_response(JSONArray a) {
                 return;
             }
 

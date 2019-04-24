@@ -433,6 +433,10 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
         }
     }
 
+    /**
+     * What does the program do when a barcode(QR code) is detected
+     * @param barcode what was detected
+     */
     @Override
     public void onBarcodeDetected(Barcode barcode) {
         try {

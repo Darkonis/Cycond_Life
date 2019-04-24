@@ -40,17 +40,31 @@ public class   Json_handler {
     private final String statlink="http://cs309-sd-6.misc.iastate.edu:8080/api/stats/updateStat/";
     private final String statlinkadd="http://cs309-sd-6.misc.iastate.edu:8080/api/stats/add/";
     private static RequestQueue queue;
+    /**
+     * create the json handler
+     * @param c the context of the app
+     */
     public Json_handler(Context c)
     {
         mContext =c;
         queue= Volley.newRequestQueue(c);
     }
+
+    /**
+     * delete a user by id
+     * @param user_id
+     */
     public void delete_user(int user_id)
     {
         this.user_id=user_id;
         delete_user d=new delete_user();
         d.execute();
     }
+
+    /**
+     * add stats to a given account
+     * @param id the id to get stats
+     */
     public void add_stats(int id)
     {
         final RequestQueue requestQueue = Volley.newRequestQueue(mContext);
@@ -79,6 +93,13 @@ public class   Json_handler {
             Log.i("Cycond Error",e.toString());
         }
     }
+
+    /**
+     * update a stat to a given value
+     * @param id the user id
+     * @param stat name of the stat
+     * @param value the new value
+     */
     public void update_stat(int id, String stat,int value)
     {
        // this.getApplicationContext();
@@ -113,6 +134,17 @@ public class   Json_handler {
 
         requestQueue.add(jsonMain);
     }
+
+    /**
+     * create a user
+     * @param user the username
+     * @param pass the password
+     * @param first first name
+     * @param last last name
+     * @param email email
+     * @param type account permissions
+     * @return succsess
+     */
     public boolean send_new_user(String user, String pass,String first,String last,String email,String type)
     {
         this.user=user;
@@ -227,7 +259,7 @@ public class   Json_handler {
             t = new JsonArrayRequest(type, url, ar, new Response.Listener<JSONArray>() {
                 @Override
                 public void onResponse(JSONArray response) {
-                    c.get_response(response);
+                    c.get_array_response(response);
                 }
             }, new Response.ErrorListener() {
                 @Override
