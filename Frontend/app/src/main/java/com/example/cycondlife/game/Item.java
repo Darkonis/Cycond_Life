@@ -50,7 +50,7 @@ public abstract class Item {
         itemList = new ArrayList<>();
         Callback_handler c = new Callback_handler() {
             @Override
-            public void get_response(JSONArray q) {
+            public void get_array_response(JSONArray q) {
                 for(int i=0;i< q.length();i++)
                 {
                     try {
