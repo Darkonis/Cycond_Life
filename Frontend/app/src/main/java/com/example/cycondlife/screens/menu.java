@@ -20,6 +20,7 @@ import com.example.cycondlife.communication.Chat;
 import com.example.cycondlife.game.Character;
 import com.example.cycondlife.game.Game;
 import com.example.cycondlife.R;
+import com.example.cycondlife.game.Player;
 
 
 import org.json.JSONArray;
@@ -127,6 +128,14 @@ public class menu extends AppCompatActivity {
         View view = this.getWindow().getDecorView();
         view.setBackgroundColor(color);
     }   */
+
+    /**
+     * generic json stuff
+     * @param method the method tyoe
+     * @param url the url to use
+     * @param jsonValue json object to be passed
+     * @param callback the callback handler
+     */
     public void getResponse(int method, String url, JSONObject jsonValue, final Callback_handler callback)
     {
         Context c= getApplicationContext();

@@ -21,6 +21,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * The create account page
+ */
 public class CreateAccount extends AppCompatActivity {
     private Button submit;
     private TextView user;
