@@ -6,8 +6,15 @@ import java.util.Optional;
 
 public interface MonsterRepository extends BaseRepository<Monster, Integer> {
 
+    /**
+     * Delete all
+     */
     @Override
     void deleteAll();
 
+    /**
+     * Find first monster by ID
+     * @return Monster with lowest ID
+     */
     Optional<Monster> findFirstByOrderByIdAsc();
 }

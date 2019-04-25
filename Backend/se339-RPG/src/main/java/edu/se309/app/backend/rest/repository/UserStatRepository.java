@@ -6,6 +6,11 @@ import java.util.Optional;
 
 public interface UserStatRepository extends BaseRepository<UserStat, Integer> {
 
+    /**
+     * Find user's stats by account username
+     * @param username username of account
+     * @return stats
+     */
     Optional<UserStat> findByAccountUsername(String username);
 
 }
