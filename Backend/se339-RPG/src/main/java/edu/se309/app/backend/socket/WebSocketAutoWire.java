@@ -13,7 +13,17 @@ public class WebSocketAutoWire implements ApplicationContextAware {
     private static ApplicationContext applicationContext;
 
     /**
+     * Returns the ApplicationContext
+     *
+     * @return ApplicationContext
+     */
+    public static ApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
+
+    /**
      * Used by Spring Boot and shouldn't be called by any other source
+     *
      * @param applicationContext
      * @throws BeansException
      */
@@ -24,17 +34,10 @@ public class WebSocketAutoWire implements ApplicationContextAware {
     }
 
     /**
-     * Returns the ApplicationContext
-     * @return ApplicationContext
-     */
-    public static ApplicationContext getApplicationContext() {
-        return applicationContext;
-    }
-
-    /**
      * Is used to get the stored Spring bean when autowiring such in isn't feasible
+     *
      * @param beanClass The class of the requested spring bean
-     * @param <T> The object type of the request spring bean
+     * @param <T>       The object type of the request spring bean
      * @return the instance of the spring bean
      */
     public static <T> T getBean(Class<T> beanClass) {
