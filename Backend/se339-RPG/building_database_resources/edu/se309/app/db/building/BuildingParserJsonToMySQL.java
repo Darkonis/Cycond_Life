@@ -6,8 +6,17 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * A class used to parse JSON information to MYSQL commands
+ */
 public class BuildingParserJsonToMySQL {
 
+    /**
+     * Main method used for parsing
+     * @param args args
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public static void main(String[] args) throws FileNotFoundException, IOException {
         HashMap<Long, Node> nodes = new HashMap<>();
         ArrayList<Way> ways = new ArrayList<>();

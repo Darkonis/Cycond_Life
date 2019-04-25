@@ -3,7 +3,7 @@ package edu.se309.app.db.building;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Node {
+protected class Node {
 
     @SerializedName("id")
     @Expose
@@ -17,26 +17,26 @@ public class Node {
     @Expose
     private double lon;
 
-    public Node(long id, double lat, double lon) {
+    protected Node(long id, double lat, double lon) {
         this.lon = lon;
         this.lat = lat;
         this.id = id;
     }
 
-    public long getId() {
+    protected long getId() {
         return id;
     }
 
-    public double getLat() {
+    protected double getLat() {
         return lat;
     }
 
-    public double getLon() {
+    protected double getLon() {
         return lon;
     }
 
     @Override
-    public String toString() {
+    protected String toString() {
         return String.valueOf(lat) + " " + String.valueOf(lon);
     }
 }
