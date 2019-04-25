@@ -11,11 +11,20 @@ import java.util.Date;
 @RequestMapping("/api/accounts")
 public class AccountController extends BaseController<Account, Integer, AccountService> {
 
+    /**
+     * Account controller constructor
+     * @param accountService Account Service associated with controller
+     */
     @Autowired
     public AccountController(AccountService accountService) {
         super(accountService);
     }
 
+    /**
+     * Add account
+     * @param account acccount as a json object
+     * @return created account
+     */
     @PostMapping("/add")
     public Account addAccount(@RequestBody Account account) {
         account.setId(0);
@@ -25,11 +34,21 @@ public class AccountController extends BaseController<Account, Integer, AccountS
         return account;
     }
 
+    /**
+     * Find acccount by email
+     * @param email email of requested account
+     * @return account
+     */
     @PostMapping("/findByEmail")
     public Account findAccountByEmail(@RequestBody String email) {
         return getService().findByEmail(email);
     }
 
+    /**
+     * find account by username
+     * @param username username of requested account
+     * @return account
+     */
     @GetMapping("/findByUsername/{username}")
     public Account getAccountByUsername(@PathVariable String username) {
         return getService().findByUsername(username);
