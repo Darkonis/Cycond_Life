@@ -1,5 +1,8 @@
 package edu.se309.app.backend.socket;
 
+/**
+ * Class for creating shared objects for the web socket
+ */
 public class WebSocketObjectCreator {
 
     /**

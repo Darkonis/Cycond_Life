@@ -7,6 +7,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
+/**
+ * Shared context for the web socket
+ */
 @Component
 public class WebSocketAutoWire implements ApplicationContextAware {
 

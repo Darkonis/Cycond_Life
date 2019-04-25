@@ -11,6 +11,9 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.*;
 
+/**
+ * A class to keep track of shared objects and methods for the websocket
+ */
 @Component
 public class WebSocketSharedSingleton {
 

@@ -10,6 +10,10 @@ import org.springframework.stereotype.Service;
 public class BaseItemServiceImplementation extends
         BaseServiceImplementation<BaseItem, Integer, BaseItemRepository> implements BaseItemService {
 
+    /**
+     * Constructor for BaseItemServiceImplementation
+     * @param baseItemRepository repository associated with this service
+     */
     @Autowired
     public BaseItemServiceImplementation(BaseItemRepository baseItemRepository) {
         super(baseItemRepository);

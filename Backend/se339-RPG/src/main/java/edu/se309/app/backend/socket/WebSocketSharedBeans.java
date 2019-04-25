@@ -2,6 +2,9 @@ package edu.se309.app.backend.socket;
 
 import edu.se309.app.backend.rest.controller.*;
 
+/**
+ * A class used to retrieve beans controlled by Spring to be used by the websocket
+ */
 class WebSocketSharedBeans {
 
     /**

@@ -9,6 +9,9 @@ import static edu.se309.app.backend.socket.WebSocketSharedBeans.getAccountContro
 import static edu.se309.app.backend.socket.WebSocketSharedSingleton.broadcast;
 import static edu.se309.app.backend.socket.WebSocketSharedSingleton.getAccountSessionMap;
 
+/**
+ * Class for chat for the websocket
+ */
 public class Chat {
 
 

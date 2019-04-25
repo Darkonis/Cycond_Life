@@ -10,15 +10,27 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+/**
+ * Used for business logic associated with accounts
+ */
 @Service
 public class AccountServiceImplementation extends BaseServiceImplementation<Account, Integer, AccountRepository>
         implements AccountService {
 
+    /**
+     * Constructor for AccountServiceImplementation
+     * @param accountRepository associated AccountRepository
+     */
     @Autowired
     public AccountServiceImplementation(AccountRepository accountRepository) {
         super(accountRepository);
     }
 
+    /**
+     * Find Account by Email
+     * @param email email of account to be found
+     * @return account with given email
+     */
     @Override
     @Transactional
     @NonNull
@@ -27,6 +39,11 @@ public class AccountServiceImplementation extends BaseServiceImplementation<Acco
         return nullCheck(account, "Invalid request: No account found with the email: " + email);
     }
 
+    /**
+     * Find account by username
+     * @param username username of account to be found
+     * @return account with given username
+     */
     @Override
     @Transactional
     @NonNull

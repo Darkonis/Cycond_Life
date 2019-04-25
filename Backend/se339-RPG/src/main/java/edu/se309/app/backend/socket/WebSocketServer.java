@@ -22,6 +22,9 @@ import java.util.List;
 import static edu.se309.app.backend.socket.WebSocketSharedSingleton.getAccountSessionMap;
 import static edu.se309.app.backend.socket.WebSocketSharedSingleton.getSessionAccountMap;
 
+/**
+ * Handles communication between front end and backend using web sockets
+ */
 @ServerEndpoint("/websocket/{username}")
 @Component
 public class WebSocketServer {
