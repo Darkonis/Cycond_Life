@@ -1,9 +1,8 @@
 package edu.se309.app.backend.service;
 
-import edu.se309.app.backend.rest.entity.Account;
 import edu.se309.app.backend.rest.entity.UserStat;
-import edu.se309.app.backend.rest.service.StatServiceImplementation;
 import edu.se309.app.backend.rest.repository.UserStatRepository;
+import edu.se309.app.backend.rest.service.StatServiceImplementation;
 import org.hibernate.service.spi.ServiceException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -96,9 +95,9 @@ class StatServiceImplementationTest {
         Boolean failed = false;
         assertEquals(stat, actual);
         try {
-            statService.incrementByAmount(stat.getId(),fakeStat,amount);
+            statService.incrementByAmount(stat.getId(), fakeStat, amount);
         } catch (Exception e) {
-        	failed = true;
+            failed = true;
         }
         assertTrue(failed);
     }
@@ -112,9 +111,9 @@ class StatServiceImplementationTest {
         Boolean failed = false;
         assertEquals(stat, actual);
         try {
-            statService.incrementByOne(stat.getId(),fakeStat);
+            statService.incrementByOne(stat.getId(), fakeStat);
         } catch (Exception e) {
-        	failed = true;
+            failed = true;
         }
         assertTrue(failed);
     }
@@ -128,7 +127,7 @@ class StatServiceImplementationTest {
         UserStat actual = statService.updateUserStat(stat.getId(), "criticalThinking", amount);
         assertEquals(stat, actual);
         try {
-            statService.updateUserStat(stat.getId(),fakeStat,amount);
+            statService.updateUserStat(stat.getId(), fakeStat, amount);
         } catch (ServiceException e) {
             String expected = "Invalid request: No such stat found: " + fakeStat;
             assertEquals(expected, e.getMessage());
@@ -141,7 +140,7 @@ class StatServiceImplementationTest {
         when(statRepository.findByAccountUsername(username))
                 .thenReturn(Optional.of(stat));
         UserStat actual = statService.getByUsername("Username");
-        assertEquals(stat,actual);
+        assertEquals(stat, actual);
 
     }
 

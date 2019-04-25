@@ -1,14 +1,14 @@
 package com.example.cycondlife.communication;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,100 +18,91 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-import android.content.Context;
-
-import com.android.volley.toolbox.JsonObjectRequest;
-
 //TODO look into making this a super class to other activitys
-public class   Json_handler {
+public class Json_handler {
 
-    private String user,pass,first,last,email,type;
     public final String mJSONBASEString = "http://cs309-sd-6.misc.iastate.edu:8080/api/";
-    public final String mAccountString ="accounts/";
-    private Context mContext;
+    public final String mAccountString = "accounts/";
+    private final String statlink = "http://cs309-sd-6.misc.iastate.edu:8080/api/stats/updateStat/";
+    private final String statlinkadd = "http://cs309-sd-6.misc.iastate.edu:8080/api/stats/add/";
     JSONArray a;
-    private JSONObject o;
     volatile boolean done;
+    volatile ArrayList<String[]> t;
+    private String user, pass, first, last, email, type;
+    private Context mContext;
+    private JSONObject o;
     private int user_id;
-   volatile ArrayList<String[]> t;
-    private final String statlink="http://cs309-sd-6.misc.iastate.edu:8080/api/stats/updateStat/";
-    private final String statlinkadd="http://cs309-sd-6.misc.iastate.edu:8080/api/stats/add/";
 
     /**
      * create the json handler
+     *
      * @param c the context of the app
      */
-    public Json_handler(Context c)
-    {
-        mContext =c;
+    public Json_handler(Context c) {
+        mContext = c;
     }
 
     /**
      * delete a user by id
+     *
      * @param user_id
      */
-    public void delete_user(int user_id)
-    {
-        this.user_id=user_id;
-        delete_user d=new delete_user();
+    public void delete_user(int user_id) {
+        this.user_id = user_id;
+        delete_user d = new delete_user();
         d.execute();
     }
 
     /**
      * add stats to a given account
+     *
      * @param id the id to get stats
      */
-    public void add_stats(int id)
-    {
+    public void add_stats(int id) {
         final RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JSONObject j = new JSONObject();
         try {
             j.accumulate("accountID", id);
             j.accumulate("presentation", 10);
-            j.accumulate("creativity",10);
-            j.accumulate("critical thinking",10);
-            JsonObjectRequest t=new JsonObjectRequest(Request.Method.POST, statlinkadd, j, new Response.Listener<JSONObject>() {
+            j.accumulate("creativity", 10);
+            j.accumulate("critical thinking", 10);
+            JsonObjectRequest t = new JsonObjectRequest(Request.Method.POST, statlinkadd, j, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    Log.i("Cycond Response",response.toString());
+                    Log.i("Cycond Response", response.toString());
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Log.i("Cycond Error","add stats Error");
-                    Log.i("Cycond Error",error.toString());
+                    Log.i("Cycond Error", "add stats Error");
+                    Log.i("Cycond Error", error.toString());
                 }
             });
             requestQueue.add(t);
-        }
-        catch (Exception e)
-        {
-            Log.i("Cycond Error",e.toString());
+        } catch (Exception e) {
+            Log.i("Cycond Error", e.toString());
         }
     }
 
     /**
      * update a stat to a given value
-     * @param id the user id
-     * @param stat name of the stat
+     *
+     * @param id    the user id
+     * @param stat  name of the stat
      * @param value the new value
      */
-    public void update_stat(int id, String stat,int value)
-    {
-       // this.getApplicationContext();
-        if (value<0) value=0;
+    public void update_stat(int id, String stat, int value) {
+        // this.getApplicationContext();
+        if (value < 0) value = 0;
         JSONObject j = new JSONObject();
         final RequestQueue requestQueue = Volley.newRequestQueue(mContext);
-        JsonObjectRequest jsonMain = new JsonObjectRequest(Request.Method.PUT, statlink + id + "/"+"{stat}/{value}?stat="+stat+"&value="+value , j, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonMain = new JsonObjectRequest(Request.Method.PUT, statlink + id + "/" + "{stat}/{value}?stat=" + stat + "&value=" + value, j, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                try
-                {
+                try {
 
-                    Log.i("Cycond Life Json",response.toString());
-                }
-                catch(Exception e)
-                {
+                    Log.i("Cycond Life Json", response.toString());
+                } catch (Exception e) {
                     Log.i("Cycond Error", "Error sending stats");
 
                 }
@@ -120,12 +111,11 @@ public class   Json_handler {
 
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError e)
-            {
+            public void onErrorResponse(VolleyError e) {
                 Log.i("Cy Error", "error posting stat change");
                 //e.printStackTrace();
             }
-        }) ;
+        });
 
 
         requestQueue.add(jsonMain);
@@ -133,44 +123,46 @@ public class   Json_handler {
 
     /**
      * create a user
-     * @param user the username
-     * @param pass the password
+     *
+     * @param user  the username
+     * @param pass  the password
      * @param first first name
-     * @param last last name
+     * @param last  last name
      * @param email email
-     * @param type account permissions
+     * @param type  account permissions
      * @return succsess
      */
-    public boolean send_new_user(String user, String pass,String first,String last,String email,String type)
-    {
-        this.user=user;
-        this.pass =pass;
-        this.first=first;
+    public boolean send_new_user(String user, String pass, String first, String last, String email, String type) {
+        this.user = user;
+        this.pass = pass;
+        this.first = first;
         this.last = last;
-        this.email=email;
-        if(!(type.equals("admin")||type.equals("user"))) return false;
-        this.type=type;
-        Add_user a=new Add_user();
+        this.email = email;
+        if (!(type.equals("admin") || type.equals("user"))) return false;
+        this.type = type;
+        Add_user a = new Add_user();
         a.execute();
         return true; //TODO add check for succsessful completion
     }
+
     private JSONObject buidJsonObject() throws JSONException {
 
         JSONObject jsonParam = new JSONObject();
-        jsonParam.put("username",   user);
-        jsonParam.put("password",   pass);
-        jsonParam.put("firstName",   first);
-        jsonParam.put("lastName",   last);
-        jsonParam.put("email",  email);
-        jsonParam.put("accountType",  type);
+        jsonParam.put("username", user);
+        jsonParam.put("password", pass);
+        jsonParam.put("firstName", first);
+        jsonParam.put("lastName", last);
+        jsonParam.put("email", email);
+        jsonParam.put("accountType", type);
 
         return jsonParam;
     }
-    private class delete_user extends  AsyncTask<String, Void,String> {
+
+    private class delete_user extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
             try {
-                URL url = new URL(mJSONBASEString+ mAccountString+user_id);
+                URL url = new URL(mJSONBASEString + mAccountString + user_id);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("DELETE");
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -197,6 +189,7 @@ public class   Json_handler {
             return "deleted";
         }
     }
+
     private class Add_user extends AsyncTask<String, Void, String> {
 
         @Override
@@ -206,7 +199,7 @@ public class   Json_handler {
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-                conn.setRequestProperty("Accept","application/json");
+                conn.setRequestProperty("Accept", "application/json");
                 conn.setDoOutput(true);
                 conn.setDoInput(true);
                 JSONObject jsonParam = buidJsonObject();

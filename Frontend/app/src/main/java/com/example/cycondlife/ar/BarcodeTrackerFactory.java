@@ -16,7 +16,6 @@
 package com.example.cycondlife.ar;
 
 import android.content.Context;
-
 import com.example.cycondlife.camera.GraphicOverlay;
 import com.google.android.gms.vision.MultiProcessor;
 import com.google.android.gms.vision.Tracker;
