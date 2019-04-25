@@ -6,7 +6,17 @@ import java.util.Optional;
 
 public interface AccountRepository extends BaseRepository<Account, Integer> {
 
+    /**
+     * Find account by email
+     * @param email email of requested account
+     * @return account
+     */
     Optional<Account> findByEmailIgnoreCase(String email);
 
+    /**
+     * Find account by username
+     * @param username username of requested account
+     * @return account
+     */
     Optional<Account> findByUsernameIgnoreCase(String username);
 }
