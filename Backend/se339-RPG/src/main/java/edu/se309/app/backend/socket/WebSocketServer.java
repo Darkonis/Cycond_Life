@@ -27,6 +27,11 @@ public class WebSocketServer {
     private Account account;
     private Session session;
 
+    /**
+     * Sets up and starts a websocket connection with the front end. Links the websocket up with an account based on the given username
+     * @param session The websocket session
+     * @param username Username of the account
+     */
     @OnOpen
     public void onOpen(
             Session session,
@@ -38,6 +43,12 @@ public class WebSocketServer {
         getAccountSessionMap().put(account, session);
     }
 
+    /**
+     * Listens for messages and then directs the request to appropriate method
+     * @param session The websocket's sessions
+     * @param message The message in the format "{full method name with parameter types}(...){parameter 1}-,-{parameter 2}-,-{parameter...}"
+     * @throws IOException
+     */
     @OnMessage
     @SneakyThrows
     public void onMessage(Session session, String message) throws IOException {
@@ -49,6 +60,10 @@ public class WebSocketServer {
         }
     }
 
+    /**
+     * Used for directing messages that require a method without a parameter
+     * @param message the message to be redirected. The message should only contain the full method name
+     */
     @SneakyThrows
     public void noParametersMethodCall(String message)  {
         Method method = WebSocketSharedSingleton.getMethod(message.trim());
@@ -61,7 +76,12 @@ public class WebSocketServer {
         }
     }
 
-    @SneakyThrows //TODO
+    /**
+     * Used for directing messages that require a method with parameter values
+     * @param message The message in the format "{full method name with parameter types}(...){parameter 1}-,-{parameter 2}-,-{parameter...}"
+     * @param indexOfSplit the index where the parameters begin
+     */
+    @SneakyThrows
     public void parameterMethodCall(String message, int indexOfSplit) {
         String methodName = message.substring(0, indexOfSplit).trim();
         String[] parameters = message.substring(indexOfSplit + 5).split("-,-");
@@ -101,15 +121,26 @@ public class WebSocketServer {
 
 }
 
+    /**
+     * Closes the websocket
+     */
     @OnClose
     public void onClose(){
         this.destroy();
     }
 
+    /**
+     * Returns the account associated with this websocket
+     * @return the account associated with this websocket
+     */
     public Account getAccount() {
         return account;
     }
 
+    /**
+     * Returns the session associated with this websocket
+     * @return the session associated with this websocket
+     */
     public Session getSession() {
         return session;
     }
@@ -130,6 +161,9 @@ public class WebSocketServer {
 //    }
 
 
+    /**
+     * Removes the websocket from the account and session maps
+     */
     public void destroy() {
         getAccountSessionMap().remove(getSessionAccountMap().get(session));
         getSessionAccountMap().remove(session);
