@@ -26,6 +26,11 @@ public class WebSocketSharedSingleton {
 
     }
 
+    /**
+     * Creates or returns a singleton object used to store common objects used by the web socket as well as their associated methods
+     *
+     * @return the common WebSocketSharedSingleton
+     */
     @Autowired
     public static WebSocketSharedSingleton webSocketSharedSingleton() {
         if (sharedSingleton == null) {
@@ -44,6 +49,13 @@ public class WebSocketSharedSingleton {
     //Creates an object from every parameters and stores it in a static hashMap
     //Also calls addClassMethods to add all the methods to methodMap
     //May want to implement annotations to ignore parent class methods
+
+    /**
+     * Creates an object from every Class given and also adds all of the classes public methods to the stored method map
+     *
+     * @param c Classes to be added
+     * @throws Exception
+     */
     public static void addSingletonClassMethods(Class... c) throws Exception {
         for (Class i : c) {
             Constructor constructor = i.getConstructor();
@@ -53,6 +65,11 @@ public class WebSocketSharedSingleton {
 
     }
 
+    /**
+     * Loads in the predefined objects and methods from the WebSocketObjectCreator and WebSocketSharedBeans classes
+     *
+     * @throws Exception
+     */
     public static void initialHashMaps() throws Exception {
         clearHashMaps();
         Method[] methodBeans = WebSocketSharedBeans.class.getMethods();
@@ -80,7 +97,11 @@ public class WebSocketSharedSingleton {
     }
 
 
-    //Add methods to the methodMap
+    /**
+     * Adds class methods to to the map
+     *
+     * @param c classes to be added
+     */
     public static void addClassMethods(Class... c) {
         for (Class i : c) {
             Method[] methods = i.getMethods();
@@ -96,37 +117,78 @@ public class WebSocketSharedSingleton {
 
     //Takes in a premade object(such as a singleton java bean)
     //and adds it to the map as well as the methods, Only one instance per class
+
+    /**
+     * Adds the given class c's method to the map and create an object from the class
+     *
+     * @param o object to be created
+     * @param c class of the desired object
+     * @throws Exception
+     */
     public static void addObjectAndMethods(Object o, Class c) throws Exception {
         String name = c.getName();
         if (!singletonObjectMap.containsKey(name)) {
             singletonObjectMap.put(name, o);
         } else {
-            throw new Exception("There is only an object of class: " + c.getName());
+            throw new Exception("There is already an object of class: " + c.getName());
         }//A generic exception should probably be changed at some point
         addClassMethods(c);
     }
 
 
+    /**
+     * Returns the method map with method names as keys
+     *
+     * @return method map
+     */
     public static Map<String, Method> getMethodMap() {
         return methodMap;
     }
 
+    /**
+     * Returns the singleton object map with class names as keys
+     *
+     * @return singleton object map
+     */
     public static Map<String, Object> getSingletonObjectMap() {
         return singletonObjectMap;
     }
 
+    /**
+     * returns a method
+     *
+     * @param methodString the method's full name
+     * @return the requested method. Null if not found
+     */
     public static Method getMethod(String methodString) {
         return methodMap.get(methodString);
     }
 
+    /**
+     * Returns the request shared object
+     *
+     * @param objectClassName the name of the class of the object
+     * @return the requested object
+     */
     public static Object getSavedObject(String objectClassName) {
         return singletonObjectMap.get(objectClassName);
     }
 
+    /**
+     * returns a set of all valid method names
+     *
+     * @return set of valid method names
+     */
     public static Set<String> getMethods() {
         return methodMap.keySet();
     }
 
+    /**
+     * Returns a list of method names associated with the given class name
+     *
+     * @param className class name of the requested method list
+     * @return list of method names
+     */
     public static ArrayList<String> getMethodsByClass(String className) {
         ArrayList<String> output = new ArrayList<>();
         Set<String> keys = methodMap.keySet();
@@ -138,9 +200,20 @@ public class WebSocketSharedSingleton {
         return output;
     }
 
+    /**
+     * Returns the account session map
+     *
+     * @return account session map
+     */
     public static Map<Account, Session> getAccountSessionMap() {
         return accountSessionMap;
     }
+
+    /**
+     * returns session account map
+     *
+     * @return session account map
+     */
     public static Map<Session, Account> getSessionAccountMap() {
         return sessionAccountMap;
     }
