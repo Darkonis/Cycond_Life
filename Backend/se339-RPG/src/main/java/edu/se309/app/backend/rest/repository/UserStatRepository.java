@@ -4,6 +4,9 @@ import edu.se309.app.backend.rest.entity.UserStat;
 
 import java.util.Optional;
 
+/**
+ * User Stat Repository
+ */
 public interface UserStatRepository extends BaseRepository<UserStat, Integer> {
 
     /**

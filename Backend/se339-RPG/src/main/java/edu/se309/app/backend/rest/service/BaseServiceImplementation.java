@@ -10,6 +10,13 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Base Service
+ *
+ * @param <T>  Entity type
+ * @param <ID> Type of ID
+ * @param <R>  Type of base Repository
+ */
 public class BaseServiceImplementation<T, ID extends Serializable, R extends BaseRepository<T, ID>>
         implements BaseService<T, ID> {
 

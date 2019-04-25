@@ -14,21 +14,35 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
+/**
+ * Monster Service
+ */
 @Service
 public class MonsterServiceImplementation extends BaseServiceImplementation<Monster, Integer, MonsterRepository>
         implements MonsterService {
 
+    /**
+     * Constructor for Monster Service
+     * @param monsterRepository Repository associated with this service
+     */
     @Autowired
     public MonsterServiceImplementation(MonsterRepository monsterRepository) {
         super(monsterRepository);
     }
 
+    /**
+     * Delete all
+     */
     @Override
     @Transactional
     public void deleteAll() {
         getRepository().deleteAll();
     }
 
+    /**
+     * Return the ID of the monster with the lowest ID
+     * @return id of lowest monster
+     */
     @Override
     @Transactional
     public int firstMonsterId() {
@@ -40,6 +54,10 @@ public class MonsterServiceImplementation extends BaseServiceImplementation<Mons
         }
     }
 
+    /**
+     * Randomly generate new monsters
+     * @return list of new monsters generated
+     */
     @Override
     @Transactional
     public List<Monster> generateMonsters() {
@@ -83,20 +101,24 @@ public class MonsterServiceImplementation extends BaseServiceImplementation<Mons
         monster.setInCombat(0);//starts monster out of combat
         return monster;
     }
-    
+
+    /**
+     * Set status of monster
+     * @param id ID of monster
+     * @param inCombat Status of monster
+     * @return monsters status
+     */
     @Override
     @Transactional
     public int markMonster(int id, boolean inCombat) {
-    	Monster monster = findById(id);
-    	PropertyAccessor myAccessor = PropertyAccessorFactory.forBeanPropertyAccess(monster);
-    	if(inCombat) {
-    		monster.setInCombat(1);
-    	}
-    	else if(!inCombat)
-    	{
-    		monster.setInCombat(0);
-    	}
-    	save(monster);
-    	return monster.getInCombat();
+        Monster monster = findById(id);
+        PropertyAccessor myAccessor = PropertyAccessorFactory.forBeanPropertyAccess(monster);
+        if(inCombat) {
+            monster.setInCombat(1);
+        } else if(!inCombat) {
+            monster.setInCombat(0);
+        }
+        save(monster);
+        return monster.getInCombat();
     }
 }

@@ -8,6 +8,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Base Controller
+ *
+ * @param <T>  Type for given entity to be controlled
+ * @param <ID> Type for the id
+ * @param <S>  Type for the baseService
+ */
 public class BaseController<T, ID extends Serializable, S extends BaseService<T, ID>> {
 
     private S s;

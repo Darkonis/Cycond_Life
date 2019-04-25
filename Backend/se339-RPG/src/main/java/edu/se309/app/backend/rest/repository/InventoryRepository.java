@@ -4,7 +4,9 @@ import edu.se309.app.backend.rest.entity.Inventory;
 
 import java.util.List;
 
-
+/**
+ * Inventory Repository
+ */
 public interface InventoryRepository extends BaseRepository<Inventory, Integer>{
 
 	/**

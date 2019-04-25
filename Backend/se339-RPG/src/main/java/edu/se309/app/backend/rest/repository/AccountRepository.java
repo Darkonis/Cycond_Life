@@ -4,6 +4,9 @@ import edu.se309.app.backend.rest.entity.Account;
 
 import java.util.Optional;
 
+/**
+ * Account Repository
+ */
 public interface AccountRepository extends BaseRepository<Account, Integer> {
 
     /**

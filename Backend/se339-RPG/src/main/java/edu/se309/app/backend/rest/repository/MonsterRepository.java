@@ -4,6 +4,9 @@ import edu.se309.app.backend.rest.entity.Monster;
 
 import java.util.Optional;
 
+/**
+ * Monster Repository
+ */
 public interface MonsterRepository extends BaseRepository<Monster, Integer> {
 
     /**

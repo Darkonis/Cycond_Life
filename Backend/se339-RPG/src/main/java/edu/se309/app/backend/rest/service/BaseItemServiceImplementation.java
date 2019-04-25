@@ -6,6 +6,9 @@ import edu.se309.app.backend.rest.service.interfaces.BaseItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Base Item Service
+ */
 @Service
 public class BaseItemServiceImplementation extends
         BaseServiceImplementation<BaseItem, Integer, BaseItemRepository> implements BaseItemService {

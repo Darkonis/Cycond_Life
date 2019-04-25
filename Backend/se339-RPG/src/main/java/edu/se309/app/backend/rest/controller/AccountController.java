@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
+/**
+ * Controller for accounts
+ */
 @RestController
 @RequestMapping("/api/accounts")
 public class AccountController extends BaseController<Account, Integer, AccountService> {
