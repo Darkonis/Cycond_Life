@@ -3,13 +3,13 @@ package com.example.cycondlife.communication;
 import android.app.Activity;
 import android.util.Log;
 import android.widget.TextView;
-
 import org.java_websocket.client.WebSocketClient;
-//import org.java_websocket.drafts.Draft_6455;
 import org.java_websocket.exceptions.WebsocketNotConnectedException;
 import org.java_websocket.handshake.ServerHandshake;
 
 import java.net.URI;
+
+//import org.java_websocket.drafts.Draft_6455;
 
 public class ChatSender {
     //Socket chat;
@@ -24,6 +24,7 @@ public class ChatSender {
 
     /**
      * Connect the websocket to the server
+     *
      * @param dest the url to connect to
      * @return return something
      */
@@ -32,25 +33,25 @@ public class ChatSender {
         receivedText = "  connecting...";
         setChatText();
 
-        chat = new WebSocketClient(dest)  {
-            public void onMessage(String var1)  {
+        chat = new WebSocketClient(dest) {
+            public void onMessage(String var1) {
                 receivedText += "\r\n  " + var1;
                 //chatBox.setText("");
                 setChatText();
                 Log.i("CyLife Websocket", var1);
             }
 
-            public void onOpen(ServerHandshake var1)  {
+            public void onOpen(ServerHandshake var1) {
                 receivedText = "  Welcome to the global chat room!";
                 setChatText();
             }
 
-            public void onClose(int var1, String var2, boolean var3)    {
+            public void onClose(int var1, String var2, boolean var3) {
                 receivedText += "\r\n" + "  disconnected from chat";
                 setChatText();
             }
 
-            public void onError(Exception var1)    {
+            public void onError(Exception var1) {
                 receivedText += "\r\n" + "  connection failure";
                 Log.i("CyLife Error:", var1.toString());
                 var1.printStackTrace();
@@ -86,7 +87,6 @@ public class ChatSender {
 //        }
 
 
-
 //        try {
 //            pw = new PrintWriter(chat.getSocket().getOutputStream());
 //            pw.write(message);
@@ -101,12 +101,13 @@ public class ChatSender {
 
     /**
      * send a message to all other users
+     *
      * @param msg the message to be sent
      */
-    public void sendMsg(String msg)  {
+    public void sendMsg(String msg) {
         try {
             chat.send(msg);
-        }   catch (WebsocketNotConnectedException e) {
+        } catch (WebsocketNotConnectedException e) {
             e.printStackTrace();
             //noConnection = new Toast.makeText(getChatContext(), "Failed to connect to server", Toast.LENGTH_SHORT).show();
         }
@@ -115,10 +116,11 @@ public class ChatSender {
 
     /**
      * return all recieved text
+     *
      * @return the text
      */
     //need a way to make background listener
-    public String getReceivedStuff()  {
+    public String getReceivedStuff() {
 //        BufferedReader in;
 //
 //        try {
@@ -134,20 +136,21 @@ public class ChatSender {
 //        }
 
 
-
         return receivedText;
     }
 
     /**
      * pass the view for the chat
+     *
      * @param newChatBox what is being passed
      */
-    public void passChatBox(TextView newChatBox)   {
+    public void passChatBox(TextView newChatBox) {
         chatBox = newChatBox;
     }
 
     /**
-     *  pass the activity
+     * pass the activity
+     *
      * @param activity
      */
     public void passActivity(Activity activity) {
@@ -157,8 +160,8 @@ public class ChatSender {
     /**
      * update the visible chat
      */
-    public void setChatText()  {
-        if(chatBox != null) {
+    public void setChatText() {
+        if (chatBox != null) {
 
             //necessary for updating visible chat without errors
             chatActivity.runOnUiThread(new Runnable() {
@@ -174,9 +177,10 @@ public class ChatSender {
 
     /**
      * get the websocket
+     *
      * @return the websocket
      */
-    public WebSocketClient getWebSocket()  {
+    public WebSocketClient getWebSocket() {
         return chat;
     }
 }

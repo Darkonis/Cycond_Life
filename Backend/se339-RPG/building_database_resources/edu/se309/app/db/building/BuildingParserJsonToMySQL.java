@@ -1,8 +1,7 @@
 package edu.se309.app.db.building;
 
-import com.google.gson.*;
-
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,6 +12,7 @@ public class BuildingParserJsonToMySQL {
 
     /**
      * Main method used for parsing
+     *
      * @param args args
      * @throws FileNotFoundException
      * @throws IOException

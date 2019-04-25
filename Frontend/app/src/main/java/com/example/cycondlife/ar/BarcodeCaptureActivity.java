@@ -38,18 +38,16 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.Toast;
-
 import com.example.cycondlife.R;
+import com.example.cycondlife.camera.CameraSource;
+import com.example.cycondlife.camera.CameraSourcePreview;
+import com.example.cycondlife.camera.GraphicOverlay;
 import com.example.cycondlife.game.Consumable;
 import com.example.cycondlife.game.Item;
 import com.example.cycondlife.game.Player;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.CommonStatusCodes;
-import com.example.cycondlife.camera.CameraSource;
-import com.example.cycondlife.camera.CameraSourcePreview;
-
-import com.example.cycondlife.camera.GraphicOverlay;
 import com.google.android.gms.vision.MultiProcessor;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
@@ -62,19 +60,15 @@ import java.io.IOException;
  * size, and ID of each barcode.
  */
 public final class BarcodeCaptureActivity extends AppCompatActivity implements BarcodeGraphicTracker.BarcodeUpdateListener {
-    private static final String TAG = "Barcode-reader";
-
-    // intent request code to handle updating play services if needed.
-    private static final int RC_HANDLE_GMS = 9001;
-
-    // permission request codes need to be < 256
-    private static final int RC_HANDLE_CAMERA_PERM = 2;
-
     // constants used to pass extra data in the intent
     public static final String AutoFocus = "AutoFocus";
     public static final String UseFlash = "UseFlash";
     public static final String BarcodeObject = "Barcode";
-
+    private static final String TAG = "Barcode-reader";
+    // intent request code to handle updating play services if needed.
+    private static final int RC_HANDLE_GMS = 9001;
+    // permission request codes need to be < 256
+    private static final int RC_HANDLE_CAMERA_PERM = 2;
     private CameraSource mCameraSource;
     private CameraSourcePreview mPreview;
     private GraphicOverlay<BarcodeGraphic> mGraphicOverlay;
@@ -91,8 +85,8 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
         super.onCreate(icicle);
         setContentView(R.layout.activity_scanner);
 
-        mPreview =  findViewById(R.id.preview);
-        mGraphicOverlay =  findViewById(R.id.graphicOverlay);
+        mPreview = findViewById(R.id.preview);
+        mGraphicOverlay = findViewById(R.id.graphicOverlay);
 
         // read parameters from the intent used to launch the activity.
         boolean autoFocus = getIntent().getBooleanExtra(AutoFocus, false);
@@ -161,7 +155,7 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
      * Creates and starts the camera.  Note that this uses a higher resolution in comparison
      * to other detection examples to enable the barcode detector to detect small barcodes
      * at long distances.
-     *
+     * <p>
      * Suppressing InlinedApi since there is a check that the minimum version is met before using
      * the constant.
      */
@@ -281,7 +275,7 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
         if (grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Log.d(TAG, "Camera permission granted - initialize the camera source");
             // we have permission, so create the camerasource
-            boolean autoFocus = getIntent().getBooleanExtra(AutoFocus,false);
+            boolean autoFocus = getIntent().getBooleanExtra(AutoFocus, false);
             boolean useFlash = getIntent().getBooleanExtra(UseFlash, false);
             createCameraSource(autoFocus, useFlash);
             return;
@@ -372,6 +366,22 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
         return false;
     }
 
+    /**
+     * What does the program do when a barcode(QR code) is detected
+     *
+     * @param barcode what was detected
+     */
+    @Override
+    public void onBarcodeDetected(Barcode barcode) {
+        try {
+            Player.get_instance().addItem((Consumable) Item.findByID(Integer.parseInt(barcode.rawValue)));
+            Log.i("Cycond info", "Item ID:" + Integer.parseInt(barcode.rawValue));
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "this code is not in the correct format", Toast.LENGTH_SHORT);
+        }
+        finishActivity(0);
+    }
+
     private class CaptureGestureListener extends GestureDetector.SimpleOnGestureListener {
         @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {
@@ -431,22 +441,5 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
         public void onScaleEnd(ScaleGestureDetector detector) {
             mCameraSource.doZoom(detector.getScaleFactor());
         }
-    }
-
-    /**
-     * What does the program do when a barcode(QR code) is detected
-     * @param barcode what was detected
-     */
-    @Override
-    public void onBarcodeDetected(Barcode barcode) {
-        try {
-            Player.get_instance().addItem((Consumable) Item.findByID(Integer.parseInt(barcode.rawValue)));
-            Log.i("Cycond info","Item ID:"+Integer.parseInt(barcode.rawValue));
-        }
-        catch (Exception e)
-        {
-            Toast.makeText(getApplicationContext(),"this code is not in the correct format",Toast.LENGTH_SHORT);
-        }
-        finishActivity(0);
     }
 }

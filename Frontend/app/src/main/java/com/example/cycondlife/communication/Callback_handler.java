@@ -8,5 +8,6 @@ import org.json.JSONObject;
  */
 public interface Callback_handler {
     void get_array_response(JSONArray a);
+
     void get_object_response(JSONObject o);
 }

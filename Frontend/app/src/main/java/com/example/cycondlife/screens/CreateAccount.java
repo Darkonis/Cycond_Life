@@ -7,16 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.cycondlife.R;
 import com.example.cycondlife.communication.Json_handler;
 import com.example.cycondlife.game.Player;
-import com.example.cycondlife.R;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,13 +29,14 @@ public class CreateAccount extends AppCompatActivity {
     private TextView email;
     private TextView first;
     private TextView last;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         submit = findViewById(R.id.finish);
         user = findViewById(R.id.user);
-        pass= findViewById(R.id.pass);
+        pass = findViewById(R.id.pass);
         first = findViewById(R.id.first);
         last = findViewById(R.id.last);
         email = findViewById(R.id.email);
@@ -48,11 +47,11 @@ public class CreateAccount extends AppCompatActivity {
             }
         });
     }
-    private void submit()
-    {
+
+    private void submit() {
         String JSONURL = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/";
         Json_handler j = new Json_handler(getApplicationContext());
-        j.send_new_user(user.getText().toString(),pass.getText().toString(),first.getText().toString(),last.getText().toString(),email.getText().toString(),"user");
+        j.send_new_user(user.getText().toString(), pass.getText().toString(), first.getText().toString(), last.getText().toString(), email.getText().toString(), "user");
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         final Intent openMenu = new Intent(CreateAccount.this, menu.class);
         // Initialize a new JsonArrayRequest instance
@@ -71,19 +70,19 @@ public class CreateAccount extends AppCompatActivity {
                                 // Get current json object
                                 JSONObject info = response.getJSONObject(i);
 
-                                    if(Player.get_instance()!=null) {
-                                        Player.destroy_the_instance(); //remove the previous player if needed
-                                    }
-                                    Json_handler j = new Json_handler(getApplicationContext());
-                                    j.add_stats(info.getInt("accountId"));
-                                    Player.create_the_instance(user.getText().toString(),info.getInt("accountId"),getApplicationContext()); //on good login create the player object
-                                    startActivity(openMenu);
+                                if (Player.get_instance() != null) {
+                                    Player.destroy_the_instance(); //remove the previous player if needed
                                 }
+                                Json_handler j = new Json_handler(getApplicationContext());
+                                j.add_stats(info.getInt("accountId"));
+                                Player.create_the_instance(user.getText().toString(), info.getInt("accountId"), getApplicationContext()); //on good login create the player object
+                                startActivity(openMenu);
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
-                         //Should only display on codition of fail, will be changed
+                        //Should only display on codition of fail, will be changed
                     }
                 },
                 new Response.ErrorListener() {
@@ -99,8 +98,6 @@ public class CreateAccount extends AppCompatActivity {
         // Add JsonArrayRequest to the RequestQueue
         requestQueue.add(jsonArrayRequest);
     }
-
-
 
 
 }

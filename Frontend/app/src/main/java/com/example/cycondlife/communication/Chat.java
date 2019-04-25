@@ -2,16 +2,14 @@ package com.example.cycondlife.communication;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.example.cycondlife.game.Player;
 import com.example.cycondlife.R;
-
+import com.example.cycondlife.game.Player;
 import org.java_websocket.client.WebSocketClient;
 
 import java.net.URI;
@@ -30,6 +28,15 @@ public class Chat extends AppCompatActivity {
     private Player player = Player.get_instance();
     private ChatSender sender = player.getSender();
 
+    /**
+     * get the context
+     *
+     * @return the context
+     */
+    public static Context getChatContext() {
+        return context;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +52,7 @@ public class Chat extends AppCompatActivity {
 
         try {
             forReconnect = new URI("ws://cs309-sd-6.misc.iastate.edu:8080/websocket/" + player.getName());
-        }
-        catch (URISyntaxException e)    {
+        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
 
@@ -82,12 +88,12 @@ public class Chat extends AppCompatActivity {
             }
         });
 
-        refreshBut.setOnClickListener(new View.OnClickListener()    {
+        refreshBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 WebSocketClient chat = sender.getWebSocket();
 
-                if(chat.isOpen())  {
+                if (chat.isOpen()) {
                     chat.close();
                 }
 
@@ -99,22 +105,13 @@ public class Chat extends AppCompatActivity {
         });
     }
 
-
     /**
-    Send a message
+     * Send a message
      */
-    public void send()    {
+    public void send() {
         sender.sendMsg("CHAT " + userMessage.getText().toString());
 
         //chatText.setText(sender.getReceivedStuff());
-    }
-
-    /**
-     * get the context
-     * @return the context
-     */
-    public static Context getChatContext()  {
-        return context;
     }
 
 

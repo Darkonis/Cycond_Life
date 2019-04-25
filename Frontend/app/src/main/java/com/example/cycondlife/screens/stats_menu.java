@@ -3,12 +3,12 @@ package com.example.cycondlife.screens;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-
-import com.example.cycondlife.game.Player;
 import com.example.cycondlife.R;
+import com.example.cycondlife.game.Player;
 
 //TODO add stats
 public class stats_menu extends AppCompatActivity {
+    static Player player = Player.get_instance();
     TextView name;
     //TextView major;
     TextView level;
@@ -26,7 +26,6 @@ public class stats_menu extends AppCompatActivity {
     TextView dmgReduct;
     TextView creativity;
 
-    static Player player= Player.get_instance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,13 +46,13 @@ public class stats_menu extends AppCompatActivity {
         //critical_thinking = findViewById(R.id.critical_thinking);
         update_stats();
     }
-    private void update_stats()
-    {
+
+    private void update_stats() {
         String to_use = "a";
         name.setText(player.getName() + ": " + player.getMajor());
         level.setText("Level " + player.getLevel());
-        resolve.setText("Resolve: "+ player.getResolve());
-        bs.setText("BS: "+player.getBS());
+        resolve.setText("Resolve: " + player.getResolve());
+        bs.setText("BS: " + player.getBS());
         tinkering.setText("Tinkering: " + player.getTinkeringPoints() + "/" + player.getTinkeringPoints());
         tinkMult.setText("Tinkering Multiplier: " + player.getTinkMult());
         hitChance.setText("Hit Chance: " + player.getHitChance());
