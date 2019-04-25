@@ -1,9 +1,12 @@
 package edu.se309.app.backend.socket;
 
 
+import edu.se309.app.backend.rest.entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.websocket.Session;
+import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.*;
@@ -15,6 +18,8 @@ public class WebSocketSharedSingleton {
     private static Map<String, Object> singletonObjectMap = Collections.synchronizedMap(new HashMap<>());
     private static WebSocketSharedSingleton sharedSingleton;
 
+    private static Map<Account, Session> accountSessionMap = Collections.synchronizedMap(new HashMap<>());
+    private static Map<Session, Account> sessionAccountMap = Collections.synchronizedMap(new HashMap<>());
 
     private WebSocketSharedSingleton() throws Exception {
         initialHashMaps();
@@ -22,8 +27,8 @@ public class WebSocketSharedSingleton {
     }
 
     @Autowired
-    public static WebSocketSharedSingleton webSocketSharedSingleton(){
-        if (sharedSingleton == null){
+    public static WebSocketSharedSingleton webSocketSharedSingleton() {
+        if (sharedSingleton == null) {
             try {
                 return new WebSocketSharedSingleton();
             } catch (Exception e) {
@@ -39,20 +44,28 @@ public class WebSocketSharedSingleton {
     //Creates an object from every parameters and stores it in a static hashMap
     //Also calls addClassMethods to add all the methods to methodMap
     //May want to implement annotations to ignore parent class methods
-    public static void addSingletonClassMethods(Class...c) throws Exception{
-       for(Class i:c){
-           Constructor constructor = i.getConstructor();
-           Object o = constructor.newInstance();
-           addObjectAndMethods(o,i);
-       }
+    public static void addSingletonClassMethods(Class... c) throws Exception {
+        for (Class i : c) {
+            Constructor constructor = i.getConstructor();
+            Object o = constructor.newInstance();
+            addObjectAndMethods(o, i);
+        }
 
     }
 
-    public static void initialHashMaps() throws Exception{
+    public static void initialHashMaps() throws Exception {
         clearHashMaps();
-        Method[] methods = WebSocketSharedObjects.class.getMethods();
-        for (Method m: methods){
-            if(m.getDeclaringClass() == WebSocketSharedObjects.class) {
+        Method[] methodBeans = WebSocketSharedBeans.class.getMethods();
+        Method[] methodObjects = WebSocketObjectCreator.class.getMethods();
+        for (Method m : methodBeans) {
+            if (m.getDeclaringClass() == WebSocketSharedBeans.class) {
+                Class c = m.getReturnType();
+                Object o = m.invoke(null);
+                addObjectAndMethods(o, c);
+            }
+        }
+        for (Method m : methodObjects) {
+            if (m.getDeclaringClass() == WebSocketObjectCreator.class) {
                 Class c = m.getReturnType();
                 Object o = m.invoke(null);
                 addObjectAndMethods(o, c);
@@ -61,21 +74,20 @@ public class WebSocketSharedSingleton {
     }
 
 
-    private static void clearHashMaps(){
+    private static void clearHashMaps() {
         methodMap = Collections.synchronizedMap(new HashMap<>());
         singletonObjectMap = Collections.synchronizedMap(new HashMap<>());
     }
 
 
     //Add methods to the methodMap
-    public static void addClassMethods(Class...c){
-        for(Class i:c) {
+    public static void addClassMethods(Class... c) {
+        for (Class i : c) {
             Method[] methods = i.getMethods();
             for (Method m : methods) {
                 String name = m.toString();
 
                 if ((!singletonObjectMap.containsKey(name)) && m.getDeclaringClass().getPackage() == i.getPackage()) {
-                    System.out.println();
                     methodMap.put(m.toString(), m);
                 } //If method already exist, it will skip such and an exception won't be throw.
             }
@@ -84,16 +96,15 @@ public class WebSocketSharedSingleton {
 
     //Takes in a premade object(such as a singleton java bean)
     //and adds it to the map as well as the methods, Only one instance per class
-    public static void addObjectAndMethods(Object o, Class c) throws Exception{
+    public static void addObjectAndMethods(Object o, Class c) throws Exception {
         String name = c.getName();
         if (!singletonObjectMap.containsKey(name)) {
             singletonObjectMap.put(name, o);
-        } else{
+        } else {
             throw new Exception("There is only an object of class: " + c.getName());
         }//A generic exception should probably be changed at some point
         addClassMethods(c);
     }
-
 
 
     public static Map<String, Method> getMethodMap() {
@@ -104,28 +115,47 @@ public class WebSocketSharedSingleton {
         return singletonObjectMap;
     }
 
-    public static Method getMethod(String methodString){
+    public static Method getMethod(String methodString) {
         return methodMap.get(methodString);
     }
 
-    public static Object getSavedObject(String objectClassName){
+    public static Object getSavedObject(String objectClassName) {
         return singletonObjectMap.get(objectClassName);
     }
 
-    public static Set<String> getMethods(){
+    public static Set<String> getMethods() {
         return methodMap.keySet();
     }
 
-    public static ArrayList<String> getMethodsByClass(String className){
+    public static ArrayList<String> getMethodsByClass(String className) {
         ArrayList<String> output = new ArrayList<>();
         Set<String> keys = methodMap.keySet();
-        for (String s: keys){
-            if (s.contains(className)){
+        for (String s : keys) {
+            if (s.contains(className)) {
                 output.add(s);
             }
         }
         return output;
     }
 
+    public static Map<Account, Session> getAccountSessionMap() {
+        return accountSessionMap;
+    }
+    public static Map<Session, Account> getSessionAccountMap() {
+        return sessionAccountMap;
+    }
+
+    protected static void broadcast(String message) {
+        sessionAccountMap.forEach((session, account) -> {
+            synchronized (session) {
+                try {
+                    session.getBasicRemote().sendText(message);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }
+
 
