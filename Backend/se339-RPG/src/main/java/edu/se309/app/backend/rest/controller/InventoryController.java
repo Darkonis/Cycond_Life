@@ -4,9 +4,11 @@ import edu.se309.app.backend.rest.entity.Inventory;
 import edu.se309.app.backend.rest.service.interfaces.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,4 +39,11 @@ public class InventoryController extends BaseController<Inventory, Integer, Inve
     public List<Inventory> getInventoryByUsername(@PathVariable int id) {
         return getService().findByPlayerId(id);
     }
+    
+    @PostMapping("/add")
+    public Inventory addInventory(@RequestBody Inventory inventory){
+    	inventory.setId(0);
+    	getService().save(inventory);
+    	return inventory;
+    	}
 }
