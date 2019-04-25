@@ -11,21 +11,38 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Monster Controller
+ */
 @RestController
 @RequestMapping("/api/monsters")
 public class MonsterController extends BaseController<Monster, Integer, MonsterService> {
 
+    /**
+     * Constructor for this Controller
+     *
+     * @param monsterService Service associated with this controller
+     */
     @Autowired
     public MonsterController(MonsterService monsterService) {
         super(monsterService);
     }
 
+    /**
+     * Calls service to generate Monsters
+     * @return List of monsters
+     */
     @PostMapping("/generate")
     public List<Monster> generateMonster() {
         return getService().generateMonsters();
     }
 
-    @ApiOperation(value = "returns first moster's primary key id or -1 if the list is empty")
+    /**
+     * Return ID of the first monster
+     *
+     * @return -1 if no monsters else id of first monster
+     */
+    @ApiOperation(value = "returns first monster's primary key id or -1 if the list is empty")
     @GetMapping("/firstId")
     public int getFirstId() {
         return getService().firstMonsterId();

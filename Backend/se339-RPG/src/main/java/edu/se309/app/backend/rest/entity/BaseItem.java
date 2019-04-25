@@ -61,6 +61,8 @@ public class BaseItem {
     public void setValue(int value) {
     	this.value = value;
     }
+
+
     @Override
     public String toString() {
         return "BaseItem [id=" + id + ", name=" + name + ", type=" + type + ", typeId=" + typeId + "]";
