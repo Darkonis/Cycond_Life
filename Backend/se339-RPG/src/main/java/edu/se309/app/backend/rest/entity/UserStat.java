@@ -26,6 +26,9 @@ public class UserStat {
 
     @Column(name = "presentation", columnDefinition = "UNSIGNED INT(11)")
     private int presentation;
+    
+    @Column(name = "cy_bucks")
+    private int cyBucks;
 
     @Column(name = "monsters_killed", columnDefinition = "UNSIGNED INT(11)")
     private int monstersKilled;
@@ -249,6 +252,14 @@ public class UserStat {
     // returns true if newAccount and account are the same
     private boolean sameAccountCheck(Account newAccount) {
         return account == null ? newAccount == null : account.equals(newAccount);
+    }
+    
+    public int getCyBucks() {
+    	return cyBucks;
+    }
+    
+    public void setCyBucks(int cyBucks) {
+    	this.cyBucks = cyBucks;
     }
 
     /**

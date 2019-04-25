@@ -26,6 +26,9 @@ public class ConsumableItem {
 
     @Column(name = "points_increased")
     private String pointsIncreased;
+    
+    @Column(name = "cost")
+    private int cost;
 
     /**
      * Get Id
@@ -116,7 +119,14 @@ public class ConsumableItem {
     public void setPointsIncreased(String pointsIncreased) {
         this.pointsIncreased = pointsIncreased;
     }
-
+    
+    public int getCost() {
+    	return cost;
+    }
+    
+    public void setCost(int cost) {
+    	this.cost = cost;
+    }
     /**
      * String representation of consumable item
      *
