@@ -3,21 +3,21 @@ package edu.se309.app.db.building;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Relation {
+protected class Relation {
 
     private long id;
     private Way outer;
     private ArrayList<Way> inner;
     private String name;
 
-    public Relation(long id, Way outer, ArrayList<Way> inner, String name) {
+    protected Relation(long id, Way outer, ArrayList<Way> inner, String name) {
         this.id = id;
         this.outer = outer;
         this.inner = inner;
         this.name = name;
     }
 
-    public static String getRandomStat(String name) {
+    protected static String getRandomStat(String name) {
         if (name == "null" || name == null) {
             return "'none'";
         }
@@ -47,19 +47,19 @@ public class Relation {
         return "'" + statName + "'";
     }
 
-    public long getId() {
+    protected long getId() {
         return id;
     }
 
-    public ArrayList<Way> getInner() {
+    protected ArrayList<Way> getInner() {
         return inner;
     }
 
-    public String getName() {
+    protected String getName() {
         return name;
     }
 
-    public Way getOuter() {
+    protected Way getOuter() {
         return outer;
     }
 
@@ -72,7 +72,7 @@ public class Relation {
     }
 
     @Override
-    public String toString() {
+    protected String toString() {
         String innerNodes = innerStringBuilder();
         return "INSERT INTO building_locations (building_name,geo,earned_stat)" + " VALUES (" + name
                 + ",ST_GeomFromText('POLYGON((" + outer.nodeStringBuilder() + ")" + innerNodes + ")',4326),"

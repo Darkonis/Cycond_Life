@@ -1,10 +1,8 @@
 package edu.se309.app.backend;
 
 
-import edu.se309.app.backend.socket.WebSocketConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -13,9 +11,18 @@ import java.net.URL;
 import java.time.OffsetDateTime;
 
 
+/**
+ * Main spring boot class used to start the server
+ */
 @SpringBootApplication
 public class Se309RpgApplication {
 
+    /**
+     * Starts the server
+     *
+     * @param args args for the server
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         SpringApplication.run(Se309RpgApplication.class, args);
         OffsetDateTime currentTime = OffsetDateTime.now();

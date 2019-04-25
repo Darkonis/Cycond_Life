@@ -2,6 +2,9 @@ package edu.se309.app.backend.rest.entity;
 
 import javax.persistence.*;
 
+/**
+ * Class representing monsters
+ */
 @Entity
 @Table(name = "monsters")
 public class Monster {
@@ -31,10 +34,10 @@ public class Monster {
      */
     @Column(name = "latitude")
     private double latitude;
-    
+
     @Column(name = "in_combat")
     private int inCombat;
-    
+
     public Monster() {
     }
 
@@ -109,16 +112,30 @@ public class Monster {
     public void setType(int type) {
         this.type = type;
     }
-    
+
+    /**
+     * Get combat status of monster
+     *
+     * @return combat status
+     */
     public int getInCombat() {
-    	return inCombat;
+        return inCombat;
     }
-    
-    public void setInCombat(int inCombat)
-    {
-    	this.inCombat = inCombat;
+
+    /**
+     * Set combat status of monster
+     *
+     * @param inCombat combat status
+     */
+    public void setInCombat(int inCombat) {
+        this.inCombat = inCombat;
     }
-    
+
+    /**
+     * String representation of Monster
+     *
+     * @return string representation of Monster
+     */
     @Override
     public String toString() {
         return "Monster [id=" + id + ", type=" + type + ", longitude=" + longitude + ", latitude=" + latitude + "]";

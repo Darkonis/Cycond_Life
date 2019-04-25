@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Class used to represent Consumable items
+ */
 @Entity
 @Table(name = "consumable_item")
 public class ConsumableItem {
@@ -16,54 +19,109 @@ public class ConsumableItem {
     private String name;
 
     @Column(name = "stat_effected")
-    private String statEffected;
+    private int statEffected;
 
     @Column(name = "total_turns")
     private int totalTurns;
 
     @Column(name = "points_increased")
-    private int pointsIncreased;
+    private String pointsIncreased;
 
+    /**
+     * Get Id
+     *
+     * @return ID of consumable item
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Set id
+     *
+     * @param id id of consumable item
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Get Id
+     *
+     * @return ID of consumable item
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Set name
+     *
+     * @param name name of consumable item
+     */
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getStatEffected() {
+    /**
+     * Get stats effected
+     *
+     * @return stats effected by consumable item
+     */
+    public int getStatEffected() {
         return statEffected;
     }
 
-    public void setStatEffected(String statEffected) {
+    /**
+     * Set stat effected
+     *
+     * @param statEffected stats effected by consumable item
+     */
+    public void setStatEffected(int statEffected) {
         this.statEffected = statEffected;
     }
 
+    /**
+     * Get total turns
+     *
+     * @return total turns of consumable item
+     */
     public int getTotalTurns() {
         return totalTurns;
     }
 
+    /**
+     * Set total turns
+     *
+     * @param totalTurns total turns of consumable item
+     */
     public void setTotalTurns(int totalTurns) {
         this.totalTurns = totalTurns;
     }
 
-    public int getPointsIncreased() {
+    /**
+     * Get points increase
+     *
+     * @return points increased by consumable item
+     */
+    public String getPointsIncreased() {
         return pointsIncreased;
     }
 
-    public void setPointsIncreased(int pointsIncreased) {
+    /**
+     * Set points increased
+     *
+     * @param pointsIncreased points increased by consumable item
+     */
+    public void setPointsIncreased(String pointsIncreased) {
         this.pointsIncreased = pointsIncreased;
     }
 
+    /**
+     * String representation of consumable item
+     *
+     * @return string representation of consumable item
+     */
     @Override
     public String toString() {
         return "ConsumableItem [Id=" + id + ", name=" + name + ", statEffected="

@@ -12,15 +12,31 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+/**
+ * Stat Service
+ */
 @Service
 public class StatServiceImplementation extends BaseServiceImplementation<UserStat, Integer, UserStatRepository>
         implements StatService {
 
+    /**
+     * Constructor for the Stat Service
+     *
+     * @param userStatRepository Repository associated with this service
+     */
     @Autowired
     public StatServiceImplementation(UserStatRepository userStatRepository) {
         super(userStatRepository);
     }
 
+    /**
+     * Incrememnt stat by amount
+     *
+     * @param id     id of associated account
+     * @param stat   stat to be incremented
+     * @param amount amount to incremented
+     * @return stat that was changed
+     */
     @Override
     @Transactional
     public UserStat incrementByAmount(int id, String stat, int amount) {
@@ -29,6 +45,13 @@ public class StatServiceImplementation extends BaseServiceImplementation<UserSta
         return setStatValue(myAccessor, userStat, stat, ((Integer) myAccessor.getPropertyValue(stat)) + amount);
     }
 
+    /**
+     * Increment stat by one
+     *
+     * @param id   id of associated account
+     * @param stat stat to be incremented
+     * @return stat that was changed
+     */
     @Override
     @Transactional
     public UserStat incrementByOne(int id, String stat) {
@@ -36,10 +59,7 @@ public class StatServiceImplementation extends BaseServiceImplementation<UserSta
     }
 
     private boolean isStat(String stat) {
-        if (stat.equals("statId") || stat.equals("account")) {
-            return false;
-        }
-        return true;
+        return !stat.equals("statId") && !stat.equals("account");
     }
 
     private UserStat setStatValue(PropertyAccessor myAccessor, UserStat userStat, String stat, int value) {
@@ -52,6 +72,14 @@ public class StatServiceImplementation extends BaseServiceImplementation<UserSta
         }
     }
 
+    /**
+     * Update stat with given value
+     *
+     * @param id    ID of associated account
+     * @param stat  stat to be updated
+     * @param value value to change stat to
+     * @return stat that was changed
+     */
     @Override
     @Transactional
     public UserStat updateUserStat(int id, String stat, int value) {
@@ -60,6 +88,12 @@ public class StatServiceImplementation extends BaseServiceImplementation<UserSta
         return setStatValue(myAccessor, userStat, stat, value);
     }
 
+    /**
+     * Get user stats associated with username
+     *
+     * @param username username of the associated account
+     * @return stats linked to the username
+     */
     @Override
     @Transactional
     public UserStat getByUsername(String username) {

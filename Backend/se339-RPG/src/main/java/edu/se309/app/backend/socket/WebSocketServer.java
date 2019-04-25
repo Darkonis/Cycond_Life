@@ -1,13 +1,11 @@
 package edu.se309.app.backend.socket;
 
 
+import com.google.gson.Gson;
+import edu.se309.app.backend.rest.controller.AccountController;
 import edu.se309.app.backend.rest.entity.Account;
-import edu.se309.app.backend.rest.service.interfaces.AccountService;
-import edu.se309.app.backend.rest.service.interfaces.MonsterService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
-import org.springframework.web.socket.server.standard.SpringConfigurator;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -17,145 +15,168 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.List;
 
+import static edu.se309.app.backend.socket.WebSocketSharedSingleton.getAccountSessionMap;
+import static edu.se309.app.backend.socket.WebSocketSharedSingleton.getSessionAccountMap;
+
+/**
+ * Handles communication between front end and backend using web sockets
+ */
 @ServerEndpoint("/websocket/{username}")
 @Component
 public class WebSocketServer {
 
-    private static Map<Account, Session> accountSessionMap = Collections.synchronizedMap(new HashMap<>());
-    private static Map<Session, Account> sessionAccountMap = Collections.synchronizedMap(new HashMap<>());
-
-    //Autowiring manually. Hot fix for the moment
-    private MonsterService monsterService = WebSocketAutoWire.getBean(MonsterService.class);
-    private AccountService accountService = WebSocketAutoWire.getBean(AccountService.class);
-
     private Account account;
     private Session session;
 
-    public static Map<Account, Session> getAccountSessionMap() {
-        return accountSessionMap;
-    }
-
-    public static Map<Session, Account> getSessionAccountMap() {
-        return sessionAccountMap;
-    }
-
-    private static void broadcast(String message) {
-        sessionAccountMap.forEach((session, account) -> {
-            synchronized (session) {
-                try {
-                    session.getBasicRemote().sendText(message);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    @Autowired
-    public void setAccountService(AccountService accountService) {
-        this.accountService = accountService;
-    }
-
-    @Autowired
-    public void setMonsterService(MonsterService monsterService) {
-        this.monsterService = monsterService;
-    }
-
+    /**
+     * Sets up and starts a websocket connection with the front end. Links the websocket up with an account based on the given username
+     *
+     * @param session  The websocket session
+     * @param username Username of the account
+     */
     @OnOpen
     public void onOpen(
             Session session,
-            @PathParam("username") String username) throws IOException {
-        try {
-            this.account = accountService.findByUsername(username);
-            this.session = session;
-        } catch (NullPointerException e) {
-            throw new IOException("The username: " + username + " was not found");
-        }
-        sessionAccountMap.put(session, account);
-        accountSessionMap.put(account, session);
+            @PathParam("username") String username) {
+        AccountController accountController = WebSocketSharedBeans.getAccountController();
+        account = accountController.getAccountByUsername(username);
+        this.session = session;
+        getSessionAccountMap().put(session, account);
+        getAccountSessionMap().put(account, session);
     }
 
+    /**
+     * Listens for messages and then directs the request to appropriate method
+     *
+     * @param session The websocket's sessions
+     * @param message The message in the format "{full method name with parameter types}(...){parameter 1}-,-{parameter 2}-,-{parameter...}"
+     * @throws IOException
+     */
     @OnMessage
+    @SneakyThrows
     public void onMessage(Session session, String message) throws IOException {
-        int indexOfSplit = message.indexOf(" ");
-        String methodName;
-        String payload = null;
-        if (indexOfSplit > 0) {
-            methodName = message.substring(0, indexOfSplit);
-            payload = message.substring(indexOfSplit + 1);
+        int indexOfSplit = message.indexOf("(...)");
+        if (indexOfSplit < 0) {
+            noParametersMethodCall(message);
         } else {
-            methodName = message;
-        }
-        try {
-            if (payload == null) {
-                Method method = WebSocketServer.class.getMethod(methodName);
-                System.out.println("MADE IT TO THE IF STATEMENT");
-                method.invoke(this);
-            } else {
-                Method method = WebSocketServer.class.getMethod(methodName, String.class);
-                System.out.println("MADE IT TO THE ELSE STATEMENT");
-                method.invoke(this, payload);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new IOException("Message received did not map to a valid method");
+            parameterMethodCall(message, indexOfSplit);
         }
     }
 
+    /**
+     * Used for directing messages that require a method without a parameter
+     *
+     * @param message the message to be redirected. The message should only contain the full method name
+     */
+    @SneakyThrows
+    public void noParametersMethodCall(String message) {
+        Method method = WebSocketSharedSingleton.getMethod(message.trim());
+        if (Modifier.isStatic(method.getModifiers())) {
+            Object o = method.invoke(null);
+            session.getBasicRemote().sendText(method.getReturnType().cast(o).toString());
+        } else {
+            Object o = WebSocketSharedSingleton.getSavedObject(method.getDeclaringClass().getName());
+            method.invoke(method.getReturnType().cast(o));
+        }
+    }
+
+    /**
+     * Used for directing messages that require a method with parameter values
+     *
+     * @param message      The message in the format "{full method name with parameter types}(...){parameter 1}-,-{parameter 2}-,-{parameter...}"
+     * @param indexOfSplit the index where the parameters begin
+     */
+    @SneakyThrows
+    public void parameterMethodCall(String message, int indexOfSplit) {
+        String methodName = message.substring(0, indexOfSplit).trim();
+        String[] parameters = message.substring(indexOfSplit + 5).split("-,-");
+        Method method = WebSocketSharedSingleton.getMethod(methodName);
+        Class[] parametersClasses = method.getParameterTypes();
+        List<Object> parameterValues = new ArrayList<>();
+        for (int i = 0; i < parametersClasses.length; i++) {
+            if (parametersClasses[i].isPrimitive()) {
+                if (parametersClasses[i] == int.class) {
+                    parameterValues.add(Integer.parseInt(parameters[i]));
+                } else if (parametersClasses[i] == boolean.class) {
+                    parameterValues.add(Boolean.parseBoolean(parameters[i]));
+                } else if (parametersClasses[i] == byte.class) {
+                    parameterValues.add(Byte.parseByte(parameters[i]));
+                } else if (parametersClasses[i] == short.class) {
+                    parameterValues.add(Short.parseShort(parameters[i]));
+                } else if (parametersClasses[i] == long.class) {
+                    parameterValues.add(Long.parseLong(parameters[i]));
+                } else if (parametersClasses[i] == float.class) {
+                    parameterValues.add(Float.parseFloat(parameters[i]));
+                } else if (parametersClasses[i] == double.class) {
+                    parameterValues.add(Double.parseDouble(parameters[i]));
+                }
+            } else {
+                Gson gson = new Gson();
+                Object o = gson.fromJson(parameters[i], parametersClasses[i]);
+                parameterValues.add(o);
+            }
+        }
+        if (Modifier.isStatic(method.getModifiers())) {
+            Object o = method.invoke(null, parameterValues);
+            session.getBasicRemote().sendText(method.getReturnType().cast(o).toString());
+        } else {
+            Object o = WebSocketSharedSingleton.getSavedObject(method.getDeclaringClass().getName());
+            method.invoke(method.getReturnType().cast(o), parameterValues);
+        }
+
+    }
+
+    /**
+     * Closes the websocket
+     */
     @OnClose
-    public void onClose(Session session) throws IOException {
+    public void onClose() {
         this.destroy();
     }
 
-    public Account getAccount() throws IOException {
-        session.getBasicRemote().sendText(account.toString());
+    /**
+     * Returns the account associated with this websocket
+     *
+     * @return the account associated with this websocket
+     */
+    public Account getAccount() {
         return account;
     }
 
-    public Session getSession() throws IOException {
-        session.getBasicRemote().sendText(session.toString());
+    /**
+     * Returns the session associated with this websocket
+     *
+     * @return the session associated with this websocket
+     */
+    public Session getSession() {
         return session;
     }
 
-    public void COMBAT(String payload) throws IOException {
-        int indexOfSplit = payload.indexOf(" ");
-        String subCommand = payload.substring(0, indexOfSplit - 1);
-        int id = Integer.parseInt(payload.substring(indexOfSplit + 2, payload.length() - 2));
-        if (subCommand.equals("ATTACK")) {
-            monsterService.markMonster(id, true);
-        } else if (subCommand.equals("DEFEAT")) {
-            monsterService.markMonster(id, false);
-        } else if (subCommand.equals("VICTORY")) {
-            monsterService.deleteById(id);
-        } else {
-            throw new IOException();
-        }
-    }
+//    public void COMBAT(String payload) throws IOException {
+//        int indexOfSplit = payload.indexOf(" ");
+//        String subCommand = payload.substring(0, indexOfSplit - 1);
+//        int id = Integer.parseInt(payload.substring(indexOfSplit + 2, payload.length() - 2));
+//        if (subCommand.equals("ATTACK")) {
+//            monsterService.markMonster(id, true);
+//        } else if (subCommand.equals("DEFEAT")) {
+//            monsterService.markMonster(id, false);
+//        } else if (subCommand.equals("VICTORY")) {
+//            monsterService.deleteById(id);
+//        } else {
+//            throw new IOException();
+//        }
+//    }
 
-    public void CHAT(String payload) {
-        String chatMessage = "Chat " + account.getUsername() + ": " + payload;
-        broadcast(chatMessage);
-    }
 
-    public void DIRECT_MESSAGE(String payload) throws IOException {
-        int indexOfSplit = payload.indexOf(" ");
-        Account receivingUser = accountService.findByUsername(payload.substring(0, indexOfSplit));
-        Session receivingSession = accountSessionMap.get(receivingUser);
-        String chatMessage = "DM " + account.getUsername() + ": " + payload.substring(indexOfSplit + 1);
-        receivingSession.getBasicRemote().sendText(chatMessage);
-    }
-
-    @Scheduled(fixedRate = 6000)
-    public void PingClientForGeo() throws IOException {
-        session.getBasicRemote().sendText("RequestGeo");
-    }
-
+    /**
+     * Removes the websocket from the account and session maps
+     */
     public void destroy() {
-        accountSessionMap.remove(sessionAccountMap.get(session));
-        sessionAccountMap.remove(session);
+        getAccountSessionMap().remove(getSessionAccountMap().get(session));
+        getSessionAccountMap().remove(session);
     }
 }
