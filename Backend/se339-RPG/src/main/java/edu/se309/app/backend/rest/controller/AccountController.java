@@ -16,6 +16,7 @@ public class AccountController extends BaseController<Account, Integer, AccountS
 
     /**
      * Account controller constructor
+     *
      * @param accountService Account Service associated with controller
      */
     @Autowired
@@ -25,6 +26,7 @@ public class AccountController extends BaseController<Account, Integer, AccountS
 
     /**
      * Add account
+     *
      * @param account acccount as a json object
      * @return created account
      */
@@ -39,6 +41,7 @@ public class AccountController extends BaseController<Account, Integer, AccountS
 
     /**
      * Find acccount by email
+     *
      * @param email email of requested account
      * @return account
      */
@@ -49,6 +52,7 @@ public class AccountController extends BaseController<Account, Integer, AccountS
 
     /**
      * find account by username
+     *
      * @param username username of requested account
      * @return account
      */

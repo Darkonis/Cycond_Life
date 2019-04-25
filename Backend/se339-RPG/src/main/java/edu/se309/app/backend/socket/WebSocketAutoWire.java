@@ -33,7 +33,7 @@ public class WebSocketAutoWire implements ApplicationContextAware {
     @Override
     @Autowired
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
+        WebSocketAutoWire.applicationContext = applicationContext;
     }
 
     /**

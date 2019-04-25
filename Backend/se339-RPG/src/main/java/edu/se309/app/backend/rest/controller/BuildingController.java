@@ -28,8 +28,9 @@ public class BuildingController extends BaseController<Building, Integer, Buildi
 
     /**
      * Find the stat associated with the given location
+     *
      * @param longitude longitude of location
-     * @param latitude latitude of location
+     * @param latitude  latitude of location
      * @return the stat associated with the given location
      */
     @GetMapping("/getStat/{longitude}/{latitude}/")
@@ -40,8 +41,9 @@ public class BuildingController extends BaseController<Building, Integer, Buildi
 
     /**
      * Find the name associated with the given location
+     *
      * @param longitude longitude of location
-     * @param latitude latitude of location
+     * @param latitude  latitude of location
      * @return the name associated with the given location
      */
     @GetMapping("/getBuildingName/{longitude}/{latitude}/")

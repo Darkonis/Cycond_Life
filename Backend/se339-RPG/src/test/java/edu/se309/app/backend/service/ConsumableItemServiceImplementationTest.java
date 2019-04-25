@@ -69,14 +69,14 @@ class ConsumableItemServiceImplementationTest {
         int id = consumableItem.getId();
         when(consumableItemRepository.findById(id)).thenReturn(Optional.of(consumableItem));
         ConsumableItem newConsumableItem = consumableItemService.findById(id);
-        assertEquals(consumableItem,newConsumableItem);
+        assertEquals(consumableItem, newConsumableItem);
     }
 
     @Test
     void nullCheck() {
         assertThrows(ServiceException.class,
-                ()-> consumableItemService.nullCheck(Optional.empty(),"Empty Test"));
-        assertEquals(consumableItem,consumableItemService.nullCheck(Optional.of(consumableItem),"ConsumableItem Test"));
+                () -> consumableItemService.nullCheck(Optional.empty(), "Empty Test"));
+        assertEquals(consumableItem, consumableItemService.nullCheck(Optional.of(consumableItem), "ConsumableItem Test"));
     }
 
     @Test

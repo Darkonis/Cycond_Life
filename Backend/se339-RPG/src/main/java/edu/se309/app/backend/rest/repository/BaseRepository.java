@@ -22,6 +22,7 @@ public interface BaseRepository<T, ID extends Serializable> extends JpaRepositor
 
     /**
      * Return list of all
+     *
      * @return list of all
      */
     @Override
@@ -29,6 +30,7 @@ public interface BaseRepository<T, ID extends Serializable> extends JpaRepositor
 
     /**
      * Find by id
+     *
      * @param id id of requested
      * @return item with id
      */
@@ -37,8 +39,9 @@ public interface BaseRepository<T, ID extends Serializable> extends JpaRepositor
 
     /**
      * Save to database
+     *
      * @param entity entity to be saved
-     * @param <S> type of entity to be saved
+     * @param <S>    type of entity to be saved
      * @return object that was saved
      */
     @Override

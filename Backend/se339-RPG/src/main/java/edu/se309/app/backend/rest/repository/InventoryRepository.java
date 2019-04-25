@@ -7,12 +7,13 @@ import java.util.List;
 /**
  * Inventory Repository
  */
-public interface InventoryRepository extends BaseRepository<Inventory, Integer>{
+public interface InventoryRepository extends BaseRepository<Inventory, Integer> {
 
-	/**
-	 * Find player's inventory by ID
-	 * @param playerId player's ID
-	 * @return inventory
-	 */
-	List<Inventory> findByPlayerId(int playerId);
+    /**
+     * Find player's inventory by ID
+     *
+     * @param playerId player's ID
+     * @return inventory
+     */
+    List<Inventory> findByPlayerId(int playerId);
 }

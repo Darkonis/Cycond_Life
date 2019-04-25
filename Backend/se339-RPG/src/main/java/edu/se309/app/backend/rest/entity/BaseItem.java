@@ -36,6 +36,7 @@ public class BaseItem {
 
     /**
      * Set ID
+     *
      * @param id id of base item
      */
     public void setId(int id) {
@@ -44,6 +45,7 @@ public class BaseItem {
 
     /**
      * Get name
+     *
      * @return name of base item
      */
     public String getName() {
@@ -52,6 +54,7 @@ public class BaseItem {
 
     /**
      * Set name
+     *
      * @param name name of base item
      */
     public void setName(String name) {
@@ -60,6 +63,7 @@ public class BaseItem {
 
     /**
      * Get type
+     *
      * @return type of base item
      */
     public int getType() {
@@ -68,6 +72,7 @@ public class BaseItem {
 
     /**
      * Set type
+     *
      * @param type type of base item
      */
     public void setType(int type) {
@@ -76,6 +81,7 @@ public class BaseItem {
 
     /**
      * Get Type Id
+     *
      * @return type id of base item
      */
     public int getTypeId() {
@@ -84,6 +90,7 @@ public class BaseItem {
 
     /**
      * Set type id
+     *
      * @param typeId type id of base item
      */
     public void setTypeId(int typeId) {
@@ -92,6 +99,7 @@ public class BaseItem {
 
     /**
      * Get value
+     *
      * @return value of base item
      */
     public int getValue() {
@@ -100,6 +108,7 @@ public class BaseItem {
 
     /**
      * Set value
+     *
      * @param value value of base item
      */
     public void setValue(int value) {
@@ -109,6 +118,7 @@ public class BaseItem {
 
     /**
      * Returns string representation of base item
+     *
      * @return string representation of base item
      */
     @Override

@@ -40,6 +40,7 @@ public class Building {
 
     /**
      * Set ID
+     *
      * @param id ID of building location
      */
     public void setId(int id) {
@@ -48,6 +49,7 @@ public class Building {
 
     /**
      * Get Building Name
+     *
      * @return building's name
      */
     public String getBuildingName() {
@@ -56,6 +58,7 @@ public class Building {
 
     /**
      * Set building's name
+     *
      * @param buildingName building's name
      */
     public void setBuildingName(String buildingName) {
@@ -64,6 +67,7 @@ public class Building {
 
     /**
      * Get the stat earned by being in the building
+     *
      * @return stat earned
      */
     public String getEarnedStat() {
@@ -72,6 +76,7 @@ public class Building {
 
     /**
      * Set stat earned by being in the building
+     *
      * @param earnedStat stat earned
      */
     public void setEarnedStat(String earnedStat) {

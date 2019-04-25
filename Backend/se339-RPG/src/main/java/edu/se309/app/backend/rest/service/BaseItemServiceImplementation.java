@@ -15,6 +15,7 @@ public class BaseItemServiceImplementation extends
 
     /**
      * Constructor for BaseItemServiceImplementation
+     *
      * @param baseItemRepository repository associated with this service
      */
     @Autowired

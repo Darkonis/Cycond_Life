@@ -23,6 +23,7 @@ public class MonsterServiceImplementation extends BaseServiceImplementation<Mons
 
     /**
      * Constructor for Monster Service
+     *
      * @param monsterRepository Repository associated with this service
      */
     @Autowired
@@ -41,6 +42,7 @@ public class MonsterServiceImplementation extends BaseServiceImplementation<Mons
 
     /**
      * Return the ID of the monster with the lowest ID
+     *
      * @return id of lowest monster
      */
     @Override
@@ -56,6 +58,7 @@ public class MonsterServiceImplementation extends BaseServiceImplementation<Mons
 
     /**
      * Randomly generate new monsters
+     *
      * @return list of new monsters generated
      */
     @Override
@@ -64,9 +67,9 @@ public class MonsterServiceImplementation extends BaseServiceImplementation<Mons
         deleteAll();
         int monstersToGenerate = 50;
         List<Monster> monsters = new ArrayList<>();
-        int types[] = {1, 2, 3, 4, 5};
-        double baseLatitude[] = {42.0254, 42.0267, 42.0295, 42.0308, 42.0278};
-        double baseLongitude[] = {93.6461, 93.6512, 93.6473, 93.6536, 93.6440};
+        int[] types = {1, 2, 3, 4, 5};
+        double[] baseLatitude = {42.0254, 42.0267, 42.0295, 42.0308, 42.0278};
+        double[] baseLongitude = {93.6461, 93.6512, 93.6473, 93.6536, 93.6440};
         for (int i = 0; i < monstersToGenerate; i++) {
             for (int j = 0; j < types.length; j++) {
                 Monster monster = null;
@@ -104,7 +107,8 @@ public class MonsterServiceImplementation extends BaseServiceImplementation<Mons
 
     /**
      * Set status of monster
-     * @param id ID of monster
+     *
+     * @param id       ID of monster
      * @param inCombat Status of monster
      * @return monsters status
      */
@@ -113,9 +117,9 @@ public class MonsterServiceImplementation extends BaseServiceImplementation<Mons
     public int markMonster(int id, boolean inCombat) {
         Monster monster = findById(id);
         PropertyAccessor myAccessor = PropertyAccessorFactory.forBeanPropertyAccess(monster);
-        if(inCombat) {
+        if (inCombat) {
             monster.setInCombat(1);
-        } else if(!inCombat) {
+        } else if (!inCombat) {
             monster.setInCombat(0);
         }
         save(monster);

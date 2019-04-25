@@ -16,6 +16,7 @@ public class BuildingRepositoryCustom {
 
     /**
      * Constructor that takes in an entityManager
+     *
      * @param entityManager entityManager associated with this repository
      */
     @Autowired
@@ -25,8 +26,9 @@ public class BuildingRepositoryCustom {
 
     /**
      * Finding building's associated Stat
+     *
      * @param longitude Longitude
-     * @param latitude Latitude
+     * @param latitude  Latitude
      * @return Stat associated with location
      */
     public String findBuildingStat(String longitude, String latitude) {
@@ -43,8 +45,9 @@ public class BuildingRepositoryCustom {
 
     /**
      * Find building's name
+     *
      * @param longitude longitude
-     * @param latitude latitude
+     * @param latitude  latitude
      * @return The associated building's name
      */
     public String findBuildingName(String longitude, String latitude) {

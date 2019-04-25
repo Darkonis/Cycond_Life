@@ -30,6 +30,7 @@ public class MonsterController extends BaseController<Monster, Integer, MonsterS
 
     /**
      * Calls service to generate Monsters
+     *
      * @return List of monsters
      */
     @PostMapping("/generate")

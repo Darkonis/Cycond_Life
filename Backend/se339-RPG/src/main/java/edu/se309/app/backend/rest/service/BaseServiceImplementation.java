@@ -24,6 +24,7 @@ public class BaseServiceImplementation<T, ID extends Serializable, R extends Bas
 
     /**
      * Constructor for this service
+     *
      * @param r repository associated with this service
      */
     public BaseServiceImplementation(R r) {
@@ -32,6 +33,7 @@ public class BaseServiceImplementation<T, ID extends Serializable, R extends Bas
 
     /**
      * returns the number of items in the database
+     *
      * @return number of items in the database
      */
     @Override
@@ -42,6 +44,7 @@ public class BaseServiceImplementation<T, ID extends Serializable, R extends Bas
 
     /**
      * Delete by ID
+     *
      * @param id id of item to be deleted
      */
     @Override
@@ -52,6 +55,7 @@ public class BaseServiceImplementation<T, ID extends Serializable, R extends Bas
 
     /**
      * Find all items in database table
+     *
      * @return items in database table
      */
     @Override
@@ -62,6 +66,7 @@ public class BaseServiceImplementation<T, ID extends Serializable, R extends Bas
 
     /**
      * Find database item by id
+     *
      * @param id of item to be found
      * @return item with id
      */
@@ -75,6 +80,7 @@ public class BaseServiceImplementation<T, ID extends Serializable, R extends Bas
 
     /**
      * Returns associated repository
+     *
      * @return associated repository
      */
     public R getRepository() {
@@ -83,7 +89,8 @@ public class BaseServiceImplementation<T, ID extends Serializable, R extends Bas
 
     /**
      * checks if an Optional object contains an object or not
-     * @param t type of object
+     *
+     * @param t            type of object
      * @param errorMessage error message to throw if not found
      * @return retrieved object
      */
@@ -98,6 +105,7 @@ public class BaseServiceImplementation<T, ID extends Serializable, R extends Bas
 
     /**
      * saves an object to database
+     *
      * @param entity entity to be saved
      */
     @Override

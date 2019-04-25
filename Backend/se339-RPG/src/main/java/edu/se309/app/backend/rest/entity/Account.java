@@ -75,6 +75,7 @@ public class Account {
 
     /**
      * Checks if the given object is equal to current account
+     *
      * @param obj object to be checked
      * @return true if equal false otherwise
      */
@@ -95,6 +96,7 @@ public class Account {
 
     /**
      * Return the account type
+     *
      * @return account type
      */
     public String getAccountType() {
@@ -103,6 +105,7 @@ public class Account {
 
     /**
      * Set account type
+     *
      * @param accountType account type of the account
      */
     public void setAccountType(String accountType) {
@@ -111,6 +114,7 @@ public class Account {
 
     /**
      * Get the created on date and time
+     *
      * @return created on date and time
      */
     public Date getCreatedOn() {
@@ -119,6 +123,7 @@ public class Account {
 
     /**
      * Set created on date
+     *
      * @param createdOn date of account creation
      */
     public void setCreatedOn(Date createdOn) {
@@ -127,6 +132,7 @@ public class Account {
 
     /**
      * Get associated email
+     *
      * @return email of account
      */
     public String getEmail() {
@@ -135,6 +141,7 @@ public class Account {
 
     /**
      * Set associated email
+     *
      * @param email email of account
      */
     public void setEmail(String email) {
@@ -143,6 +150,7 @@ public class Account {
 
     /**
      * Get first name of account
+     *
      * @return first name associated with account
      */
     public String getFirstName() {
@@ -151,6 +159,7 @@ public class Account {
 
     /**
      * Set first name of account
+     *
      * @param firstName first name of account
      */
     public void setFirstName(String firstName) {
@@ -159,6 +168,7 @@ public class Account {
 
     /**
      * Get Id of account
+     *
      * @return ID of the account
      */
     public int getId() {
@@ -166,7 +176,8 @@ public class Account {
     }
 
     /**
-     *  Set ID for the account
+     * Set ID for the account
+     *
      * @param id id of the account
      */
     public void setId(int id) {
@@ -175,6 +186,7 @@ public class Account {
 
     /**
      * Get last name associated with account
+     *
      * @return last name associated with this account
      */
     public String getLastName() {
@@ -183,6 +195,7 @@ public class Account {
 
     /**
      * Set last name of this account
+     *
      * @param lastName last name of this account
      */
     public void setLastName(String lastName) {
@@ -191,6 +204,7 @@ public class Account {
 
     /**
      * Get password for this account
+     *
      * @return password for this account
      */
     public String getPassword() {
@@ -199,6 +213,7 @@ public class Account {
 
     /**
      * Set password for this account
+     *
      * @param password password for this account
      */
     public void setPassword(String password) {
@@ -207,6 +222,7 @@ public class Account {
 
     /**
      * Get username for this account
+     *
      * @return username for this account
      */
     public String getUsername() {
@@ -215,6 +231,7 @@ public class Account {
 
     /**
      * Set Username for this account
+     *
      * @param username username for this account
      */
     public void setUsername(String username) {
@@ -223,6 +240,7 @@ public class Account {
 
     /**
      * Get userStats
+     *
      * @return get stats for this account
      */
     public UserStat getUserStat() {
@@ -231,6 +249,7 @@ public class Account {
 
     /**
      * Set user stats for this account
+     *
      * @param userStat user stats for this account
      */
     public void setUserStat(UserStat userStat) {
@@ -244,6 +263,7 @@ public class Account {
 
     /**
      * Hash code for this account
+     *
      * @return hashcode for this account
      */
     @Override
@@ -253,6 +273,7 @@ public class Account {
 
     /**
      * Get a String representation of this account
+     *
      * @return String representation of this account
      */
     @Override

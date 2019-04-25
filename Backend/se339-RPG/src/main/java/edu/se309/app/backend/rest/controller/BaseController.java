@@ -30,6 +30,7 @@ public class BaseController<T, ID extends Serializable, S extends BaseService<T,
 
     /**
      * Returns the number of items in database table
+     *
      * @return number of items in database table
      */
     @GetMapping("/count")
@@ -39,6 +40,7 @@ public class BaseController<T, ID extends Serializable, S extends BaseService<T,
 
     /**
      * Delete item with id
+     *
      * @param id id of item to be deleted
      * @return String confirming item was deleted by id
      */
@@ -52,6 +54,7 @@ public class BaseController<T, ID extends Serializable, S extends BaseService<T,
 
     /**
      * returns a list of all items in database table
+     *
      * @return list of all items in database table
      */
     @GetMapping("/")
@@ -61,6 +64,7 @@ public class BaseController<T, ID extends Serializable, S extends BaseService<T,
 
     /**
      * Get item from table by ID
+     *
      * @param id ID of item
      * @return Item with ID
      */
@@ -71,6 +75,7 @@ public class BaseController<T, ID extends Serializable, S extends BaseService<T,
 
     /**
      * Returns the service associated with this controller
+     *
      * @return service associated with this controller
      */
     public S getService() {

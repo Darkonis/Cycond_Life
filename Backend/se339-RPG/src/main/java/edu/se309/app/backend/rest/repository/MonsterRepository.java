@@ -17,6 +17,7 @@ public interface MonsterRepository extends BaseRepository<Monster, Integer> {
 
     /**
      * Find first monster by ID
+     *
      * @return Monster with lowest ID
      */
     Optional<Monster> findFirstByOrderByIdAsc();

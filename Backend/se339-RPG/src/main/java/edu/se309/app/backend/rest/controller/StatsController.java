@@ -34,7 +34,8 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
 
     /**
      * Calls service to increment stat
-     * @param id id of account
+     *
+     * @param id   id of account
      * @param stat stat to be incremented
      * @return updated stat
      */
@@ -45,7 +46,8 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
 
     /**
      * Calls service to update stat
-     * @param id id of account
+     *
+     * @param id       id of account
      * @param userStat updated stat
      * @return updated stat
      */
@@ -59,8 +61,9 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
 
     /**
      * Calls service to update state with given value
-     * @param id id of account
-     * @param stat stat to be updated
+     *
+     * @param id    id of account
+     * @param stat  stat to be updated
      * @param value value to update to
      * @return updated stat
      */
@@ -71,6 +74,7 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
 
     /**
      * Returns stats associated with username
+     *
      * @param username username of the account
      * @return stats associated with username
      */
@@ -81,6 +85,7 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
 
     /**
      * Add stats
+     *
      * @param userStat Stats to be added
      * @return user stats that were created
      */
@@ -97,9 +102,10 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
 
     /**
      * Updated a user's stats based on location
-     * @param id ID of account
+     *
+     * @param id        ID of account
      * @param longitude Longitude position
-     * @param latitude Latitude position
+     * @param latitude  Latitude position
      * @return A string confirming that there was an update or a string saying no stats were updated
      */
     @PutMapping("/updateStatByLocation/{id}/{longitude}/{latitude}/")
@@ -115,6 +121,7 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
 
     /**
      * Return building service
+     *
      * @return building service used by the controller
      */
     public BuildingService getBuildingService() {
@@ -123,6 +130,7 @@ public class StatsController extends BaseController<UserStat, Integer, StatServi
 
     /**
      * Return Account Service
+     *
      * @return account service used by controller
      */
     public AccountService getAccountService() {

@@ -38,6 +38,7 @@ public class ConsumableItem {
 
     /**
      * Set id
+     *
      * @param id id of consumable item
      */
     public void setId(int id) {
@@ -46,6 +47,7 @@ public class ConsumableItem {
 
     /**
      * Get Id
+     *
      * @return ID of consumable item
      */
     public String getName() {
@@ -54,6 +56,7 @@ public class ConsumableItem {
 
     /**
      * Set name
+     *
      * @param name name of consumable item
      */
     public void setName(String name) {
@@ -62,6 +65,7 @@ public class ConsumableItem {
 
     /**
      * Get stats effected
+     *
      * @return stats effected by consumable item
      */
     public int getStatEffected() {
@@ -70,6 +74,7 @@ public class ConsumableItem {
 
     /**
      * Set stat effected
+     *
      * @param statEffected stats effected by consumable item
      */
     public void setStatEffected(int statEffected) {
@@ -78,6 +83,7 @@ public class ConsumableItem {
 
     /**
      * Get total turns
+     *
      * @return total turns of consumable item
      */
     public int getTotalTurns() {
@@ -86,6 +92,7 @@ public class ConsumableItem {
 
     /**
      * Set total turns
+     *
      * @param totalTurns total turns of consumable item
      */
     public void setTotalTurns(int totalTurns) {
@@ -94,6 +101,7 @@ public class ConsumableItem {
 
     /**
      * Get points increase
+     *
      * @return points increased by consumable item
      */
     public String getPointsIncreased() {
@@ -102,6 +110,7 @@ public class ConsumableItem {
 
     /**
      * Set points increased
+     *
      * @param pointsIncreased points increased by consumable item
      */
     public void setPointsIncreased(String pointsIncreased) {
@@ -110,6 +119,7 @@ public class ConsumableItem {
 
     /**
      * String representation of consumable item
+     *
      * @return string representation of consumable item
      */
     @Override

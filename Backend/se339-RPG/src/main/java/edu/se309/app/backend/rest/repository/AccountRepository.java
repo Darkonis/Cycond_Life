@@ -11,6 +11,7 @@ public interface AccountRepository extends BaseRepository<Account, Integer> {
 
     /**
      * Find account by email
+     *
      * @param email email of requested account
      * @return account
      */
@@ -18,6 +19,7 @@ public interface AccountRepository extends BaseRepository<Account, Integer> {
 
     /**
      * Find account by username
+     *
      * @param username username of requested account
      * @return account
      */

@@ -19,6 +19,7 @@ public class AccountServiceImplementation extends BaseServiceImplementation<Acco
 
     /**
      * Constructor for AccountServiceImplementation
+     *
      * @param accountRepository associated AccountRepository
      */
     @Autowired
@@ -28,6 +29,7 @@ public class AccountServiceImplementation extends BaseServiceImplementation<Acco
 
     /**
      * Find Account by Email
+     *
      * @param email email of account to be found
      * @return account with given email
      */
@@ -41,6 +43,7 @@ public class AccountServiceImplementation extends BaseServiceImplementation<Acco
 
     /**
      * Find account by username
+     *
      * @param username username of account to be found
      * @return account with given username
      */

@@ -33,31 +33,8 @@ public class Inventory {
     }
 
     /**
-     * Get player ID
-     * @return player ID of the inventory
-     */
-    public int getPlayerId() {
-        return playerId;
-    }
-
-    /**
-     * Get item ID
-     * @return item ID of the inventory
-     */
-    public int getItemId() {
-        return itemId;
-    }
-
-    /**
-     * Get item name
-     * @return item name of the inventory
-     */
-    public String getItemName() {
-        return itemName;
-    }
-
-    /**
      * Set ID
+     *
      * @param id ID of the inventory
      */
     public void setId(int id) {
@@ -65,7 +42,17 @@ public class Inventory {
     }
 
     /**
+     * Get player ID
+     *
+     * @return player ID of the inventory
+     */
+    public int getPlayerId() {
+        return playerId;
+    }
+
+    /**
      * Set Player ID
+     *
      * @param playerId player ID of the inventory
      */
     public void setPlayerId(int playerId) {
@@ -73,7 +60,17 @@ public class Inventory {
     }
 
     /**
+     * Get item ID
+     *
+     * @return item ID of the inventory
+     */
+    public int getItemId() {
+        return itemId;
+    }
+
+    /**
      * Set item ID
+     *
      * @param itemId item ID of the inventory
      */
     public void setItemId(int itemId) {
@@ -81,7 +78,17 @@ public class Inventory {
     }
 
     /**
+     * Get item name
+     *
+     * @return item name of the inventory
+     */
+    public String getItemName() {
+        return itemName;
+    }
+
+    /**
      * Set item name
+     *
      * @param itemName item name of the inventory
      */
     public void setItemName(String itemName) {
@@ -90,6 +97,7 @@ public class Inventory {
 
     /**
      * String representation of inventory
+     *
      * @return string representation of inventory
      */
     @Override

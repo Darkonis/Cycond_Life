@@ -32,8 +32,9 @@ public class BuildingServiceImplementation extends BaseServiceImplementation<Bui
 
     /**
      * Find the stat associated with location
+     *
      * @param longitude longitude
-     * @param latitude latitude
+     * @param latitude  latitude
      * @return
      */
     @Override
@@ -45,8 +46,9 @@ public class BuildingServiceImplementation extends BaseServiceImplementation<Bui
 
     /**
      * Find the name of the building associated with a location
+     *
      * @param longitude longitude
-     * @param latitude latitude
+     * @param latitude  latitude
      * @return building's name
      */
     @Override
@@ -57,6 +59,7 @@ public class BuildingServiceImplementation extends BaseServiceImplementation<Bui
 
     /**
      * returns custom repository associated with this service
+     *
      * @return custom repository
      */
     public BuildingRepositoryCustom getCustomRepository() {

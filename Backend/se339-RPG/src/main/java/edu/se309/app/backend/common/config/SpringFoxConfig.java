@@ -38,6 +38,7 @@ public class SpringFoxConfig extends WebMvcConfigurationSupport {
 
     /**
      * Spring Fox API Docket
+     *
      * @return Spring Fox Docket
      */
     @Bean

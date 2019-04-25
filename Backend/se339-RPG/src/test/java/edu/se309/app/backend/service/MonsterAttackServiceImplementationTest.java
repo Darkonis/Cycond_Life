@@ -69,14 +69,14 @@ class MonsterAttackServiceImplementationTest {
         int id = monsterAttack.getId();
         when(monsterAttackRepository.findById(id)).thenReturn(Optional.of(monsterAttack));
         MonsterAttack newMonsterAttack = monsterAttackService.findById(id);
-        assertEquals(monsterAttack,newMonsterAttack);
+        assertEquals(monsterAttack, newMonsterAttack);
     }
 
     @Test
     void nullCheck() {
         assertThrows(ServiceException.class,
-                ()-> monsterAttackService.nullCheck(Optional.empty(),"Empty Test"));
-        assertEquals(monsterAttack,monsterAttackService.nullCheck(Optional.of(monsterAttack),"MonsterAttack Test"));
+                () -> monsterAttackService.nullCheck(Optional.empty(), "Empty Test"));
+        assertEquals(monsterAttack, monsterAttackService.nullCheck(Optional.of(monsterAttack), "MonsterAttack Test"));
     }
 
     @Test
