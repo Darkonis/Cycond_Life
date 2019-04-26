@@ -19,6 +19,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cycondlife.R;
 import com.example.cycondlife.communication.Callback_handler;
+import com.example.cycondlife.communication.Json_handler;
+import com.example.cycondlife.game.Item;
 import com.example.cycondlife.game.Player;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,7 +50,7 @@ public class Login extends AppCompatActivity {
         adLogin = findViewById(R.id.adminLogin);
 
         thisContext = getApplicationContext();
-
+        Json_handler j = new Json_handler(getApplicationContext());
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},
                     1);
@@ -74,6 +76,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 //Will save a temp account that can be accessed by the rest of the app in later iterations
                 Player.create_the_instance("Over9000", 13, getApplicationContext());
+                Item.pullItemList();
                 final Intent openMenu = new Intent(Login.this, menu.class);
                 startActivity(openMenu);
             }
@@ -136,8 +139,9 @@ public class Login extends AppCompatActivity {
                                         Player.destroy_the_instance(); //remove the previous player if needed
                                     }
                                     Player.create_the_instance(userName, info.getInt("id"), getApplicationContext()); //on good login create the player object
-
+                                    Item.pullItemList();
                                     startActivity(openMenu);
+
                                 }
                             }
                         } catch (JSONException e) {

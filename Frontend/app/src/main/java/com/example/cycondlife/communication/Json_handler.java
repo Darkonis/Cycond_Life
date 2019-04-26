@@ -2,11 +2,14 @@ package com.example.cycondlife.communication;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
@@ -23,23 +26,25 @@ public class Json_handler {
 
     public final String mJSONBASEString = "http://cs309-sd-6.misc.iastate.edu:8080/api/";
     public final String mAccountString = "accounts/";
-    private final String statlink = "http://cs309-sd-6.misc.iastate.edu:8080/api/stats/updateStat/";
-    private final String statlinkadd = "http://cs309-sd-6.misc.iastate.edu:8080/api/stats/add/";
     JSONArray a;
     volatile boolean done;
-    volatile ArrayList<String[]> t;
     private String user, pass, first, last, email, type;
     private Context mContext;
     private JSONObject o;
     private int user_id;
-
+   volatile ArrayList<String[]> t;
+    private final String statlink="http://cs309-sd-6.misc.iastate.edu:8080/api/stats/updateStat/";
+    private final String statlinkadd="http://cs309-sd-6.misc.iastate.edu:8080/api/stats/add/";
+    private static RequestQueue queue;
     /**
      * create the json handler
      *
      * @param c the context of the app
      */
-    public Json_handler(Context c) {
+    public Json_handler(Context c)
+    {
         mContext = c;
+        queue= Volley.newRequestQueue(c);
     }
 
     /**
@@ -221,6 +226,59 @@ public class Json_handler {
                 Log.i("Cycond Life", "Error on push");
             }
             return "cool";
+        }
+    }
+    /**
+    make a generic Json call
+     type should be Request.Method.(this)
+     retType should be 0 for object
+     1 for array
+     anything else is currently unsupported and would need to be added
+     */
+    public static void makeCall(int type ,String url,final Callback_handler c,int retType, @Nullable JSONObject[] sendObjects)
+    {
+        JSONArray ar=  new JSONArray();
+        if(sendObjects!=null && sendObjects.length>1) {
+            for (int i = 0; i < sendObjects.length; i++) {
+                ar.put(sendObjects[i]);
+            }
+        }
+        else
+        {
+            ar=null;
+        }
+        JsonRequest t =null;
+        if(retType==1)
+        {
+            t = new JsonArrayRequest(type, url, ar, new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+                    c.get_array_response(response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("Cycond Error","Generic Json Request error");
+                }
+            });
+
+        }
+        else if(retType ==0)
+        {
+             t = new JsonObjectRequest(type, url, sendObjects[0], new Response.Listener<JSONObject>() {
+                 @Override
+                 public void onResponse(JSONObject response) {
+                     c.get_object_response(response);
+                 }
+             }, new Response.ErrorListener() {
+                 @Override
+                 public void onErrorResponse(VolleyError error) {
+                     Log.i("Cycond Error","Generic Json Request error");
+                 }
+             });
+        }
+        if(t !=null) {
+            queue.add(t);
         }
     }
 }

@@ -27,7 +27,7 @@ public class Consumable extends Item {
      * @param duration how long effects last (in turns)
      * @param use_msg  what should be told to the player when an item is used
      */
-    Consumable(int itemID, String name, String desc, int type, Dice effect, int duration, String use_msg) {
+   public Consumable(int itemID, String name, String desc, int type, Dice effect, int duration, String use_msg) {
         this.itemID = itemID;
         this.name = name;
         description = desc;
@@ -40,7 +40,7 @@ public class Consumable extends Item {
     /**
      * use and item
      *
-     * @return weither t
+     * @return if used
      */
     public boolean use() {
         boolean used = true;

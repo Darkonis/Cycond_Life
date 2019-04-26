@@ -9,6 +9,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
 import com.example.cycondlife.Dice;
 import com.example.cycondlife.communication.Callback_handler;
 import com.example.cycondlife.communication.ChatSender;
@@ -69,9 +70,6 @@ public class Player extends Character {
 
     private Player(String user, int idt, Context c) {
         super();
-        Consumable c1 = new Consumable(0, "lesser health potion", "This potion sits in a red bottle labeled TEST", 0, new Dice("2+2d4"), 0, "You take a health Potion");
-        Item.itemList.add(c1);
-        Item.itemList.add(new Consumable(002, "Test Duration", "This item should be active for a little while", 2, new Dice(("4+0d4")), 5, "you drink the test potion you feel more powerful"));
         update_substats();
 
         username = user;
