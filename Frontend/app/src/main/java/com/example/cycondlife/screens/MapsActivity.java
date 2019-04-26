@@ -1,24 +1,24 @@
 package com.example.cycondlife.screens;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
+import com.example.cycondlife.R;
 import com.example.cycondlife.game.Character;
 import com.example.cycondlife.game.Combat;
 import com.example.cycondlife.game.Game;
 import com.example.cycondlife.game.Player;
-import com.example.cycondlife.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -30,11 +30,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.*;
-import android.content.Intent;
-import android.content.Context;
 
 
-public class  MapsActivity extends FragmentActivity implements OnMapReadyCallback,
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         GoogleMap.OnMarkerDragListener,
@@ -42,15 +40,16 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
         GoogleMap.OnMarkerClickListener,
         View.OnClickListener {
 
+    final static Player player = Player.get_instance();
     private static final String TAG = "MapsActivity";
+    static Game g;
     private GoogleMap mMap;
     private double longitude;
     private double latitude;
     private GoogleApiClient googleApiClient;
-    private Location lastLocation ;
+    private Location lastLocation;
     private TextView myText = null;
-    static Game g;
-    final static Player player = Player.get_instance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,9 +59,9 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        if(g==null) {
+        if (g == null) {
             g = new Game(mMap);
-   //        g.generate_mMap();
+            //        g.generate_mMap();
         }
 
         //Initializing googleApiClient
@@ -86,9 +85,9 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
         LatLng india = new LatLng(42.03, -92.03);
         mMap.addMarker(new MarkerOptions().position(india).title("Marker in Ames"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(india));
-       // mMap.setOnMarkerDragListener(this);
+        // mMap.setOnMarkerDragListener(this);
         mMap.setOnMapLongClickListener(this);
-       // display_monsters();
+        // display_monsters();
         //g.display_monsters();
     }
 
@@ -96,7 +95,7 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
     private void getCurrentLocation() {
         mMap.clear();
 
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     1);
             // TODO: Consider calling
@@ -115,9 +114,9 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
                     public void onSuccess(Location location) {
                         if (location != null) {
                             lastLocation = location;
-                         //   myText.setText("Your location is Lat:" + lastLocation.getLatitude()+"Long"+lastLocation.getLongitude());
+                            //   myText.setText("Your location is Lat:" + lastLocation.getLatitude()+"Long"+lastLocation.getLongitude());
                         } else {
-                           // myText.setText("Error no location");
+                            // myText.setText("Error no location");
                         }
                         if (location != null) {
                             //Getting longitude and latitude
@@ -127,44 +126,41 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
                             //moving the map to location
                             moveMap();
                         }
-                    display_monsters();
+                        display_monsters();
                     }
                 });
     }
 
-                    private void moveMap() {
-                        /*
-                         * Creating the latlng object to store lat, long coordinates
-                         * adding marker to map
-                         * move the camera with animation
-                         */
-                        LatLng latLng = new LatLng(latitude, longitude);
-                        mMap.addMarker(new MarkerOptions()
-                                .position(latLng)
-                                .draggable(false)
-                                .title("You are here!!!!"));
+    private void moveMap() {
+        /*
+         * Creating the latlng object to store lat, long coordinates
+         * adding marker to map
+         * move the camera with animation
+         */
+        LatLng latLng = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions()
+                .position(latLng)
+                .draggable(false)
+                .title("You are here!!!!"));
 
-                        player.setLat(latitude);
-                        player.setLong(longitude);
-                        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-                        mMap.getUiSettings().setZoomControlsEnabled(false);
-                        mMap.getUiSettings().setAllGesturesEnabled(false);
+        player.setLat(latitude);
+        player.setLong(longitude);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        mMap.getUiSettings().setZoomControlsEnabled(false);
+        mMap.getUiSettings().setAllGesturesEnabled(false);
 
 
+    }
 
-                    }
-    private void display_monsters()
-    {
+    private void display_monsters() {
         mMap.clear();
 
-        for(int i=0;i<Game.num_monsters;i++)
-        {
-            if(Game.monster_map.get(i).getResolve()<=0|| (is_in_range(i)))
-            {
-                Log.i("Cycond Test", "result "+Math.sqrt(
-                        Math.pow(Game.monster_map.get(i).get_latitude()-player.get_latitude(),2)+
-                                Math.pow(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(player.get_longitude()),2)));
+        for (int i = 0; i < Game.num_monsters; i++) {
+            if (Game.monster_map.get(i).getResolve() <= 0 || (is_in_range(i))) {
+                Log.i("Cycond Test", "result " + Math.sqrt(
+                        Math.pow(Game.monster_map.get(i).get_latitude() - player.get_latitude(), 2) +
+                                Math.pow(Math.abs(Game.monster_map.get(i).get_longitude()) - Math.abs(player.get_longitude()), 2)));
                /* Log.i("Cycond Test", "t6 "+
                         Math.pow(Game.monster_map.get(i).get_latitude()-player.get_latitude(),2));
                 Log.i("Cycond Test", "t7 "+
@@ -173,15 +169,16 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
 
                 continue;
             }
-            mMap.addMarker(new MarkerOptions().position(new LatLng(Game.monster_map.get(i).get_latitude(),Game.monster_map.get(i).get_longitude())).draggable(false).title("Monster: "+ i));
+            mMap.addMarker(new MarkerOptions().position(new LatLng(Game.monster_map.get(i).get_latitude(), Game.monster_map.get(i).get_longitude())).draggable(false).title("Monster: " + i));
         }
         moveMap();
-       // mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(latitude,longitude)));
-  //      moveMap();
+        // mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(latitude,longitude)));
+        //      moveMap();
     }
+
     @Override
     public void onClick(View view) {
-        Log.v(TAG,"view click event");
+        Log.v(TAG, "view click event");
     }
 
     @Override
@@ -189,6 +186,7 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
         getCurrentLocation();
         display_monsters();
     }
+
     @Override
     public void onConnectionSuspended(int i) {
 
@@ -203,24 +201,21 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
     public void onMapLongClick(LatLng latLng) {
         // mMap.clear();
         final Context context = this;
-        if(player.getResolve()<=0) return;
+        if (player.getResolve() <= 0) return;
         Intent intent = new Intent(context, Combat.class);
-        boolean found=false;
-        Log.i("Cycond Life","LAT lang ="+latLng.latitude+" "+latLng.longitude);
+        boolean found = false;
+        Log.i("Cycond Life", "LAT lang =" + latLng.latitude + " " + latLng.longitude);
         Character opponent;
-        if(player.getResolve()<=0) return;
-        for(int i=0;i<Game.num_monsters;i++)
-        {
-            if(Math.abs(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(latLng.longitude))<=.001&&Math.abs(Math.abs(Game.monster_map.get(i).get_latitude())-Math.abs(latLng.latitude))<=.001)
-            {
-                if(Game.monster_map.get(i).getResolve()<=0)
-                {
+        if (player.getResolve() <= 0) return;
+        for (int i = 0; i < Game.num_monsters; i++) {
+            if (Math.abs(Math.abs(Game.monster_map.get(i).get_longitude()) - Math.abs(latLng.longitude)) <= .001 && Math.abs(Math.abs(Game.monster_map.get(i).get_latitude()) - Math.abs(latLng.latitude)) <= .001) {
+                if (Game.monster_map.get(i).getResolve() <= 0) {
                     continue;
                 }
-                if(!is_in_range(i)){
-                    opponent=Game.monster_map.get(i);
-                    Combat.set_combatants(opponent,g);
-                    found=true;
+                if (!is_in_range(i)) {
+                    opponent = Game.monster_map.get(i);
+                    Combat.set_combatants(opponent, g);
+                    found = true;
                     break;
 
                 }
@@ -228,7 +223,7 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
             }
 
         }
-        if(found) {
+        if (found) {
             startActivity(intent);
         }
     }
@@ -247,15 +242,16 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
     public void onMarkerDragEnd(Marker marker) {
 
     }
-    private boolean is_in_range(int i)
-    {
-        if((Math.sqrt(
-                Math.pow(Game.monster_map.get(i).get_latitude()-player.get_latitude(),2)+
-                        Math.pow(Math.abs(Game.monster_map.get(i).get_longitude())-Math.abs(player.get_longitude()),2))>=player.sight)) {
+
+    private boolean is_in_range(int i) {
+        if ((Math.sqrt(
+                Math.pow(Game.monster_map.get(i).get_latitude() - player.get_latitude(), 2) +
+                        Math.pow(Math.abs(Game.monster_map.get(i).get_longitude()) - Math.abs(player.get_longitude()), 2)) >= player.sight)) {
             return true;
         }
         return false;
     }
+
     @Override
     protected void onStart() {
         googleApiClient.connect();
@@ -267,16 +263,17 @@ public class  MapsActivity extends FragmentActivity implements OnMapReadyCallbac
         googleApiClient.disconnect();
         super.onStop();
     }
-    protected  void onPause()
-    {
+
+    protected void onPause() {
         super.onPause();
     }
-    protected void onResume()
-    {
+
+    protected void onResume() {
         super.onResume();
-       // getCurrentLocation();
+        // getCurrentLocation();
         //display_monsters();
     }
+
     @Override
     public boolean onMarkerClick(Marker marker) {
         Toast.makeText(MapsActivity.this, "onMarkerClick", Toast.LENGTH_SHORT).show();

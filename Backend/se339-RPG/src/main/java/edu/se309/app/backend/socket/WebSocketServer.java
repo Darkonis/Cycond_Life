@@ -190,7 +190,7 @@ public class WebSocketServer {
 
     @Scheduled(fixedRate = 6000)
     public void PingClientForGeo() throws IOException {
-        session.getBasicRemote().sendText("RequestGeo");
+        broadcast("GEO");
     }
 
     public void destroy() {

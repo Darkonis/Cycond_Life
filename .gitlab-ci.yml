@@ -39,7 +39,7 @@ docker-deploy:
     - docker run -d -p 8080:8080 rpg309
   only:
     - master
-    
+
 
 android-build:
   image: javiersantos/android-ci:latest
@@ -54,5 +54,5 @@ android-build:
     - ./gradlew assemble
   artifacts:
     paths:
-    - Frontend/app/build/outputs/
+      - Frontend/app/build/outputs/
 

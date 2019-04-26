@@ -4,15 +4,14 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,13 +19,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.cycondlife.R;
 import com.example.cycondlife.communication.Json_handler;
 import com.example.cycondlife.game.Consumable;
 import com.example.cycondlife.game.Game;
 import com.example.cycondlife.game.Item;
 import com.example.cycondlife.game.Player;
-import com.example.cycondlife.R;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -91,7 +89,7 @@ public class dev_menu extends AppCompatActivity {
                 submit2.setVisibility(View.VISIBLE);
             }
         });
-        update_stat.setOnClickListener(new View.OnClickListener(){
+        update_stat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 hide_entries();
@@ -104,7 +102,7 @@ public class dev_menu extends AppCompatActivity {
         submit_stat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                j.update_stat(Integer.parseInt(stat_accountId.getText().toString()),stat_name.getText().toString(), Integer.parseInt(value.getText().toString()));
+                j.update_stat(Integer.parseInt(stat_accountId.getText().toString()), stat_name.getText().toString(), Integer.parseInt(value.getText().toString()));
                 Player.get_instance().force_update();
             }
         });
@@ -146,18 +144,16 @@ public class dev_menu extends AppCompatActivity {
         submit_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String s =id.getText().toString();
+                String s = id.getText().toString();
 
-                int i =0;
+                int i = 0;
                 try {
-                  i=  Integer.parseInt(s);
-                  //  i = s.charAt(0)-48;
+                    i = Integer.parseInt(s);
+                    //  i = s.charAt(0)-48;
+                } catch (Exception e) {
+                    Log.i("Cycond life", "int error");
                 }
-                catch(Exception e)
-                {
-                    Log.i("Cycond life","int error");
-                }
-            j.delete_user(i);
+                j.delete_user(i);
             }
         });
         // Set a click listener for button widget
@@ -173,7 +169,7 @@ public class dev_menu extends AppCompatActivity {
         res_hp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Game.change_player_hp(100,getApplicationContext());
+                Game.change_player_hp(100, getApplicationContext());
             }
         });
         submitItem.setOnClickListener(new View.OnClickListener() {
@@ -182,7 +178,7 @@ public class dev_menu extends AppCompatActivity {
                 Player.get_instance().addItem((Consumable) Item.findByID(Integer.parseInt(itemId.getText().toString())));
             }
         });
-        addItem.setOnClickListener( new View.OnClickListener(){
+        addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 hide_entries();
@@ -211,8 +207,8 @@ public class dev_menu extends AppCompatActivity {
         submitItem.setVisibility(View.GONE);
         itemId.setVisibility(View.GONE);
     }
-    private void set_elements()
-    {
+
+    private void set_elements() {
         mTextView = findViewById(R.id.name);
         mTextView.setVisibility(View.GONE);
         // Get the application context
@@ -231,19 +227,20 @@ public class dev_menu extends AppCompatActivity {
         last = findViewById(R.id.last_name);
         email = findViewById(R.id.email);
         type = findViewById(R.id.account_type);
-        id= findViewById(R.id.id);
+        id = findViewById(R.id.id);
         delete = findViewById(R.id.delete);
         submit_delete = findViewById(R.id.submit_delete);
-        res_hp=findViewById(R.id.res);
-        value =findViewById(R.id.value);
-        submit_stat =findViewById(R.id.submit_stat_change);
-        stat_name =findViewById(R.id.statName);
-                update_stat=findViewById(R.id.updateStat);
-                stat_accountId = findViewById(R.id.accountId);
+        res_hp = findViewById(R.id.res);
+        value = findViewById(R.id.value);
+        submit_stat = findViewById(R.id.submit_stat_change);
+        stat_name = findViewById(R.id.statName);
+        update_stat = findViewById(R.id.updateStat);
+        stat_accountId = findViewById(R.id.accountId);
         itemId = findViewById(R.id.itemID);
         addItem = findViewById(R.id.addItem);
         submitItem = findViewById(R.id.submitItem);
     }
+
     public void get_users(Context c) {
         final RequestQueue requestQueue = Volley.newRequestQueue(c);
         // Initialize a new JsonArrayRequest instance
@@ -262,9 +259,9 @@ public class dev_menu extends AppCompatActivity {
                             try {
                                 String[] out = new String[response.length()];
 
-                                    out[i] = response.get(i).toString();
+                                out[i] = response.get(i).toString();
 
-                                    Log.i("Cycond life", "onResponse: " + out[i]);
+                                Log.i("Cycond life", "onResponse: " + out[i]);
 
                             } catch (Exception e) {
                                 e.printStackTrace();

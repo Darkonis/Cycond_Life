@@ -1,0 +1,8 @@
+edu.se309.app.backend
+edu.se309.app.backend.common.config
+edu.se309.app.backend.rest.controller
+edu.se309.app.backend.rest.entity
+edu.se309.app.backend.rest.repository
+edu.se309.app.backend.rest.service
+edu.se309.app.backend.rest.service.interfaces
+edu.se309.app.backend.socket

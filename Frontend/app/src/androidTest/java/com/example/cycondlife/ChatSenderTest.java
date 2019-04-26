@@ -1,9 +1,7 @@
 package com.example.cycondlife;
 
 import com.example.cycondlife.communication.ChatSender;
-
 import org.junit.Test;
-
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -11,7 +9,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 
 public class ChatSenderTest {
-
 
 
     @Test
@@ -40,7 +37,7 @@ public class ChatSenderTest {
         sender.sendMsg("Nothing");
     }
 
-    @Test(expected =  IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testIllegalArgumentException() {
         ChatSender sender = new ChatSender();
         sender.connectWebSocket(null);

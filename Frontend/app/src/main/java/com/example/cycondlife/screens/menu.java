@@ -7,27 +7,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.cycondlife.R;
 import com.example.cycondlife.ar.BarcodeCaptureActivity;
 import com.example.cycondlife.communication.Callback_handler;
 import com.example.cycondlife.communication.Chat;
 import com.example.cycondlife.game.Character;
 import com.example.cycondlife.game.Game;
-import com.example.cycondlife.R;
-import com.example.cycondlife.game.Player;
-
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class menu extends AppCompatActivity {
     public Callback_handler callback;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +37,14 @@ public class menu extends AppCompatActivity {
         Button map = findViewById(R.id.map);
         Button dev_menu = findViewById(R.id.dev_menu);
         Button scanner = findViewById(R.id.scan);
-        if(Game.monster_map.size()==0)
-        {
+        if (Game.monster_map.size() == 0) {
             pull_monster_map();
         }
 
         stats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openStats= new Intent(menu.this, stats_menu.class);
+                Intent openStats = new Intent(menu.this, stats_menu.class);
                 startActivity(openStats);
             }
         });
@@ -74,7 +70,7 @@ public class menu extends AppCompatActivity {
         friends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openFriends= new Intent(menu.this, Chat.class);
+                Intent openFriends = new Intent(menu.this, Chat.class);
                 startActivity(openFriends);
             }
         });
@@ -91,36 +87,34 @@ public class menu extends AppCompatActivity {
         });
 
     }
-    private void pull_monster_map()
-    {
+
+    private void pull_monster_map() {
         callback = new Callback_handler() {
             @Override
             public void get_array_response(JSONArray a) {
                 try {
                     JSONArray response = a;
-                    for(int i=0;i<response.length();i++) {
+                    for (int i = 0; i < response.length(); i++) {
                         JSONObject mon = response.getJSONObject(i);
                         Game.add_monster(new Character(mon.getInt("id"), mon.getInt("type"), mon.getDouble("latitude"), mon.getDouble("longitude")));
                         Game.num_monsters++;
                     }
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     Log.i("Cycond Life", "convert error");
                     Log.i("Cycond Life", e.getLocalizedMessage());
                 }
-                }
+            }
 
             @Override
             public void get_object_response(JSONObject o) {
-                return ;
+                return;
             }
         };
         getResponse(Request.Method.GET, "", null, callback);
-                // Initialize a new JsonArrayRequest instance
+        // Initialize a new JsonArrayRequest instance
 
 
-                // Add JsonArrayRequest to the RequestQueue
+        // Add JsonArrayRequest to the RequestQueue
 
 
     }
@@ -131,14 +125,14 @@ public class menu extends AppCompatActivity {
 
     /**
      * generic json stuff
-     * @param method the method tyoe
-     * @param url the url to use
+     *
+     * @param method    the method tyoe
+     * @param url       the url to use
      * @param jsonValue json object to be passed
-     * @param callback the callback handler
+     * @param callback  the callback handler
      */
-    public void getResponse(int method, String url, JSONObject jsonValue, final Callback_handler callback)
-    {
-        Context c= getApplicationContext();
+    public void getResponse(int method, String url, JSONObject jsonValue, final Callback_handler callback) {
+        Context c = getApplicationContext();
         final RequestQueue requestQueue = Volley.newRequestQueue(c);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 "http://cs309-sd-6.misc.iastate.edu:8080/api/monsters/",
@@ -161,17 +155,17 @@ public class menu extends AppCompatActivity {
                         Log.i("Cycond Life", error.getLocalizedMessage());
                     }
 
-    });
+                });
         requestQueue.add(jsonArrayRequest);
     }
+
     @Override
-    protected void onPause()
-    {
+    protected void onPause() {
         super.onPause();
     }
+
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
     }
 }

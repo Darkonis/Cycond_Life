@@ -6,17 +6,31 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
+/**
+ * Building Repository with custom methods
+ */
 @Repository
 public class BuildingRepositoryCustom {
 
     private EntityManager entityManager;
 
+    /**
+     * Constructor that takes in an entityManager
+     *
+     * @param entityManager entityManager associated with this repository
+     */
     @Autowired
     public BuildingRepositoryCustom(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
-    //
+    /**
+     * Finding building's associated Stat
+     *
+     * @param longitude Longitude
+     * @param latitude  Latitude
+     * @return Stat associated with location
+     */
     public String findBuildingStat(String longitude, String latitude) {
 
         String queryStr = "SELECT earned_stat FROM building_locations as b WHERE (ST_WITHIN(ST_SRID(POINT(" + longitude + "," + latitude + "), 4326), b.geo))";
@@ -29,6 +43,13 @@ public class BuildingRepositoryCustom {
 
     }
 
+    /**
+     * Find building's name
+     *
+     * @param longitude longitude
+     * @param latitude  latitude
+     * @return The associated building's name
+     */
     public String findBuildingName(String longitude, String latitude) {
         String queryStr = "SELECT building_name FROM building_locations as b WHERE (ST_WITHIN(ST_SRID(POINT(" + longitude + "," + latitude + "), 4326), b.geo))";
         try {

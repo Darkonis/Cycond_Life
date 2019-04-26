@@ -5,30 +5,29 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.cycondlife.R;
 import com.example.cycondlife.communication.Callback_handler;
 import com.example.cycondlife.game.Item;
 import com.example.cycondlife.game.Player;
-import com.example.cycondlife.R;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Login extends AppCompatActivity {
 
+    MediaPlayer mediaPlayer;    //used to play music when the app is opened, currently handled outside of onCreate
     private Button submit;
     private TextView name;
     private TextView pass;
@@ -37,9 +36,6 @@ public class Login extends AppCompatActivity {
     private Button create;
     private String JSONURL = "http://cs309-sd-6.misc.iastate.edu:8080/api/accounts/";
     private Context thisContext;
-
-    MediaPlayer mediaPlayer;    //used to play music when the app is opened, currently handled outside of onCreate
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,14 +74,15 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Will save a temp account that can be accessed by the rest of the app in later iterations
-                Player.create_the_instance("Over9000",13,getApplicationContext());
+                Player.create_the_instance("Over9000", 13, getApplicationContext());
+                Item.pullItemList();
                 final Intent openMenu = new Intent(Login.this, menu.class);
                 startActivity(openMenu);
             }
         });
     }
-    private void check_validity()
-    {
+
+    private void check_validity() {
 
         final String userName = name.getText().toString();
         final String userPass = pass.getText().toString();
@@ -99,13 +96,11 @@ public class Login extends AppCompatActivity {
             @Override
             public void get_object_response(JSONObject o) {
                 try {
-                    if (userPass.equals( o.get("password"))) {
-                        Player.create_the_instance(userName,o.getInt("id"),getApplicationContext());
+                    if (userPass.equals(o.get("password"))) {
+                        Player.create_the_instance(userName, o.getInt("id"), getApplicationContext());
                         startActivity(openMenu);
                     }
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     Log.i("Cycond Life", "parse error");
                     Log.i("Cycond Life", e.getLocalizedMessage());
                 }
@@ -138,11 +133,11 @@ public class Login extends AppCompatActivity {
                                 String nameToCheck = info.get("username").toString();
                                 String passToCheck = info.get("password").toString();
 
-                                if(nameToCheck.equals(userName) && passToCheck.equals(userPass))    {
-                                    if(Player.get_instance()!=null) {
+                                if (nameToCheck.equals(userName) && passToCheck.equals(userPass)) {
+                                    if (Player.get_instance() != null) {
                                         Player.destroy_the_instance(); //remove the previous player if needed
                                     }
-                                    Player.create_the_instance(userName,info.getInt("id"),getApplicationContext()); //on good login create the player object
+                                    Player.create_the_instance(userName, info.getInt("id"), getApplicationContext()); //on good login create the player object
                                     Item.pullItemList();
                                     startActivity(openMenu);
 
@@ -177,12 +172,11 @@ public class Login extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume()   {
+    protected void onResume() {
         super.onResume();
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.test_song);
         mediaPlayer.start();
     }
-
 
 
     @Override
