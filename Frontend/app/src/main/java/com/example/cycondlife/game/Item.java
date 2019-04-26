@@ -77,4 +77,8 @@ public abstract class Item {
 
         Json_handler.makeCall(Request.Method.GET,"http://cs309-sd-6.misc.iastate.edu:8080/api/items/consumable/",c,1,null);
     }
+    public String getName()
+    {
+        return  name;
+    }
 }

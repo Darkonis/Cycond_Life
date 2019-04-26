@@ -38,7 +38,6 @@ public class Character {
         resolve = 100;
     }
 
-    @Deprecated
     /**
      * Create a generic monster for tests shouldn't need
      * @param id monster id

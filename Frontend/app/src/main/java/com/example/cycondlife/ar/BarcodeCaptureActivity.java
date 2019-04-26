@@ -360,6 +360,17 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
             Intent data = new Intent();
             data.putExtra(BarcodeObject, best);
             setResult(CommonStatusCodes.SUCCESS, data);
+            Toast t;
+            try {
+                Player.get_instance().addItem((Consumable) Item.findByID(Integer.parseInt(best.rawValue)));
+                Log.i("Cycond ITEM",Item.findByID(Integer.parseInt(best.rawValue)).getName() );
+                Snackbar.make(mGraphicOverlay, "added Item: " +Item.findByID(Integer.parseInt(best.rawValue)).getName(),
+                        Snackbar.LENGTH_LONG)
+                        .show();
+            } catch (Exception e) {
+                t = Toast.makeText(getApplicationContext(), "this code is not in the correct format", Toast.LENGTH_SHORT);
+                t.show();
+            }
             finish();
             return true;
         }
@@ -373,13 +384,7 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
      */
     @Override
     public void onBarcodeDetected(Barcode barcode) {
-        try {
-            Player.get_instance().addItem((Consumable) Item.findByID(Integer.parseInt(barcode.rawValue)));
-            Log.i("Cycond info", "Item ID:" + Integer.parseInt(barcode.rawValue));
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "this code is not in the correct format", Toast.LENGTH_SHORT);
-        }
-        finishActivity(0);
+
     }
 
     private class CaptureGestureListener extends GestureDetector.SimpleOnGestureListener {

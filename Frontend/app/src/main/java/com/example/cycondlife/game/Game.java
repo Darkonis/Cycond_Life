@@ -12,14 +12,12 @@ import java.util.Random;
 
 public class Game {
     public static final Player player = Player.get_instance();
-    //TODO make all the rest control from here
     public static ArrayList<Character> monster_map = new ArrayList<>();
     public static int num_monsters = 0;
     public GoogleMap mMap;
     //how large the generated area should be
     double world_bounds = .2;
-    //TODO make this based of time
-    Random rand = new Random(0);
+    Random rand = new Random(System.currentTimeMillis());
 
     public Game(GoogleMap mMap) {
         this.mMap = mMap;

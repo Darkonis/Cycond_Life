@@ -19,6 +19,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cycondlife.R;
 import com.example.cycondlife.communication.Callback_handler;
+import com.example.cycondlife.communication.Json_handler;
 import com.example.cycondlife.game.Item;
 import com.example.cycondlife.game.Player;
 import org.json.JSONArray;
@@ -49,7 +50,7 @@ public class Login extends AppCompatActivity {
         adLogin = findViewById(R.id.adminLogin);
 
         thisContext = getApplicationContext();
-
+        Json_handler j = new Json_handler(getApplicationContext());
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},
                     1);
