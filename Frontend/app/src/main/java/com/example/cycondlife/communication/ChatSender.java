@@ -8,6 +8,7 @@ import org.java_websocket.exceptions.WebsocketNotConnectedException;
 import org.java_websocket.handshake.ServerHandshake;
 
 import java.net.URI;
+import java.util.Scanner;
 
 //import org.java_websocket.drafts.Draft_6455;
 
@@ -18,6 +19,8 @@ public class ChatSender {
     WebSocketClient chat;
     TextView chatBox;
     Activity chatActivity;
+    Scanner in;
+    String key = "";
     //DataOutputStream dos;
     //PrintWriter pw;
     //Toast noConnection = new Toast.makeText(getChatContext(), "Failed to connect to server", Toast.LENGTH_SHORT);
@@ -35,10 +38,30 @@ public class ChatSender {
 
         chat = new WebSocketClient(dest) {
             public void onMessage(String var1) {
-                receivedText += "\r\n  " + var1;
+                in = new Scanner(var1);
+                key = in.next();
+
+                if(key.equals("CHAT"))   {
+                    receivedText += "\r\n  " + in.nextLine();
+                }
+
+                if(key.equals("GEO"))  {
+
+                }
+
+                if(key.equals("REFRESH"))   {
+
+                }
+
+                if(key.equals("HEALTH"))    {
+
+                }
+
+                //receivedText += "\r\n  " + var1;
                 //chatBox.setText("");
                 setChatText();
                 Log.i("CyLife Websocket", var1);
+                in.close();
             }
 
             public void onOpen(ServerHandshake var1) {
