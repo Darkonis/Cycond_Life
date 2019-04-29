@@ -144,7 +144,7 @@ public class Combat extends AppCompatActivity {
                 if (ret == 1) {
                     Log.i("Cycond Life", "Player has won combat");
                     Json_handler j = new Json_handler(getApplicationContext());
-                    j.update_stat(player.getId(),"cyBucks",player.getGold());
+
                     player.adjustCyBucks(monster.getGold());
                     finishActivity(1);
 

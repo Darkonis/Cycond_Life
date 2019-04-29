@@ -164,6 +164,8 @@ public class Player extends Character {
         {
             cyBucks +=i;
             if (cyBucks>9999)cyBucks=9999;
+            Json_handler j = new Json_handler(context);
+                    j.update_stat(id,"cyBucks",getGold());
             return true;
         }
     }
