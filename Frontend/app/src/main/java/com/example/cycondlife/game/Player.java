@@ -231,6 +231,8 @@ public class Player extends Character {
         return creativity;
     }
 
+    public int getId()  { return id;}
+
     /**
      * force an update of the player statistics
      */

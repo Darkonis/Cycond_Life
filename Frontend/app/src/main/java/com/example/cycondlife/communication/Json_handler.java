@@ -127,6 +127,42 @@ public class Json_handler {
     }
 
     /**
+     * update the player's location
+     *
+     * @param id    the user id
+     * @param lng  player's longitutde
+     * @param lat  player's latitude
+     */
+    public void update_stat_by_location(int id, double lng, double lat) {
+        // this.getApplicationContext();
+        JSONObject j = new JSONObject();
+        final RequestQueue requestQueue = Volley.newRequestQueue(mContext);
+        JsonObjectRequest jsonMain = new JsonObjectRequest(Request.Method.PUT, "http://cs309-sd-6.misc.iastate.edu:8080/api/stats/updateStatByLocation/" + id + "/" + "{lng}/{lat}?lng=" + lng + "&lat=" + lat, j, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+
+                    Log.i("Cycond Life Json", response.toString());
+                } catch (Exception e) {
+                    Log.i("Cycond Error", "Error sending stats");
+
+                }
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError e) {
+                Log.i("Cy Error", "error posting stat change");
+                //e.printStackTrace();
+            }
+        });
+
+
+        requestQueue.add(jsonMain);
+    }
+
+    /**
      * create a user
      *
      * @param user  the username

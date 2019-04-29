@@ -1,8 +1,12 @@
 package com.example.cycondlife.communication;
 
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 import android.widget.TextView;
+
+import com.example.cycondlife.game.Player;
+
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.exceptions.WebsocketNotConnectedException;
 import org.java_websocket.handshake.ServerHandshake;
@@ -21,6 +25,9 @@ public class ChatSender {
     Activity chatActivity;
     Scanner in;
     String key = "";
+    Player player = Player.get_instance();
+    Json_handler locUpdate;
+    Context chatContext;
     //DataOutputStream dos;
     //PrintWriter pw;
     //Toast noConnection = new Toast.makeText(getChatContext(), "Failed to connect to server", Toast.LENGTH_SHORT);
@@ -35,6 +42,7 @@ public class ChatSender {
         //chat = new Socket();
         receivedText = "  connecting...";
         setChatText();
+        locUpdate = new Json_handler(chatContext);
 
         chat = new WebSocketClient(dest) {
             public void onMessage(String var1) {
@@ -46,7 +54,7 @@ public class ChatSender {
                 }
 
                 if(key.equals("GEO"))  {
-
+                    locUpdate.update_stat_by_location(player.getId(), player.get_longitude(), player.get_latitude());
                 }
 
                 if(key.equals("REFRESH"))   {
@@ -179,6 +187,13 @@ public class ChatSender {
     public void passActivity(Activity activity) {
         chatActivity = activity;
     }
+
+    /**
+     * pass the activity
+     *
+     * @param context
+     */
+    public void passActivity(Context context) { chatContext = context; }
 
     /**
      * update the visible chat
