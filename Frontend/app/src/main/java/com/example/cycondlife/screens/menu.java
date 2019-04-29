@@ -13,6 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.cycondlife.Dice;
 import com.example.cycondlife.R;
 import com.example.cycondlife.ar.BarcodeCaptureActivity;
 import com.example.cycondlife.communication.Callback_handler;
@@ -96,7 +97,7 @@ public class menu extends AppCompatActivity {
                     JSONArray response = a;
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject mon = response.getJSONObject(i);
-                        Game.add_monster(new Character(mon.getInt("id"), mon.getInt("type"), mon.getDouble("latitude"), mon.getDouble("longitude")));
+                        Game.add_monster(new Character(mon.getInt("id"), mon.getInt("type"), mon.getDouble("latitude"), mon.getDouble("longitude"), new Dice("2+4d4")));
                         Game.num_monsters++;
                     }
                 } catch (Exception e) {

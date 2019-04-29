@@ -142,6 +142,7 @@ public class Combat extends AppCompatActivity {
                 update_status();
                 if (ret == 1) {
                     Log.i("Cycond Life", "Player has won combat");
+                    player.adjustCyBucks(monster.getGold());
                     finishActivity(1);
 
                     finish();

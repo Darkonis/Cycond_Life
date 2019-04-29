@@ -55,6 +55,7 @@ public class Player extends Character {
     private ArrayList<Consumable> inv = new ArrayList<>();
     private ArrayList<Consumable> activeItems = new ArrayList<>();
     private int itemCount = 0;
+    private int cyBucks=0;
 
     private Player() {
         super();
@@ -114,6 +115,7 @@ public class Player extends Character {
                     creativity = o.getInt("creativity");
                     BS = presentation + critical_thinking;
                     resolve = presentation;
+                    cyBucks = o.getInt("cyBucks");
                 } catch (Exception e) {
                     Log.i("Cycond Life", "Stat pull error");
                 }
@@ -148,7 +150,23 @@ public class Player extends Character {
     public static int getMonstersKilled() {
         return monstersKilled;
     }
-
+    public int getGold()
+    {
+        return cyBucks;
+    }
+    public boolean adjustCyBucks(int i)
+    {
+        if(cyBucks+i<0)
+        {
+            return false;
+        }
+        else
+        {
+            cyBucks +=i;
+            if (cyBucks>9999)cyBucks=9999;
+            return true;
+        }
+    }
     /**
      * Create the singlton player
      *
