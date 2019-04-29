@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.example.cycondlife.Dice;
 import com.example.cycondlife.R;
+import com.example.cycondlife.communication.Json_handler;
 
 import java.util.Random;
 
@@ -142,6 +143,8 @@ public class Combat extends AppCompatActivity {
                 update_status();
                 if (ret == 1) {
                     Log.i("Cycond Life", "Player has won combat");
+                    Json_handler j = new Json_handler(getApplicationContext());
+                    j.update_stat(player.getId(),"cyBucks",player.getGold());
                     player.adjustCyBucks(monster.getGold());
                     finishActivity(1);
 

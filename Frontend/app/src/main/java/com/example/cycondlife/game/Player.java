@@ -137,7 +137,7 @@ public class Player extends Character {
     public static synchronized void createTestInstance(String user, int idt) {
         player_instance = new Player(user, idt);
     }
-
+    public int getId(){return id;}
     /**
      * get the current instance of the player class
      *
