@@ -199,8 +199,8 @@ public class Combat extends AppCompatActivity {
     }
 
     private void update_status() {
-        player_stuff.setText("Player Resolve:" + player.getResolve());
-        monster_stuff.setText("Enemy Resolve" + monster.getResolve());
+        player_stuff.setText("Player Resolve: " + player.getResolve());
+        monster_stuff.setText("Enemy Resolve: " + monster.getResolve());
     }
 
 }
