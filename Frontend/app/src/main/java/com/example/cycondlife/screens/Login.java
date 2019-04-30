@@ -76,6 +76,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 //Will save a temp account that can be accessed by the rest of the app in later iterations
                 Player.create_the_instance("Over9000", 13, getApplicationContext());
+                Player.get_instance().setType("admin");
                 Item.pullItemList();
                 final Intent openMenu = new Intent(Login.this, menu.class);
                 startActivity(openMenu);
@@ -99,7 +100,9 @@ public class Login extends AppCompatActivity {
                 try {
                     if (userPass.equals(o.get("password"))) {
                         Player.create_the_instance(userName, o.getInt("id"), getApplicationContext());
+                        Player.get_instance().setType(o.getString("accountType"));
                         startActivity(openMenu);
+
                     }
                 } catch (Exception e) {
                     Log.i("Cycond Life", "parse error");

@@ -59,6 +59,29 @@ public class Consumable extends Item {
         this.cost=cost;
     }
     /**
+     * Make a consumable item
+     *
+     * @param itemID
+     * @param name     the items name
+     * @param desc     the description of the item
+     * @param type     what type of item is it
+     * @param effect   dice type that controls the power of the effect
+     * @param duration how long effects last (in turns)
+     * @param use_msg  what should be told to the player when an item is used
+     * @param cost the price of the item
+     */
+    public Consumable(int itemID, String name, String desc, int type, Dice effect, int duration, String use_msg,int cost,int serverId) {
+        this.itemID = itemID;
+        this.name = name;
+        description = desc;
+        this.type = type;
+        this.effect = effect;
+        this.duration = duration;
+        this.useMsg = use_msg;
+        this.cost=cost;
+        this.serverID = serverId;
+    }
+    /**
      * use and item
      *
      * @return if used
@@ -120,6 +143,10 @@ public class Consumable extends Item {
     @Override
     public Consumable clone() {
         return new Consumable(itemID, name, description, type, effect, duration, useMsg,cost);
+    }
+    public void setServerID(int id)
+    {
+        serverID =id;
     }
 
 }

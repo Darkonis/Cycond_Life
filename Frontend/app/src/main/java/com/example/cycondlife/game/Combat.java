@@ -114,6 +114,7 @@ public class Combat extends AppCompatActivity {
         Log.i("Cycond Info", "creativity is:" + player.getCreativity());
         player.update_substats();
         Log.i("Cycond Info", "creativity is:" + player.getCreativity());
+        player.refreshInventory();
     }
 
     /**
