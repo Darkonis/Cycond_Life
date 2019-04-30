@@ -86,23 +86,23 @@ public class Shop extends AppCompatActivity {
         if(isShop)
         {
             submit.setText("Confirm purchase");
-            out+="Buying\n";
+            out+="  Buying\r\n";
             ArrayList tmp = Item.itemList;
             for(int i=0;i<tmp.size();i++)
             {
                 Consumable c = (Consumable) tmp.get(i);
-                out+= "ID: "+ c.getItemID()+ " Name: "+c.getName()+ " Cost: " + (int)(c.getCost()*1.2)+"\n";
+                out+= "  ID: "+ c.getItemID()+ " Name: "+c.getName()+ " Cost: " + (int)(c.getCost()*1.2)+"\r\n";
             }
         }
         else
         {
             submit.setText("Confirm Sale");
-            out+="Selling\n";
+            out+="  Selling\r\n";
             ArrayList tmp = p.getInv();
             for (int i=0;i<tmp.size();i++)
             {
                 Consumable c = (Consumable) tmp.get(i);
-                out+="ID: "+ i + " Name: "+c.getName()+ " Cost: " + (int)(c.getCost()*.8)+"\n";
+                out+="  ID: "+ i + " Name: "+c.getName()+ " Cost: " + (int)(c.getCost()*.8)+"\r\n";
             }
         }
         itemList.setText(out);
