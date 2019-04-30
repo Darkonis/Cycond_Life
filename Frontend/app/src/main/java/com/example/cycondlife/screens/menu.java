@@ -20,6 +20,8 @@ import com.example.cycondlife.communication.Callback_handler;
 import com.example.cycondlife.communication.Chat;
 import com.example.cycondlife.game.Character;
 import com.example.cycondlife.game.Game;
+import com.example.cycondlife.game.Player;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
