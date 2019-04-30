@@ -54,7 +54,7 @@ public class Player extends Character {
     private double dodgeChance = 15;
     private int tinkeringPoints = -1;
     //TODO use this to hide admin button
-    private String type = "";
+    private String type = "user";
     private ArrayList<Consumable> inv = new ArrayList<>();
     private ArrayList<Consumable> activeItems = new ArrayList<>();
     private int itemCount = 0;
@@ -150,7 +150,8 @@ public class Player extends Character {
     public static Player get_instance() {
         return player_instance;
     }
-
+    public void setType(String type){this.type=type;}
+    public String getType(){return type;}
     public static int getMonstersKilled() {
         return monstersKilled;
     }

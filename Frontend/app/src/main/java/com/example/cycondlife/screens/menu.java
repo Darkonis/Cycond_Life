@@ -44,7 +44,14 @@ public class menu extends AppCompatActivity {
         if (Game.monster_map.size() == 0) {
             pull_monster_map();
         }
-
+        if(Player.get_instance().getType().equals("admin"))
+        {
+            dev_menu.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            dev_menu.setVisibility(View.GONE);
+        }
         stats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

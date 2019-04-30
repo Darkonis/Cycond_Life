@@ -99,7 +99,9 @@ public class Login extends AppCompatActivity {
                 try {
                     if (userPass.equals(o.get("password"))) {
                         Player.create_the_instance(userName, o.getInt("id"), getApplicationContext());
+                        Player.get_instance().setType(o.getString("accountType"));
                         startActivity(openMenu);
+
                     }
                 } catch (Exception e) {
                     Log.i("Cycond Life", "parse error");
