@@ -60,17 +60,28 @@ public class Json_handler {
 
     /**
      * add stats to a given account
-     *
+     *  "bs": 0,
+     *   "criticalThinking": 0,
+     *   "cyBucks": 0,
+     *   "id": 0,
+     *   "ingenuity": 0,
+     *   "monstersKilled": 0,
+     *   "presentation": 0,
+     *   "resolve": 0
      * @param id the id to get stats
      */
     public void add_stats(int id) {
         final RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JSONObject j = new JSONObject();
         try {
-            j.accumulate("accountID", id);
+            j.accumulate("id", id);
             j.accumulate("presentation", 10);
-            j.accumulate("creativity", 10);
-            j.accumulate("critical thinking", 10);
+            j.accumulate("ingenuity", 10);
+            j.accumulate("criticalThinking", 10);
+            j.accumulate("bs",0);
+            j.accumulate("monstersKilled",0);
+            j.accumulate("resolve",100);
+            j.accumulate("cyBucks",0);
             JsonObjectRequest t = new JsonObjectRequest(Request.Method.POST, statlinkadd, j, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
