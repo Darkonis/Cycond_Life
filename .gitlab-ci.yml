@@ -55,4 +55,6 @@ android-build:
   artifacts:
     paths:
       - Frontend/app/build/outputs/
+  only:
+    - master
 
