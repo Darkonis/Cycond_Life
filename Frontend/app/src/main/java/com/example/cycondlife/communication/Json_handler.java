@@ -105,7 +105,6 @@ public class Json_handler {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-
                     Log.i("Cycond Life Json", response.toString());
                 } catch (Exception e) {
                     Log.i("Cycond Error", "Error sending stats");
@@ -137,7 +136,7 @@ public class Json_handler {
         // this.getApplicationContext();
         JSONObject j = new JSONObject();
         final RequestQueue requestQueue = Volley.newRequestQueue(mContext);
-        JsonObjectRequest jsonMain = new JsonObjectRequest(Request.Method.PUT, "http://cs309-sd-6.misc.iastate.edu:8080/api/stats/updateStatByLocation/" + id + "/" + "{lng}/{lat}?lng=" + lng + "&lat=" + lat, j, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonMain = new JsonObjectRequest(Request.Method.PUT, "http://cs309-sd-6.misc.iastate.edu:8080/api/stats/updateStatByLocation/" + id + "/" + lng + "/"/*"{lng}/{lat}?lng=" + lng + "&lat="*/ + lat + "/", j, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {

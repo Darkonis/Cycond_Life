@@ -25,8 +25,8 @@ public class ChatSender {
     Activity chatActivity;
     Scanner in;
     String key = "";
-    Player player = Player.get_instance();
-    Json_handler locUpdate;
+    Player player;
+    Json_handler statUpdate;
     Context chatContext;
     //DataOutputStream dos;
     //PrintWriter pw;
@@ -42,7 +42,8 @@ public class ChatSender {
         //chat = new Socket();
         receivedText = "  connecting...";
         setChatText();
-        locUpdate = new Json_handler(chatContext);
+        player = Player.get_instance();
+        statUpdate = new Json_handler(chatContext);
 
         chat = new WebSocketClient(dest) {
             public void onMessage(String var1) {
@@ -54,7 +55,7 @@ public class ChatSender {
                 }
 
                 if(key.equals("GEO"))  {
-                    locUpdate.update_stat_by_location(player.getId(), player.get_longitude(), player.get_latitude());
+                    statUpdate.update_stat_by_location(player.getId(), player.get_longitude(), player.get_latitude());
                 }
 
                 if(key.equals("REFRESH"))   {
@@ -62,7 +63,7 @@ public class ChatSender {
                 }
 
                 if(key.equals("HEALTH"))    {
-
+                    statUpdate.update_stat
                 }
 
                 //receivedText += "\r\n  " + var1;

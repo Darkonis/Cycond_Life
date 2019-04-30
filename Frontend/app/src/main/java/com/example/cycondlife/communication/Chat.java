@@ -99,7 +99,7 @@ public class Chat extends AppCompatActivity {
 
                 sender.connectWebSocket(forReconnect);
                 sender.passChatBox(chatText);
-                sender.passActivity(thisActivity);
+                sender.passActivity(thisActivity.getApplicationContext());
                 sender.setChatText();
             }
         });

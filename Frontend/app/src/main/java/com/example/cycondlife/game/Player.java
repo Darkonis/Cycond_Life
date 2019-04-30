@@ -75,16 +75,6 @@ public class Player extends Character {
         username = user;
         name = user;
 
-        //Connect to chat websocket for persistent chat
-        try {
-            chatLink = new URI("ws://cs309-sd-6.misc.iastate.edu:8080/websocket/" + username);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-
-        sender = new ChatSender();
-        sender.connectWebSocket(chatLink);
-
         this.id = idt;
         this.context = c;
         callback = new Callback_handler() {
@@ -393,6 +383,22 @@ public class Player extends Character {
                 }
         );
         requestQueue.add(jsonArrayRequest);
+    }
+
+    /**
+     * create the chat sender
+     */
+    public void createChatSender()   {
+        //Connect to chat websocket for persistent chat
+        try {
+            chatLink = new URI("ws://cs309-sd-6.misc.iastate.edu:8080/websocket/" + username);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        sender = new ChatSender();
+        sender.passActivity(this.context);
+        sender.connectWebSocket(chatLink);
     }
 
     /**

@@ -76,6 +76,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 //Will save a temp account that can be accessed by the rest of the app in later iterations
                 Player.create_the_instance("Over9000", 13, getApplicationContext());
+                Player.get_instance().createChatSender();
                 Item.pullItemList();
                 final Intent openMenu = new Intent(Login.this, menu.class);
                 startActivity(openMenu);
@@ -99,6 +100,7 @@ public class Login extends AppCompatActivity {
                 try {
                     if (userPass.equals(o.get("password"))) {
                         Player.create_the_instance(userName, o.getInt("id"), getApplicationContext());
+                        Player.get_instance().createChatSender();
                         startActivity(openMenu);
                     }
                 } catch (Exception e) {
@@ -139,6 +141,7 @@ public class Login extends AppCompatActivity {
                                         Player.destroy_the_instance(); //remove the previous player if needed
                                     }
                                     Player.create_the_instance(userName, info.getInt("id"), getApplicationContext()); //on good login create the player object
+                                    Player.get_instance().createChatSender();
                                     Item.pullItemList();
                                     startActivity(openMenu);
 
