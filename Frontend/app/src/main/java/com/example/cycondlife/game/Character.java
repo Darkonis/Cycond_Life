@@ -65,6 +65,7 @@ public class Character {
         this.lat = lat;
         this.lng = lng;
         name = "Monster:" + id;
+        this.id = id;
         currancy=cur;
     }
 
