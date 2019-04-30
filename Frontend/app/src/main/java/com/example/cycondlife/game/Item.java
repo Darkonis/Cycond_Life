@@ -36,7 +36,10 @@ public abstract class Item {
         }
         return itemList.get(0);
     }
-
+    public int getCost()
+    {
+        return cost;
+    }
     public int getType() {
         return type;
     }

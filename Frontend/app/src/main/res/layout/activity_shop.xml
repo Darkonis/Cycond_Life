@@ -47,7 +47,7 @@
         app:layout_constraintEnd_toStartOf="@+id/submit" />
 
     <EditText
-        android:id="@+id/itemid"
+        android:id="@+id/itemID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="180dp"
