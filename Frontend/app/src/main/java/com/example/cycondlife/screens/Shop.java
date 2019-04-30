@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cycondlife.R;
 import com.example.cycondlife.game.Consumable;
@@ -47,6 +48,33 @@ public class Shop extends AppCompatActivity {
                 refresh();
             }
         });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isShop)
+                {
+                    Item i=Item.findByID(Integer.parseInt(id.getText().toString()));
+                    if(Player.get_instance().adjustCyBucks(-((int)(i.getCost()*1.2))))
+                    {
+                        Player.get_instance().addItem((Consumable) i);
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(),"not enough funds",Toast.LENGTH_SHORT);
+                    }
+                }
+                else{
+                    if(Integer.parseInt(id.getText().toString())<0||Integer.parseInt(id.getText().toString())>=p.getInv().size())
+                    {
+                        Toast.makeText(getApplicationContext(),"invalid item",Toast.LENGTH_SHORT);
+                        return;
+                    }
+                   Item i= p.removeItem(Integer.parseInt(id.getText().toString()));
+                   p.adjustCyBucks((int)(i.getCost()*.8));
+                }
+                refresh();
+            }
+        });
 
     }
     public void refresh()
@@ -56,22 +84,24 @@ public class Shop extends AppCompatActivity {
         String out="";
         if(isShop)
         {
+            submit.setText("Confirm purchase");
             out+="Buying\n";
             ArrayList tmp = Item.itemList;
             for(int i=0;i<tmp.size();i++)
             {
                 Consumable c = (Consumable) tmp.get(i);
-                out+= "ID: "+ c.getItemID()+ " Name: "+c.getName()+ " Cost: " + Math.floor(c.getCost()*1.2)+"\n";
+                out+= "ID: "+ c.getItemID()+ " Name: "+c.getName()+ " Cost: " + (int)(c.getCost()*1.2)+"\n";
             }
         }
         else
         {
+            submit.setText("Confirm Sale");
             out+="Selling\n";
             ArrayList tmp = p.getInv();
             for (int i=0;i<tmp.size();i++)
             {
                 Consumable c = (Consumable) tmp.get(i);
-                out+="ID: "+ i + " Name: "+c.getName()+ " Cost: " + Math.floor(c.getCost()*.8)+"\n";
+                out+="ID: "+ i + " Name: "+c.getName()+ " Cost: " + (int)(c.getCost()*.8)+"\n";
             }
         }
         itemList.setText(out);
