@@ -286,7 +286,7 @@ public class Player extends Character {
      */
     public void addItem(Consumable i) {
         if (inv.size() < 20) {
-         //   inv.add(i);
+            inv.add(i);
             Callback_handler c = new Callback_handler() {
                 @Override
                 public void get_array_response(JSONArray a) {
