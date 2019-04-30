@@ -426,7 +426,7 @@ public class Player extends Character {
         if (tinkeringPoints == -1) tinkeringPoints = tinkPointsMax;
     }
 
-    private void get_stats(int statsId, final Callback_handler c, Context t) {
+    private void get_stats(final int statsId, final Callback_handler c,final Context t) {
         RequestQueue r = Volley.newRequestQueue(t);
         JsonObjectRequest o = new JsonObjectRequest(Request.Method.GET, "http://cs309-sd-6.misc.iastate.edu:8080/api/stats/" + statsId, null, new Response.Listener<JSONObject>() {
             @Override
@@ -441,6 +441,7 @@ public class Player extends Character {
                         // Do something when error occurred
                         Log.i("Cycond Life", "user stats error");
                         Log.i("Cycond Life", error.toString());
+                       // get_stats(statsId,c,t);
                     }
                 });
         r.add(o);
