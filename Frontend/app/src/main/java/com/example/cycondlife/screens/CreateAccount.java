@@ -74,9 +74,8 @@ public class CreateAccount extends AppCompatActivity {
                                     Player.destroy_the_instance(); //remove the previous player if needed
                                 }
                                 Json_handler j = new Json_handler(getApplicationContext());
-                                j.add_stats(info.getInt("accountId"));
-                                Player.create_the_instance(user.getText().toString(), info.getInt("accountId"), getApplicationContext()); //on good login create the player object
-                                startActivity(openMenu);
+                                j.add_stats(info.getInt("id"));
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

@@ -71,7 +71,6 @@ public class Json_handler {
      * @param id the id to get stats
      */
     public void add_stats(int id) {
-        final RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         JSONObject j = new JSONObject();
         try {
             j.accumulate("id", id);
@@ -82,19 +81,21 @@ public class Json_handler {
             j.accumulate("monstersKilled",0);
             j.accumulate("resolve",100);
             j.accumulate("cyBucks",0);
-            JsonObjectRequest t = new JsonObjectRequest(Request.Method.POST, statlinkadd, j, new Response.Listener<JSONObject>() {
+            Callback_handler c = new Callback_handler() {
                 @Override
-                public void onResponse(JSONObject response) {
-                    Log.i("Cycond Response", response.toString());
+                public void get_array_response(JSONArray a) {
+                    return;
                 }
-            }, new Response.ErrorListener() {
+
                 @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.i("Cycond Error", "add stats Error");
-                    Log.i("Cycond Error", error.toString());
+                public void get_object_response(JSONObject o) {
+                    Log.i("Cycond Result",o.toString());
+
                 }
-            });
-            requestQueue.add(t);
+            };
+            JSONObject[] js= new JSONObject[1];
+            js[0]=j;
+            makeCall(Request.Method.POST,"http://cs309-sd-6.misc.iastate.edu:8080/api/stats/add/",c,0,js);
         } catch (Exception e) {
             Log.i("Cycond Error", e.toString());
         }
@@ -158,6 +159,7 @@ public class Json_handler {
         this.type = type;
         Add_user a = new Add_user();
         a.execute();
+
         return true; //TODO add check for succsessful completion
     }
 
