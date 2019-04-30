@@ -43,6 +43,7 @@ public class shop extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 isShop=!isShop;
+                refresh();
             }
         });
 
