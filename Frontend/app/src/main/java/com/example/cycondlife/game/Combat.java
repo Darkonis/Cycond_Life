@@ -7,11 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.cycondlife.Dice;
 import com.example.cycondlife.R;
 import com.example.cycondlife.communication.Json_handler;
 
 import java.util.Random;
+import java.util.Scanner;
 
 //import Consumable;
 
@@ -31,6 +34,10 @@ public class Combat extends AppCompatActivity {
     TextView monster_stuff;
     TextView inventory;
     TextView itemID;
+    TextView combatLog;
+
+    String combatText;
+    int id;
 
     /**
      * setup the combatants before combat starts
@@ -44,8 +51,9 @@ public class Combat extends AppCompatActivity {
         g = tmp;
     }
 
-    private static int do_combat(Character play, Character mon, Context c) {
+    private int do_combat(Character play, Character mon, Context c) {
         //TODO bring up the idea of RNG based on class
+
         Dice dmg_rng = new Dice("1+1d4");
         if (rand.nextInt() % 100 + 1 <= player.getHitChance()) {
             int dmg = play.BS + dmg_rng.roll();
@@ -53,13 +61,21 @@ public class Combat extends AppCompatActivity {
                 dmg *= player.getCritMult();
             }
 
+
             mon.take_dmg(dmg);
+            update_combat_log("You dealt " + dmg + " damage to the enemy!");
+            player.getSender().sendMsg("COMBAT ATTACK " + mon.getId());
         }
 
-        if (mon.resolve <= 0) return 1;
+        if (mon.resolve <= 0) {
+            update_combat_log("You defeated the enemy!");
+            player.getSender().sendMsg("COMBAT VICTORY " + mon.getId());
+            return 1;
+        }
         endTurn(c);
         if (play.resolve <= 0) {
-
+            update_combat_log("You have been defeated :(");
+            player.getSender().sendMsg("COMBAT DEFEAT " + mon.getId());
             return 2;
         }
         return 0;
@@ -68,12 +84,16 @@ public class Combat extends AppCompatActivity {
     /*
    Do the monsters attack and decrease the time for any consumables
     */
-    private static void endTurn(Context c) {
+    private void endTurn(Context c) {
 
         if (rand.nextInt() % 100 + 1 >= player.getDodgeChance()) {
             int dmg = monster.BS;
             dmg *= (1 - player.getDmgReduct());
             player.take_dmg(dmg, c);
+            update_combat_log("Your enemy dealt " + dmg + " damage to you...");
+            //player.getSender().sendMsg();
+        }   else    {
+            update_combat_log("Your enemy missed an attack on you...");
         }
         for (int i = 0; i < Player.get_instance().getActives().size(); i++) {
             Log.i("Cycond Info", "Duration:" + Player.get_instance().getActives().get(i).getDuration());
@@ -82,6 +102,7 @@ public class Combat extends AppCompatActivity {
                 player.endItem(t);
                 Player.get_instance().getActives().remove(i);
                 i--;
+                update_combat_log("The effect of your item, " + t.getName() + " has ended");
             } else {
                 player.endItem(t);
                 t.decreaseDuration();
@@ -104,6 +125,8 @@ public class Combat extends AppCompatActivity {
         define_elements();
         setup_buttons();
         update_status();
+        combatText = "  Combat events:";
+        combatLog.setText(combatText);
     }
 
     private void define_elements() {
@@ -115,6 +138,7 @@ public class Combat extends AppCompatActivity {
         item = findViewById(R.id.item);
         itemID = findViewById(R.id.itemID);
         submitItem = findViewById(R.id.useItem);
+        combatLog = findViewById(R.id.combatLog);
     }
 
     /*
@@ -126,6 +150,7 @@ public class Combat extends AppCompatActivity {
             public void onClick(View v) {
                 reset();
                 display_inventory();
+                combatLog.setVisibility(View.GONE);
             }
         });
         button_flee.setOnClickListener(new View.OnClickListener() {
@@ -165,9 +190,18 @@ public class Combat extends AppCompatActivity {
                 if (itemID.getText().toString().equals("")) {
                     return;
                 }
-                if (player.getInv().size() <= Integer.parseInt(itemID.getText().toString()) || Integer.parseInt(itemID.getText().toString()) < 0) {
+                try{
+                    if (player.getInv().size() <= Integer.parseInt(itemID.getText().toString()) || Integer.parseInt(itemID.getText().toString()) < 0) {
+                        return;
+                    }
+                }   catch(NumberFormatException e)  {
+                    e.printStackTrace();
+                    itemID.setText("");
+                    Toast.makeText(getApplicationContext(), "Please enter an integer value", Toast.LENGTH_SHORT);
                     return;
                 }
+
+
                 Item i = player.getInv().get(Integer.parseInt(itemID.getText().toString()));
                 // if()
                 {
@@ -189,15 +223,16 @@ public class Combat extends AppCompatActivity {
         inventory.setText("");
         itemID.setVisibility(View.GONE);
         submitItem.setVisibility(View.GONE);
+        combatLog.setVisibility(View.VISIBLE);
     }
 
     private void display_inventory() {
         submitItem.setVisibility(View.VISIBLE);
         itemID.setVisibility(View.VISIBLE);
         inventory.setVisibility(View.VISIBLE);
-        String toDisp = "Your inventory contains:\n";
+        String toDisp = "  Your inventory contains:\n";
         for (int i = 0; i < player.getInv().size(); i++) {
-            toDisp += i + " name: " + player.getInv().get(i).name + "\n";
+            toDisp += "  " + i + " name: " + player.getInv().get(i).name + "\n";
         }
         inventory.setText(toDisp);
     }
@@ -205,6 +240,11 @@ public class Combat extends AppCompatActivity {
     private void update_status() {
         player_stuff.setText("Player Resolve: " + player.getResolve());
         monster_stuff.setText("Enemy Resolve: " + monster.getResolve());
+    }
+
+    private void update_combat_log(String text)    {
+        combatText += "\r\n  " + text;
+        combatLog.setText(combatText);
     }
 
 }

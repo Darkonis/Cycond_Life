@@ -22,7 +22,7 @@ protected class Relation {
             return "'none'";
         }
         Random ran = new Random();
-        int statSelector = ran.nextInt(5);
+        int statSelector = ran.nextInt(3);
         String statName = "none";
         switch (statSelector) {
             case 0:
@@ -32,12 +32,6 @@ protected class Relation {
                 statName = "resolve";
                 break;
             case 2:
-                statName = "critical_thinking";
-                break;
-            case 3:
-                statName = "ingenuity";
-                break;
-            case 4:
                 statName = "presentation";
                 break;
             default:

@@ -188,11 +188,17 @@ public class WebSocketServer {
         receivingSession.getBasicRemote().sendText(chatMessage);
     }
 
-    @Scheduled(fixedRate = 6000)
+    @Scheduled(fixedRate = 60000)
     public void PingClientForGeo() throws IOException {
         broadcast("GEO");
     }
-
+    
+    @Scheduled(fixedRate = 10000)
+    public void PingClientForHealth() throws IOException {
+    	broadcast("HEALTH");
+    	
+    }
+    
     public void destroy() {
         accountSessionMap.remove(sessionAccountMap.get(session));
         sessionAccountMap.remove(session);

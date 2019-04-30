@@ -25,6 +25,7 @@ public class Character {
     private boolean isPlayer;
     private double lat;
     private double lng;
+    private int id;
     /*
     ones potential for resolve
      */
@@ -55,6 +56,7 @@ public class Character {
         this.lat = lat;
         this.lng = lng;
         name = "Monster:" + id;
+        this.id = id;
     }
     public Character(int id, int type, double lat, double lng,Dice cur) {
         isPlayer = false;
@@ -187,6 +189,11 @@ public class Character {
     }
     // public int getBS(){return BS;}
 
+    /**
+     *
+     * @return the id
+     */
+    public int getId()  { return id;    }
     /**
      * @return the major
      */
