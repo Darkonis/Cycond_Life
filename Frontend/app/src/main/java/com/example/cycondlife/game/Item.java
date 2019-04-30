@@ -21,6 +21,11 @@ public abstract class Item {
     protected String description;
     protected int type;
     protected int cost;
+    protected  int serverID;
+    public int getServerID()
+    {
+        return serverID;
+    }
 
     /**
      * find an item in the item list by Item ID

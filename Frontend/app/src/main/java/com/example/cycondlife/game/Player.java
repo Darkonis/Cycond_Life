@@ -98,7 +98,7 @@ public class Player extends Character {
                     try {
 
 
-                        if (a.getJSONObject(i).getInt("accountId") == id) {
+                        if (a.getJSONObject(i).getInt("accounId") == id) {
                             get_stats(a.getJSONObject(i).getInt("id"), this, context);
                         }
                     } catch (Exception e) {
@@ -284,10 +284,9 @@ public class Player extends Character {
      * @param i item to add
      */
     public void addItem(Consumable i) {
-        //TODO propagate to the server when possuible
         if (inv.size() < 20) {
             inv.add(i);
-            /*Callback_handler c = new Callback_handler() {
+            Callback_handler c = new Callback_handler() {
                 @Override
                 public void get_array_response(JSONArray a) {
                     return;
@@ -298,19 +297,19 @@ public class Player extends Character {
                     return;
                 }
             };
-            JSONObject j = new JSONObject();
+            JSONObject[] j= new JSONObject[1];
+            j[0]=new JSONObject();
             try {
-                j.accumulate("id", id);
-                j.accumulate("itemId",i.itemID);
-                j.accumulate("itemName",i.name);
-                j.accumulate("")
+                j[0].accumulate("playerId", id);
+                j[0].accumulate("itemId",i.itemID);
+                j[0].accumulate("itemName",i.name);
             }
             catch (Exception e)
             {
                 Log.i("cycond Error","Inventory Add Error");
             }
-            Json_handler.makeCall(Request.Method.POST,"http://cs309-sd-6.misc.iastate.edu:8080/api/inventory/add/",c,0,);
-            */
+            Json_handler.makeCall(Request.Method.POST,"http://cs309-sd-6.misc.iastate.edu:8080/api/inventory/add/",c,0,j);
+
         } else {
             Log.i("Cycond Info", "You drop some items");
         }
