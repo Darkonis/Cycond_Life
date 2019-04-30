@@ -287,6 +287,30 @@ public class Player extends Character {
         //TODO propagate to the server when possuible
         if (inv.size() < 20) {
             inv.add(i);
+            /*Callback_handler c = new Callback_handler() {
+                @Override
+                public void get_array_response(JSONArray a) {
+                    return;
+                }
+
+                @Override
+                public void get_object_response(JSONObject o) {
+                    return;
+                }
+            };
+            JSONObject j = new JSONObject();
+            try {
+                j.accumulate("id", id);
+                j.accumulate("itemId",i.itemID);
+                j.accumulate("itemName",i.name);
+                j.accumulate("")
+            }
+            catch (Exception e)
+            {
+                Log.i("cycond Error","Inventory Add Error");
+            }
+            Json_handler.makeCall(Request.Method.POST,"http://cs309-sd-6.misc.iastate.edu:8080/api/inventory/add/",c,0,);
+            */
         } else {
             Log.i("Cycond Info", "You drop some items");
         }
