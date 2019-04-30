@@ -56,6 +56,7 @@ public class Consumable extends Item {
         this.effect = effect;
         this.duration = duration;
         this.useMsg = use_msg;
+        this.cost=cost;
     }
     /**
      * use and item
@@ -118,7 +119,7 @@ public class Consumable extends Item {
      */
     @Override
     public Consumable clone() {
-        return new Consumable(itemID, name, description, type, effect, duration, useMsg);
+        return new Consumable(itemID, name, description, type, effect, duration, useMsg,cost);
     }
 
 }

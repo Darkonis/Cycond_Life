@@ -61,9 +61,10 @@ public abstract class Item {
                        /* Item l = new Consumable(a.getInt("id"), a.getString("name"), a.getString("description"),
                                 a.getInt("statEffected"), new Dice(a.getString("pointsIncreased")), a.getInt("totalTurns"), a.getString("useMSG"));*/
                         Item l = new Consumable(a.getInt("id"), a.getString("name"), "this is a description",
-                                a.getInt("statEffected"), new Dice(a.getString("pointsIncreased")), a.getInt("totalTurns"), "you used the item");
+                                a.getInt("statEffected"), new Dice(a.getString("pointsIncreased")), a.getInt("totalTurns"), "you used the item",a.getInt("cost"));
+                        Log.i("Cost",""+a.getInt("cost"));
                         itemList.add(l);
-                        Log.i("Cycond Item", l.itemID+": " +l.name+" "+l.type+" "+((Consumable) l).getDuration()+" " +((Consumable) l).getEffect());
+                        Log.i("Cycond Item", l.itemID+": " +l.name+" "+l.type+" "+((Consumable) l).getDuration()+" " +((Consumable) l).getCost());
                     }
                     catch (Exception e)
                     {

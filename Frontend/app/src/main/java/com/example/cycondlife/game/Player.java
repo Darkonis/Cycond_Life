@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
@@ -52,6 +53,8 @@ public class Player extends Character {
     private double tinkMult = 1.0;
     private double dodgeChance = 15;
     private int tinkeringPoints = -1;
+    //TODO use this to hide admin button
+    private String type = "";
     private ArrayList<Consumable> inv = new ArrayList<>();
     private ArrayList<Consumable> activeItems = new ArrayList<>();
     private int itemCount = 0;
@@ -111,10 +114,10 @@ public class Player extends Character {
                 try {
                     presentation = o.getInt("presentation");
                     monstersKilled = o.getInt("monstersKilled");
-                    critical_thinking = o.getInt("critical thinking");
-                    creativity = o.getInt("creativity");
+                    critical_thinking = o.getInt("criticalThinking");
+                    creativity = o.getInt("ingenuity");
                     BS = presentation + critical_thinking;
-                    resolve = presentation;
+                    resolve = o.getInt("resolve");
                     cyBucks = o.getInt("cyBucks");
                 } catch (Exception e) {
                     Log.i("Cycond Life", "Stat pull error");
@@ -358,10 +361,6 @@ public class Player extends Character {
         JsonObjectRequest o = new JsonObjectRequest(Request.Method.GET, "http://cs309-sd-6.misc.iastate.edu:8080/api/stats/" + statsId, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                // Do something with response
-                //mTextView.setText(response.toString());
-
-                // Process the JSON
                 Log.i("Cycond test", "user stats request succsessful");
                 c.get_object_response(response);
             }

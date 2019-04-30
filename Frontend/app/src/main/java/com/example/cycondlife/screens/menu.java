@@ -31,12 +31,13 @@ public class menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         //button object creations
-        Button stats = findViewById(R.id.stats);
+        final Button stats = findViewById(R.id.stats);
         Button inventory = findViewById(R.id.inventorylist);
         Button friends = findViewById(R.id.friends);
         Button map = findViewById(R.id.map);
         Button dev_menu = findViewById(R.id.dev_menu);
         Button scanner = findViewById(R.id.scan);
+        Button shop = findViewById(R.id.shop);
         if (Game.monster_map.size() == 0) {
             pull_monster_map();
         }
@@ -83,6 +84,13 @@ public class menu extends AppCompatActivity {
                 intent.putExtra(BarcodeCaptureActivity.UseFlash, false);
 
                 startActivityForResult(intent, 9001);
+            }
+        });
+        shop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(menu.this,Shop.class);
+                startActivity(intent);
             }
         });
 

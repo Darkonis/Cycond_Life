@@ -28,6 +28,7 @@ public class Shop extends AppCompatActivity {
         setContentView(R.layout.activity_shop);
         setup();
         setupListeners();
+        refresh();
     }
     private void setup()
     {
@@ -55,20 +56,22 @@ public class Shop extends AppCompatActivity {
         String out="";
         if(isShop)
         {
+            out+="Buying\n";
             ArrayList tmp = Item.itemList;
             for(int i=0;i<tmp.size();i++)
             {
                 Consumable c = (Consumable) tmp.get(i);
-                out+= "ID: "+ c.getItemID()+ " Name: "+c.getName()+ "Cost: " + Math.floor(c.getCost()*1.2);
+                out+= "ID: "+ c.getItemID()+ " Name: "+c.getName()+ " Cost: " + Math.floor(c.getCost()*1.2)+"\n";
             }
         }
         else
         {
+            out+="Selling\n";
             ArrayList tmp = p.getInv();
             for (int i=0;i<tmp.size();i++)
             {
                 Consumable c = (Consumable) tmp.get(i);
-                out+="ID: "+ i + " Name: "+c.getName()+ "Cost: " + Math.floor(c.getCost()*.8);
+                out+="ID: "+ i + " Name: "+c.getName()+ " Cost: " + Math.floor(c.getCost()*.8)+"\n";
             }
         }
         itemList.setText(out);

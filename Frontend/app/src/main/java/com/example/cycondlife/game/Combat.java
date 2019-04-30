@@ -74,6 +74,9 @@ public class Combat extends AppCompatActivity {
         }
         endTurn(c);
         if (play.resolve <= 0) {
+            Log.i("Cycond info", "Before: "+player.getGold());
+            player.adjustCyBucks(mon.getGold());
+            Log.i("Cycond info","After: "+player.getGold());
             update_combat_log("You have been defeated :(");
             player.getSender().sendMsg("COMBAT DEFEAT " + mon.getId());
             return 2;
