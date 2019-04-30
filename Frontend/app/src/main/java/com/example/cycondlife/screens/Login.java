@@ -146,12 +146,16 @@ public class Login extends AppCompatActivity {
                                     startActivity(openMenu);
 
                                 }
+                                else
+                                {
+                                    fail.setVisibility(View.VISIBLE);   //Should only display on codition of fail, will be changed
+                                }
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
-                        fail.setVisibility(View.VISIBLE);   //Should only display on codition of fail, will be changed
+
                     }
                 },
                 new Response.ErrorListener() {
