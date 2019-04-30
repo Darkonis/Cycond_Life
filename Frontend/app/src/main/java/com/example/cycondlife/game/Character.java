@@ -1,11 +1,14 @@
 package com.example.cycondlife.game;
 
+import com.example.cycondlife.Dice;
+
 public class Character {
     protected int presentation = 10;
     protected int creativity = 10;
     protected int critical_thinking = 10;
     protected String major = "student";
     protected String name = "tmp";
+    private Dice currancy;
     //potentially move to an enum array
     //TODO change to formula calculation
     /*
@@ -55,6 +58,15 @@ public class Character {
         name = "Monster:" + id;
         this.id = id;
     }
+    public Character(int id, int type, double lat, double lng,Dice cur) {
+        isPlayer = false;
+        BS = 10;
+        resolve = 100;
+        this.lat = lat;
+        this.lng = lng;
+        name = "Monster:" + id;
+        currancy=cur;
+    }
 
     /**
      * Create a generic monster for tests shouldn't need
@@ -70,6 +82,15 @@ public class Character {
         this.lng = lng;
         name = "tmp";
 
+    }
+    public Character(double lat, double lng,Dice currancy) {
+        isPlayer = false;
+        BS = 10;
+        resolve = 100;
+        this.lat = lat;
+        this.lng = lng;
+        name = "tmp";
+        this.currancy=currancy;
     }
 
     Character(boolean isPlayer, double lat, double longitude, int attack) {
@@ -188,5 +209,5 @@ public class Character {
     public int getPresentation() {
         return presentation;
     }
-
+    public int getGold(){return currancy.roll();}
 }

@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
@@ -52,9 +53,12 @@ public class Player extends Character {
     private double tinkMult = 1.0;
     private double dodgeChance = 15;
     private int tinkeringPoints = -1;
+    //TODO use this to hide admin button
+    private String type = "";
     private ArrayList<Consumable> inv = new ArrayList<>();
     private ArrayList<Consumable> activeItems = new ArrayList<>();
     private int itemCount = 0;
+    private int cyBucks=0;
 
     private Player() {
         super();
@@ -110,10 +114,11 @@ public class Player extends Character {
                 try {
                     presentation = o.getInt("presentation");
                     monstersKilled = o.getInt("monstersKilled");
-                    critical_thinking = o.getInt("critical thinking");
-                    creativity = o.getInt("creativity");
+                    critical_thinking = o.getInt("criticalThinking");
+                    creativity = o.getInt("ingenuity");
                     BS = presentation + critical_thinking;
-                    resolve = presentation;
+                    resolve = o.getInt("resolve");
+                    cyBucks = o.getInt("cyBucks");
                 } catch (Exception e) {
                     Log.i("Cycond Life", "Stat pull error");
                 }
@@ -135,7 +140,7 @@ public class Player extends Character {
     public static synchronized void createTestInstance(String user, int idt) {
         player_instance = new Player(user, idt);
     }
-
+    public int getId(){return id;}
     /**
      * get the current instance of the player class
      *
@@ -148,7 +153,25 @@ public class Player extends Character {
     public static int getMonstersKilled() {
         return monstersKilled;
     }
-
+    public int getGold()
+    {
+        return cyBucks;
+    }
+    public boolean adjustCyBucks(int i)
+    {
+        if(cyBucks+i<0)
+        {
+            return false;
+        }
+        else
+        {
+            cyBucks +=i;
+            if (cyBucks>9999)cyBucks=9999;
+            Json_handler j = new Json_handler(context);
+                    j.update_stat(id,"cyBucks",getGold());
+            return true;
+        }
+    }
     /**
      * Create the singlton player
      *
@@ -264,6 +287,30 @@ public class Player extends Character {
         //TODO propagate to the server when possuible
         if (inv.size() < 20) {
             inv.add(i);
+            /*Callback_handler c = new Callback_handler() {
+                @Override
+                public void get_array_response(JSONArray a) {
+                    return;
+                }
+
+                @Override
+                public void get_object_response(JSONObject o) {
+                    return;
+                }
+            };
+            JSONObject j = new JSONObject();
+            try {
+                j.accumulate("id", id);
+                j.accumulate("itemId",i.itemID);
+                j.accumulate("itemName",i.name);
+                j.accumulate("")
+            }
+            catch (Exception e)
+            {
+                Log.i("cycond Error","Inventory Add Error");
+            }
+            Json_handler.makeCall(Request.Method.POST,"http://cs309-sd-6.misc.iastate.edu:8080/api/inventory/add/",c,0,);
+            */
         } else {
             Log.i("Cycond Info", "You drop some items");
         }
@@ -338,10 +385,6 @@ public class Player extends Character {
         JsonObjectRequest o = new JsonObjectRequest(Request.Method.GET, "http://cs309-sd-6.misc.iastate.edu:8080/api/stats/" + statsId, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                // Do something with response
-                //mTextView.setText(response.toString());
-
-                // Process the JSON
                 Log.i("Cycond test", "user stats request succsessful");
                 c.get_object_response(response);
             }

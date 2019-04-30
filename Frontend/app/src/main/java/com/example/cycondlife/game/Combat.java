@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.cycondlife.Dice;
 import com.example.cycondlife.R;
+import com.example.cycondlife.communication.Json_handler;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -73,6 +74,9 @@ public class Combat extends AppCompatActivity {
         }
         endTurn(c);
         if (play.resolve <= 0) {
+            Log.i("Cycond info", "Before: "+player.getGold());
+            player.adjustCyBucks(mon.getGold());
+            Log.i("Cycond info","After: "+player.getGold());
             update_combat_log("You have been defeated :(");
             player.getSender().sendMsg("COMBAT DEFEAT " + mon.getId());
             return 2;
@@ -167,6 +171,9 @@ public class Combat extends AppCompatActivity {
                 update_status();
                 if (ret == 1) {
                     Log.i("Cycond Life", "Player has won combat");
+                    Json_handler j = new Json_handler(getApplicationContext());
+
+                    player.adjustCyBucks(monster.getGold());
                     finishActivity(1);
 
                     finish();
