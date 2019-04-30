@@ -128,6 +128,7 @@ public class Player extends Character {
         get_stats(id, callback, c);
         //  RequestQueue q = new Volley.newRequestQueue(c);
         // JsonObjectRequest j = new JsonObjectRequest()
+
     }
 
     /**
@@ -285,16 +286,16 @@ public class Player extends Character {
      */
     public void addItem(Consumable i) {
         if (inv.size() < 20) {
-            inv.add(i);
+         //   inv.add(i);
             Callback_handler c = new Callback_handler() {
                 @Override
                 public void get_array_response(JSONArray a) {
-                    return;
+                    refreshInventory();
                 }
 
                 @Override
                 public void get_object_response(JSONObject o) {
-                    return;
+                    refreshInventory();
                 }
             };
             JSONObject[] j= new JSONObject[1];
@@ -313,6 +314,7 @@ public class Player extends Character {
         } else {
             Log.i("Cycond Info", "You drop some items");
         }
+
     }
 
     /**
@@ -322,7 +324,51 @@ public class Player extends Character {
      * @return the item that was removed
      */
     public Item removeItem(int index) {
-        return inv.remove(index);
+        Item i = inv.get(index);
+        Callback_handler c = new Callback_handler() {
+        @Override
+        public void get_array_response(JSONArray a) {
+            refreshInventory();
+        }
+
+        @Override
+        public void get_object_response(JSONObject o) {
+            refreshInventory();
+        }
+    };
+        Json_handler.makeCall(Request.Method.DELETE,"http://cs309-sd-6.misc.iastate.edu:8080/api/inventory/"+inv.get(index).getServerID()+"/",c,1,null);
+        return i;
+    }
+
+    public void refreshInventory()
+    {
+
+        inv = new ArrayList<>();
+        Callback_handler c = new Callback_handler() {
+            @Override
+            public void get_array_response(JSONArray a) {
+                for(int i=0;i<a.length();i++)
+                {
+
+                    try {
+                        JSONObject o = a.getJSONObject(i);
+                        Consumable c = ((Consumable) Item.findByID(o.getInt("itemId"))).clone();
+                        c.setServerID(a.getJSONObject(i).getInt("id"));
+                        inv.add(c);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.i("Cycond Error","inventory pull error");
+                    }
+                    }
+            }
+
+            @Override
+            public void get_object_response(JSONObject o) {
+                return;
+            }
+        };
+        Json_handler.makeCall(Request.Method.GET,"http://cs309-sd-6.misc.iastate.edu:8080/api/inventory/byUserId/"+id+"/",c,1,null);
     }
 
     /**

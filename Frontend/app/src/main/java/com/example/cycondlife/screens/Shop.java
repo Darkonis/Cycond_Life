@@ -71,6 +71,7 @@ public class Shop extends AppCompatActivity {
                     }
                    Item i= p.removeItem(Integer.parseInt(id.getText().toString()));
                    p.adjustCyBucks((int)(i.getCost()*.8));
+                   p.refreshInventory();
                 }
                 refresh();
             }

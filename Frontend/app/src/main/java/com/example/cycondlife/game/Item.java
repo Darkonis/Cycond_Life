@@ -39,7 +39,7 @@ public abstract class Item {
                 return itemList.get(i);
             }
         }
-        return itemList.get(0);
+        return null;
     }
     public int getCost()
     {

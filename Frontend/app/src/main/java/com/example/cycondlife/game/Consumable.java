@@ -144,5 +144,9 @@ public class Consumable extends Item {
     public Consumable clone() {
         return new Consumable(itemID, name, description, type, effect, duration, useMsg,cost);
     }
+    public void setServerID(int id)
+    {
+        serverID =id;
+    }
 
 }
