@@ -3,6 +3,7 @@ package edu.se309.app.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.time.OffsetDateTime;
  * Main spring boot class used to start the server
  */
 @SpringBootApplication
+@EnableScheduling
 public class Se309RpgApplication {
 
     /**
