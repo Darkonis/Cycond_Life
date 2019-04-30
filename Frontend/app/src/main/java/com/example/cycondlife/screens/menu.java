@@ -20,6 +20,8 @@ import com.example.cycondlife.communication.Callback_handler;
 import com.example.cycondlife.communication.Chat;
 import com.example.cycondlife.game.Character;
 import com.example.cycondlife.game.Game;
+import com.example.cycondlife.game.Player;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -38,6 +40,7 @@ public class menu extends AppCompatActivity {
         Button dev_menu = findViewById(R.id.dev_menu);
         Button scanner = findViewById(R.id.scan);
         Button shop = findViewById(R.id.shop);
+        Player.get_instance().refreshInventory();
         if (Game.monster_map.size() == 0) {
             pull_monster_map();
         }
