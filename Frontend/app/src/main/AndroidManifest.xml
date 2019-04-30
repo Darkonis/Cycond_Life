@@ -44,7 +44,7 @@
                 android:name=".ar.BarcodeCaptureActivity"
                 android:label="BarcodeCaptureActivity"
                 android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".screens.shop"
+        <activity android:name=".screens.Shop"
                 android:label="shop"
                 android:theme="@style/AppTheme.NoActionBar"/>
 

@@ -13,7 +13,7 @@ import com.example.cycondlife.game.Player;
 
 import java.util.ArrayList;
 
-public class shop extends AppCompatActivity {
+public class Shop extends AppCompatActivity {
     private Button state;
     private Button submit;
     private TextView id;
@@ -50,7 +50,7 @@ public class shop extends AppCompatActivity {
     }
     public void refresh()
     {
-        //TODO add display for if its in shop or sell mode
+        //TODO add display for if its in Shop or sell mode
         currancy.setText("You have:"+p.getGold()+" cyBucks");
         String out="";
         if(isShop)
