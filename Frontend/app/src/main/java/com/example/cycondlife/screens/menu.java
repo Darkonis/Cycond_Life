@@ -117,10 +117,6 @@ public class menu extends AppCompatActivity {
 
 
     }
-    /* public void setActivityBackgroundColor(int color) {      //Can possibly be used to change background color of main menu
-        View view = this.getWindow().getDecorView();
-        view.setBackgroundColor(color);
-    }   */
 
     /**
      * generic json stuff

@@ -44,24 +44,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/tech"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="tech"
-        android:textColor="@color/colorPrimary"
-        android:textSize="24sp"
-        app:fontFamily="@font/carter_one"
-        app:layout_constraintBottom_toTopOf="@+id/run"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
-
-    <Button
         android:id="@+id/attack"
         android:layout_width="0dp"
         android:layout_height="80dp"
@@ -76,8 +58,7 @@
         android:textSize="24sp"
         app:fontFamily="@font/carter_one"
         app:layout_constraintBottom_toTopOf="@+id/item"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -131,21 +112,25 @@
 
     <TextView
         android:id="@+id/inventoryList"
-        android:layout_width="386dp"
-        android:layout_height="266dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorPrimaryDark"
         android:scrollbars="vertical"
         android:text="TextView"
-        android:visibility="gone"
+        android:textColor="@color/colorPrimary"
         app:fontFamily="@font/carter_one"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/attack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/health" />
 
     <Button
         android:id="@+id/useItem"
@@ -153,13 +138,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="200dp"
-        android:background="@color/colorPrimaryDark"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorAccent"
         android:text="Activate"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:visibility="gone"
         app:fontFamily="@font/carter_one"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/attack"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
@@ -176,5 +161,27 @@
         app:fontFamily="@font/carter_one"
         app:layout_constraintBottom_toTopOf="@+id/attack"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/combatLog"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="bottom|left"
+        android:scrollbars="vertical"
+        android:text="  Combat Log"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintBottom_toTopOf="@+id/attack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/health" />
 
 </android.support.constraint.ConstraintLayout>
