@@ -33,7 +33,6 @@ public class menu extends AppCompatActivity {
         //button object creations
         Button stats = findViewById(R.id.stats);
         Button inventory = findViewById(R.id.inventorylist);
-        Button shop = findViewById(R.id.shop);
         Button friends = findViewById(R.id.friends);
         Button map = findViewById(R.id.map);
         Button dev_menu = findViewById(R.id.dev_menu);

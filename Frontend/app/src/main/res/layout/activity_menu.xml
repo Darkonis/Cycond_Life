@@ -37,47 +37,32 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
     <Button
-            android:id="@+id/inventorylist"
-            android:layout_width="108dp"
-            android:layout_height="56dp"
-            android:layout_marginBottom="20dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="Inventory"
-            android:textColor="@color/colorPrimary"
-            app:fontFamily="@font/carter_one"
-            app:layout_constraintBottom_toTopOf="@+id/shop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"/>
+        android:id="@+id/inventorylist"
+        android:layout_width="108dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Inventory"
+        android:textColor="@color/colorPrimary"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintBottom_toTopOf="@+id/scan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-            android:id="@+id/shop"
-            android:layout_width="108dp"
-            android:layout_height="56dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="Shop"
-            android:textColor="@color/colorPrimary"
-            app:fontFamily="@font/carter_one"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.499"/>
-
-    <Button
-            android:id="@+id/friends"
-            android:layout_width="108dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="20dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="Chat"
-            android:textColor="@color/colorPrimary"
-            app:fontFamily="@font/carter_one"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shop"/>
+        android:id="@+id/friends"
+        android:layout_width="108dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Chat"
+        android:textColor="@color/colorPrimary"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scan" />
 
     <Button
             android:id="@+id/dev_menu"
@@ -109,17 +94,17 @@
             app:layout_constraintTop_toBottomOf="@+id/friends"/>
 
     <Button
-            android:id="@+id/scan"
-            android:layout_width="108dp"
-            android:layout_height="56dp"
-            android:layout_marginBottom="12dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="Scanner"
-            android:textColor="@color/colorPrimary"
-            android:textIsSelectable="false"
-            app:fontFamily="@font/carter_one"
-            app:layout_constraintBottom_toTopOf="@+id/inventorylist"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.947"
-            app:layout_constraintStart_toStartOf="parent"/>
+        android:id="@+id/scan"
+        android:layout_width="108dp"
+        android:layout_height="56dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Scanner"
+        android:textColor="@color/colorPrimary"
+        android:textIsSelectable="false"
+        app:fontFamily="@font/carter_one"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
